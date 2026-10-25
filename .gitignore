@@ -1,0 +1,21 @@
+# Programs you compile by hand next to the source, e.g. `cc main.c -o main`
+chapters/**/c/main
+chapters/**/cpp/main
+chapters/**/rust/main
+chapters/**/go/main
+*.o
+a.out
+build/
+target/
+
+# Language tooling
+node_modules/
+__pycache__/
+*.pyc
+.dart_tool/
+.venv/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store

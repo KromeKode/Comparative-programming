@@ -1,0 +1,40 @@
+name: Check solutions
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.24"
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Install TypeScript
+        run: npm ci
+
+      - name: Show toolchains
+        run: python3 tools/check.py --doctor
+
+      - name: Check examples and solutions in all 8 languages
+        run: python3 tools/check.py all --solutions

@@ -1,0 +1,13 @@
+{
+  "name": "comparative-programming",
+  "private": true,
+  "type": "module",
+  "description": "Type-checking setup for the TypeScript examples. Run `npm install` once.",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "^7.0.2"
+  }
+}
