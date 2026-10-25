@@ -1,0 +1,5 @@
+int32 max: 2147483647
+checked_add(1): None
+wrapping_add(1): -2147483648
+saturating_add(1): 2147483647
+int64 max: 9223372036854775807

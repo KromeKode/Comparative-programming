@@ -4,7 +4,8 @@
 Every exercise is a program that reads stdin and writes stdout. Each test
 case is a pair of files, NAME.in and NAME.out, in the exercise's tests/
 folder. This script runs your program on every .in file and compares what it
-prints with the matching .out file.
+prints with the matching .out file. When one language's correct output is
+different, it gets its own file, such as NAME.python.out.
 
 Examples:
     python3 tools/check.py --doctor            # which toolchains are installed?
@@ -45,7 +46,7 @@ LANGUAGES: dict[str, Language] = {
     "c": Language(
         "C", "main.c", ["cc"],
         build=[["cc", "-std=c17", "-Wall", "-Wextra", "-Werror", "-O2",
-                "-o", "{out}/main", "{src}"]],
+                "-o", "{out}/main", "{src}", "-lm"]],
         run=["{out}/main"],
         version=["cc", "--version"],
     ),
@@ -133,7 +134,7 @@ def first_difference(got: list[str], want: list[str]) -> str:
     return "outputs differ"
 
 
-def check_one(lang: Language, src: Path, tests: list[Path]) -> tuple[str, str]:
+def check_one(key: str, lang: Language, src: Path, tests: list[Path]) -> tuple[str, str]:
     """Return (status, detail) for one language's program on all test cases."""
     with tempfile.TemporaryDirectory(prefix="check-") as tmp:
         out = Path(tmp)
@@ -144,7 +145,14 @@ def check_one(lang: Language, src: Path, tests: list[Path]) -> tuple[str, str]:
                 message = (proc.stderr or proc.stdout).strip().splitlines()
                 return "FAIL", "build: " + (message[0] if message else "failed")
         for case in tests:
-            want = normalize(case.with_suffix(".out").read_text(encoding="utf-8"))
+            # A language whose correct output differs (say, Python printing True
+            # where others print true) has its own NAME.<language>.out file.
+            expected = case.with_suffix(f".{key}.out")
+            if not expected.exists():
+                expected = case.with_suffix(".out")
+            if not expected.exists():
+                return "FAIL", f"{case.stem}: no {case.stem}.out or {case.stem}.{key}.out file"
+            want = normalize(expected.read_text(encoding="utf-8"))
             try:
                 proc = subprocess.run(fill(lang.run, src, out), input=case.read_bytes(),
                                       capture_output=True, cwd=src.parent,
@@ -230,7 +238,7 @@ def main() -> int:
                     if missing:
                         status, detail = "SKIP", "needs " + ", ".join(missing)
                     else:
-                        status, detail = check_one(lang, src, tests)
+                        status, detail = check_one(key, lang, src, tests)
                     counts[status] += 1
                     color = {"PASS": GREEN, "FAIL": RED, "SKIP": YELLOW}[status]
                     print(f"    {color}{status}{RESET}  {lang.name:<11} {DIM}{detail}{RESET}")

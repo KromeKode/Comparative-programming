@@ -1,0 +1,7 @@
+"42" + 1 as a number: 43
+3.99 truncated: 3
+-3.99 truncated: -3
+2.5 rounded: 2
+-2.5 rounded: -2
+7 / 2 as integers: 3
+7 / 2 as floats: 3.5
