@@ -1,0 +1,5 @@
+add5(10) = 15
+add10(10) = 20
+running total: 3 8 10
+made in a loop: 2 2 2
+made in a loop, with i=i: 0 1 2

@@ -1,0 +1,4 @@
+2 add 3 mul 4
+2 mul 4 add 3
+5 max 10 min 8
+5 min 8 max 10

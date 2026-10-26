@@ -1610,4 +1610,4 @@ and compare which version states the rules most directly.
 ---
 
 Previous: [Chapter 3: Operators and expressions](../03-operators-and-expressions/) ·
-Next: Chapter 5: Functions and closures (coming soon)
+Next: [Chapter 5: Functions and closures](../05-functions-and-closures/)
