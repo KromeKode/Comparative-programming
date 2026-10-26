@@ -1,0 +1,5 @@
+strings with ==: yes
+lists with ==: no
+const lists with ==: yes
+lists element by element: yes
+NaN == NaN: no

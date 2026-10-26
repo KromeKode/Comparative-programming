@@ -1095,4 +1095,4 @@ python3 tools/check.py 02 --solutions     # the reference answers
 ---
 
 Previous: [Chapter 1: Toolchains and Hello World](../01-toolchains-and-hello-world/) ·
-Next: Chapter 3: Operators and expressions (coming soon)
+Next: [Chapter 3: Operators and expressions](../03-operators-and-expressions/)

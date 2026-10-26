@@ -1,0 +1,5 @@
+7 2 -> truncated 3 1, floored 3 1
+6 3 -> truncated 2 0, floored 2 0
+1 2 -> truncated 0 1, floored 0 1
+0 5 -> truncated 0 0, floored 0 0
+10 10 -> truncated 1 0, floored 1 0

@@ -1,0 +1,5 @@
+strings with ===: yes
+arrays with ===: no
+arrays element by element: yes
+NaN === NaN: no
+Number.isNaN: yes

@@ -1,0 +1,4 @@
+strings with ==: yes
+arrays with ==: yes
+slices with slices.Equal: yes
+NaN == NaN: no

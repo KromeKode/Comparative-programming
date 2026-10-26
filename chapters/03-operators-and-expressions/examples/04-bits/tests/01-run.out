@@ -1,0 +1,8 @@
+read | write: 00000011
+has write? yes
+has exec? no
+clear write: 00000001
+toggle exec: 00000101
+5 << 2 = 20
+-16 >> 2 = -4
+set bits in 10110: 3

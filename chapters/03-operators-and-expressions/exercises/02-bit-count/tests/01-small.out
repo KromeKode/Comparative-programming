@@ -1,0 +1,5 @@
+0: 0 (ones 0, width 0)
+1: 1 (ones 1, width 1)
+2: 10 (ones 1, width 2)
+3: 11 (ones 2, width 2)
+10: 1010 (ones 2, width 4)
