@@ -555,3 +555,7 @@ Use `hyperfine` if you have it, or run `time` ten times in a loop. Then build th
 version with `cargo build --release` and compare the binary sizes of C (about 16 KB),
 Go (about 2 MB), and Rust (about 4 MB, or about 350 KB after `strip`). Can you
 explain the difference?
+
+---
+
+Next: [Chapter 2: Values, types, and variables](../02-values-types-and-variables/)

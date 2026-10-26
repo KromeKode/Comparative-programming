@@ -1,0 +1,4 @@
+int32 max: 2147483647
+int32 max + 1: overflow
+uint32 max + 1: 0
+int64 max: 9223372036854775807

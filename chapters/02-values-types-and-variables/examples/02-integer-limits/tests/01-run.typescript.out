@@ -1,0 +1,7 @@
+int32 max: 2147483647
+int32 max + 1: 2147483648
+int32 max + 1, as a 32-bit int: -2147483648
+largest safe integer: 9007199254740991
+largest safe integer + 2: 9007199254740992
+int64 max (BigInt): 9223372036854775807
+int64 max + 1 (BigInt): 9223372036854775808
