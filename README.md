@@ -66,7 +66,7 @@ is not installed are skipped rather than failed.
 | --- | --- | --- |
 | C | C17 | GCC 13+ or Clang 16+, `-Wall -Wextra -Werror` |
 | C++ | C++20 | GCC 13+ or Clang 16+, `-Wall -Wextra -Werror` |
-| Rust | 1.85+, 2024 edition | `rustc -D warnings` |
+| Rust | 1.95+, 2024 edition | `rustc -D warnings` |
 | Go | 1.23+ | `go vet`, then `go build` |
 | Python | 3.12+ | CPython |
 | JavaScript | Node 22.18+ | Node |

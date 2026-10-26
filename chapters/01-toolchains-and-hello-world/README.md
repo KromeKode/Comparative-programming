@@ -85,7 +85,7 @@ so every command in this book works exactly as written.
 | Language | Install | Version used in this book | Check it worked |
 | --- | --- | --- | --- |
 | C and C++ | Linux: `sudo apt install build-essential` · macOS: `xcode-select --install` | GCC 13+ or Clang 16+ (C17, C++20) | `cc --version` and `c++ --version` |
-| Rust | [rustup.rs](https://rustup.rs) | 1.85+ (2024 edition) | `rustc --version` |
+| Rust | [rustup.rs](https://rustup.rs) | 1.95+ (2024 edition) | `rustc --version` |
 | Go | [go.dev/dl](https://go.dev/dl/) | 1.23+ | `go version` |
 | Python | [python.org](https://www.python.org/downloads/) or `uv python install 3.13` | 3.12+ | `python3 --version` |
 | JavaScript | [nodejs.org](https://nodejs.org) LTS, or a version manager such as fnm | Node 22.18+ | `node --version` |

@@ -1559,4 +1559,4 @@ Write `is_power_of_two(n)` in C, Go, and Python, first without any parentheses a
 ---
 
 Previous: [Chapter 2: Values, types, and variables](../02-values-types-and-variables/) ·
-Next: Chapter 4: Control flow and pattern matching (coming soon)
+Next: [Chapter 4: Control flow and pattern matching](../04-control-flow-and-pattern-matching/)

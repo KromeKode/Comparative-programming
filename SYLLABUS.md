@@ -13,7 +13,7 @@ Status: ✅ written · ⬜ planned
 | 1 | [Toolchains and Hello World](chapters/01-toolchains-and-hello-world/) | ✅ |
 | 2 | [Values, types, and variables](chapters/02-values-types-and-variables/) | ✅ |
 | 3 | [Operators and expressions](chapters/03-operators-and-expressions/) | ✅ |
-| 4 | Control flow and pattern matching | ⬜ |
+| 4 | [Control flow and pattern matching](chapters/04-control-flow-and-pattern-matching/) | ✅ |
 | 5 | Functions and closures | ⬜ |
 | 6 | Strings and text | ⬜ |
 | 7 | Built-in collections | ⬜ |
