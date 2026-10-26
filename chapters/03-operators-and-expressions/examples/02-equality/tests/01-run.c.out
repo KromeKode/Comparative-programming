@@ -1,0 +1,4 @@
+strings with ==: no
+strings with strcmp: yes
+arrays with memcmp: yes
+NaN == NaN: no

@@ -1,0 +1,3 @@
+strings with ==: yes
+vectors with ==: yes
+NaN == NaN: no
