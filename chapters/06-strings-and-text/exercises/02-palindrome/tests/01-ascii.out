@@ -1,0 +1,6 @@
+racecar: palindrome
+hello: not a palindrome
+A man, a plan, a canal: Panama: palindrome
+No 'x' in Nixon: palindrome
+Was it a car or a cat I saw?: palindrome
+ab: not a palindrome

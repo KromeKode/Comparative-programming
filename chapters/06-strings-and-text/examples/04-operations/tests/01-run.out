@@ -1,0 +1,9 @@
+trimmed: [The quick  brown fox]
+words: The|quick|brown|fox
+upper: THE QUICK  BROWN FOX
+contains "quick": yes
+index of "brown": 11
+replaced: The slow  brown fox
+starts with "The": yes
+sorted: Cherry apple banana
+sorted ignoring case: apple banana Cherry
