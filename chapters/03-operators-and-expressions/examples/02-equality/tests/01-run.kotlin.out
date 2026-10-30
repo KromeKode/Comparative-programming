@@ -1,0 +1,4 @@
+strings with ==: yes
+strings with ===: no
+lists with ==: yes
+NaN == NaN: no
