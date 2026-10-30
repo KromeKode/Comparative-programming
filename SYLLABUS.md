@@ -1,8 +1,8 @@
 # Syllabus
 
 48 chapters in 11 parts. Every chapter compares C, C++, Rust, Go, Python, JavaScript,
-TypeScript, and Dart. Chapters marked ★ are spotlight chapters: the text shows 3 to 5
-languages in full and a table covers the rest. Chapters 31 and 32 use plain SQL only.
+TypeScript, Dart, and Kotlin. Chapters marked ★ are spotlight chapters: the text shows 3
+to 6 languages in full and a table covers the rest. Chapters 31 and 32 use plain SQL only.
 
 Status: ✅ written · ⬜ planned
 
@@ -27,7 +27,7 @@ Status: ✅ written · ⬜ planned
 | 10 | Ownership and resource management ★ C, C++, Rust | ⬜ |
 | 11 | Error handling | ⬜ |
 | 12 | Abstraction and OOP | ⬜ |
-| 13 | Generics and polymorphism ★ C++, Rust, Go, TypeScript | ⬜ |
+| 13 | Generics and polymorphism ★ C++, Rust, Go, TypeScript, Kotlin | ⬜ |
 | 14 | Iterators and functional style | ⬜ |
 | 15 | Macros and metaprogramming ★ C, C++, Rust, Python | ⬜ |
 | 16 | Concurrency and parallelism | ⬜ |
@@ -80,7 +80,7 @@ Status: ✅ written · ⬜ planned
 | # | Chapter | Status |
 | --- | --- | --- |
 | 40 | Number theory | ⬜ |
-| 41 | Competitive programming toolkit ★ C++, Python, Rust | ⬜ |
+| 41 | Competitive programming toolkit ★ C++, Python, Rust, Kotlin | ⬜ |
 
 ## Bonus B: Linear algebra and data analysis
 
@@ -107,4 +107,4 @@ Status: ✅ written · ⬜ planned
 
 | # | Chapter | Status |
 | --- | --- | --- |
-| 48 | GUI and desktop apps ★ Dart (Flutter), C++ (Qt), Rust (egui), TypeScript (Tauri), Python (Tkinter) | ⬜ |
+| 48 | GUI and desktop apps ★ Dart (Flutter), C++ (Qt), Rust (egui), TypeScript (Tauri), Python (Tkinter), Kotlin (Compose Multiplatform) | ⬜ |
