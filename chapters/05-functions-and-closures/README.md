@@ -2031,4 +2031,4 @@ its own words: this closure was not allowed to change what it captured.
 ---
 
 Previous: [Chapter 4: Control flow and pattern matching](../04-control-flow-and-pattern-matching/) ·
-Next: Chapter 6: Strings and text (coming soon)
+Next: [Chapter 6: Strings and text](../06-strings-and-text/)
