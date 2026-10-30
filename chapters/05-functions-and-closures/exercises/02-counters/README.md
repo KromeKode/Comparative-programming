@@ -48,7 +48,8 @@ python3 tools/check.py 05 --lang python
 
 - **What the closure keeps.** `make_counter` has returned by the time the counter is
   called, but the counter still needs `next` and `step`. Go, Python, JavaScript,
-  TypeScript, and Dart keep captured variables alive for as long as the closure is.
+  TypeScript, Dart, and Kotlin keep captured variables alive for as long as the closure
+  is.
   C++ and Rust copy or move them into the closure itself.
 - **Changing what was captured.** In Python, `next_value += step` inside the counter
   makes a new local variable unless you first write `nonlocal next_value`. A C++ lambda
@@ -61,12 +62,14 @@ python3 tools/check.py 05 --lang python
 - **Same settings, separate state.** Two counters made with the same start and step do
   not share anything, because each call to `make_counter` makes fresh variables. The
   test `05-same-settings-separate-state` checks this.
-- **Big steps.** Three steps of 10^12 pass 2^31 quickly. Use `long long` in C and C++
-  and `i64` in Rust. Go's `int` is 64 bits on every platform the book uses.
+- **Big steps.** Three steps of 10^12 pass 2^31 quickly. Use `long long` in C and C++,
+  `i64` in Rust, and `Long` in Kotlin. Go's `int` is 64 bits on every platform the book uses.
 - **Splitting the commands.** This is chapter 4's list patterns again. Python's
   `case ["new", name, start, step]:`, Rust's `["new", name, start, step] =>`, and
   Dart's `case ['new', final name, final start, final step]` check the length and bind
-  the words in one step.
+  the words in one step. Kotlin's `val (_, name, start, step) = words` binds them but
+  does not check the length: on a shorter list it throws `IndexOutOfBoundsException`,
+  so check `words.size` first.
 
 **Stretch:** add `reset <name>`, which puts a counter back to its start. Now the
 counter needs two operations on the same state. Can `make_counter` return two closures

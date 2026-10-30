@@ -1,14 +1,14 @@
 # Chapter 5: Functions and closures
 
 A function gives a piece of code a name and some inputs, so you can run it again with
-different values. All eight languages have functions, and they agree on the basic call
+different values. All nine languages have functions, and they agree on the basic call
 `f(x, y)`. They disagree on nearly everything around it: whether a parameter can have a
 default, whether you can pass arguments by name, how to return two values, whether a
 function is a value you can store in a list, and what happens to the variables a
 function uses from its surroundings once the code that made it has returned. That last
 idea, the **closure**, is the main subject of this chapter.
 
-**Languages:** all 8 · **Time:** about 3 hours
+**Languages:** all 9 · **Time:** about 3 hours
 
 | You will learn | Why it matters later |
 | --- | --- |
@@ -35,8 +35,8 @@ the frame that held them is gone.
 
 A language has **first-class functions** if a function is an ordinary value: you can
 pass it as an argument, return it, and store it in a variable or a list. A function
-that takes or returns another function is a **higher-order function**. Seven of the
-eight languages have first-class functions. C has function pointers, which can be
+that takes or returns another function is a **higher-order function**. Eight of the
+nine languages have first-class functions. C has function pointers, which can be
 passed and stored, but it cannot make a new function while the program runs.
 
 ---
@@ -53,6 +53,7 @@ passed and stored, but it cannot make a new function while the program runs.
 | JavaScript | `function add(a, b) { return a + b; }` or `const add = (a, b) => a + b;` | None | Only arrows without braces |
 | TypeScript | `function add(a: number, b: number): number { return a + b; }` | After `:` | Only arrows without braces |
 | Dart | `int add(int a, int b) => a + b;` | Before the name | Only `=>` functions |
+| Kotlin | `fun add(a: Int, b: Int): Int = a + b` | After `:`; may be left out after `=` | Functions written with `=`, and lambdas |
 
 **Rust's last expression.** A Rust block's value is its last expression, so a function
 body that ends in `a + b` returns it. Adding a semicolon turns the expression into a
@@ -74,19 +75,19 @@ error[E0308]: mismatched types
 | Language | What happens |
 | --- | --- |
 | C, C++ | Undefined behavior if the caller uses the result. `-Wall` warns: `control reaches end of non-void function` |
-| Rust, Go | Compile error (`missing return` in Go) |
+| Rust, Go, Kotlin | Compile error (`missing return` in Go, `missing return statement` in Kotlin) |
 | TypeScript | Compile error TS2366 when the return type does not include `undefined` |
 | Dart | Compile error when the return type is not nullable |
 | Python, JavaScript | Returns `None` or `undefined` |
 
 **Declaring before use.** C and C++ read a file from top to bottom, so a function must
-be declared before the first call. Either define it higher up, or write a
-**prototype** such as `int add(int a, int b);` near the top. Rust, Go, and Dart do not
-care about order. JavaScript **hoists** `function` declarations, so you can call them
-above the line they are written on, but a `const f = () => ...` does not exist until
-its line runs. Python's `def` is a statement that runs, so the function exists from
-that line on. A function can still call one defined below it, as long as that `def`
-has run by the time of the call.
+be declared before the first call. Either define it higher up, or write a **prototype**
+such as `int add(int a, int b);` near the top. Rust, Go, Dart, and Kotlin do not care
+about order. JavaScript **hoists** `function` declarations, so you can call them above
+the line they are written on, but a `const f = () => ...` does not exist until its line
+runs. Python's `def` is a statement that runs, so the function exists from that line on.
+A function can still call one defined below it, as long as that `def` has run by the
+time of the call.
 
 **`int f()` in C.** In C17 and earlier, empty parentheses mean "takes unknown
 arguments", not "takes none". With `int answer();` declared, `answer(1, 2, 3)`
@@ -101,10 +102,11 @@ building programs out of several files.
 and to change the caller's variable you pass a pointer to it. C++ adds references
 (`int& x`) and Rust adds borrows (`&mut x`), which let a function change the caller's
 value without pointer syntax. Go passes by value too, but a slice, map, or pointer is
-a small value that refers to shared data. Python, JavaScript, and Dart pass a
+a small value that refers to shared data. Python, JavaScript, Dart, and Kotlin pass a
 reference to the same object: changing the object is visible to the caller, but
-assigning a new value to the parameter is not. Chapters 9 and 10 look at this in
-detail.
+assigning a new value to the parameter is not. Kotlin goes one step further and makes
+every parameter read-only, so assigning to one is a compile error (`'val' cannot be
+reassigned`). Chapters 9 and 10 look at this in detail.
 
 ---
 
@@ -380,7 +382,35 @@ void main() {
 }
 ```
 
-Output, identical in all eight:
+**Kotlin**
+
+```kotlin
+// Any parameter can have a default, and any argument can be passed by name.
+fun greet(name: String, greeting: String = "Hello", punctuation: String = "!") =
+    "$greeting, $name$punctuation"
+
+// vararg collects any number of arguments into an array (an IntArray here).
+fun total(vararg values: Int): Int {
+    var sum = 0
+    for (value in values) {
+        sum += value
+    }
+    return sum
+}
+
+fun main() {
+    println(greet("Ada"))
+    println(greet("Grace", "Hi"))
+    println(greet("Linus", punctuation = "?")) // a named argument skips greeting
+
+    println("total() = ${total()}")
+    println("total(1, 2, 3) = ${total(1, 2, 3)}")
+    val numbers = intArrayOf(4, 3, 2, 1)
+    println("total of [4, 3, 2, 1] = ${total(*numbers)}") // * spreads an array
+}
+```
+
+Output, identical in all nine:
 
 ```text
 Hello, Ada!
@@ -401,12 +431,13 @@ total of [4, 3, 2, 1] = 10
 | JavaScript | Yes, for any parameter | No | `...values`, a rest parameter | `f(...items)` |
 | TypeScript | Yes, plus `x?: T` for optional | No | `...values: number[]` | `f(...items)` |
 | Dart | Yes, if the default is a constant | **Yes**, parameters in `{}` | No | No |
+| Kotlin | Yes, for any parameter | **Yes**, for any parameter | `vararg values: Int`, which arrives as an array | `total(*numbers)`, for arrays only |
 
 **Skipping a default in the middle.** C++ fills defaults from the right, so to change
 the punctuation you must also pass the greeting. JavaScript and TypeScript treat
 `undefined` as "use the default", so `greet("Linus", undefined, "?")` works, but
-`null` does not: `greet("Ada", null)` prints `null, Ada`. Python and Dart name the
-argument instead: `greet("Linus", punctuation="?")`.
+`null` does not: `greet("Ada", null)` prints `null, Ada`. Python, Dart, and Kotlin name
+the argument instead: `greet("Linus", punctuation="?")`.
 
 **C's `...` trusts the caller.** A C variadic function cannot tell how many arguments
 it got or what types they are. `printf` reads its format string to find out, and
@@ -430,9 +461,9 @@ print(add_item("a"))  # ['a']
 print(add_item("b"))  # ['a', 'b']: the same list as the first call
 ```
 
-The fix is `items=None`, then `if items is None: items = []` inside. JavaScript and
-C++ evaluate the default on each call, so `function addItem(item, items = [])` gets a
-new array every time. Dart avoids the question by requiring a constant default. A
+The fix is `items=None`, then `if items is None: items = []` inside. JavaScript, C++,
+and Kotlin evaluate the default on each call, so `function addItem(item, items = [])`
+gets a new array every time. Dart avoids the question by requiring a constant default. A
 non-constant default such as `[]` is a compile error, and a `const []` default is
 unmodifiable, so adding to it throws `Unsupported operation: Cannot add to an
 unmodifiable list`.
@@ -456,6 +487,12 @@ Dart's parameters in braces are named, and optional unless marked `required`:
 `void connect(String host, {int port = 5432, required double timeout})`. A Dart
 function can have optional positional parameters in square brackets, or named
 parameters in braces, but not both.
+
+Kotlin has the simplest rules. Every parameter can have a default, any expression can
+be a default, and every argument can be passed by name, with no markers. Kotlin's
+standard library leans on this, as in
+`items.joinToString(separator = ", ", prefix = "[", postfix = "]")`. The one exception
+is calling Java code, whose parameter names Kotlin cannot rely on.
 
 The other six languages pass a struct or an object with named fields instead. In
 JavaScript and TypeScript, destructuring with defaults makes it read like named
@@ -805,7 +842,40 @@ void main() {
 }
 ```
 
-Output, identical in all eight:
+**Kotlin**
+
+```kotlin
+// Pair holds two values without declaring a class.
+fun minMax(values: List<Int>): Pair<Int, Int> {
+    var lowest = values[0]
+    var highest = values[0]
+    for (value in values) {
+        if (value < lowest) lowest = value
+        if (value > highest) highest = value
+    }
+    return Pair(lowest, highest)
+}
+
+// A data class names the values, and still unpacks like a Pair.
+data class DivMod(val quotient: Int, val remainder: Int)
+
+fun divMod(a: Int, b: Int) = DivMod(a / b, a % b)
+
+fun main() {
+    val (lowest, highest) = minMax(listOf(3, -1, 4, 1, 5))
+    println("min and max of [3, -1, 4, 1, 5]: $lowest $highest")
+
+    val (quotient, remainder) = divMod(17, 5) // unpacks by position, not by name
+    println("17 divided by 5: $quotient remainder $remainder")
+
+    var first = "hello"
+    var second = "world"
+    first = second.also { second = first } // also returns second's old value
+    println("swapped: $first $second")
+}
+```
+
+Output, identical in all nine:
 
 ```text
 min and max of [3, -1, 4, 1, 5]: -1 5
@@ -823,6 +893,7 @@ swapped: world hello
 | JavaScript | An array or an object | `const [a, b] = f();` or `const { a, b } = f();` | `[a, b] = [b, a];` |
 | TypeScript | A tuple type `[number, number]` or an object type | Same as JavaScript | Same as JavaScript |
 | Dart | A record `(int, int)` or `({int quotient, int remainder})` (Dart 3) | `final (a, b) = f();` or `final (:quotient, :remainder) = f();` | `(a, b) = (b, a);` |
+| Kotlin | `Pair`, `Triple`, or a `data class` | `val (a, b) = f()`, by position | `a = b.also { b = a }` |
 
 **Go's results are not a tuple.** A Go function can return several values, but there
 is no tuple type to hold them. `pair := minMax(values)` is a compile error
@@ -838,10 +909,17 @@ values have distinct meanings, name them: an object in JavaScript, named record 
 in Dart, or a small struct in C, C++, Rust, and Go. The C standard library does this
 with `div()`, which returns a `div_t` struct with fields `quot` and `rem`.
 
+Kotlin's `data class` names its fields, but unpacking still goes by position. Write
+`val (remainder, quotient) = divMod(17, 5)` and you get the quotient in `remainder`,
+with no warning. Read the fields by name, `result.quotient`, when the order is easy to
+get wrong.
+
 **Swapping without a temporary.** Python, Go, JavaScript, Dart, and Rust (since 1.59)
 can assign to several variables at once, and they evaluate the whole right side
 before assigning anything, so `a, b = b, a` swaps. C++ has `std::swap`. C needs a
-helper that takes pointers.
+helper that takes pointers. Kotlin cannot assign to two variables at once. Its idiom,
+`a = b.also { b = a }`, works because `also` runs the block and then hands back `b`'s
+old value.
 
 ---
 
@@ -1103,7 +1181,30 @@ void main() {
 }
 ```
 
-Output, identical in all eight:
+**Kotlin**
+
+```kotlin
+fun addOne(x: Int) = x + 1
+
+fun triple(x: Int) = x * 3
+
+// (Int) -> Int is the type of any function from Int to Int.
+fun applyTwice(f: (Int) -> Int, x: Int) = f(f(x))
+
+fun compose(outer: (Int) -> Int, inner: (Int) -> Int): (Int) -> Int = { x -> outer(inner(x)) }
+
+fun main() {
+    // ::addOne refers to the function without calling it.
+    println("apply_twice(add_one, 5) = ${applyTwice(::addOne, 5)}")
+    println("apply_twice(triple, 5) = ${applyTwice(::triple, 5)}")
+    // A lambda with one parameter can call it `it`.
+    println("apply_twice(square, 3) = ${applyTwice({ it * it }, 3)}")
+    val addThenTriple = compose(::triple, ::addOne)
+    println("compose(triple, add_one)(5) = ${addThenTriple(5)}")
+}
+```
+
+Output, identical in all nine:
 
 ```text
 apply_twice(add_one, 5) = 7
@@ -1122,6 +1223,7 @@ compose(triple, add_one)(5) = 18
 | JavaScript | No types | `(x) => x * x` |
 | TypeScript | `(x: number) => number` | `(x) => x * x` |
 | Dart | `int Function(int)` | `(x) => x * x` |
+| Kotlin | `(Int) -> Int` | `{ x -> x * x }`, or `{ it * it }` for one parameter |
 
 A function with no name is called a **lambda** or an **anonymous function**. In most of
 these languages it can do anything a named function can. Python's `lambda` is limited
@@ -1130,6 +1232,12 @@ fit inside an expression. Assigning a lambda to a name, as the Python example do
 is legal but discouraged: linters flag it as E731 (`Do not assign a lambda
 expression, use a def`), and the example silences that with `# noqa`. A `def` gives
 the function a real name in error messages.
+
+Kotlin has two habits worth knowing. `::addOne` refers to a named function without
+calling it. And when a lambda is the last argument, it can go after the parentheses, so
+`items.map({ it * 2 })` is written `items.map { it * 2 }`. That is why Kotlin code that
+takes a block, such as `repeat(3) { ... }` or `buildString { ... }`, reads like
+built-in syntax.
 
 **C cannot make functions at run time.** A C function pointer can point only at a
 function written in the source code. `compose` would need a new function that
@@ -1148,7 +1256,9 @@ makes the same trade between a template parameter (or `auto`, as `compose` uses)
 **Comparing functions.** Go allows comparing a function only to `nil`; `f == g` is a
 compile error (`func can only be compared to nil`). Rust closures and C++ lambdas
 cannot be compared at all. Python and JavaScript compare function objects by
-identity, so two separately written `(x) => x` are never equal.
+identity, so two separately written `(x) => x` are never equal. Kotlin does the same
+for lambdas, but two references to the same function are equal: `::addOne == ::addOne`
+is `true`.
 
 ---
 
@@ -1487,9 +1597,39 @@ void main() {
 }
 ```
 
+**Kotlin**
+
+```kotlin
+fun makeAdder(n: Int): (Int) -> Int = { x -> x + n }
+
+fun makeAccumulator(): (Int) -> Int {
+    var total = 0
+    return { x ->
+        total += x // a lambda can change a var it captured
+        total // the last line of a lambda is its value
+    }
+}
+
+fun main() {
+    val add5 = makeAdder(5)
+    val add10 = makeAdder(10)
+    println("add5(10) = ${add5(10)}")
+    println("add10(10) = ${add10(10)}")
+
+    val running = makeAccumulator()
+    println("running total: ${running(3)} ${running(5)} ${running(2)}")
+
+    val made = mutableListOf<() -> Int>()
+    for (i in 0..<3) {
+        made.add { i } // each pass of a for loop has its own i
+    }
+    println("made in a loop: ${made.map { it() }.joinToString(" ")}")
+}
+```
+
 Output:
 
-*C, C++, Rust, Go and Dart:*
+*C, C++, Rust, Go, Dart and Kotlin:*
 
 ```text
 add5(10) = 15
@@ -1529,6 +1669,7 @@ made in a loop with var: 3 3 3
 | Python | The variable itself, read when the closure runs | Only after `nonlocal name` | Yes |
 | JavaScript, TypeScript | The variable itself | Yes, unless it is `const` | Yes |
 | Dart | The variable itself | Yes, unless it is `final` | Yes |
+| Kotlin | The variable itself | Yes, if it is a `var` | Yes |
 
 **A closure is an object in disguise.** A C++ lambda is shorthand for a class the
 compiler writes for you: the captures become fields, and the body becomes the
@@ -1536,8 +1677,11 @@ compiler writes for you: the captures become fields, and the body becomes the
 variable, since you are choosing the types of the fields. A Rust closure is the same
 kind of struct. The C example writes that struct by hand: `struct Adder` holds the
 captured `n`, and `struct Accumulator` holds `total`. Go, Python, JavaScript,
-TypeScript, and Dart capture the variable itself and let the garbage collector keep
-it alive as long as any closure refers to it.
+TypeScript, Dart, and Kotlin capture the variable itself and let the garbage collector
+keep it alive as long as any closure refers to it. Kotlin shows how that can work. A
+lambda on the JVM receives copies of the values it captures, so when a Kotlin lambda
+captures a `var`, the compiler moves that variable into a small object on the heap (a
+`Ref.IntRef` for an `Int`), and the function and the lambda share that object.
 
 ### Changing captured state
 
@@ -1563,8 +1707,9 @@ is not associated with a value`.
 The accumulator is `FnMut`, so `let running = make_accumulator();` without `mut` fails
 with `cannot borrow running as mutable, as it is not declared as mutable`.
 
-**Go, JavaScript, TypeScript, and Dart** let any closure assign to the variables it
-captured, with no marker at all.
+**Go, JavaScript, TypeScript, Dart, and Kotlin** let any closure assign to the
+variables it captured, with no marker at all. Kotlin's neighbor Java does not: a Java
+lambda can only capture variables that are never reassigned.
 
 ### Closures made in a loop
 
@@ -1583,6 +1728,9 @@ whether each pass of the loop has its own variable.
   program prints `3 3 3`. This book builds single files outside any module, which uses
   the new rule.
 - **Dart** gives each pass of a `for` loop a fresh variable, and always has.
+- **Kotlin**'s `for (i in 0..<3)` declares a new read-only `i` for each pass, so the
+  closures see 0, 1, and 2. A `var i` declared before a `while` loop is one variable,
+  and closures made in that loop all print 3.
 - **C++** captures by copy with `[i]`, so each closure has its own value. Writing
   `[&i]` would refer to the loop variable after it no longer exists.
 - **Rust** copies `i` into each closure with `move`. Without `move`, the closures would
@@ -1627,16 +1775,30 @@ deep enough recursion runs out of stack:
 | Python | `RecursionError` once the depth passes 1000 (change it with `sys.setrecursionlimit`) |
 | JavaScript, TypeScript | `RangeError: Maximum call stack size exceeded` |
 | Dart | A `StackOverflowError` |
+| Kotlin | `java.lang.StackOverflowError`, at a depth set by the JVM's thread stack size (`-Xss`) |
 
-**No guaranteed tail calls.** A call is a **tail call** if it is the last thing a
-function does, as in `return count(n - 1)`. A compiler can reuse the frame for it, so
-the recursion takes no extra stack. None of the eight languages promises this. C and
-C++ compilers often do it with optimization on, and Clang and GCC 15 can be required to
-with a `musttail` attribute. Rust has an explicit `become` keyword in development, but
-it is rejected on stable Rust (`` `become` expression is experimental ``). JavaScript's
-2015 standard requires tail calls in strict mode, but only Safari implements them, so
-Node and Chrome do not. Python's creator rejected the idea, because it would make
-tracebacks lose frames. When a recursion can go deep, write it as a loop.
+**Tail calls are guaranteed in only one language.** A call is a **tail call** if it is
+the last thing a function does, as in `return count(n - 1)`. A compiler can reuse the
+frame for it, so the recursion takes no extra stack. Kotlin promises this for a
+function marked `tailrec` that calls itself, by compiling the recursion into a loop:
+
+```kotlin
+tailrec fun count(n: Long): Long = if (n == 0L) 0 else count(n - 1)
+```
+
+`count(1_000_000)` returns 0, and the same function without `tailrec` throws
+`StackOverflowError`. If the call is not in tail position, as in `1 + count(n - 1)`,
+the compiler warns: `a function is marked as tail-recursive but no tail calls are
+found`. `tailrec` does not help two functions that call each other.
+
+None of the other eight languages promises tail calls. C and C++ compilers often do
+it with optimization on, and Clang and GCC 15 can be required to with a `musttail`
+attribute. Rust has an explicit `become` keyword in development, but it is rejected on
+stable Rust (`` `become` expression is experimental ``). JavaScript's 2015 standard
+requires tail calls in strict mode, but only Safari implements them, so Node and Chrome
+do not. Python's creator rejected the idea, because it would make tracebacks lose
+frames. When a recursion can go deep, write it as a loop, or in Kotlin, a `tailrec`
+function.
 
 **Memoization** means storing the result of each call and returning the stored result
 when the same arguments come again. It turns the naive Fibonacci function, which
@@ -1652,21 +1814,23 @@ keep it in different places:
 | Go | A map captured by a closure |
 | Python | Nowhere you can see: `@functools.cache` keeps it |
 | JavaScript, TypeScript, Dart | A `Map` at module level |
+| Kotlin | A top-level `val memo = mutableMapOf<Int, Long>()`, filled with `getOrPut` |
 
 **Recursive closures.** A closure has no name of its own to call. Go declares the
 variable first, then assigns a function literal that refers to it:
 `var fib func(int) uint64`, then `fib = func(n int) uint64 { ... fib(n-1) ... }`. A
 Rust closure cannot call itself directly, which is one reason Rust code uses a named
 `fn` instead. C++23 lets a lambda take itself as its first parameter
-(`[](this auto self, int n) { ... }`). Local functions in Python, JavaScript, and Dart
-can simply call themselves by name.
+(`[](this auto self, int n) { ... }`). A Kotlin lambda cannot refer to the variable it
+is being assigned to (`unresolved reference 'fib'`). Local functions in Python,
+JavaScript, Dart, and Kotlin can simply call themselves by name.
 
 ---
 
 ## 5.8 Overloading
 
 **Overloading** means several functions with the same name and different parameter
-lists. Only C++ has it in full:
+lists. Only C++ and Kotlin have it in full:
 
 ```cpp
 double area(double radius) { return 3.14159 * radius * radius; }
@@ -1683,6 +1847,7 @@ double area(double width, double height) { return width * height; }
 | JavaScript | No; the last definition wins | Check the arguments inside the function |
 | TypeScript | Several signatures for **one** implementation | Union types |
 | Dart | No | Named and optional parameters |
+| Kotlin | **Yes**, by number and types of parameters, as in Java | Defaults often replace a family of overloads |
 
 TypeScript's overloads describe one JavaScript function in several ways, because only
 one function exists once the types are erased:
@@ -1736,6 +1901,11 @@ works for several types:
   as `Text('hi', textAlign: TextAlign.center)` names most of its arguments. Defaults
   must be constants. Records arrived in Dart 3 to return several values without a
   class.
+- **Kotlin** added defaults and named arguments so one function could replace the
+  stacks of overloads Java APIs need, and kept overloading so it can call and be called
+  by Java. Its lambdas may change captured `var`s, which Java's may not, and a trailing
+  lambda goes outside the parentheses so that functions taking a block read like
+  language syntax. `tailrec` exists because the JVM does not optimize tail calls.
 
 ---
 
@@ -1746,7 +1916,7 @@ works for several types:
 | C | Declaring `int f();` in C17 | Calls with any arguments compile without a warning; write `int f(void)` |
 | C | Passing the wrong type to a `...` function | Undefined behavior; only `printf`-style calls are checked |
 | C, C++ | A path through a non-void function with no `return` | Undefined behavior; `-Wall` warns |
-| C, C++ | `printf("%d %d", next(), next())` | The order the two calls run in is unspecified; the other six languages run them left to right |
+| C, C++ | `printf("%d %d", next(), next())` | The order the two calls run in is unspecified; the other seven languages run them left to right |
 | C++ | Capturing with `[&]` in a lambda that is returned or stored | A dangling reference, with no warning |
 | C++ | Writing the default argument in both the declaration and the definition | Compile error: `default argument given for parameter 2` |
 | Rust | A `;` after the last expression | The function returns `()`: `mismatched types` |
@@ -1760,6 +1930,10 @@ works for several types:
 | JavaScript, TypeScript | Passing `null` to get the default | Only `undefined` uses the default |
 | JavaScript | `var` in a loop that makes closures | All see the final value; use `let` |
 | Dart | A default value that is not a constant | Compile error |
+| Kotlin | `val (remainder, quotient) = divMod(a, b)` | Unpacking goes by position, so the values are silently swapped |
+| Kotlin | `total(*listOf(1, 2))` | Compile error: `*` spreads arrays only; write `*list.toIntArray()` |
+| Kotlin | A recursive memo with Java's `computeIfAbsent` | `ConcurrentModificationException`; use Kotlin's `getOrPut` |
+| Kotlin | Assigning to a parameter | Compile error: parameters are read-only; copy into a `var` |
 | All | Recursion with no base case, or too deep | A stack overflow, or `RecursionError` in Python |
 
 ---
@@ -1826,6 +2000,12 @@ defaults instead of taking many positional parameters.
 name instead of wrapping it: `names.forEach(print)`, not
 `names.forEach((name) => print(name))`.
 
+**Kotlin: expression bodies, trailing lambdas, and function references.** Write
+`fun square(x: Int) = x * x` when the body is one expression. Put a function parameter
+last so callers can pass a trailing lambda. Pass an existing function with `::`:
+`names.forEach(::println)`, not `names.forEach { println(it) }`. Name the arguments
+whenever a bare value would be unclear: `connect("db", timeout = 2.0)`.
+
 ---
 
 ## 5.12 Exercises
@@ -1845,8 +2025,8 @@ python3 tools/check.py 05 --solutions         # the reference answers
 **Stretch:** break exercise 2 on purpose and read the errors. In Rust, change the map
 to hold `Box<dyn Fn() -> i64>` (`cannot assign to next, as it is a captured variable
 in a Fn closure`). In C++, remove `mutable` from the lambda. In Python, remove the
-`nonlocal` line. Each error says the same thing in its own words: this closure was not
-allowed to change what it captured.
+`nonlocal` line. In Kotlin, declare `next` with `val`. Each error says the same thing in
+its own words: this closure was not allowed to change what it captured.
 
 ---
 

@@ -39,9 +39,10 @@ python3 tools/check.py 05 --lang rust
 
 - **Each step captures its own `n`.** Every call to `make_step` returns a new closure
   with its own copy of `n`: `[n](long long x) { return x + n; }` in C++,
-  `move |x| x + n` in Rust, `lambda x: x + n` in Python.
+  `move |x| x + n` in Rust, `lambda x: x + n` in Python, `{ x -> x + n }` in Kotlin.
 - **A list of functions needs one element type.** In Go, every `func(int) int` has the
-  same type, so a `[]func(int) int` just works. In Rust, every closure has its own
+  same type, so a `[]func(int) int` just works, and the same goes for Kotlin's
+  `List<(Long) -> Long>`. In Rust, every closure has its own
   unnamed type, so the five arms of a `match` disagree. Boxing them as
   `Box<dyn Fn(i64) -> i64>` gives them one type. C++'s `std::function` does the same
   job.
@@ -50,8 +51,8 @@ python3 tools/check.py 05 --lang rust
   the other languages build for you when they make a closure.
 - **Big numbers.** `2 mul 1000000 mul 1000000` is 2 * 10^12, which needs 64 bits.
 - **Reading the words in pairs.** Python can pair them with
-  `zip(words[1::2], words[2::2])`, and Rust with `rest.chunks(2)`. The other
-  languages step an index by 2.
+  `zip(words[1::2], words[2::2])`, Rust with `rest.chunks(2)`, and Kotlin with
+  `words.drop(1).chunked(2)`. The other languages step an index by 2.
 
 **Stretch:** write `compose_all(steps)`, which turns the list into one function, and
 call it once per line. In JavaScript that is a `reduce` that starts from `(x) => x`:

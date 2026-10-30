@@ -112,9 +112,9 @@ if let Some(&next) = values.get(i + 1)
 ## 4.3 `switch` and `match`
 
 A `switch` picks one branch by comparing a value against constants. A `match` (Rust),
-`match` statement (Python), Dart 3 `switch`, or Kotlin `when` does more: it compares against
-**patterns**, which section 4.6 covers. The program below names HTTP status codes,
-which needs exact values, groups of values, and ranges. The code is in
+`match` statement (Python), Dart 3 `switch`, or Kotlin `when` does more: it compares
+against **patterns**, which section 4.6 covers. The program below names HTTP status
+codes, which needs exact values, groups of values, and ranges. The code is in
 [`examples/01-switch/`](examples/01-switch/).
 
 **C**
@@ -424,8 +424,8 @@ value with `==`, checks types with `is`, and can leave out the value entirely, w
 turns it into a tidy `else if` chain.
 
 **Order matters when cases overlap.** Rust, Python, Dart, Kotlin, and Go's
-condition-only `switch` try cases from top to bottom and take the first match. If `400..=499` came
-before `404`, the `404` arm would never run. Rust warns about that
+condition-only `switch` try cases from top to bottom and take the first match. If
+`400..=499` came before `404`, the `404` arm would never run. Rust warns about that
 (`unreachable pattern`).
 
 ---
@@ -1263,10 +1263,10 @@ written to stop the loop silently does nothing useful. Use a labeled `break`, or
 ## 4.6 Pattern matching
 
 A **pattern** describes the shape of a value and can pull pieces out of it. `(0, y)`
-matches any pair whose first part is 0 and names the second part `y`. Rust, Python,
-and Dart have full pattern matching. Kotlin's `when` sits in between: it matches values,
-ranges, and types, but cannot take a pair apart. The program below sorts points into the origin,
-the two axes, the diagonal, and everything else. The code is in
+matches any pair whose first part is 0 and names the second part `y`. Rust, Python, and
+Dart have full pattern matching. Kotlin's `when` sits in between: it matches values,
+ranges, and types, but cannot take a pair apart. The program below sorts points into the
+origin, the two axes, the diagonal, and everything else. The code is in
 [`examples/04-patterns/`](examples/04-patterns/).
 
 **C**

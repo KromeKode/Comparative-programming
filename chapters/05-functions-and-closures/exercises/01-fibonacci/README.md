@@ -42,10 +42,12 @@ python3 tools/check.py 05 --lang javascript
 - **Where the memo lives.** It has to outlast each call, so it cannot be a local
   variable inside `fib`. C can use a `static` array, and C++ a `static` local. Go can
   capture a map in a closure. Rust passes the map in as a `&mut` parameter. Python's
-  `@functools.cache` keeps the table for you.
+  `@functools.cache` keeps the table for you. Kotlin can keep a top-level map and fill
+  it with `getOrPut`. Avoid Java's `computeIfAbsent` here: it throws
+  `ConcurrentModificationException` when the recursion adds keys while it runs.
 - **The answers need 64 bits.** `fib(92)` is 7,540,113,804,746,346,429, the largest
   Fibonacci number that fits in a signed 64-bit integer. Use `uint64_t` in C and C++,
-  `u64` in Rust, and `uint64` in Go. Dart's `int` is 64 bits.
+  `u64` in Rust, `uint64` in Go, and `Long` in Kotlin. Dart's `int` is 64 bits.
 - **JavaScript numbers are not enough.** They stop holding every whole number exactly
   after 2^53, and `fib(79)` is the first Fibonacci number past it. Use `BigInt`:
   `BigInt(n)` turns a number into one, and `+` works between two of them.
