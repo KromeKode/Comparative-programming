@@ -21,6 +21,8 @@ python3 tools/check.py 02 --lang javascript
 - **C and C++** must check *before* adding, because the overflowing addition itself is
   undefined behavior.
 - **Rust** has `checked_add`, which returns `None` on overflow.
+- **Kotlin** borrows `Math.addExact` from Java, which throws `ArithmeticException` on
+  overflow.
 - **Go and Dart** wrap around, so you can add first and then check the signs.
 - **Python** never overflows, so you compare the exact sum with the 64-bit limits.
 - **JavaScript and TypeScript** cannot even read these numbers with `Number`: the

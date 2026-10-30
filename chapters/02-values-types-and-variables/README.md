@@ -1,12 +1,12 @@
 # Chapter 2: Values, types, and variables
 
 Every program stores values in variables, and every value has a type. This chapter
-compares how the eight languages declare variables, which number types they offer,
+compares how the nine languages declare variables, which number types they offer,
 what happens when a number gets too big, and how they convert one type into another.
 These are the rules that decide whether `2147483647 + 1` is 2147483648, -2147483648,
 an error, or a bug that only shows up in production.
 
-**Languages:** all 8 · **Time:** 3 to 4 hours
+**Languages:** all 9 · **Time:** 3 to 4 hours
 
 | You will learn | Why it matters later |
 | --- | --- |
@@ -24,7 +24,7 @@ A **value** is a piece of data, such as `42`, `3.14`, `true`, or `"Ada"`. A **ty
 says what kind of value it is and therefore which operations make sense: you can
 divide numbers, but not booleans. A **variable** is a name that refers to a value.
 
-Two questions separate the eight languages.
+Two questions separate the nine languages.
 
 1. **When are types checked?** A **statically typed** language checks types when the
    program is compiled, before it runs. A **dynamically typed** language checks them
@@ -43,12 +43,18 @@ Two questions separate the eight languages.
 | JavaScript | Run time | Many | `"34"`, and `"3" * 4` is `12` |
 | TypeScript | Compile time, then erased | Checker forbids most of JavaScript's | `"34"` is allowed; `"3" * 4` is a compile error |
 | Dart | Compile time, and guaranteed at run time | None between number types | Compile error |
+| Kotlin | Compile time, and the JVM checks casts at run time | None between number types | `"34"`: a `String`'s `+` accepts anything; `"3" * 4` is a compile error |
 
 Dart's checking is called **sound**: if the compiler says a variable is an `int`, it
 is an `int` at run time, every time. TypeScript's checking is deliberately not sound,
 because it has to fit on top of JavaScript. Its types are checked, then erased, so a
 value from outside the program (a JSON file, user input) can still be the wrong type
 at run time.
+
+Kotlin is nearly sound. The gap is Java: a value returned by Java code has a
+**platform type**, shown as `String!` in error messages, and Kotlin lets you treat it as
+never null. If the Java code does return `null`, the program throws a
+`NullPointerException` at run time. Chapter 8 covers null in all nine languages.
 
 ---
 
@@ -231,6 +237,27 @@ void main() {
 }
 ```
 
+**Kotlin**
+
+```kotlin
+const val MAX_PLAYERS = 4 // compile-time constant: allowed only at top level or in an object
+
+fun main() {
+    var count = 0 // var: can be reassigned; the type (Int) is inferred
+    val birthYear = 1815 // val: assigned exactly once
+    val pi = 3.14159
+    val ready: Boolean = true // types can also be written out
+
+    count += 3
+
+    println("count = $count")
+    println("birth year = $birthYear")
+    println("pi = $pi")
+    println("max players = $MAX_PLAYERS")
+    println("ready = $ready")
+}
+```
+
 Output (Python prints `True` instead of `true`):
 
 ```text
@@ -251,16 +278,18 @@ ready = true
 | JavaScript | `let x = 0;` | `const x = 0;` | `const` | `undefined`, or `ReferenceError` for a `let` used above its declaration |
 | TypeScript | `let x: number = 0;` | `const x = 0;` | `const`, `as const` | Compile error with `--strict` |
 | Dart | `var x = 0;` or `int x = 0;` | `final x = 0;` | `const x = 0;` | Compile error |
+| Kotlin | `var x = 0` or `var x: Int = 0` | `val x = 0` | `const val X = 0`, only at the top level or in an `object` | Compile error |
 
 Notice the defaults. In C, C++, Go, Python, and JavaScript a plain declaration can
 change, and you opt in to read-only. In Rust a plain `let` is read-only, and you opt in
 to change with `mut`. That one choice pushes Rust code toward values that never change,
 which makes it easier to reason about and is what lets the compiler check ownership
-in chapter 10.
+in chapter 10. Kotlin sits in between: `val` and `var` are the same length, so neither
+is the default, and IntelliJ flags a `var` that never changes.
 
-**`const` does not always mean the same thing.** In JavaScript, TypeScript, and Dart,
-`const` or `final` stops you from pointing the name at a different value, but an object
-it points to can still change inside:
+**`const` does not always mean the same thing.** In JavaScript, TypeScript, Dart, and
+Kotlin, `const`, `final`, or `val` stops you from pointing the name at a different
+value, but an object it points to can still change inside:
 
 ```js
 const scores = [90, 85];
@@ -293,6 +322,7 @@ let input: i32 = input.parse().unwrap(); // a new variable, now an i32
 | JavaScript | `number`, a 64-bit float | none (typed arrays such as `Int32Array`) | `BigInt`, written `123n` | `number` |
 | TypeScript | `number` | same as JavaScript | `bigint` | `number` |
 | Dart | `int`, 64 bits natively | none | `BigInt` | `double` (64-bit) |
+| Kotlin | `Int`, always 32 bits | `Byte`, `Short`, `Int`, `Long`, and unsigned `UByte` to `ULong` | `java.math.BigInteger` | `Float`, `Double` (default) |
 
 **C's sizes depend on the platform.** The C standard only promises minimums: `int` is
 at least 16 bits and `long` at least 32. On Linux and macOS `long` is 64 bits, and on
@@ -308,6 +338,10 @@ as strings.
 **Dart's `int` depends on where it runs.** It is 64 bits in the Dart VM and in compiled
 executables. When Dart is compiled to JavaScript for the web, `int` becomes a JavaScript
 number with the same 2^53 limit.
+
+**Kotlin's sizes come from the JVM**, so they are the same on every machine: `Int` is 32
+bits and `Long` is 64. A whole-number literal too big for an `Int` becomes a `Long` by
+itself, so `val big = 3000000000` is a `Long`.
 
 ---
 
@@ -471,6 +505,29 @@ void main() {
 }
 ```
 
+**Kotlin**
+
+```kotlin
+fun main() {
+    val i32Max = Int.MAX_VALUE
+    println("int32 max: $i32Max")
+    println("int32 max + 1: ${i32Max + 1}") // wraps silently, as Java does
+
+    // Math.addExact throws instead of wrapping.
+    val checked =
+        try {
+            Math.addExact(i32Max, 1).toString()
+        } catch (e: ArithmeticException) {
+            "ArithmeticException: ${e.message}"
+        }
+    println("Math.addExact(int32 max, 1): $checked")
+
+    val i64Max = Long.MAX_VALUE
+    println("int64 max: $i64Max")
+    println("int64 max + 1: ${i64Max + 1}")
+}
+```
+
 The output is different in every language, and that is the point:
 
 *C and C++:*
@@ -533,6 +590,16 @@ int64 max: 9223372036854775807
 int64 max + 1: -9223372036854775808
 ```
 
+*Kotlin:*
+
+```text
+int32 max: 2147483647
+int32 max + 1: -2147483648
+Math.addExact(int32 max, 1): ArithmeticException: integer overflow
+int64 max: 9223372036854775807
+int64 max + 1: -9223372036854775808
+```
+
 | Language | `int32 max + 1` by default | Tools to choose the behavior |
 | --- | --- | --- |
 | C | **Undefined behavior** for signed types; unsigned types wrap | `__builtin_add_overflow` (GCC, Clang), `ckd_add` in C23, `-fsanitize=undefined` to catch it |
@@ -542,6 +609,7 @@ int64 max + 1: -9223372036854775808
 | Python | No overflow: integers grow as needed | none needed |
 | JavaScript, TypeScript | No overflow, but whole numbers past 2^53 silently lose precision | `BigInt`, `Number.isSafeInteger` |
 | Dart | Wraps at 64 bits | Check by hand; `BigInt` |
+| Kotlin | Wraps, as in Java | `Math.addExact` and friends, which throw `ArithmeticException` |
 
 **Undefined behavior is worse than a wrong answer.** In C and C++ the compiler is
 allowed to assume signed overflow never happens, and it optimizes on that assumption.
@@ -569,7 +637,7 @@ with `wrapping_add`, and the code will behave the same in both builds.
 
 Every language here stores `double` (or `f64`, `float64`, `number`) the same way: as a
 64-bit IEEE 754 binary float. Most decimal fractions, including 0.1, have no exact
-binary form, just as 1/3 has no exact decimal form. So all eight languages agree:
+binary form, just as 1/3 has no exact decimal form. So all nine languages agree:
 `0.1 + 0.2` is not `0.3`. The code is in [`examples/03-floats/`](examples/03-floats/).
 
 **C**
@@ -697,7 +765,21 @@ void main() {
 }
 ```
 
-Output, identical in all eight:
+**Kotlin**
+
+```kotlin
+import kotlin.math.abs
+
+fun main() {
+    val sum = 0.1 + 0.2
+
+    println("0.1 + 0.2 = $sum")
+    println("equal to 0.3? ${if (sum == 0.3) "yes" else "no"}")
+    println("close to 0.3? ${if (abs(sum - 0.3) < 1e-9) "yes" else "no"}")
+}
+```
+
+Output, identical in all nine:
 
 ```text
 0.1 + 0.2 = 0.30000000000000004
@@ -892,6 +974,28 @@ void main() {
 }
 ```
 
+**Kotlin**
+
+```kotlin
+import kotlin.math.roundToInt
+
+fun main() {
+    val parsed = "42".toInt() // throws NumberFormatException on bad input
+    println("\"42\" + 1 as a number: ${parsed + 1}")
+
+    val x = 3.99
+    println("3.99 truncated: ${x.toInt()}")
+    println("-3.99 truncated: ${(-x).toInt()}")
+    println("2.5 rounded: ${2.5.roundToInt()}") // halfway rounds toward positive infinity
+    println("-2.5 rounded: ${(-2.5).roundToInt()}")
+
+    val seven = 7
+    val two = 2
+    println("7 / 2 as integers: ${seven / two}")
+    println("7 / 2 as floats: ${seven / two.toDouble()}") // Int / Double gives a Double
+}
+```
+
 Output:
 
 *C, C++, Rust, Go and Dart:*
@@ -918,7 +1022,7 @@ Output:
 7 / 2 as floats: 3.5
 ```
 
-*JavaScript and TypeScript:*
+*JavaScript, TypeScript and Kotlin:*
 
 ```text
 "42" + 1 as a number: 43
@@ -940,16 +1044,19 @@ Output:
 | JavaScript | `Number("42")`, `parseInt("42", 10)`; bad input gives `NaN` | `Math.trunc(x)` | Same type already |
 | TypeScript | same as JavaScript | same as JavaScript | same as JavaScript |
 | Dart | `int.parse`, `int.tryParse` (returns `null` on bad input) | `x.toInt()` truncates | Automatic in arithmetic: the result is a `double` |
+| Kotlin | `"42".toInt()` throws, `"42".toIntOrNull()` returns `null` | `x.toInt()` truncates and saturates (`1e20.toInt()` is `Int.MAX_VALUE`, NaN becomes 0) | Operators accept mixed types, so `7 / 2.0` is `3.5`, but `val d: Double = 7` is a compile error |
 
 **Rounding halfway cases is not universal.** `round(2.5)` is 3 in C, C++, Rust, Go, and
 Dart, which round halfway cases away from zero. Python gives 2: it rounds to the even
 neighbor ("banker's rounding"), which avoids a bias when you add up many rounded
 numbers. JavaScript's `Math.round` rounds halfway cases toward positive infinity, so
-`Math.round(2.5)` is 3 but `Math.round(-2.5)` is -2.
+`Math.round(2.5)` is 3 but `Math.round(-2.5)` is -2. Kotlin has both: `roundToInt()`
+works like JavaScript's `Math.round`, and `kotlin.math.round(2.5)` rounds to even like
+Python and gives `2.0`.
 
 **Narrowing integer conversions keep the low bits.** Converting a 64-bit integer to 8
 bits keeps the lowest 8 bits and throws the rest away, so 300 becomes 44. Rust's `as`,
-Go's `uint8(x)`, and C's `(uint8_t)x` all do this. When you want an error instead, Rust
+Go's `uint8(x)`, C's `(uint8_t)x`, and Kotlin's `x.toUByte()` all do this. When you want an error instead, Rust
 has `u8::try_from(300)`, which returns `Err`. Exercise 2 explores this.
 
 **Signed and unsigned comparisons in C are a trap.** In `-1 < 1u`, C converts `-1` to
@@ -973,6 +1080,7 @@ do not have to write it.
 | JavaScript | `let x = 5` | none: variables have no type, values do |
 | TypeScript | `let x = 5` | `number`; `const x = 5` gets the literal type `5` |
 | Dart | `var x = 5;` | `int` |
+| Kotlin | `val x = 5` | `Int`, or `Long` if the number is too big for an `Int` |
 
 Rust's inference looks ahead. In the code below, the compiler sees `push(1u8)` and
 works out that `bytes` must be a `Vec<u8>`:
@@ -1015,6 +1123,10 @@ runs. They are checked by separate tools such as mypy or pyright.
 - **Dart** started as an optionally typed language and became fully sound in Dart 2
   and null-safe in Dart 3. It wants Java-like guarantees with JavaScript-like
   convenience (`var`, string interpolation).
+- **Kotlin** keeps the JVM's number types, so sizes are fixed everywhere and overflow
+  wraps exactly as in Java. It removed Java's silent widening (Java accepts
+  `long l = someInt;`, Kotlin does not) and made `val` as short as `var`, so the
+  read-only choice costs nothing.
 
 ---
 
@@ -1040,6 +1152,10 @@ runs. They are checked by separate tools such as mypy or pyright.
 | TypeScript | Trusting types on data from `JSON.parse` | It returns `any`; nothing checks it at run time |
 | Dart | Expecting `7 / 2` to be `3` | `/` always returns a `double`; use `~/` |
 | Dart | Running native code on the web | `int` becomes a JavaScript number with the 2^53 limit |
+| Kotlin | `someInt == someLong` | Compile error; convert one side with `toLong()` |
+| Kotlin | `Int.MAX_VALUE + 1` | Wraps silently to -2147483648; use `Math.addExact` to get an exception |
+| Kotlin | `"%.1f".format(x)` on a machine set to German or French | Prints `2,5`; pass `Locale.ROOT` |
+| Kotlin | Expecting `"%.1f".format(0.15)` to match C | Prints `0.2`; C and Python print `0.1`, because Java rounds the shortest decimal form, not the exact binary value |
 
 ---
 
@@ -1067,6 +1183,13 @@ let wrapped = big as u8;         // 44, no questions asked
 **JavaScript and TypeScript: parse with `Number`, not `parseInt`, unless you want the
 prefix.** `parseInt("42px", 10)` is `42` and `Number("42px")` is `NaN`. For validating
 input, `NaN` is usually the answer you want. Always give `parseInt` a radix.
+
+**Kotlin: parse with `toIntOrNull()` and give a fallback with `?:`.** A
+`try`/`catch` around `toInt()` works, but reads like Java:
+
+```kotlin
+val port = text.toIntOrNull() ?: 8080   // not try { text.toInt() } catch (...) { 8080 }
+```
 
 **Python: write `//` when you mean integer division**, and use `math.isclose` for float
 comparisons. A comparison like `if total == 0.3:` reads fine and is almost always a bug.

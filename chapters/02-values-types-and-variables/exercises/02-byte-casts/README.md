@@ -25,7 +25,7 @@ integers.
 python3 tools/check.py 02 --lang cpp
 ```
 
-**Things to notice:** Rust, Go, and C++20 do this with a plain conversion, such as
-`x as u8`, `uint8(x)`, or `static_cast<std::uint8_t>(x)`. Python, JavaScript, and Dart
-have no 8-bit type, so you use bit operations or a method instead. In C++, try printing
+**Things to notice:** Rust, Go, C++20, and Kotlin do this with a plain conversion, such
+as `x as u8`, `uint8(x)`, `static_cast<std::uint8_t>(x)`, or `x.toUByte()`. Python,
+JavaScript, and Dart have no 8-bit type, so you use bit operations or a method instead. In C++, try printing
 a `uint8_t` directly with `std::cout` and see what happens.
