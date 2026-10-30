@@ -27,7 +27,9 @@ python3 tools/check.py 03 --lang rust
 - Most languages have all three as built-ins: `{:b}`, `count_ones`, and
   `leading_zeros` in Rust; `%b`, `bits.OnesCount32`, and `bits.Len32` in Go;
   `std::format("{:b}")`, `std::popcount`, and `std::bit_width` in C++20; `:b`,
-  `bit_count`, and `bit_length` in Python. Look them up before writing loops.
+  `bit_count`, and `bit_length` in Python; `toString(2)`, `countOneBits`, and
+  `countLeadingZeroBits` in Kotlin, whose `UInt` holds the whole range. Look them up
+  before writing loops.
 - **C** has no binary format in C17's `printf` and no standard popcount before C23.
   Write the loops. A neat trick: `n & (n - 1)` clears the lowest 1 bit, so counting
   how many times you can do that before reaching 0 counts the ones.

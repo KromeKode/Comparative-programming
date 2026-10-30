@@ -1,0 +1,8 @@
+200: ok
+301: redirect
+308: redirect
+404: not found
+418: client error
+500: server error
+503: server error
+99: unknown

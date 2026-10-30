@@ -24,7 +24,7 @@ python3 tools/check.py 03 --lang go
 
 **Things to notice:** write the whole rule as one boolean expression, using `%`, `==`,
 `&&`, and `||` (`and` and `or` in Python). Which parentheses are needed, and which
-are only there to help the reader? In every one of the eight languages `&&` binds
+are only there to help the reader? In every one of the nine languages `&&` binds
 tighter than `||`, so `a && b || c` means `(a && b) || c`.
 
 Python's standard library already has this as `calendar.isleap(year)`. Write it

@@ -18,7 +18,8 @@ Read whole numbers from stdin, one per line, until the input ends. Print their s
 python3 tools/check.py 01 --lang c
 ```
 
-**Things to notice:** in C, C++, Rust, Go, and Dart you have to pick an integer size.
-Try `int` in C or `i32` in Rust and watch the big test fail. Python integers never
+**Things to notice:** in C, C++, Rust, Go, Dart, and Kotlin you have to pick an integer
+size. Try `int` in C, `i32` in Rust, or `Int` with `toInt()` in Kotlin and watch the big
+test fail. Python integers never
 overflow. JavaScript numbers are 64-bit floats, exact for whole numbers up to 2^53.
 Chapter 2 covers all of this in detail.

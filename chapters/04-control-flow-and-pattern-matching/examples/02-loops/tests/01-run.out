@@ -1,0 +1,7 @@
+up: 0 1 2 3 4
+down: 5 4 3 2 1
+by threes: 0 3 6 9
+halving: 100 50 25 12 6 3 1
+colors: red green blue
+numbered: 1=red 2=green 3=blue
+do-while: 200

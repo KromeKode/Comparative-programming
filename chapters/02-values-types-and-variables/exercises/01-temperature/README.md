@@ -22,6 +22,7 @@ python3 tools/check.py 02 --lang python
 
 **Things to notice:** every language has a different way to print exactly one decimal
 place: `%.1f` in C and Go, `std::fixed` with `std::setprecision(1)` in C++, `{:.1}` in
-Rust, `:.1f` in Python f-strings, `toFixed(1)` in JavaScript, and `toStringAsFixed(1)`
-in Dart. Which ones change the number into a string, and which only change how it is
-printed?
+Rust, `:.1f` in Python f-strings, `toFixed(1)` in JavaScript, `toStringAsFixed(1)` in
+Dart, and `String.format(Locale.ROOT, "%.1f", x)` in Kotlin. Which ones change the
+number into a string, and which only change how it is printed? Why does Kotlin need
+`Locale.ROOT`?

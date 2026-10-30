@@ -1,0 +1,5 @@
+fifty: not a number
+60.5: not a number
+12abc: not a number
+100: too high
+60: correct in 2 guesses

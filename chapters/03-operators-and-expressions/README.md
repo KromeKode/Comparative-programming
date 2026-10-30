@@ -3,10 +3,10 @@
 Operators look like the most portable part of any language. `+` is `+` everywhere.
 But `-7 / 2` is -3 in C and -4 in Python, `"" == 0` is true in JavaScript and an error
 in Rust, and `x & 1 == 0` means two different things depending on the language. This
-chapter compares arithmetic, equality, logic, and bit operations across the eight
+chapter compares arithmetic, equality, logic, and bit operations across the nine
 languages, and shows where the same symbols give different answers.
 
-**Languages:** all 8 · **Time:** about 3 hours
+**Languages:** all 9 · **Time:** about 3 hours
 
 | You will learn | Why it matters later |
 | --- | --- |
@@ -35,8 +35,9 @@ that decides what you can write on the right side of `=`.
 | JavaScript | No; use `c ? a : b` | Yes | No |
 | TypeScript | No; use `c ? a : b` | Yes | No |
 | Dart | No; use `c ? a : b`, or a `switch` expression | Yes | No |
+| Kotlin | Yes: `if (c) a else b`, and `when` | No: assignment is a statement | Only inside `if`, `when`, `try`, and lambdas such as `run { ... }`: the last line is the value |
 
-Rust is the outlier. Almost everything in Rust is an expression, so a block can
+Rust goes furthest. Almost everything in Rust is an expression, so a block can
 compute a value:
 
 ```rust
@@ -48,11 +49,24 @@ let area = {
 };
 ```
 
+Kotlin gets close. `if`, `when`, and `try` are expressions, and the last line of each
+branch is its value. A bare block is not, but the `run` function takes a lambda and
+returns its last line:
+
+```kotlin
+val sign = if (x < 0) -1 else 1
+val area = run {
+    val width = 3
+    val height = 4
+    width * height
+}
+```
+
 ---
 
 ## 3.2 Arithmetic and integer division
 
-All eight languages have `+`, `-`, and `*`. Division is where they split.
+All nine languages have `+`, `-`, and `*`. Division is where they split.
 
 | Language | `/` on two integers | Integer division | Remainder | Power |
 | --- | --- | --- | --- | --- |
@@ -64,6 +78,7 @@ All eight languages have `+`, `-`, and `*`. Division is where they split.
 | JavaScript | Float (all numbers are) | none: `Math.trunc(a / b)` | `%`, truncated (floats too) | `**`, `Math.pow` |
 | TypeScript | Float | none: `Math.trunc(a / b)` | `%`, truncated | `**`, `Math.pow` |
 | Dart | `double` | `~/`, truncated | `%`, Euclidean; `remainder()`, truncated | `pow` in `dart:math` |
+| Kotlin | Integer, truncated | `/`, and `floorDiv()`, floored | `%`, truncated (floats too); `mod()`, floored | `x.pow(2)` on a `Double` or `BigInteger`; none for `Int` |
 
 The program below divides 7 and −7 in each language. The code is in
 [`examples/01-division/`](examples/01-division/).
@@ -216,6 +231,25 @@ void main() {
 }
 ```
 
+**Kotlin**
+
+```kotlin
+fun main() {
+    // Int / Int truncates toward zero, as in C and Java.
+    println("7 / 2 = ${7 / 2}")
+    println("-7 / 2 = ${-7 / 2}")
+    // % is the remainder, which takes the sign of the left operand.
+    println("7 % 3 = ${7 % 3}")
+    println("-7 % 3 = ${-7 % 3}")
+    println("7 % -3 = ${7 % -3}")
+    // A Double on either side makes the result a Double.
+    println("7.0 / 2 = ${7.0 / 2}")
+    // floorDiv and mod round down instead, like Python's // and %.
+    println("(-7).floorDiv(2) = ${(-7).floorDiv(2)}")
+    println("(-7).mod(3) = ${(-7).mod(3)}")
+}
+```
+
 Output:
 
 *C, C++ and Go:*
@@ -278,6 +312,19 @@ Math.floor(-7 / 2) = -4
 (-7).remainder(3) = -1
 ```
 
+*Kotlin:*
+
+```text
+7 / 2 = 3
+-7 / 2 = -3
+7 % 3 = 1
+-7 % 3 = -1
+7 % -3 = 1
+7.0 / 2 = 3.5
+(-7).floorDiv(2) = -4
+(-7).mod(3) = 2
+```
+
 ### Three ways to round a quotient
 
 When a division does not come out even, the language has to round the quotient, and
@@ -286,8 +333,8 @@ hold. There are three common choices.
 
 | Kind | Quotient rounds | Remainder sign | `-7` by `2` | `-7` by `3` | `7` by `-3` | Who uses it |
 | --- | --- | --- | --- | --- | --- | --- |
-| Truncated | toward zero | same as `a` | −3 r −1 | −2 r −1 | −2 r 1 | C, C++, Rust, Go, JavaScript, Dart's `~/` and `remainder()` |
-| Floored | down | same as `b` | −4 r 1 | −3 r 2 | −3 r −2 | Python's `//` and `%` |
+| Truncated | toward zero | same as `a` | −3 r −1 | −2 r −1 | −2 r 1 | C, C++, Rust, Go, JavaScript, Kotlin, Dart's `~/` and `remainder()` |
+| Floored | down | same as `b` | −4 r 1 | −3 r 2 | −3 r −2 | Python's `//` and `%`, Kotlin's `floorDiv()` and `mod()` |
 | Euclidean | so the remainder is never negative | always ≥ 0 | −4 r 1 | −3 r 2 | −2 r 1 | Rust's `div_euclid` and `rem_euclid`, Dart's `%` |
 
 For positive numbers all three agree, which is why this difference hides until a
@@ -295,12 +342,13 @@ negative number shows up. The classic bug is stepping backward through a circula
 buffer:
 
 ```c
-int prev = (i - 1) % n;   // when i is 0: -1 in C, C++, Rust, Go, JavaScript
+int prev = (i - 1) % n;   // when i is 0: -1 in C, C++, Rust, Go, JavaScript, Kotlin
                           // n - 1 in Python, and in Dart, whose % is Euclidean
 ```
 
 In the truncating languages, write `(i + n - 1) % n` instead. Rust also has
-`rem_euclid` for signed integers: `(-1_i32).rem_euclid(5)` is 4. Exercise 3 has you
+`rem_euclid` for signed integers: `(-1_i32).rem_euclid(5)` is 4. Kotlin has `mod`:
+`(-1).mod(5)` is 4. Exercise 3 has you
 compute both kinds by hand.
 
 ### Dividing by zero
@@ -313,14 +361,16 @@ compute both kinds by hand.
 | Python | `ZeroDivisionError` | `ZeroDivisionError` as well |
 | JavaScript, TypeScript | `Infinity`, because both are floats. `0 / 0` is `NaN`; `1n / 0n` throws `RangeError` | `Infinity` |
 | Dart | `1 ~/ 0` throws `IntegerDivisionByZeroException`; `1 / 0` is `Infinity` | `Infinity` |
+| Kotlin | `ArithmeticException: / by zero`. The compiler warns when the divisor is a literal 0 | `Infinity` |
 
 One integer division also overflows: the most negative `int` divided by −1. In C and
 C++, `INT_MIN / -1` is undefined behavior. Rust panics, even in release builds. Go
-defines the answer as `INT_MIN`.
+defines the answer as `INT_MIN`, and so does Kotlin, following the JVM.
 
 ### Powers, and the `^` trap
 
-`^` means XOR in all eight languages, never a power. `2 ^ 3` is 1, not 8. Python,
+`^` means XOR in eight of the languages, never a power. `2 ^ 3` is 1, not 8. Kotlin
+has no `^` at all: XOR is spelled `xor`, so `2 ^ 3` does not compile. Python,
 JavaScript, and TypeScript have a real power operator, `**`, with two rules of its own:
 
 ```python
@@ -345,10 +395,12 @@ must write `(-2) ** 2` or `-(2 ** 2)`.
 | JavaScript | Yes, plus `**=`, `&&=`, `\|\|=`, `??=` | Prefix and postfix | Compiles silently |
 | TypeScript | Yes, same as JavaScript | Prefix and postfix | Compiles silently |
 | Dart | Yes, plus `~/=` and `??=` | Prefix and postfix | Compile error, unless `x` is a `bool` |
+| Kotlin | Yes for arithmetic; none for bit operations | Prefix and postfix | Compile error: assignment is not an expression |
 
 The last column is a famous bug. `if (x = 5)` assigns 5 to `x` and then tests 5,
 which is true, so the branch always runs. C and C++ compile it with a warning.
-JavaScript and TypeScript compile it silently. Rust, Go, and Python reject it outright.
+JavaScript and TypeScript compile it silently. Rust, Go, Python, and Kotlin reject it
+outright.
 Dart rejects it because a condition must be a `bool`, so `if (done = true)` still slips
 through.
 
@@ -363,7 +415,9 @@ if (n := len(items)) > 10:
 `++` causes a second kind of trouble in C and C++: `i++ + i++` changes `i` twice
 without saying which happens first, which is undefined behavior. `-Wall` warns
 (`operation on 'i' may be undefined`). Go keeps `x++` but makes it a statement, so it
-can never be part of a larger expression. Rust and Python leave it out entirely.
+can never be part of a larger expression. Rust and Python leave it out entirely. Kotlin
+keeps both forms but always evaluates left to right, so `i++ + ++i` is defined (12 when
+`i` starts at 5), just hard to read.
 
 ---
 
@@ -597,6 +651,28 @@ void main() {
 }
 ```
 
+**Kotlin**
+
+```kotlin
+fun yesNo(condition: Boolean) = if (condition) "yes" else "no"
+
+fun main() {
+    val a = "hello"
+    val b = listOf("hel", "lo").joinToString("") // built separately, same characters
+    // == calls equals(), which compares contents for strings, lists, and data classes.
+    println("strings with ==: ${yesNo(a == b)}")
+    // === asks a different question: are these the same object?
+    println("strings with ===: ${yesNo(a === b)}")
+
+    val xs = listOf(1, 2, 3)
+    val ys = listOf(1, 2, 3)
+    println("lists with ==: ${yesNo(xs == ys)}")
+
+    val nan = Double.NaN
+    println("NaN == NaN: ${yesNo(nan == nan)}")
+}
+```
+
 Output:
 
 *C:*
@@ -663,6 +739,15 @@ lists element by element: yes
 NaN == NaN: no
 ```
 
+*Kotlin:*
+
+```text
+strings with ==: yes
+strings with ===: no
+lists with ==: yes
+NaN == NaN: no
+```
+
 | Language | Same contents | Same object | `==` on two strings |
 | --- | --- | --- | --- |
 | C | `strcmp`, `memcmp`, or field by field | `==` on pointers | Compares addresses: almost always a bug |
@@ -673,6 +758,7 @@ NaN == NaN: no
 | JavaScript | `===` for primitives; nothing built in for arrays and objects | `===` on objects | Compares text |
 | TypeScript | Same as JavaScript | Same as JavaScript | Compares text |
 | Dart | `==`, which a class can override | `identical(a, b)` | Compares text |
+| Kotlin | `==`, which calls `equals()`; arrays need `contentEquals` | `===` | Compares text |
 
 Python's `is` is for `None` and little else. `x is 5` happens to work for small
 integers, because CPython reuses one object for each of them, and Python prints a
@@ -681,9 +767,12 @@ integers, because CPython reuses one object for each of them, and Python prints 
 **NaN is not equal to itself, in every language.** The IEEE 754 standard says a NaN
 ("not a number") compares unequal to everything, including another NaN. Test for it
 with `isnan(x)` in C, `std::isnan` in C++, `x.is_nan()` in Rust, `math.IsNaN` in Go,
-`math.isnan` in Python, `Number.isNaN` in JavaScript, and `x.isNaN` in Dart. Python has
-one twist: `[x] == [x]` is `True` even when `x` is NaN, because list comparison checks
-identity before it checks equality.
+`math.isnan` in Python, `Number.isNaN` in JavaScript, `x.isNaN` in Dart, and `x.isNaN()`
+in Kotlin. Python has one twist: `[x] == [x]` is `True` even when `x` is NaN, because
+list comparison checks identity before it checks equality. Kotlin has a similar one.
+`==` follows IEEE 754 only when both sides are typed as `Double`. On a value typed
+`Any`, or inside a list, it calls `equals()`, which treats NaN as equal to itself, so
+`listOf(Double.NaN) == listOf(Double.NaN)` is `true`.
 
 ### JavaScript's `==` and `===`
 
@@ -725,12 +814,13 @@ compile errors.
 | JavaScript | `true`, silently: `true < 10` converts `true` to 1 |
 | TypeScript | Compile error: `<` cannot compare a `boolean` with a `number` |
 | Dart | Compile error |
+| Kotlin | Compile error: `true < 10` compares a `Boolean` with an `Int` |
 
 ---
 
 ## 3.5 Logical operators and truthiness
 
-`&&` and `||` (`and` and `or` in Python) **short-circuit** in all eight languages:
+`&&` and `||` (`and` and `or` in Python) **short-circuit** in all nine languages:
 they stop as soon as the answer is known. `false && anything` is false without
 looking at `anything`, so the right side never runs. That makes guards like
 `x != 0 && 10 / x > 1` safe. The program below counts how often the right side runs,
@@ -971,7 +1061,34 @@ void main() {
 }
 ```
 
-Output, identical in all eight:
+**Kotlin**
+
+```kotlin
+var calls = 0 // counts how many times the right side ran
+
+fun bigRatio(x: Int): Boolean {
+    calls++
+    return 10 / x > 1 // dividing by zero here would throw
+}
+
+fun displayName(name: String): String {
+    // Conditions must be Boolean, so test isEmpty() explicitly.
+    return if (name.isEmpty()) "stranger" else name
+}
+
+fun main() {
+    for (x in listOf(0, 5)) {
+        // && stops as soon as the left side is false, so bigRatio never sees 0.
+        val ok = x != 0 && bigRatio(x)
+        println("x = $x: ${if (ok) "yes" else "no"}")
+    }
+    println("right side ran $calls of 2 times")
+    println("name \"\": ${displayName("")}")
+    println("name \"Ada\": ${displayName("Ada")}")
+}
+```
+
+Output, identical in all nine:
 
 ```text
 x = 0: no
@@ -982,7 +1099,7 @@ name "Ada": Ada
 ```
 
 Without the guard, `10 / 0` would be undefined behavior in C and C++, a panic in
-Rust and Go, and an exception in Python and Dart. In JavaScript and TypeScript it
+Rust and Go, and an exception in Python, Dart, and Kotlin. In JavaScript and TypeScript it
 would be `Infinity`, and `Infinity > 1` is `true`: no crash, just a wrong answer.
 
 | Language | And, or, not | What `a \|\| b` returns | A default for an empty string |
@@ -995,6 +1112,7 @@ would be `Infinity`, and `Infinity > 1` is `true`: no crash, just a wrong answer
 | JavaScript | `&&`, `\|\|`, `!` | One of its operands | `s \|\| "stranger"` |
 | TypeScript | `&&`, `\|\|`, `!` | One of its operands | `s \|\| "stranger"` |
 | Dart | `&&`, `\|\|`, `!` | `bool`, and both sides must be `bool` | `s.isEmpty ? 'stranger' : s` |
+| Kotlin | `&&`, `\|\|`, `!` | `Boolean`, and both sides must be `Boolean` | `s.ifEmpty { "stranger" }` |
 
 ### Truthiness
 
@@ -1010,14 +1128,16 @@ Which values count as false in a condition?
 | JavaScript | Anything | `false`, `0`, `-0`, `0n`, `""`, `null`, `undefined`, `NaN` |
 | TypeScript | Anything | Same as JavaScript |
 | Dart | `bool` only | `false` |
+| Kotlin | `Boolean` only | `false` |
 
 Python and JavaScript disagree about containers: an empty list is false in Python and
 true in JavaScript, where every object is truthy. `"0"` is true in both.
 
 **`||` vs `??`.** In JavaScript, `||` replaces every falsy value, including real values
 like `0` and `""`. The `??` operator (2020) replaces only `null` and `undefined`. Dart
-has `??` too. Dart has no truthiness, so `??` is its only default operator; for an
-empty string you test `isEmpty`.
+has `??` too, and Kotlin spells it `?:`, the "Elvis operator". Neither has truthiness,
+so that is their only default operator. For an empty string, Dart tests `isEmpty` and
+Kotlin has `ifEmpty { ... }`.
 
 ```js
 const volume = settings.volume || 50; // a muted volume of 0 becomes 50: a bug
@@ -1025,8 +1145,9 @@ const volume = settings.volume ?? 50; // only a missing volume becomes 50
 ```
 
 **The conditional operator** is `c ? a : b` in C, C++, JavaScript, TypeScript, and Dart.
-Rust uses `if c { a } else { b }`, Python uses `a if c else b`, and Go has none: you
-write an `if` statement, or reach for `cmp.Or` when the test is "is it empty?".
+Rust uses `if c { a } else { b }`, Kotlin uses `if (c) a else b`, Python uses
+`a if c else b`, and Go has none: you write an `if` statement, or reach for `cmp.Or`
+when the test is "is it empty?".
 
 ---
 
@@ -1035,16 +1156,20 @@ write an `if` statement, or reach for `cmp.Or` when the test is "is it empty?".
 Bitwise operators work on the binary digits of integers. They store several yes/no
 flags in one number, mask off parts of a value, and make some arithmetic faster.
 
-| Operation | C, C++, Python, JavaScript, TypeScript, Dart | Rust | Go |
-| --- | --- | --- | --- |
-| AND | `a & b` | `a & b` | `a & b` |
-| OR | `a \| b` | `a \| b` | `a \| b` |
-| XOR | `a ^ b` | `a ^ b` | `a ^ b` |
-| NOT (flip every bit) | `~a` | `!a` | `^a` |
-| AND NOT (clear bits) | `a & ~b` | `a & !b` | `a &^ b` |
-| Shift left | `a << n` | `a << n` | `a << n` |
-| Shift right | `a >> n` | `a >> n` | `a >> n` |
-| Shift right, filling with zeros | `a >>> n` in JavaScript, TypeScript, and Dart; an unsigned type in C and C++ | use an unsigned type | use an unsigned type |
+| Operation | C, C++, Python, JavaScript, TypeScript, Dart | Rust | Go | Kotlin |
+| --- | --- | --- | --- | --- |
+| AND | `a & b` | `a & b` | `a & b` | `a and b` |
+| OR | `a \| b` | `a \| b` | `a \| b` | `a or b` |
+| XOR | `a ^ b` | `a ^ b` | `a ^ b` | `a xor b` |
+| NOT (flip every bit) | `~a` | `!a` | `^a` | `a.inv()` |
+| AND NOT (clear bits) | `a & ~b` | `a & !b` | `a &^ b` | `a and b.inv()` |
+| Shift left | `a << n` | `a << n` | `a << n` | `a shl n` |
+| Shift right | `a >> n` | `a >> n` | `a >> n` | `a shr n` |
+| Shift right, filling with zeros | `a >>> n` in JavaScript, TypeScript, and Dart; an unsigned type in C and C++ | use an unsigned type | use an unsigned type | `a ushr n` |
+
+Kotlin's bit operators are ordinary functions called without a dot, which Kotlin calls
+**infix** functions. They have no compound forms, so there is no `|=`: you write
+`flags = flags or WRITE`.
 
 The program below stores read, write, and execute permissions as three bits, much
 like Unix file permissions. The code is in [`examples/04-bits/`](examples/04-bits/).
@@ -1301,7 +1426,43 @@ void main() {
 }
 ```
 
-Output, identical in all eight:
+**Kotlin**
+
+```kotlin
+const val READ = 0b001
+const val WRITE = 0b010
+const val EXEC = 0b100
+
+fun bits8(n: Int) = n.toString(2).padStart(8, '0')
+
+fun countOnes(n: Int): Int {
+    var count = 0
+    var rest = n
+    while (rest != 0) {
+        count += rest and 1
+        rest = rest ushr 1
+    }
+    return count
+}
+
+fun main() {
+    // Kotlin spells the bit operators as words: and, or, xor, inv, shl, shr, ushr.
+    var perms = READ or WRITE
+    println("read | write: ${bits8(perms)}")
+    // Named infix calls bind tighter than !=, so no parentheses are needed.
+    println("has write? ${if (perms and WRITE != 0) "yes" else "no"}")
+    println("has exec? ${if (perms and EXEC != 0) "yes" else "no"}")
+    perms = perms and WRITE.inv() // there is no &=, so assign the result
+    println("clear write: ${bits8(perms)}")
+    perms = perms xor EXEC
+    println("toggle exec: ${bits8(perms)}")
+    println("5 << 2 = ${5 shl 2}")
+    println("-16 >> 2 = ${-16 shr 2}")
+    println("set bits in 10110: ${countOnes("10110".toInt(2))}")
+}
+```
+
+Output, identical in all nine:
 
 ```text
 read | write: 00000011
@@ -1325,6 +1486,7 @@ set bits in 10110: 3
 | Python | Copies the sign bit (it rounds down) | No limit: `1 << 64` is 18446744073709551616 |
 | JavaScript, TypeScript | Works on 32 bits and copies the sign bit; `>>>` fills with zeros | The amount wraps at 32: `1 << 32` is 1 |
 | Dart | Works on 64 bits and copies the sign bit; `>>>` fills with zeros | The result is 0: `1 << 64` is 0 |
+| Kotlin | `shr` copies the sign bit; `ushr` fills with zeros | The amount wraps, as on the JVM: `1 shl 32` is 1 |
 
 **JavaScript's bitwise operators work on 32-bit integers.** Every operand is converted
 to a signed 32-bit integer first, so `2 ** 31 | 0` is −2147483648 and `2 ** 32 | 0` is 0.
@@ -1342,6 +1504,7 @@ Dart's are 64-bit natively, so `-16 >>> 2` is 1073741820 in JavaScript but
 | Python | `0b1010` | `f"{x:08b}"`, `bin(x)` | `x.bit_count()` (3.10) |
 | JavaScript, TypeScript | `0b1010` | `x.toString(2).padStart(8, "0")` | a loop |
 | Dart | none: `int.parse('1010', radix: 2)` | `x.toRadixString(2).padLeft(8, '0')` | a loop |
+| Kotlin | `0b1010` | `x.toString(2).padStart(8, '0')` | `x.countOneBits()` |
 
 ---
 
@@ -1351,7 +1514,7 @@ Precedence decides which operator applies first. Every language puts `*` before 
 as in math, and `&&` before `||`. The differences are in the bitwise and shift
 operators.
 
-| Expression | C, C++, JavaScript, TypeScript | Rust, Python, Dart | Go |
+| Expression | C, C++, JavaScript, TypeScript | Rust, Python, Dart, Kotlin | Go |
 | --- | --- | --- | --- |
 | `x & 1 == 0` | `x & (1 == 0)`, which is always 0 | `(x & 1) == 0` | `(x & 1) == 0` |
 | `a << 1 + 1` | `a << (1 + 1)` | `a << (1 + 1)` | `(a << 1) + 1` |
@@ -1362,14 +1525,19 @@ both jobs, so they sat just below `==`, where logical operators belong. When `&&
 break. C++, Java, and JavaScript copied it. Newer languages fixed it, and `-Wall` warns
 about it in C and C++ (`suggest parentheses around comparison in operand of '&'`).
 
+Kotlin writes these as `x and 1 == 0` and `a shl 1 + 1`, and groups them the same way
+as Rust, Python, and Dart: every infix function binds tighter than `==` and looser
+than `+`.
+
 Go has only five precedence levels and puts `<<` and `&` with `*`, so a shift binds
 like a multiplication. `gofmt` shows this with spacing: it formats the expression as
 `a<<1 + 1`.
 
 Two more traps:
 
-- **A minus sign is not part of a number literal** in Rust or Dart. `-7.abs()` means
-  `-(7.abs())`, which is −7. Write `(-7).abs()`, or `(-7_i32).abs()` in Rust.
+- **A minus sign is not part of a number literal** in Rust, Dart, or Kotlin. `-7.abs()`
+  means `-(7.abs())`, which is −7. Write `(-7).abs()`, or `(-7_i32).abs()` in Rust.
+  Kotlin's `-7.absoluteValue` is −7 for the same reason.
 - **In C++, `<<` is also the print operator.** `std::cout << 5 << 2` prints `52`. Wrap
   shifts in parentheses: `std::cout << (5 << 2)`.
 
@@ -1395,8 +1563,9 @@ Some languages let your own types define what `+` or `==` means. This is how C++
 | JavaScript | No | No: `===` on objects always means "same object" |
 | TypeScript | No | No |
 | Dart | Yes: `Vec2 operator +(Vec2 other)` | Yes: `operator ==`, together with `hashCode` |
+| Kotlin | Yes: `operator fun plus(other: Vec2)` | Yes: override `equals`, which a `data class` writes for you |
 
-Here is the same small vector type in Python and Rust:
+Here is the same small vector type in Python, Rust, and Kotlin:
 
 ```python
 from dataclasses import dataclass
@@ -1435,6 +1604,14 @@ impl Add for Vec2 {
 }
 ```
 
+```kotlin
+data class Vec2(val x: Double, val y: Double) {
+    operator fun plus(other: Vec2) = Vec2(x + other.x, y + other.y)
+}
+
+println(Vec2(1.0, 2.0) + Vec2(3.0, 4.0))  // Vec2(x=4.0, y=6.0)
+```
+
 In Go, JavaScript, and TypeScript you write a method instead: `a.Add(b)` or
 `a.add(b)`. Chapter 12 covers defining equality and ordering for your own types, and
 chapter 45 uses vector operators for game physics.
@@ -1471,6 +1648,11 @@ chapter 45 uses vector operators for game physics.
 - **Dart** borrows C's symbols with Java-style discipline: conditions must be `bool`,
   and `~/` exists so that `/` always means real division. Its Euclidean `%` means
   `i % n` is always a valid index into a list of length `n`.
+- **Kotlin** started from Java's operators and fixed the one that bit Java programmers
+  most: in Java, `==` on two strings compares references, so Kotlin's `==` calls
+  `equals()` and `===` asks about identity. `if` became an expression, which the Kotlin
+  docs give as the reason there is no `?:` conditional operator. Overloading is allowed
+  only for a fixed list of operators, through functions marked `operator`.
 
 ---
 
@@ -1499,6 +1681,10 @@ chapter 45 uses vector operators for game physics.
 | JavaScript | `[1, 2] === [1, 2]` | `false`: compares identity |
 | TypeScript | Trusting types to make `==` safe | Types are erased; data from `JSON.parse` can be anything |
 | Dart | `/` on two `int`s | Returns a `double`; use `~/` |
+| Kotlin | `==` on two arrays | Compares identity, and the compiler warns; use `contentEquals` |
+| Kotlin | `listOf(Double.NaN) == listOf(Double.NaN)` | `true`: collections compare with `equals()`, where NaN equals itself |
+| Kotlin | `-7 % 3` when you want a valid index | −1, as in C; use `(-7).mod(3)` |
+| Kotlin | `1 shl 32` | 1, not 0: the shift amount wraps at 32 |
 
 ---
 
@@ -1536,6 +1722,14 @@ Never compare with `NaN` directly, and remember that `isNaN("abc")` (without
 **Dart: `??` and `??=` for defaults, `~/` for integer division**, and
 `identical(a, b)` only when you truly mean "the same object".
 
+**Kotlin: `if` as an expression, `?:` for null, and `mod` for indexes that can go
+negative.**
+
+```kotlin
+val label = if (n % 2 == 0) "even" else "odd"
+val prev = (i - 1).mod(n)   // never negative, unlike (i - 1) % n
+```
+
 ---
 
 ## 3.12 Exercises
@@ -1559,4 +1753,4 @@ Write `is_power_of_two(n)` in C, Go, and Python, first without any parentheses a
 ---
 
 Previous: [Chapter 2: Values, types, and variables](../02-values-types-and-variables/) ·
-Next: Chapter 4: Control flow and pattern matching (coming soon)
+Next: [Chapter 4: Control flow and pattern matching](../04-control-flow-and-pattern-matching/)

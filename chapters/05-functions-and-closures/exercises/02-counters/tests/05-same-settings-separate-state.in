@@ -1,0 +1,6 @@
+new x 1 2
+new y 1 2
+next x
+next x
+next x
+next y

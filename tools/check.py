@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build and test exercise solutions in all eight languages.
+"""Build and test exercise solutions in all nine languages.
 
 Every exercise is a program that reads stdin and writes stdout. Each test
 case is a pair of files, NAME.in and NAME.out, in the exercise's tests/
@@ -97,6 +97,15 @@ LANGUAGES: dict[str, Language] = {
         run=["dart", "run", "{src}"],
         version=["dart", "--version"],
     ),
+    "kotlin": Language(
+        "Kotlin", "main.kt", ["kotlinc", "java"],
+        build=[["kotlinc", "{src}", "-include-runtime", "-Werror", "-d", "{out}/main.jar"]],
+        # The JVM encodes stdout using the system locale unless told otherwise, so
+        # on a machine without a UTF-8 locale "Zoë" would print as "Zo?".
+        run=["java", "-Dstdout.encoding=UTF-8", "-Dstderr.encoding=UTF-8",
+             "-jar", "{out}/main.jar"],
+        version=["kotlinc", "-version"],
+    ),
 }
 
 GREEN, RED, YELLOW, DIM, RESET = (
@@ -111,6 +120,11 @@ def missing_tools(lang: Language) -> list[str]:
     if lang.name == "TypeScript" and not (ROOT / "node_modules" / ".bin" / "tsc").exists():
         missing.append("tsc (run `npm install` in the repo root)")
     return missing
+
+
+def message_lines(text: str) -> list[str]:
+    """Split tool output into lines, dropping the JVM's "Picked up JAVA_TOOL_OPTIONS" notes."""
+    return [line for line in text.strip().splitlines() if not line.startswith("Picked up ")]
 
 
 def fill(args: list[str], src: Path, out: Path) -> list[str]:
@@ -142,7 +156,7 @@ def check_one(key: str, lang: Language, src: Path, tests: list[Path]) -> tuple[s
             proc = subprocess.run(fill(cmd, src, out), capture_output=True, text=True,
                                   cwd=src.parent, timeout=120)
             if proc.returncode != 0:
-                message = (proc.stderr or proc.stdout).strip().splitlines()
+                message = message_lines(proc.stderr) or message_lines(proc.stdout)
                 return "FAIL", "build: " + (message[0] if message else "failed")
         for case in tests:
             # A language whose correct output differs (say, Python printing True
@@ -160,7 +174,7 @@ def check_one(key: str, lang: Language, src: Path, tests: list[Path]) -> tuple[s
             except subprocess.TimeoutExpired:
                 return "FAIL", f"{case.stem}: timed out after {TIMEOUT_SECONDS}s"
             if proc.returncode != 0:
-                err = proc.stderr.decode("utf-8", "replace").strip().splitlines()
+                err = message_lines(proc.stderr.decode("utf-8", "replace"))
                 return "FAIL", f"{case.stem}: exit code {proc.returncode}" + (
                     f" ({err[-1]})" if err else "")
             got = normalize(proc.stdout.decode("utf-8", "replace"))
@@ -185,7 +199,7 @@ def doctor() -> int:
             print(f"  {RED}missing{RESET}  {lang.name:<11} needs {', '.join(missing)}")
             continue
         proc = subprocess.run(lang.version, capture_output=True, text=True)
-        first = (proc.stdout or proc.stderr).strip().splitlines()
+        first = message_lines(proc.stdout) or message_lines(proc.stderr)
         print(f"  {GREEN}ok{RESET}       {lang.name:<11} {first[0] if first else ''}")
     return 0
 

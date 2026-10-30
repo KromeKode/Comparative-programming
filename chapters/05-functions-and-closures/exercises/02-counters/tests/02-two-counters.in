@@ -1,0 +1,7 @@
+new a 0 1
+next a
+next a
+new b 100 -10
+next b
+next a
+next b

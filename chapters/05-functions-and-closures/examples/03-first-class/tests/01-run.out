@@ -1,0 +1,4 @@
+apply_twice(add_one, 5) = 7
+apply_twice(triple, 5) = 45
+apply_twice(square, 3) = 81
+compose(triple, add_one)(5) = 18

@@ -1,8 +1,8 @@
 # Comparative Programming
 
-A textbook that teaches eight languages side by side: **C, C++, Rust, Go, Python,
-JavaScript, TypeScript, and Dart**. Every chapter solves the same problems in each
-language, so the differences in design are on the page instead of in the abstract.
+A textbook that teaches nine languages side by side: **C, C++, Rust, Go, Python,
+JavaScript, TypeScript, Dart, and Kotlin**. Every chapter solves the same problems in
+each language, so the differences in design are on the page instead of in the abstract.
 
 It starts at syntax and works up through language design, tooling, data structures
 and algorithms, SQL, and web servers. Bonus parts cover number theory, linear algebra,
@@ -15,7 +15,7 @@ a 2D wave shooter, multiplayer networking, and GUI apps. See the full
 git clone https://github.com/KromeKode/comparative-programming
 cd comparative-programming
 npm install                        # TypeScript compiler, used to type-check exercises
-python3 tools/check.py --doctor    # shows which of the 8 toolchains you have
+python3 tools/check.py --doctor    # shows which of the 9 toolchains you have
 ```
 
 Then open [Chapter 1](chapters/01-toolchains-and-hello-world/), which walks through
@@ -31,7 +31,7 @@ chapters/
     exercises/         one folder per exercise: rules, tests, and a starter file per language
     solutions/         reference answers
 tools/
-  check.py             builds and tests exercises in all 8 languages
+  check.py             builds and tests exercises in all 9 languages
 SYLLABUS.md            all 48 chapters and their status
 ```
 
@@ -47,7 +47,7 @@ Every chapter follows the same template:
 
 ## Checking your answers
 
-Every exercise reads stdin and writes stdout, so one checker works for all eight
+Every exercise reads stdin and writes stdout, so one checker works for all nine
 languages:
 
 ```sh
@@ -66,9 +66,10 @@ is not installed are skipped rather than failed.
 | --- | --- | --- |
 | C | C17 | GCC 13+ or Clang 16+, `-Wall -Wextra -Werror` |
 | C++ | C++20 | GCC 13+ or Clang 16+, `-Wall -Wextra -Werror` |
-| Rust | 1.85+, 2024 edition | `rustc -D warnings` |
+| Rust | 1.95+, 2024 edition | `rustc -D warnings` |
 | Go | 1.23+ | `go vet`, then `go build` |
 | Python | 3.12+ | CPython |
 | JavaScript | Node 22.18+ | Node |
 | TypeScript | 7 | `tsc --strict --noEmit`, run by Node's built-in type stripping |
 | Dart | 3.x | `dart analyze`, then `dart run` |
+| Kotlin | 2.4+ on JDK 21 | `kotlinc -Werror`, then `java -jar` |
