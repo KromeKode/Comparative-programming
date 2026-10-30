@@ -30,9 +30,10 @@ python3 tools/check.py 04 --lang c
 
 - This is a `while` loop: you do not know in advance how many steps it will take.
 - The last test climbs to 56,991,483,520, which does not fit in 32 bits. In C, C++,
-  Rust, and Go, choose a 64-bit type for the running value. What does your C version
+  Rust, Go, and Kotlin, choose a 64-bit type for the running value. What does your C version
   print if you use `int`?
 - JavaScript numbers are exact up to 2^53, so they are fine here. Dart's `int` is
   64 bits natively.
-- Rust's `if` is an expression, so the step can be one line:
-  `n = if n % 2 == 0 { n / 2 } else { 3 * n + 1 };`
+- Rust's and Kotlin's `if` is an expression, so the step can be one line:
+  `n = if n % 2 == 0 { n / 2 } else { 3 * n + 1 };` in Rust, and
+  `n = if (n % 2 == 0L) n / 2 else 3 * n + 1` in Kotlin.

@@ -1,13 +1,13 @@
 # Chapter 4: Control flow and pattern matching
 
-Every program chooses what to do next and repeats work. The eight languages agree on
+Every program chooses what to do next and repeats work. The nine languages agree on
 the basics (`if`, loops, `break`) and disagree on almost everything around them: whether
 a `switch` falls through to the next case, whether the compiler checks that you
 handled every case, how you leave two nested loops at once, and whether you can match
 on the *shape* of a value instead of comparing it to constants. This chapter compares
 all of that.
 
-**Languages:** all 8 · **Time:** about 3 hours
+**Languages:** all 9 · **Time:** about 3 hours
 
 | You will learn | Why it matters later |
 | --- | --- |
@@ -28,7 +28,7 @@ Statement Considered Harmful" argued that free jumps made programs impossible to
 follow, and **structured programming** replaced most of them with `if`, `while`, and
 `for`.
 
-All eight languages here are structured. They differ in how much jumping they still
+All nine languages here are structured. They differ in how much jumping they still
 allow (`goto`, labeled `break`, `switch` fallthrough) and in how much checking they do
 for you: whether a `match` must cover every case, and whether a condition must be a
 `bool`.
@@ -47,6 +47,7 @@ for you: whether a `match` must cover every case, and whether a condition must b
 | JavaScript | `if (x > 0) { ... } else { ... }` | Required | Optional for one statement | `else if` |
 | TypeScript | `if (x > 0) { ... } else { ... }` | Required | Optional for one statement | `else if` |
 | Dart | `if (x > 0) { ... } else { ... }` | Required | Optional for one statement | `else if` |
+| Kotlin | `if (x > 0) { ... } else { ... }` | Required | Optional for one statement | `else if` |
 
 **Why Rust and Go require braces.** In 2014, Apple's TLS code (the code that checks
 HTTPS certificates) contained this:
@@ -67,11 +68,16 @@ require braces on every `if`.
 Go's braces must also start on the same line as the `if`, because Go inserts
 semicolons at line ends: `if x > 0` followed by `{` on the next line is a syntax error.
 
-**`if` as a value.** Chapter 3 showed that Rust's `if` is an expression and the other
-languages use `c ? a : b` or `a if c else b`. Rust code leans on this:
+**`if` as a value.** Chapter 3 showed that Rust's and Kotlin's `if` is an expression
+and the other languages use `c ? a : b` or `a if c else b`. Rust and Kotlin code lean
+on this:
 
 ```rust
 let parity = if n % 2 == 0 { "even" } else { "odd" };
+```
+
+```kotlin
+val parity = if (n % 2 == 0) "even" else "odd"
 ```
 
 **Declaring a variable inside the condition.** Several languages let a condition
@@ -87,6 +93,7 @@ of the surrounding scope:
 | Python | `if (match := pattern.search(line)) is not None: ...` |
 | JavaScript, TypeScript | none |
 | Dart (Dart 3) | `if (int.tryParse(s) case final n?) { ... }` |
+| Kotlin | none; `ages[name]?.let { age -> ... }` runs the block only when the value is not null |
 
 Rust's **let chains** join pattern tests and boolean tests with `&&` in one condition.
 They need the 2024 edition, which this book uses. The Roman numerals exercise uses one
@@ -105,7 +112,7 @@ if let Some(&next) = values.get(i + 1)
 ## 4.3 `switch` and `match`
 
 A `switch` picks one branch by comparing a value against constants. A `match` (Rust),
-`match` statement (Python), or Dart 3 `switch` does more: it compares against
+`match` statement (Python), Dart 3 `switch`, or Kotlin `when` does more: it compares against
 **patterns**, which section 4.6 covers. The program below names HTTP status codes,
 which needs exact values, groups of values, and ranges. The code is in
 [`examples/01-switch/`](examples/01-switch/).
@@ -354,7 +361,29 @@ void main() {
 }
 ```
 
-Output, identical in all eight:
+**Kotlin**
+
+```kotlin
+// when is an expression: it gives a value. Branches never fall through.
+fun describe(code: Int): String =
+    when (code) {
+        200 -> "ok"
+        301, 302, 307, 308 -> "redirect"
+        // Branches are tried from top to bottom, so 404 must come before the range.
+        404 -> "not found"
+        in 400..499 -> "client error" // .. includes both ends
+        in 500..599 -> "server error"
+        else -> "unknown"
+    }
+
+fun main() {
+    for (code in listOf(200, 301, 308, 404, 418, 500, 503, 99)) {
+        println("$code: ${describe(code)}")
+    }
+}
+```
+
+Output, identical in all nine:
 
 ```text
 200: ok
@@ -377,21 +406,25 @@ Output, identical in all eight:
 | JavaScript | **Yes**, until `break` | Stacked `case` labels | No | No | No |
 | TypeScript | **Yes**, until `break` | Stacked `case` labels | No | Only with the `never` trick in section 4.6 | No |
 | Dart | Never (Dart 3); an empty case shares the next body | `301 \|\| 302` | `>= 400 && <= 499` | **Yes** for enums, `bool`, and sealed classes, and always for switch expressions | Yes, as a switch expression |
+| Kotlin | Never | `301, 302 ->` | `in 400..499 ->` | **Yes** for enums, `Boolean`, and sealed classes; a `when` that gives a value needs `else` otherwise | Yes |
 
 **Fallthrough** means that without a `break`, a C-style `switch` keeps running into the
 next case's code. Occasionally that is what you want. Usually it is a forgotten
 `break`. `-Wextra` warns about it in C and C++ (`this statement may fall through`),
 and you mark the intentional ones with `[[fallthrough]];` (C++17 and C23). Go, Rust,
-Python, and Dart never fall through, and Go makes you write `fallthrough` to ask for it.
+Python, Dart, and Kotlin never fall through, and Go makes you write `fallthrough` to ask
+for it.
 
 **What you can switch on** also differs. C and C++ can switch only on integers,
 characters, and enums, so `switch (name)` on a string is a compile error. Go,
 JavaScript, TypeScript, and Dart compare strings too, and Rust and Python can match
 strings, tuples, and nested data. JavaScript compares with `===`, so a case never
-matches an object or array unless it is the same object.
+matches an object or array unless it is the same object. Kotlin's `when` compares any
+value with `==`, checks types with `is`, and can leave out the value entirely, which
+turns it into a tidy `else if` chain.
 
-**Order matters when cases overlap.** Rust, Python, Dart, and Go's condition-only
-`switch` try cases from top to bottom and take the first match. If `400..=499` came
+**Order matters when cases overlap.** Rust, Python, Dart, Kotlin, and Go's
+condition-only `switch` try cases from top to bottom and take the first match. If `400..=499` came
 before `404`, the `404` arm would never run. Rust warns about that
 (`unreachable pattern`).
 
@@ -834,7 +867,59 @@ void main() {
 }
 ```
 
-Output, identical in all eight:
+**Kotlin**
+
+```kotlin
+fun main() {
+    var line = "up:"
+    for (i in 0..<5) { // 0..<5 is 0 to 4; 0..5 would include the 5
+        line += " $i"
+    }
+    println(line)
+
+    line = "down:"
+    for (i in 5 downTo 1) {
+        line += " $i"
+    }
+    println(line)
+
+    line = "by threes:"
+    for (i in 0..<10 step 3) {
+        line += " $i"
+    }
+    println(line)
+
+    line = "halving:"
+    var n = 100
+    while (n > 0) {
+        line += " $n"
+        n /= 2
+    }
+    println(line)
+
+    val colors = listOf("red", "green", "blue")
+    line = "colors:"
+    for (color in colors) {
+        line += " $color"
+    }
+    println(line)
+
+    line = "numbered:"
+    for ((i, color) in colors.withIndex()) {
+        line += " ${i + 1}=$color" // withIndex gives (index, value) pairs
+    }
+    println(line)
+
+    // do-while tests the condition after the body, so the body always runs once.
+    var m = 100
+    do {
+        m *= 2
+    } while (m < 50)
+    println("do-while: $m")
+}
+```
+
+Output, identical in all nine:
 
 ```text
 up: 0 1 2 3 4
@@ -856,6 +941,7 @@ do-while: 200
 | JavaScript | `for (let i = 0; i < n; i++)` | `while (c)` | `do { } while (c);` | `for (const x of v)` | `for (const [i, x] of v.entries())` |
 | TypeScript | `for (let i = 0; i < n; i++)` | `while (c)` | `do { } while (c);` | `for (const x of v)` | `for (const [i, x] of v.entries())` |
 | Dart | `for (var i = 0; i < n; i++)` | `while (c)` | `do { } while (c);` | `for (final x in v)` | `for (final (i, x) in v.indexed)` |
+| Kotlin | `for (i in 0..<n)` | `while (c)` | `do { } while (c)` | `for (x in v)` | `for ((i, x) in v.withIndex())` |
 
 Things to notice:
 
@@ -864,8 +950,11 @@ Things to notice:
 - **Rust and Python count with ranges, and ranges leave out the end.** `0..5` and
   `range(5)` both mean 0 to 4. Rust's `1..=5` includes the 5. Python's
   `range(5, 0, -1)` counts down and stops *before* 0.
-- **Only C, C++, JavaScript, TypeScript, and Dart have `do-while`.** The others write a
-  loop that tests at the end and breaks.
+- **Kotlin's `..` is the opposite of Rust's.** In Kotlin `0..5` *includes* the 5, and
+  `0..<5` (or the older `0 until 5`) leaves it out. Kotlin has no C-style three-part
+  `for`; it counts down with `5 downTo 1`, and `5..1` is simply empty.
+- **Only C, C++, JavaScript, TypeScript, Dart, and Kotlin have `do-while`.** The others
+  write a loop that tests at the end and breaks.
 - **JavaScript has two "for each" loops, and one is a trap.** `for...of` gives the
   values. `for...in` gives the property *names* as strings, so on an array it yields
   `"0"`, `"1"`, `"2"`, plus any inherited properties. Use `for...of` for arrays.
@@ -1099,7 +1188,29 @@ void main() {
 }
 ```
 
-Output, identical in all eight:
+**Kotlin**
+
+```kotlin
+val grid = listOf(listOf(3, 8, 1), listOf(9, 4, 7), listOf(2, 6, 5))
+
+fun main() {
+    targets@ for (target in listOf(7, 10)) {
+        var checked = 0
+        for ((r, row) in grid.withIndex()) {
+            for ((c, value) in row.withIndex()) {
+                checked++
+                if (value == target) {
+                    println("$target: row $r, column $c (checked $checked cells)")
+                    continue@targets // leaves both inner loops at once
+                }
+            }
+        }
+        println("$target: not found (checked $checked cells)")
+    }
+}
+```
+
+Output, identical in all nine:
 
 ```text
 7: row 1, column 2 (checked 6 cells)
@@ -1116,6 +1227,7 @@ Output, identical in all eight:
 | JavaScript | `break label;` and `continue label;` | No | No |
 | TypeScript | `break label;` and `continue label;` | No | No |
 | Dart | `break label;` and `continue label;` | No | No |
+| Kotlin | `break@label` and `continue@label` | No, but `return@run value` inside `run { }` comes close | No |
 
 **Python rejected labeled `break`.** PEP 3136 proposed it in 2007, and Guido van Rossum
 turned it down, arguing that code complicated enough to need it is rare and better
@@ -1152,7 +1264,8 @@ written to stop the loop silently does nothing useful. Use a labeled `break`, or
 
 A **pattern** describes the shape of a value and can pull pieces out of it. `(0, y)`
 matches any pair whose first part is 0 and names the second part `y`. Rust, Python,
-and Dart have full pattern matching. The program below sorts points into the origin,
+and Dart have full pattern matching. Kotlin's `when` sits in between: it matches values,
+ranges, and types, but cannot take a pair apart. The program below sorts points into the origin,
 the two axes, the diagonal, and everything else. The code is in
 [`examples/04-patterns/`](examples/04-patterns/).
 
@@ -1386,7 +1499,30 @@ void main() {
 }
 ```
 
-Output, identical in all eight:
+**Kotlin**
+
+```kotlin
+fun classify(point: Pair<Int, Int>): String {
+    // when cannot take a pair apart, so destructure it first.
+    val (x, y) = point
+    // A when with no subject tests each condition in order, like an else-if chain.
+    return when {
+        x == 0 && y == 0 -> "origin"
+        y == 0 -> "on the x axis at x = $x"
+        x == 0 -> "on the y axis at y = $y"
+        x == y -> "on the diagonal at $x"
+        else -> "x = $x, y = $y"
+    }
+}
+
+fun main() {
+    for ((x, y) in listOf(0 to 0, 3 to 0, 0 to -2, 4 to 4, -1 to 5)) {
+        println("($x, $y): ${classify(x to y)}")
+    }
+}
+```
+
+Output, identical in all nine:
 
 ```text
 (0, 0): origin
@@ -1398,7 +1534,9 @@ Output, identical in all eight:
 
 In Rust, Python, and Dart, each arm states the shape it wants and binds the parts it
 needs. In C, C++, Go, JavaScript, and TypeScript the same logic is an `if` chain over
-`x` and `y`, which works but describes the shape less directly.
+`x` and `y`, which works but describes the shape less directly. Kotlin unpacks the pair
+first with `val (x, y) = point` and then uses a `when` with no subject, which is the
+same `if` chain with less punctuation.
 
 | Language | Pattern matching | Unpack values | Guards | Checks that every case is handled |
 | --- | --- | --- | --- | --- |
@@ -1410,6 +1548,7 @@ needs. In C, C++, Go, JavaScript, and TypeScript the same logic is an `if` chain
 | JavaScript | No (a TC39 proposal exists) | Destructuring: `const [x, y] = point;` | — | No |
 | TypeScript | No | Destructuring | — | Only with the `never` trick below |
 | Dart | `switch` and if-case (Dart 3) | Records, lists, maps, and objects | `when` | **Yes** for enums, `bool`, and sealed classes |
+| Kotlin | `when` on values, ranges (`in`), and types (`is`); no structural patterns | Destructuring: `val (x, y) = point`, for pairs and data classes | `if` after a branch condition (2.2) | **Yes** for enums, `Boolean`, and sealed classes |
 
 **Exhaustiveness** means the compiler proves that every possible value reaches some
 arm. In Rust, delete the last arm of `classify` and the program no longer compiles:
@@ -1440,6 +1579,25 @@ function area(shape: Shape): number {
   }
 }
 ```
+
+Kotlin gets the check from **sealed** types: a `sealed interface` can only be
+implemented in the same package and module, so the compiler knows every case. Inside
+each branch, a **smart cast** treats `shape` as the matched type without a cast:
+
+```kotlin
+sealed interface Shape
+data class Circle(val radius: Double) : Shape
+data class Square(val side: Double) : Shape
+
+fun area(shape: Shape): Double =
+    when (shape) {
+        is Circle -> Math.PI * shape.radius * shape.radius // shape is a Circle here
+        is Square -> shape.side * shape.side
+    }
+```
+
+Add a `Triangle` class and `area` stops compiling: `'when' expression must be
+exhaustive. Add the 'is Triangle' branch or an 'else' branch.`
 
 **Rust's `if let` guards** (Rust 1.95) let a match arm run only when a second pattern
 also matches. The guessing-game solution uses one to treat a line as a guess only if it
@@ -1506,6 +1664,11 @@ matches everything. Compare against a constant with a dotted name such as
   a compile error instead of silent fallthrough. Dart 3 (2023) added patterns,
   records, switch expressions, and sealed classes, which turned `switch` into
   exhaustive pattern matching.
+- **Kotlin** replaced Java's `switch` with `when`, which never falls through, takes any
+  value or none, and gives a value. Sealed classes bring exhaustiveness checking, and
+  smart casts remove the casts Java needed after an `instanceof`. It has labeled
+  `break` and `continue` but no `goto`, and no structural patterns: unpacking happens in
+  `val (x, y) = ...` declarations instead.
 
 ---
 
@@ -1526,6 +1689,9 @@ matches everything. Compare against a constant with a dotted name such as
 | JavaScript | `for (const i in array)` | `i` is a string key: `"0"`, `"1"`, ... |
 | TypeScript | Adding a member to a union type | Old `switch` statements silently ignore it, unless they use the `never` check |
 | Dart | A switch expression on an `int` without `_` | Compile error: the cases are not exhaustive |
+| Kotlin | `for (i in 0..n)` meaning 0 to n − 1 | `..` includes `n`, so one pass too many; use `0..<n` or `list.indices` |
+| Kotlin | `for (i in 5..1)` to count down | Runs zero times; write `5 downTo 1` |
+| Kotlin | `return` inside `forEach { }` meaning "skip this one" | Returns from the whole function; use `return@forEach`, or a plain `for` loop with `continue` |
 | All | `<=` where `<` was meant in a loop condition | One pass too many: an off-by-one error |
 
 ---
@@ -1586,6 +1752,15 @@ with a `kind` field plus a `never` check, so the compiler catches a missing case
 **Dart: switch expressions** for choosing a value, and `for (final (i, x) in
 list.indexed)` when you need the index.
 
+**Kotlin: `when` for anything with more than two branches**, `withIndex()` rather than
+counting indexes, and `?: return` or `?: continue` to leave early on `null`, the same
+"happy path on the left" shape as Go:
+
+```kotlin
+val n = text.toIntOrNull() ?: continue
+// use n here, at the outer level
+```
+
 ---
 
 ## 4.10 Exercises
@@ -1605,7 +1780,8 @@ python3 tools/check.py 04 --solutions         # the reference answers
 **Stretch:** rewrite chapter 1's FizzBuzz by matching on the pair
 `(n % 3, n % 5)`: in Rust with `match`, in Python with `match`, and in Dart with a
 switch expression on a record. Then write it in Go with a `switch` that has no value,
-and compare which version states the rules most directly.
+and in Kotlin, whose `when` can compare whole pairs (`0 to 0 ->`) but has no `_` for
+one half. Compare which version states the rules most directly.
 
 ---
 

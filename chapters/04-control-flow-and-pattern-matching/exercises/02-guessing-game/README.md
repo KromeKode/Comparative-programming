@@ -49,8 +49,9 @@ python3 tools/check.py 04 --lang rust
   block only when the loop finishes without a `break`, which is exactly the "gave up"
   case. Other languages need a flag or an early `return`.
 - **Comparing once.** Rust's `guess.cmp(&secret)` returns `Less`, `Greater`, or `Equal`,
-  and a `match` must handle all three. C++20's `<=>` and Dart's `compareTo` do the same
-  job.
+  and a `match` must handle all three. C++20's `<=>` and the `compareTo` methods of Dart
+  and Kotlin do the same job. In Kotlin, a `when` with no subject is often clearer:
+  `guess < secret ->`, `guess > secret ->`, `else ->`.
 - **What counts as a number differs.** The tests use only plain integers like `-4` and
   `100`, and plain non-numbers like `fifty` and `12abc`. Beyond that the parsers
   disagree: Python's `int("1_000")` is 1000, JavaScript's `Number("0x10")` is 16 and

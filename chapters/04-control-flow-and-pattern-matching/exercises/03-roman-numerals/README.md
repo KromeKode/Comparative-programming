@@ -40,4 +40,6 @@ python3 tools/check.py 04 --lang typescript
 - **Looking one step ahead** needs a bounds check. C can skip it because a string ends
   with `'\0'`, which can map to 0. Rust can write the check and the comparison as one
   condition with a let chain:
-  `if let Some(&next) = values.get(i + 1) && value < next`.
+  `if let Some(&next) = values.get(i + 1) && value < next`. Kotlin's
+  `text.getOrNull(i + 1)` returns `null` past the end, which folds the check into the
+  lookup.
