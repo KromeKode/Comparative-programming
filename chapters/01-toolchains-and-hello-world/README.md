@@ -1,10 +1,10 @@
 # Chapter 1: Toolchains and Hello World
 
-In this chapter you install all eight toolchains, run the same program in every
+In this chapter you install all nine toolchains, run the same program in every
 language, and learn how each one turns source code into a running process. By the
 end you can read input, print output, report errors, and run the exercise checker.
 
-**Languages:** all 8 · **Time:** 2 to 3 hours, most of it installing things
+**Languages:** all 9 · **Time:** 2 to 3 hours, most of it installing things
 
 | You will learn | Why it matters later |
 | --- | --- |
@@ -17,8 +17,8 @@ end you can read input, print output, report errors, and run the exercise checke
 
 ## 1.1 The concept: from source code to a running program
 
-Every language has to turn text into something a CPU can run. The eight languages
-in this book do it in three different ways.
+Every language has to turn text into something a CPU can run. The nine languages
+in this book do it in three different ways, and Kotlin combines two of them.
 
 ```mermaid
 flowchart LR
@@ -34,6 +34,11 @@ flowchart LR
 
     src --> jit["JIT engine<br/>JavaScript (V8), Dart (dart run)"]
     jit --> cpu
+
+    src --> kc["Bytecode compiler<br/>Kotlin (kotlinc)"]
+    kc --> jar[".jar of JVM bytecode"]
+    jar --> jvm["JVM: interprets, then JIT-compiles"]
+    jvm --> cpu
 
     ts[TypeScript] --> erase["Type check, then erase types<br/>(tsc, or Node strips them)"]
     erase --> js[JavaScript]
@@ -52,6 +57,12 @@ flowchart LR
    code while the program runs. Dart can also compile ahead of time
    (`dart compile exe`), which is what you ship.
 
+**Kotlin** does both. `kotlinc` compiles the whole program ahead of time, with full
+type checking, but to bytecode for the Java Virtual Machine (JVM) rather than to
+machine code. The JVM then interprets that bytecode and JIT-compiles the parts that
+run often, as V8 does. Kotlin can also compile to native code (Kotlin/Native) and to
+JavaScript, but this book uses the JVM, where most Kotlin runs.
+
 TypeScript is a special case. It is JavaScript plus a type system that exists only
 at compile time. The type checker (`tsc`) reads your types, reports errors, and then
 the types are erased. What runs is plain JavaScript, so a TypeScript type can never
@@ -69,6 +80,7 @@ machine (median of 10 runs, including process startup):
 | Dart, compiled with `dart compile exe` | 3.6 ms | Native executable with the Dart runtime inside |
 | Python | 14 ms | Start the interpreter, compile to bytecode, run |
 | JavaScript | 28 ms | Start V8 and Node, parse, run |
+| Kotlin (`java -jar`) | 61 ms | Start the JVM, load classes from the jar, interpret |
 | TypeScript (`node main.ts`) | 69 ms | Same as JavaScript, plus stripping the types |
 | Dart, run with `dart run` | 269 ms | Start the VM and JIT-compile the program |
 
@@ -91,6 +103,7 @@ so every command in this book works exactly as written.
 | JavaScript | [nodejs.org](https://nodejs.org) LTS, or a version manager such as fnm | Node 22.18+ | `node --version` |
 | TypeScript | `npm install` in the repo root (installs the compiler locally) | TypeScript 7 | `npx tsc --version` |
 | Dart | [dart.dev/get-dart](https://dart.dev/get-dart) (Flutter includes it) | 3.x | `dart --version` |
+| Kotlin | A JDK 21 such as [Temurin](https://adoptium.net), then the compiler: `sdk install kotlin` with [SDKMAN!](https://sdkman.io), `brew install kotlin`, or the zip from [GitHub releases](https://github.com/JetBrains/kotlin/releases) | Kotlin 2.4+ on JDK 21 | `kotlinc -version` and `java -version` |
 
 Then, from the repo root:
 
@@ -104,7 +117,7 @@ language `SKIP` and keeps going.
 
 ---
 
-## 1.3 Hello, World in eight languages
+## 1.3 Hello, World in nine languages
 
 The code is in [`examples/01-hello/`](examples/01-hello/).
 
@@ -207,6 +220,20 @@ void main() {
 Dart looks like a cross between Java and JavaScript. It has a `main` like C, a
 `print` like Python, and single-quoted strings by convention.
 
+**Kotlin**
+
+```kotlin
+fun main() {
+    println("Hello, World!")
+}
+```
+
+`fun` declares a function. Java needs every function to live inside a class, but
+Kotlin lets `main` stand alone: `kotlinc` puts it in a class named `MainKt` (after the
+file `main.kt`) for the JVM. Semicolons are optional, and nobody writes them.
+`println` comes from the Kotlin standard library, which every file imports
+automatically.
+
 ---
 
 ## 1.4 Building and running
@@ -225,6 +252,7 @@ depth.
 | JavaScript | `node main.js` | `npm init -y` | runs as is |
 | TypeScript | `node main.ts` (types stripped, **not** checked) and `npx tsc --noEmit main.ts` to check them | `npm init -y && npm install -D typescript` | `tsc` writes `.js` files |
 | Dart | `dart run main.dart` | `dart create hello` | `dart compile exe main.dart` |
+| Kotlin | `kotlinc main.kt -include-runtime -d main.jar && java -jar main.jar` | `gradle init --type kotlin-application` (Gradle, chapter 17) | `./gradlew build` |
 
 Always compile C and C++ with `-Wall -Wextra`. Without them the compiler stays quiet
 about mistakes it has already noticed, such as an unused variable or a missing
@@ -234,7 +262,14 @@ an error.
 The REPLs are worth knowing. A REPL is an interactive prompt where you type an
 expression and see its value at once. `python3` and `node` open one with no
 arguments. `dart` and `go` have none built in, and `evcxr` is a community REPL for
-Rust.
+Rust. Kotlin's command-line REPL is deprecated (`kotlinc -Xrepl` still starts it), and
+JetBrains now points people to Kotlin Notebook and scratch files in IntelliJ IDEA.
+
+Kotlin's single-file command is slow: `kotlinc` is itself a JVM program and takes
+about 5 seconds to start and compile even Hello World. `-include-runtime` copies the
+Kotlin standard library into the jar, which is why the jar is about 5.7 MB. Without
+it, `java -jar` fails with `NoClassDefFoundError` as soon as the program calls into
+the standard library.
 
 ---
 
@@ -399,6 +434,21 @@ void main() {
 will not let you use it as a `String` until you deal with the `null` case. `??` does
 exactly that.
 
+**Kotlin**
+
+```kotlin
+fun main() {
+    val line = readlnOrNull() ?: "" // null means end of input
+    println("You typed: $line")
+}
+```
+
+Kotlin and Dart arrived at the same design. `readlnOrNull()` returns `String?`, and
+`?:`, called the Elvis operator, supplies a value for the `null` case. `val` declares
+a variable that cannot be reassigned. `readlnOrNull()` removes the line ending,
+`\r\n` included. The older `readLine()` still works but is deprecated, and
+`-Werror` turns that warning into an error.
+
 ### Errors and exit codes
 
 | Language | Print to stderr | Exit with code 1 |
@@ -411,9 +461,11 @@ exactly that.
 | JavaScript | `console.error("bad input");` | `process.exit(1);` or set `process.exitCode = 1` |
 | TypeScript | same as JavaScript | same as JavaScript |
 | Dart | `stderr.writeln('bad input');` | `exit(1);` from `dart:io` |
+| Kotlin | `System.err.println("bad input")` | `exitProcess(1)` from `kotlin.system` |
 
 A Rust program that panics (for example, through `.expect`) exits with code 101. A
-Python program that crashes exits with code 1. Both print the reason to stderr.
+Python program that crashes exits with code 1, and so does a Kotlin program with an
+uncaught exception. All three print the reason to stderr.
 
 ---
 
@@ -429,6 +481,7 @@ Python program that crashes exits with code 1. Both print the reason to stderr.
 | JavaScript | JIT (V8) | top of the file | `console.log` | `readFileSync(0)` | `;`, optional | `{ }` |
 | TypeScript | Checked, erased, then JS | top of the file | `console.log` | `readFileSync(0)` | `;`, optional | `{ }` |
 | Dart | JIT in development, AOT for release | `void main()` | `print` | `stdin.readLineSync` | `;` | `{ }` |
+| Kotlin | Compiled to JVM bytecode, then JIT | `fun main()` | `println` | `readlnOrNull` | newline (`;` optional) | `{ }` |
 
 ---
 
@@ -457,6 +510,12 @@ Python program that crashes exits with code 1. Both print the reason to stderr.
 - **Dart** was created by Google as a structured language for apps and is now mostly
   used with Flutter. JIT gives fast edit-and-reload during development, and AOT gives
   fast startup for shipped apps. Null safety is built into the type system.
+- **Kotlin** was created by JetBrains, the company behind IntelliJ IDEA, as a more
+  concise Java. Version 1.0 came out in 2016. It runs on the JVM and calls Java
+  libraries directly, so it could be adopted one file at a time in existing Java
+  projects. Google made it the preferred language for Android in 2019. Top-level
+  functions, optional semicolons, and null safety in the type system are all reactions
+  to Java's boilerplate and its `NullPointerException`s.
 
 ---
 
@@ -476,6 +535,9 @@ Python program that crashes exits with code 1. Both print the reason to stderr.
 | TypeScript | Trusting `node main.ts` to check types | Node only strips types; run `npx tsc --noEmit` to check them |
 | TypeScript | Using `enum` or `namespace` with Node's type stripping | Node refuses to run them, because they are not just types that can be erased |
 | Dart | Treating `readLineSync()` as a `String` | Compile error until you handle `null` |
+| Kotlin | `readLine()!!` when no input is left | `!!` means "I promise this is not null", so it throws `NullPointerException`; use `readlnOrNull()` |
+| Kotlin | Leaving out `-include-runtime` | `java -jar` fails with `NoClassDefFoundError` for a class such as `kotlin/io/ConsoleKt` |
+| Kotlin | Printing non-ASCII text on a machine whose locale is not UTF-8 | The JVM writes `?` for `ë`; run `java -Dstdout.encoding=UTF-8 -jar ...` |
 | All | Input from Windows ends lines with `\r\n` | A stray `\r` ends up in your strings unless you trim it |
 
 ---
@@ -497,6 +559,21 @@ if __name__ == "__main__":
 ```
 
 `__name__` is `"__main__"` only when the file is run directly, not when it is imported.
+
+**Kotlin: read lines as a sequence.** A Java-style `while (true)` loop with a `break`
+works, but Kotlin code usually turns the input into a sequence of lines and loops over
+that:
+
+```kotlin
+fun main() {
+    for (line in generateSequence(::readlnOrNull)) {
+        println(line.uppercase())
+    }
+}
+```
+
+`generateSequence` calls `readlnOrNull` until it returns `null`. `::readlnOrNull` is a
+reference to the function itself, not a call to it (chapter 5).
 
 **Rust: return errors instead of crashing.** `.expect()` is fine in examples. Real
 programs let `main` return a `Result` and use `?` to pass errors upward (chapter 11):
@@ -522,7 +599,7 @@ Each exercise has a `README.md` with the rules, a starter file per language in
 
 | # | Exercise | Practises |
 | --- | --- | --- |
-| 0 | Install all eight toolchains until `python3 tools/check.py --doctor` shows 8 × `ok` | Section 1.2 |
+| 0 | Install all nine toolchains until `python3 tools/check.py --doctor` shows 9 × `ok` | Section 1.2 |
 | 1 | [Greet](exercises/01-greet/) | Reading a line, trimming, an `if` |
 | 2 | [FizzBuzz](exercises/02-fizzbuzz/) | Parsing a number, a loop, `%` |
 | 3 | [Sum lines](exercises/03-sum-lines/) | Reading until input ends, 64-bit integers |
@@ -553,8 +630,8 @@ python3 python/main.py < tests/01-name.in
 **Stretch:** reproduce the startup timing table in section 1.1 on your own machine.
 Use `hyperfine` if you have it, or run `time` ten times in a loop. Then build the Rust
 version with `cargo build --release` and compare the binary sizes of C (about 16 KB),
-Go (about 2 MB), and Rust (about 4 MB, or about 350 KB after `strip`). Can you
-explain the difference?
+Go (about 2 MB), Rust (about 4 MB, or about 350 KB after `strip`), and the Kotlin jar
+(about 5.7 MB). Can you explain the difference?
 
 ---
 
