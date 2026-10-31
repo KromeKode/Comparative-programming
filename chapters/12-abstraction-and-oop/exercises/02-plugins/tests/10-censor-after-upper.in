@@ -1,0 +1,7 @@
+add upper
+add censor HELLO
+run hello world
+add reverse
+add reverse
+run a b c
+pipeline

@@ -1,0 +1,5 @@
+added censor(bad)
+added censor(ugly)
+added reverse
+good the **** the *** the
+pipeline: censor(bad) | censor(ugly) | reverse

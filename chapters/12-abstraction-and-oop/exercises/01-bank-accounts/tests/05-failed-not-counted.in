@@ -1,0 +1,7 @@
+open savings erin
+deposit erin 50
+withdraw erin 60
+withdraw erin 70
+withdraw erin 20
+withdraw erin 30
+withdraw erin 1

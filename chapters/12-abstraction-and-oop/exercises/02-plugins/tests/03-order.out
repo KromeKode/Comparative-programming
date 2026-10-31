@@ -1,0 +1,7 @@
+added reverse
+added upper
+pipeline: reverse | upper
+THREE TWO ONE
+added lower
+words case mixed
+pipeline: reverse | upper | lower

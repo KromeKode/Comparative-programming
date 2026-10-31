@@ -1,0 +1,12 @@
+undo: delete line 1
+undo: replace line 2 with "B"
+undo: add "b"
+undo: add "a"
+error: nothing to undo
+(empty)
+redo: add "a"
+redo: add "b"
+redo: replace line 2 with "B"
+redo: delete line 1
+error: nothing to redo
+1: B

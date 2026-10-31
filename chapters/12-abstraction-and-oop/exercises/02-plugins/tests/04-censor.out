@@ -1,0 +1,5 @@
+added censor(bad)
+this is *** and *** and *** but not badly
+added upper
+*** WORDS
+pipeline: censor(bad) | upper

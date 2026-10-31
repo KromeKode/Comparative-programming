@@ -1,0 +1,7 @@
+added upper
+added censor(HELLO)
+***** WORLD
+added reverse
+added reverse
+A B C
+pipeline: upper | censor(HELLO) | reverse | reverse

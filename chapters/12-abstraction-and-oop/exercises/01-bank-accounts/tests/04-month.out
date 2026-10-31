@@ -1,0 +1,17 @@
+alice: opened a checking account
+bob: opened a savings account
+carol: opened a checking account
+dave: opened a savings account
+bob: deposited 99, balance 99
+carol: deposited 20, balance 20
+dave: deposited 1000, balance 1000
+alice: withdrew 100, balance -100
+alice: fee 5, balance -105
+bob: interest 0, balance 99
+carol: no fee, balance 20
+dave: interest 10, balance 1010
+error: alice: over the overdraft limit of 100
+alice: fee 5, balance -110
+bob: interest 0, balance 99
+carol: no fee, balance 20
+dave: interest 10, balance 1020

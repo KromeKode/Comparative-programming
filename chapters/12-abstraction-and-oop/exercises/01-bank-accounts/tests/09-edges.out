@@ -1,0 +1,8 @@
+zed: opened a checking account
+amy: opened a savings account
+zed: deposited 30, balance 30
+zed: withdrew 30, balance 0
+error: unknown account kind: gold
+amy: deposited 150, balance 150
+zed: no fee, balance 0
+amy: interest 1, balance 151

@@ -1,0 +1,7 @@
+open savings gina
+deposit gina 1000000000000
+month
+open checking hal
+withdraw hal 100
+month
+month

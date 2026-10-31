@@ -1,0 +1,11 @@
+open checking alice
+open savings bob
+open checking carol
+open savings dave
+deposit bob 99
+deposit carol 20
+deposit dave 1000
+withdraw alice 100
+month
+withdraw alice 1
+month

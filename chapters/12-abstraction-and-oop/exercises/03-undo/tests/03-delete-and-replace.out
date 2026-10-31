@@ -1,0 +1,13 @@
+1: alpha
+2: gamma
+undo: delete line 2
+1: alpha
+2: beta
+3: gamma
+1: ALPHA again
+2: beta
+3: gamma
+undo: replace line 1 with "ALPHA again"
+1: alpha
+2: beta
+3: gamma

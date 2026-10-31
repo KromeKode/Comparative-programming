@@ -1,0 +1,16 @@
+add a
+add b
+replace 2 B
+delete 1
+undo
+undo
+undo
+undo
+undo
+show
+redo
+redo
+redo
+redo
+redo
+show

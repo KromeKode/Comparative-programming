@@ -1,0 +1,7 @@
+error: unknown account kind: gold
+carol: opened a checking account
+error: carol already has an account
+error: no account named dave
+error: no account named dave
+dave: opened a savings account
+dave: deposited 10, balance 10

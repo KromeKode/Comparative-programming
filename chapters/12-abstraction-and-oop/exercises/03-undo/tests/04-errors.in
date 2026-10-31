@@ -1,0 +1,8 @@
+undo
+redo
+delete 1
+add only
+delete 0
+delete 2
+replace 5 nope
+show

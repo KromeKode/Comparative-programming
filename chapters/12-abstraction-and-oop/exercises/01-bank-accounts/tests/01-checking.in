@@ -1,0 +1,7 @@
+open checking alice
+deposit alice 100
+withdraw alice 150
+withdraw alice 60
+withdraw alice 50
+withdraw alice 1
+month

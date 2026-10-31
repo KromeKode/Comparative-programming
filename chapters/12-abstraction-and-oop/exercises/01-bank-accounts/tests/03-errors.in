@@ -1,0 +1,7 @@
+open gold carol
+open checking carol
+open savings carol
+deposit dave 10
+withdraw dave 10
+open savings dave
+deposit dave 10

@@ -1,0 +1,7 @@
+open checking zed
+open savings amy
+deposit zed 30
+withdraw zed 30
+open gold zed
+deposit amy 150
+month
