@@ -1,0 +1,6 @@
+two shared references: *a = 1, *b = 1
+after *only = 5: x = 5
+after mem::swap(&mut x, &mut y): x = 3, y = 5
+after values.swap(0, 2): [3, 2, 1]
+add_each(&mut values, values[0]): [6, 5, 4]
+after swapping across split_at_mut(1): [4, 5, 6]

@@ -1,0 +1,18 @@
+4 3
+restore
+paint 1 1
+paint 1 1 ab
+paint x 1 a
+paint 1 y a
+paint 5 1 a
+paint 1 0 a
+paint 99999999999999999999 1 a
+paint 2 -1 a
+fill
+fill ab
+save now
+zoom
+show please
+paint 4 3 z
+paint 01 1 q
+show

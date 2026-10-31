@@ -1,0 +1,20 @@
+error: pop from an empty array
+error: index 0 is out of range (length 0)
+[] (length 0, capacity 0)
+error: push takes 1 value, got 0
+error: push takes 1 value, got 2
+error: "x" is not an int
+error: "1.5" is not an int
+error: "99999999999" is not an int
+error: "12abc" is not an int
+grow: 0 -> 4
+error: index -1 is out of range (length 1)
+error: index 1 is out of range (length 1)
+error: "two" is not an int
+error: index 1 is out of range (length 1)
+error: set takes 2 values, got 1
+error: "y" is not an int
+error: unknown command "insert"
+error: print takes 0 values, got 1
+pop: 4
+error: pop from an empty array

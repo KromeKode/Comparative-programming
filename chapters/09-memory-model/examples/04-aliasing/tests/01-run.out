@@ -1,0 +1,5 @@
+after *a = 5: *b = 5
+after xor_swap(&x, &y): x = 3, y = 5
+after xor_swap(&x, &x): x = 0
+add_each(values, 3, &values[0]): 2 4 5
+with a copy of the amount: 2 3 4

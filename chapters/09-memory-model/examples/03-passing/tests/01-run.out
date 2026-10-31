@@ -1,0 +1,8 @@
+inside bump_copy: n = 2
+after bump_copy(n): n = 1
+after bump(&n): n = 2
+after double_all(values, 3): 2 4 6
+inside shift_copy: p = (11, 2)
+after shift_copy(p): p = (1, 2)
+after shift(&p): p = (11, 2)
+sum(&p) = 13

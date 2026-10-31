@@ -1,0 +1,6 @@
+after *p = 7: x = 7
+after r = 9: x = 9
+after r = y, then y = 2: x = 1, y = 2
+q[2] = 77, *(q + 2) = 77
+sizeof: x 4, p 8, r 4, scores 16
+nowhere is nullptr

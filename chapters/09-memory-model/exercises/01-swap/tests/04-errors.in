@@ -1,0 +1,14 @@
+one two three
+flip 1 2
+swap 1
+swap 1 2 3
+reverse 2
+swap x 2
+swap 1 -1
+swap 0 2
+swap 1 4
+reverse 2 9
+swap 3 1
+swap 02 1
+swap 007 1
+swap 1 99999999999999999999

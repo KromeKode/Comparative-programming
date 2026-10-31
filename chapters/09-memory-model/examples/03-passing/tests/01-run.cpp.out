@@ -1,0 +1,8 @@
+inside bump_copy: n = 2
+after bump_copy(n): n = 1
+after bump(n): n = 2
+after bump_pointer(&n): n = 3
+inside add_copy: 4 items
+after add_copy(v): v has 3 items
+after add(v): v has 4 items
+total(v) = 10

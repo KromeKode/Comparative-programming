@@ -1,0 +1,8 @@
+3 2
+fill o
+save
+fill -
+paint 3 2 o
+show
+restore
+show

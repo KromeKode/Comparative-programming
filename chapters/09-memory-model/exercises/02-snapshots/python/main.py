@@ -1,0 +1,7 @@
+def main() -> None:
+    # TODO: Read the grid size, then run each paint, fill, save, restore, or show command. See ../README.md.
+    pass
+
+
+if __name__ == "__main__":
+    main()

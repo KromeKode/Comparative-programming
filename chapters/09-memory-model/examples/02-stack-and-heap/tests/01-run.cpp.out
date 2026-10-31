@@ -1,0 +1,7 @@
+each frame keeps its own local: 0 10 20 30
+std::array of 1000 ints: 4000 bytes
+std::vector of 1000 ints: 24 bytes here, 4000 on the heap
+capacity as 100 items are added: 1 2 4 8 16 32 64 128
+sizeof growing is still 24
+*boxed = 42, sizeof boxed = 8
+sizeof a std::string: 32
