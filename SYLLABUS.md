@@ -17,7 +17,7 @@ Status: ✅ written · ⬜ planned
 | 5 | [Functions and closures](chapters/05-functions-and-closures/) | ✅ |
 | 6 | [Strings and text](chapters/06-strings-and-text/) | ✅ |
 | 7 | [Built-in collections](chapters/07-built-in-collections/) | ✅ |
-| 8 | Structs, enums, and null | ⬜ |
+| 8 | [Structs, enums, and null](chapters/08-structs-enums-and-null/) | ✅ |
 
 ## Part 2: Language design
 
