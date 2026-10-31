@@ -1,0 +1,5 @@
+a.txt: skipped: not found
+b.txt: timed out, retrying in 1s
+b.txt: skipped: not found
+c.txt: ok after 1 attempt
+downloaded 1, skipped 2, failed 0, not tried 0

@@ -1,0 +1,8 @@
+start with 100
+withdraw 30: ok, 70 left
+withdraw -5: error: invalid amount: -5
+withdraw 100: error: insufficient funds: need 100, have 70
+  took 70 instead, 0 left
+freeze the account
+withdraw 10: error: account is frozen
+  call the bank to unfreeze it

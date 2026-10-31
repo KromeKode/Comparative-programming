@@ -1,0 +1,10 @@
+odd.conf: ok
+  name = a = b
+  port = 8080
+  debug = false
+  timeout = 30
+odder.conf: 2 errors
+  line 2: port: "8 0" is not a whole number
+  line 3: timeout: "+30" is not a whole number
+files loaded: 1 of 2
+syntax: 0, unknown key: 0, duplicate key: 0, bad value: 2, missing key: 0

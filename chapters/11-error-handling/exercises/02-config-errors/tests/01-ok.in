@@ -1,0 +1,4 @@
+== app.conf
+# the web app
+name = shop
+port = 8080

@@ -1,0 +1,11 @@
+"12a4" -> error: invalid character 'a' at position 3
+" 42" -> error: invalid character ' ' at position 1
+"42 " -> error: invalid character ' ' at position 3
+"4.0" -> error: invalid character '.' at position 2
+"--5" -> error: invalid character '-' at position 2
+"+-3" -> error: invalid character '-' at position 2
+"1_000" -> error: invalid character '_' at position 2
+"0x1F" -> error: invalid character 'x' at position 2
+"1e3" -> error: invalid character 'e' at position 2
+"4-2" -> error: invalid character '-' at position 2
+"five" -> error: invalid character 'f' at position 1

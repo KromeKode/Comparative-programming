@@ -1,0 +1,6 @@
+== broken.conf
+name = demo
+port 8080
+= 5
+port = 8080
+debug

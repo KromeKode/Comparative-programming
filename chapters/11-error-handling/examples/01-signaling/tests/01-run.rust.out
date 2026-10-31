@@ -1,0 +1,10 @@
+parse::<i32>:
+  "42" -> Ok(42)
+  "4x2" -> Err(InvalidDigit): invalid digit found in string
+  "" -> Err(Empty): cannot parse integer from empty string
+  "99999999999999999999" -> Err(PosOverflow): number too large to fit in target type
+ok and unwrap_or:
+  "42" -> Some(42), or 42
+  "4x2" -> None, or 0
+  "" -> None, or 0
+  "99999999999999999999" -> None, or 0

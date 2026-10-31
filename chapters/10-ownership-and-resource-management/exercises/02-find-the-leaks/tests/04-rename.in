@@ -1,0 +1,8 @@
+add Yesterday Beatles
+rename Yesterday Today
+show
+rename Yesterday Tomorrow
+add Help Beatles
+rename Help Today
+rename Today Tomorrow
+show

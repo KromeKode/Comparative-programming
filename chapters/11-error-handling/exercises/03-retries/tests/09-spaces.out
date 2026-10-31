@@ -1,0 +1,4 @@
+a.txt: timed out, retrying in 1s
+a.txt: ok after 2 attempts
+b.txt: ok after 1 attempt
+downloaded 2, skipped 0, failed 0, not tried 0

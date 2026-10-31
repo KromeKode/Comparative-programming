@@ -1,0 +1,26 @@
+open rules.txt
+close rules.txt
+wrote 2 lines
+locked rules.txt
+locked rules.txt
+error: "rules.txt" is read-only
+open rules.txt
+open rules2.txt
+close rules2.txt
+close rules.txt
+copied 2 lines
+open notes.txt
+close notes.txt
+wrote 1 line
+open notes.txt
+close notes.txt
+error: "rules.txt" is read-only
+open rules.txt
+  be
+  kind
+close rules.txt
+open rules2.txt
+  be
+  kind
+close rules2.txt
+files still open: 0

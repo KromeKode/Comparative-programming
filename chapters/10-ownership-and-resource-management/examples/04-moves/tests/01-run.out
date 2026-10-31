@@ -1,0 +1,2 @@
+after message_move(&b, &a): a = (nothing), b = hello
+freed both, and the block was freed once

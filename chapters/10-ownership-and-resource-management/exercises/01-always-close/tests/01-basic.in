@@ -1,0 +1,4 @@
+write fruit.txt apple banana cherry
+cat fruit.txt
+copy fruit.txt backup.txt
+cat backup.txt

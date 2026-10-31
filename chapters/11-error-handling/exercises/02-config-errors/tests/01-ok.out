@@ -1,0 +1,7 @@
+app.conf: ok
+  name = shop
+  port = 8080
+  debug = false
+  timeout = 30
+files loaded: 1 of 1
+syntax: 0, unknown key: 0, duplicate key: 0, bad value: 0, missing key: 0

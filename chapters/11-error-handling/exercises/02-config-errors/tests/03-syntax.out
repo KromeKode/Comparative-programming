@@ -1,0 +1,6 @@
+broken.conf: 3 errors
+  line 2: expected "key = value"
+  line 3: expected "key = value"
+  line 5: expected "key = value"
+files loaded: 0 of 1
+syntax: 3, unknown key: 0, duplicate key: 0, bad value: 0, missing key: 0

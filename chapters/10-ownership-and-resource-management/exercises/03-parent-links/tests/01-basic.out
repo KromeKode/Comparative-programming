@@ -1,0 +1,9 @@
+made /docs
+made /docs/notes
+made /docs/photos
+made /music
+/docs/notes
+/: docs music
+docs: notes photos
+notes: (empty)
+freed 5 folders at exit

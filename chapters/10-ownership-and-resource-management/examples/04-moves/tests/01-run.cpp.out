@@ -1,0 +1,8 @@
+copy then move: a has 0, b has 3, c has 3
+after the move, p is empty and *q = 7
+passing by value:
+  copied 5 ints
+  moved, copied 0 ints
+returning a local:
+  made has 3 ints
+std::move on a const vector copied it: fixed has 2, d has 2
