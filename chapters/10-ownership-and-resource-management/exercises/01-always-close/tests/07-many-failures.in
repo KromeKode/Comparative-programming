@@ -1,0 +1,10 @@
+write src.txt hello world
+write safe.txt keep
+lock safe.txt
+copy src.txt safe.txt
+copy src.txt safe.txt
+copy src.txt safe.txt
+copy src.txt out.txt
+copy ghost.txt out.txt
+copy out.txt again.txt
+cat again.txt

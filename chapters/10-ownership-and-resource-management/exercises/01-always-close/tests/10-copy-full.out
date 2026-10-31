@@ -1,0 +1,25 @@
+open w.txt
+close w.txt
+wrote 6 lines
+open w.txt
+open x.txt
+close x.txt
+close w.txt
+error: disk full
+open w.txt
+close w.txt
+wrote 1 line
+open w.txt
+open x.txt
+close x.txt
+close w.txt
+copied 1 line
+open x.txt
+open y.txt
+close y.txt
+close x.txt
+copied 1 line
+open y.txt
+  one
+close y.txt
+files still open: 0

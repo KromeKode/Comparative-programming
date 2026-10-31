@@ -1,0 +1,23 @@
+open a.txt
+close a.txt
+wrote 3 lines
+open b.txt
+close b.txt
+wrote 1 line
+open b.txt
+open a.txt
+close a.txt
+close b.txt
+copied 1 line
+open a.txt
+  new
+close a.txt
+open a.txt
+close a.txt
+wrote 0 lines
+open a.txt
+close a.txt
+open one.txt
+close one.txt
+wrote 1 line
+files still open: 0

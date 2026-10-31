@@ -1,0 +1,19 @@
+open fruit.txt
+close fruit.txt
+wrote 3 lines
+open fruit.txt
+  apple
+  banana
+  cherry
+close fruit.txt
+open fruit.txt
+open backup.txt
+close backup.txt
+close fruit.txt
+copied 3 lines
+open backup.txt
+  apple
+  banana
+  cherry
+close backup.txt
+files still open: 0

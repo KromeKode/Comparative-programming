@@ -1,0 +1,8 @@
+open spaced.txt
+close spaced.txt
+wrote 2 lines
+open spaced.txt
+  a
+  b
+close spaced.txt
+files still open: 0

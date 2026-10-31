@@ -1,0 +1,6 @@
+write w.txt 1 2 3 4 5 6
+copy w.txt x.txt
+write w.txt one
+copy w.txt x.txt
+copy x.txt y.txt
+cat y.txt

@@ -1,0 +1,8 @@
+mkdir docs /
+mkdir notes docs
+mkdir photos docs
+mkdir music /
+path notes
+ls /
+ls docs
+ls notes
