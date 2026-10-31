@@ -1,0 +1,9 @@
+lights: red green yellow
+yellow is number 2
+after red: green
+after green: yellow
+after yellow: red
+red means stop, green means go, yellow means slow down
+one cycle: 60 seconds
+parse "green": green
+parse "blue": not a light

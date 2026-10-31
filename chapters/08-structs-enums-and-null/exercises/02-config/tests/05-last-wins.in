@@ -1,0 +1,6 @@
+host = first.example
+port = 1000
+host = second.example
+port = oops
+port = 2000
+port = nope

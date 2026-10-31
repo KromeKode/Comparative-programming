@@ -1,0 +1,10 @@
+port = abc
+port = 70000
+port = -1
+port = +80
+port = 80.5
+port = 0
+port = 80 # web
+timeout = soon
+timeout = 0
+timeout = 99999999999999999999

@@ -1,0 +1,6 @@
+error: circle needs 1 size, got 0
+error: circle needs 1 size, got 2
+error: rectangle needs 2 sizes, got 1
+error: triangle needs 2 sizes, got 3
+rectangle: 6.00
+total: 6.00

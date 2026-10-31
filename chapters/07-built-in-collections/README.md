@@ -2103,4 +2103,4 @@ printing.
 ---
 
 Previous: [Chapter 6: Strings and text](../06-strings-and-text/) ·
-Next: Chapter 8: Structs, enums, and null (coming soon)
+Next: [Chapter 8: Structs, enums, and null](../08-structs-enums-and-null/)
