@@ -1,0 +1,6 @@
+each frame keeps its own local: 0 10 20 30
+an array of 1000 ints on the stack: 4000 bytes
+1000 squares on the heap: sizeof on_heap = 8, on_heap[999] = 1000000
+literal = hello, copy = jello, sizeof literal = 8, sizeof copy = 6
+squares: 1 4 9
+make_squares has run 2 times

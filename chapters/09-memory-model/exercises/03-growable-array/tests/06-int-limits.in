@@ -1,0 +1,7 @@
+push -2147483648
+push 2147483647
+push +5
+push -0
+push 2147483648
+push -2147483649
+print

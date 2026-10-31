@@ -1,0 +1,9 @@
+b = a, then b gets 4: a = [1, 2, 3, 4]
+a function appends 5: a = [1, 2, 3, 4, 5]
+m = n, then m += 1: n = 1, m = 2
+shallow copy, then copy[0][0] = 9: grid = [[9, 2], [3, 4]]
+deep copy, then copy[0][0] = 7: grid = [[9, 2], [3, 4]]
+one row in 3 slots, then rows[0][0] = 1: rows = [[1, 0], [1, 0], [1, 0]]
+a and b are the same list: yes
+a and its copy are the same list: no
+a and its copy hold equal items: yes

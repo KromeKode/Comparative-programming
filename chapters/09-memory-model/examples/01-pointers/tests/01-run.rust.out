@@ -1,0 +1,6 @@
+after *r = 7: x = 7
+*a + *b = 14
+middle = [85, 77], middle[1] = 77
+size_of_val: x 4, a 8, scores 16, middle 16
+through a raw pointer: 7
+nowhere is None

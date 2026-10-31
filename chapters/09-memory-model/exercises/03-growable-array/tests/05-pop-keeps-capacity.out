@@ -1,0 +1,9 @@
+grow: 0 -> 4
+grow: 4 -> 8
+pop: 5
+pop: 4
+pop: 3
+pop: 2
+pop: 1
+[] (length 0, capacity 8)
+[6] (length 1, capacity 8)

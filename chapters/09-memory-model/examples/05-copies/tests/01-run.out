@@ -1,0 +1,3 @@
+inline array: a = Ada 90, b = Eda 70
+shallow copy: c = Eda 90, d = Eda 70
+deep copy: c = Eda, e = Ida

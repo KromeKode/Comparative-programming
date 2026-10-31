@@ -1,0 +1,7 @@
+each frame keeps its own local: 0 10 20 30
+[i32; 1000]: 4000 bytes
+Vec<i32> of 1000: 24 bytes here, 4000 on the heap
+capacity as 100 items are added: 4 8 16 32 64 128
+size_of_val(&growing) is still 24
+*boxed = 42, size_of_val(&boxed) = 8
+String: 24 bytes, &str: 16 bytes, both say hello

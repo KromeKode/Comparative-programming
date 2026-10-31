@@ -1,0 +1,14 @@
+error: unknown command "flip"
+error: swap needs 2 positions, got 1
+error: swap needs 2 positions, got 3
+error: reverse needs 2 positions, got 1
+error: "x" is not a position
+error: "-1" is not a position
+error: position 0 is out of range (1 to 3)
+error: position 4 is out of range (1 to 3)
+error: position 9 is out of range (1 to 3)
+three two one
+two three one
+error: position 007 is out of range (1 to 3)
+error: position 99999999999999999999 is out of range (1 to 3)
+swaps: 2

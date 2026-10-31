@@ -1,0 +1,7 @@
+x = 5, *p = 5
+after *p = 7: x = 7
+q[2] = 77, *(q + 2) = 77
+q + 2 is 8 bytes past q
+sizeof: x 4, p 8, scores 16, q 8
+after **pp = 9: x = 9
+nowhere is NULL

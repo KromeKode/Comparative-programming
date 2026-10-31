@@ -1,0 +1,9 @@
+1 1
+paint 1 1 *
+save
+fill .
+show
+restore
+show
+restore
+show

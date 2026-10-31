@@ -23,7 +23,7 @@ Status: ✅ written · ⬜ planned
 
 | # | Chapter | Status |
 | --- | --- | --- |
-| 9 | Memory model ★ C, C++, Rust | ⬜ |
+| 9 | [Memory model](chapters/09-memory-model/) ★ C, C++, Rust | ✅ |
 | 10 | Ownership and resource management ★ C, C++, Rust | ⬜ |
 | 11 | Error handling | ⬜ |
 | 12 | Abstraction and OOP | ⬜ |

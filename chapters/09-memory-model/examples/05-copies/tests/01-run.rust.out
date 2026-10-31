@@ -1,0 +1,4 @@
+a.clone() copies everything: a = Ada [90, 85], b = Eda [90, 85, 70]
+let c = a moves it: c.name = Ada
+let q = p copies a Copy type: p = (1, 2), q = (5, 2)
+iter_mut changes the players: ["Ada!", "Eda!"]

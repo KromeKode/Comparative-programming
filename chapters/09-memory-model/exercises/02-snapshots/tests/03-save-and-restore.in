@@ -1,0 +1,7 @@
+3 2
+paint 1 1 a
+save
+paint 2 2 b
+show
+restore
+show

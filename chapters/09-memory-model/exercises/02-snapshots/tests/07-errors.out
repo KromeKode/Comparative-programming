@@ -1,0 +1,18 @@
+error: nothing saved
+error: paint takes 3 values, got 2
+error: "ab" is not one character
+error: "x" is not a number
+error: "y" is not a number
+error: (5, 1) is outside the 4 by 3 grid
+error: (1, 0) is outside the 4 by 3 grid
+error: (99999999999999999999, 1) is outside the 4 by 3 grid
+error: "-1" is not a number
+error: fill takes 1 value, got 0
+error: "ab" is not one character
+error: save takes 0 values, got 1
+error: unknown command "zoom"
+error: show takes 0 values, got 1
+q...
+....
+...z
+

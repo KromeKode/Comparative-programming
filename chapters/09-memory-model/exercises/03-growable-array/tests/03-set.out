@@ -1,0 +1,4 @@
+grow: 0 -> 4
+get 0: 100
+get 2: -7
+[100, 2, -7] (length 3, capacity 4)

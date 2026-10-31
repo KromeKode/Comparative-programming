@@ -1,0 +1,4 @@
+b = a copies everything: a = Ada 90 85, b = Eda 90 85 70
+a copied pointer still points at the same int: *c.count = 2
+for (auto p : team) changes copies: Ada Eda
+for (auto &p : team) changes the players: Ada! Eda!

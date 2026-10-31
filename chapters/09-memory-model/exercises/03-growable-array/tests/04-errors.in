@@ -1,0 +1,20 @@
+pop
+get 0
+print
+push
+push 1 2
+push x
+push 1.5
+push 99999999999
+push 12abc
+push 4
+get -1
+get 1
+get two
+set 1 5
+set 0
+set 0 y
+insert 0 1
+print all
+pop
+pop
