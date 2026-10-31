@@ -1,0 +1,6 @@
+p = (1, 2)
+p.x + p.y = 3
+q = p with x = 5: q = (5, 2), p = (1, 2)
+r = p, then r.y = 9: r = (1, 9), p = (1, 2)
+a = (3, -4), b = (3, -4), a == b: yes
+steps from (0, 0) to a: 7

@@ -1,0 +1,13 @@
+line 1: bad port "abc"
+line 2: bad port "70000"
+line 3: bad port "-1"
+line 4: bad port "+80"
+line 5: bad port "80.5"
+line 6: bad port "0"
+line 7: bad port "80 # web"
+line 8: bad timeout "soon"
+line 9: bad timeout "0"
+line 10: bad timeout "99999999999999999999"
+host: localhost (default)
+port: 8080 (default)
+timeout: none

@@ -1,0 +1,8 @@
+error: "abc" is not a number
+error: "3cm" is not a number
+error: "-2" is negative
+error: "-1" is negative
+error: "abc" is not a number
+error: "-1" is negative
+triangle: 6.00
+total: 6.00

@@ -1,0 +1,5 @@
+line 4: bad port "oops"
+line 6: bad port "nope"
+host: second.example
+port: 2000
+timeout: none

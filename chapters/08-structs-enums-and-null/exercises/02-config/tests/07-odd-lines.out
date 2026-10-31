@@ -1,0 +1,7 @@
+line 3: expected key = value
+line 4: unknown key "colour"
+line 5: unknown key "Port"
+line 6: unknown key ""
+host: first=second
+port: 8443
+timeout: 45s

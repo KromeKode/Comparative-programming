@@ -1,0 +1,5 @@
+error: unknown shape "hexagon"
+error: unknown shape "Circle"
+error: unknown shape "square"
+circle: 3.14
+total: 3.14
