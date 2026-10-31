@@ -1,0 +1,4 @@
+b = a, then b[0] = 99: a is [1, 2, 3]
+c = copy of a, then c[0] = 0: a is [1, 2, 3]
+set_first(a) sets a[0] = -1: a is [-1, 2, 3]
+g = copy of grid, then g[0][0] = 1: grid is [[0, 0], [0, 0]]

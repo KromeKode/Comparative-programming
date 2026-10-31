@@ -1,0 +1,8 @@
+stock: apple=3 banana=5
+add cherry: apple=3 banana=5 cherry=7
+banana: 5
+durian: 0 (missing)
+apple += 2: apple=5 banana=5 cherry=7
+remove banana: apple=5 cherry=7
+has cherry: yes
+size: 2
