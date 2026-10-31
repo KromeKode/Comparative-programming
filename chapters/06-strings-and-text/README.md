@@ -1837,4 +1837,4 @@ point. Give it `zebra élan apple`, and `élan` moves from last place to second.
 ---
 
 Previous: [Chapter 5: Functions and closures](../05-functions-and-closures/) ·
-Next: Chapter 7: Built-in collections (coming soon)
+Next: [Chapter 7: Built-in collections](../07-built-in-collections/)
