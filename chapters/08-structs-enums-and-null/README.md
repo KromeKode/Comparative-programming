@@ -2505,4 +2505,4 @@ language that has an optional type.
 ---
 
 Previous: [Chapter 7: Built-in collections](../07-built-in-collections/) ·
-Next: Chapter 9: Memory model (coming soon)
+Next: [Chapter 9: Memory model](../09-memory-model/)
