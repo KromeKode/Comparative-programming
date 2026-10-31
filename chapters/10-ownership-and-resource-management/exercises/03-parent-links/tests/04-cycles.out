@@ -1,0 +1,13 @@
+made /a
+made /a/b
+made /a/b/c
+error: cannot move a into itself
+error: cannot move a into itself
+error: cannot move a into itself
+error: cannot move /
+moved c to /a/c
+a: b c
+b: (empty)
+/a/c
+error: cannot remove /
+freed 4 folders at exit

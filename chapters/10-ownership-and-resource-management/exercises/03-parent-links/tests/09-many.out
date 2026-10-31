@@ -1,0 +1,301 @@
+error: cannot remove /
+made /f1
+error: cannot remove /
+error: "/" already exists
+error: cannot move f1 into itself
+made /f3
+/f1
+/
+/: f1 f3
+moved f3 to /f1/f3
+f1: f3
+f1: f3
+made /f4
+/: f1 f4
+f4: (empty)
+made /f5
+/: f1 f4 f5
+made /f1/f6
+made /f7
+removed f5, freed 1 folder
+removed f1, freed 3 folders
+removed f4, freed 1 folder
+made /f8
+error: no folder "g23"
+made /f10
+/
+error: no folder "g26"
+made /f8/f12
+/f8/f12
+error: cannot move /
+made /f7/f13
+removed f12, freed 1 folder
+/f10
+/f8
+made /f8/f14
+made /f15
+error: cannot remove /
+made /f10/f16
+made /f7/f17
+removed f10, freed 2 folders
+made /f7/f17/f18
+error: cannot move f8 into itself
+made /f19
+f8: f14
+made /f8/f20
+made /f7/f17/f21
+made /f8/f14/f22
+made /f7/f23
+/f8/f14
+error: cannot move f7 into itself
+removed f22, freed 1 folder
+moved f17 to /f8/f20/f17
+f8: f14 f20
+moved f14 to /f8/f20/f14
+f18: (empty)
+error: "f14" already exists
+/f7
+made /f7/f13/f25
+made /f8/f20/f17/f26
+made /f8/f20/f14/f27
+moved f21 to /f21
+error: cannot move f20 into itself
+removed f14, freed 2 folders
+moved f20 to /f7/f23/f20
+f7: f13 f23
+f21: (empty)
+moved f15 to /f7/f15
+/f7/f13/f25
+made /f28
+removed f23, freed 5 folders
+/
+made /f7/f13/f25/f29
+/: f7 f8 f19 f21 f28
+error: cannot move f7 into itself
+made /f7/f30
+made /f7/f31
+made /f7/f13/f25/f32
+made /f7/f13/f25/f32/f33
+made /f8/f34
+f25: f29 f32
+/f7
+f30: (empty)
+made /f7/f13/f35
+made /f8/f36
+made /f8/f36/f37
+made /f38
+made /f8/f34/f39
+error: no folder "g87"
+removed f33, freed 1 folder
+made /f7/f13/f25/f41
+moved f28 to /f7/f15/f28
+error: no folder "g91"
+/f7/f13/f25/f32
+f29: (empty)
+f13: f25 f35
+made /f7/f30/f43
+removed f31, freed 1 folder
+f34: f39
+removed f8, freed 5 folders
+made /f7/f30/f44
+removed f38, freed 1 folder
+made /f7/f13/f45
+made /f7/f13/f35/f46
+moved f19 to /f7/f13/f19
+made /f7/f13/f25/f41/f47
+made /f48
+moved f43 to /f7/f13/f45/f43
+made /f7/f13/f35/f46/f49
+removed f44, freed 1 folder
+moved f30 to /f48/f30
+error: no folder "g110"
+made /f7/f15/f51
+removed f41, freed 2 folders
+error: cannot move f43 into itself
+f49: (empty)
+f49: (empty)
+moved f35 to /f7/f13/f25/f29/f35
+error: "f21" already exists
+error: cannot move /
+error: cannot move /
+removed f45, freed 2 folders
+f13: f25 f19
+made /f7/f15/f28/f53
+made /f7/f54
+moved f35 to /f35
+moved f54 to /f7/f15/f54
+removed f32, freed 1 folder
+made /f7/f13/f25/f55
+removed f49, freed 1 folder
+made /f35/f46/f56
+removed f7, freed 11 folders
+made /f35/f57
+moved f35 to /f21/f35
+f21: f35
+f46: f56
+f57: (empty)
+f30: (empty)
+/
+f48: f30
+moved f30 to /f30
+made /f21/f35/f58
+moved f48 to /f21/f35/f46/f48
+moved f48 to /f21/f35/f46/f48
+made /f21/f35/f59
+error: cannot remove /
+made /f21/f35/f60
+moved f58 to /f21/f35/f59/f58
+made /f21/f35/f59/f58/f61
+error: no folder "g148"
+made /f30/f63
+/f21/f35/f60
+error: cannot move f21 into itself
+f58: f61
+made /f21/f35/f46/f48/f64
+error: cannot move f35 into itself
+made /f21/f35/f46/f48/f64/f65
+made /f21/f35/f59/f58/f61/f66
+made /f21/f35/f46/f48/f67
+moved f64 to /f21/f35/f59/f58/f64
+made /f21/f35/f46/f48/f68
+error: cannot move /
+/f21/f35/f46/f56
+made /f21/f35/f59/f58/f64/f65/f69
+made /f30/f70
+made /f21/f35/f46/f48/f71
+made /f21/f35/f59/f58/f64/f72
+made /f21/f35/f59/f58/f61/f73
+/f21/f35/f46/f48/f67
+f21: f35
+made /f21/f35/f59/f74
+made /f21/f35/f59/f74/f75
+/f21
+f74: f75
+moved f57 to /f21/f35/f59/f58/f64/f57
+made /f21/f35/f59/f58/f64/f76
+removed f74, freed 2 folders
+made /f21/f35/f46/f48/f71/f77
+made /f30/f78
+error: "f69" already exists
+f48: f67 f68 f71
+moved f57 to /f21/f35/f59/f57
+moved f67 to /f21/f35/f67
+error: cannot move /
+removed f35, freed 20 folders
+error: no folder "g184"
+made /f30/f78/f81
+made /f21/f82
+made /f21/f82/f83
+/f21/f82/f83
+moved f78 to /f21/f82/f83/f78
+/f21/f82
+made /f21/f84
+made /f21/f82/f83/f78/f85
+made /f21/f82/f83/f86
+moved f85 to /f21/f82/f85
+moved f83 to /f21/f82/f83
+f84: (empty)
+removed f86, freed 1 folder
+made /f21/f84/f87
+moved f83 to /f30/f83
+made /f21/f84/f87/f88
+removed f83, freed 3 folders
+f82: f85
+made /f21/f82/f89
+error: cannot move f82 into itself
+removed f82, freed 3 folders
+f70: (empty)
+f70: (empty)
+made /f21/f84/f87/f88/f90
+made /f21/f84/f87/f91
+error: cannot remove /
+f30: f63 f70
+/f21
+error: cannot move f21 into itself
+/f30/f70
+made /f21/f84/f87/f88/f92
+/f30
+/f30/f70
+f21: f84
+made /f21/f84/f87/f88/f92/f93
+made /f21/f84/f87/f88/f92/f94
+/f21/f84/f87/f88
+moved f63 to /f21/f84/f87/f63
+f92: f93 f94
+made /f30/f70/f95
+made /f21/f84/f87/f88/f92/f94/f96
+made /f21/f84/f87/f88/f97
+made /f21/f84/f87/f88/f92/f94/f98
+moved f92 to /f30/f70/f92
+made /f30/f99
+made /f30/f70/f92/f93/f100
+moved f96 to /f30/f99/f96
+/: f21 f30
+moved f90 to /f30/f70/f92/f93/f100/f90
+made /f21/f84/f87/f101
+made /f21/f84/f87/f63/f102
+made /f103
+error: cannot move f84 into itself
+error: "f70" already exists
+moved f97 to /f30/f97
+removed f90, freed 1 folder
+made /f30/f99/f105
+made /f21/f84/f87/f101/f106
+moved f92 to /f103/f92
+made /f103/f92/f93/f100/f107
+/f30/f99
+moved f94 to /f21/f84/f87/f91/f94
+made /f103/f92/f93/f100/f107/f108
+made /f30/f70/f95/f109
+moved f107 to /f21/f84/f87/f91/f94/f98/f107
+made /f21/f84/f87/f91/f94/f98/f107/f110
+/f21/f84/f87
+made /f30/f111
+removed f109, freed 1 folder
+made /f21/f84/f87/f63/f112
+made /f30/f99/f105/f113
+made /f21/f84/f87/f91/f94/f114
+error: "f113" already exists
+made /f30/f116
+/f21/f84/f87/f91/f94/f98/f107/f108
+made /f21/f84/f87/f91/f94/f98/f107/f110/f117
+moved f94 to /f21/f94
+moved f112 to /f112
+moved f106 to /f30/f70/f106
+error: "f114" already exists
+f113: (empty)
+moved f97 to /f30/f70/f95/f97
+removed f100, freed 1 folder
+removed f98, freed 5 folders
+error: cannot move f70 into itself
+made /f21/f84/f119
+made /f30/f70/f120
+error: no folder "g272"
+removed f91, freed 1 folder
+made /f21/f84/f119/f122
+f87: f88 f63 f101
+error: no folder "g276"
+f95: f97
+made /f21/f124
+made /f21/f84/f119/f125
+f120: (empty)
+removed f95, freed 2 folders
+moved f112 to /f21/f94/f114/f112
+made /f21/f84/f87/f63/f102/f126
+error: "f120" already exists
+error: "f99" already exists
+made /f21/f84/f87/f101/f129
+moved f129 to /f30/f99/f105/f129
+made /f21/f84/f119/f125/f130
+made /f21/f84/f87/f101/f131
+made /f21/f132
+moved f124 to /f21/f94/f114/f124
+moved f130 to /f21/f130
+error: no folder "g293"
+f120: (empty)
+moved f70 to /f30/f116/f70
+removed f99, freed 5 folders
+f101: f131
+f88: (empty)
+f131: (empty)
+freed 28 folders at exit

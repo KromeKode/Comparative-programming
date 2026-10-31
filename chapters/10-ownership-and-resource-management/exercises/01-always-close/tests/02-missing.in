@@ -1,0 +1,7 @@
+cat ghost.txt
+copy ghost.txt copy.txt
+lock ghost.txt
+write real.txt one
+copy real.txt real.txt
+copy ghost.txt real.txt
+cat real.txt

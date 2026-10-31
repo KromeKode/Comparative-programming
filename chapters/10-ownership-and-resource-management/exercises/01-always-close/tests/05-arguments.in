@@ -1,0 +1,8 @@
+zap a.txt
+write
+cat
+cat a.txt b.txt
+copy a.txt
+copy a.txt b.txt c.txt
+lock
+lock a.txt b.txt

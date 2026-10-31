@@ -1,0 +1,14 @@
+made /a
+made /b
+made /c
+moved a to /b/a
+moved b to /c/b
+moved c to /c
+moved c to /c
+/: c
+/c/b/a
+made /c/b/a/d
+moved d to /d
+removed c, freed 3 folders
+/: d
+freed 2 folders at exit

@@ -1,0 +1,18 @@
+error: unknown command "cd"
+error: mkdir takes 2 names, got 0
+error: mkdir takes 2 names, got 1
+error: mkdir takes 2 names, got 3
+error: path takes 1 name, got 0
+error: ls takes 1 name, got 2
+error: rm takes 1 name, got 0
+error: mv takes 2 names, got 1
+error: no folder "ghost"
+made /x
+error: "x" already exists
+error: "/" already exists
+error: no folder "ghost"
+error: no folder "ghost"
+error: no folder "ghost"
+error: no folder "ghost"
+error: no folder "ghost"
+freed 2 folders at exit
