@@ -1,0 +1,3 @@
+a.txt: ok after 1 attempt
+b.txt: stopped: login refused
+downloaded 1, skipped 0, failed 1, not tried 2

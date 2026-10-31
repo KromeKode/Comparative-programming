@@ -1,0 +1,6 @@
+"3" -> 3
+"" -> error: empty input
+"-" -> error: no digits after the sign
+"x" -> error: invalid character 'x' at position 1
+"2147483648" -> error: too large, the maximum is 2147483647
+"-2147483648" -> -2147483648

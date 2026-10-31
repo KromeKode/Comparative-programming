@@ -1,0 +1,5 @@
+again.conf: 2 errors
+  line 1: port: "abc" is not a whole number
+  line 3: "port" is already set on line 1
+files loaded: 0 of 1
+syntax: 0, unknown key: 0, duplicate key: 1, bad value: 1, missing key: 0

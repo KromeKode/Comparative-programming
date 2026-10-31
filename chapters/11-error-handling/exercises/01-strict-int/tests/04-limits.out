@@ -1,0 +1,6 @@
+"2147483647" -> 2147483647
+"2147483648" -> error: too large, the maximum is 2147483647
+"-2147483648" -> -2147483648
+"-2147483649" -> error: too small, the minimum is -2147483648
+"4294967296" -> error: too large, the maximum is 2147483647
+"-4294967296" -> error: too small, the minimum is -2147483648

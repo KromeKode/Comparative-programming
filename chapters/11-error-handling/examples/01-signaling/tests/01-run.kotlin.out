@@ -1,0 +1,10 @@
+toInt:
+  "42" -> 42
+  "4x2" -> NumberFormatException: For input string: "4x2"
+  "" -> NumberFormatException: For input string: ""
+  "99999999999999999999" -> NumberFormatException: For input string: "99999999999999999999"
+toIntOrNull:
+  "42" -> 42
+  "4x2" -> null, so use a default: 0
+  "" -> null, so use a default: 0
+  "99999999999999999999" -> null, so use a default: 0

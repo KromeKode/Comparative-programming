@@ -1,0 +1,7 @@
+== full.conf
+name=my shop
+   port   =   00443
+debug = true
+
+    # a comment after spaces
+timeout = 3600

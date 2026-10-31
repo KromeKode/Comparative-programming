@@ -1,0 +1,19 @@
+== a.conf
+name = alpha
+port = 1
+== b.conf
+name = beta
+port = 65536
+timeout = 3601
+== c.conf
+name = gamma
+port = 65535
+debug = false
+timeout = 1
+== d.conf
+name = delta
+port = 2
+debug = TRUE
+size = 5
+port = 3
+oops

@@ -1,0 +1,7 @@
+values.conf: 4 errors
+  line 1: name: must not be empty
+  line 2: port: "80x" is not a whole number
+  line 3: debug: "yes" is not true or false
+  line 4: timeout: 0 is not between 1 and 3600
+files loaded: 0 of 1
+syntax: 0, unknown key: 0, duplicate key: 0, bad value: 4, missing key: 0
