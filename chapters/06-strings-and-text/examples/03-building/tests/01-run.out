@@ -1,0 +1,5 @@
+joined: apple, banana, cherry
+built: 1-2-3-4-5
+padded: [Ada     ] [      90]
+zero-padded: 00042
+two decimals: 3.14
