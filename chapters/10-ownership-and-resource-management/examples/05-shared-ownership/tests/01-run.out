@@ -1,0 +1,26 @@
+one owner:
+  make report
+  drop report
+two owners:
+  make doc
+  owners: 2
+  one owner let go, owners: 1
+  drop doc
+a weak pointer does not own:
+  make cache
+  weak can reach cache: yes
+  drop cache
+  weak can reach cache: no
+a cycle of owning links:
+  make a
+  make b
+  a and b went out of scope, and a still has 1 owner
+  break the cycle by hand:
+  drop b
+  drop a
+an owning link one way, a weak link back:
+  make a
+  make b
+  b's back link reaches a
+  drop a
+  drop b

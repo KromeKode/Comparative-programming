@@ -1,0 +1,17 @@
+cd /
+mkdir
+mkdir x
+mkdir x / y
+path
+ls a b
+rm
+mv x
+mkdir x ghost
+mkdir x /
+mkdir x /
+mkdir / x
+path ghost
+ls ghost
+rm ghost
+mv ghost x
+mv x ghost

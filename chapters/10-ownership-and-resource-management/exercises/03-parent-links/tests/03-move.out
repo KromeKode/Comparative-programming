@@ -1,0 +1,12 @@
+made /work
+made /home
+made /work/report
+made /work/report/draft
+moved report to /home/report
+/home/report/draft
+work: (empty)
+home: report
+moved draft to /draft
+/draft
+report: (empty)
+freed 5 folders at exit

@@ -1,0 +1,11 @@
+mkdir a /
+mkdir b a
+mkdir c b
+mkdir d a
+rm b
+ls a
+path c
+rm a
+ls /
+mkdir a /
+path a

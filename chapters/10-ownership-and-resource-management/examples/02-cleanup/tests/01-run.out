@@ -1,0 +1,17 @@
+job 1: everything works
+  open input
+  open output
+  copy input to output
+  close output
+  close input
+  job 1 done
+job 2: opening output fails
+  open input
+  close input
+  job 2 failed: cannot open output
+job 3: copying fails
+  open input
+  open output
+  close output
+  close input
+  job 3 failed: disk full

@@ -1,0 +1,10 @@
+error: unknown command "play"
+error: add takes 2 words, got 0
+error: add takes 2 words, got 1
+error: add takes 2 words, got 3
+error: remove takes 1 word, got 0
+error: rename takes 2 words, got 1
+error: show takes 0 words, got 1
+error: clear takes 0 words, got 1
+(empty)
+blocks still allocated: 0

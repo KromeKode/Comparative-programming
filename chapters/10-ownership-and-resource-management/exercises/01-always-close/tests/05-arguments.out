@@ -1,0 +1,9 @@
+error: unknown command "zap"
+error: write needs a file name
+error: cat takes 1 name, got 0
+error: cat takes 1 name, got 2
+error: copy takes 2 names, got 1
+error: copy takes 2 names, got 3
+error: lock takes 1 name, got 0
+error: lock takes 1 name, got 2
+files still open: 0

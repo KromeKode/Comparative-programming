@@ -1,0 +1,12 @@
+error: no file "ghost.txt"
+error: no file "ghost.txt"
+error: no file "ghost.txt"
+open real.txt
+close real.txt
+wrote 1 line
+error: cannot copy "real.txt" onto itself
+error: no file "ghost.txt"
+open real.txt
+  one
+close real.txt
+files still open: 0

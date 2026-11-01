@@ -1,0 +1,27 @@
+locals go in the reverse order:
+  make a
+  make b
+  make c
+  drop c
+  drop b
+  drop a
+an inner scope ends first:
+  make outer
+  make inner
+  drop inner
+  inner is gone, outer is not
+  drop outer
+a struct, then its members:
+  make pair.first
+  make pair.second
+  drop pair
+  drop pair.second
+  drop pair.first
+a temporary lasts until the end of its statement:
+  make temporary
+  drop temporary
+  the temporary is gone
+ending a lifetime early:
+  make early
+  drop early
+  early is gone before its scope ends

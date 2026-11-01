@@ -1,0 +1,12 @@
+two owners:
+  make doc
+  owners: 2
+  one owner let go, owners: 1
+  drop doc
+a cycle of owning links:
+  make a
+  make b
+  both owners let go, and a and b still count 1 owner each
+  break the cycle by hand:
+  drop b
+  drop a

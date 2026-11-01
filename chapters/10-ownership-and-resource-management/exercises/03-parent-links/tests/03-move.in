@@ -1,0 +1,11 @@
+mkdir work /
+mkdir home /
+mkdir report work
+mkdir draft report
+mv report home
+path draft
+ls work
+ls home
+mv draft /
+path draft
+ls report

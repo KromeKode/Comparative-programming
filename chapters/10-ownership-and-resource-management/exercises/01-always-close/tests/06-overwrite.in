@@ -1,0 +1,7 @@
+write a.txt old old old
+write b.txt new
+copy b.txt a.txt
+cat a.txt
+write a.txt
+cat a.txt
+write one.txt only

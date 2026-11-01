@@ -1,0 +1,12 @@
+made /a
+made /a/b
+made /a/b/c
+made /a/d
+removed b, freed 2 folders
+a: d
+error: no folder "c"
+removed a, freed 2 folders
+/: (empty)
+made /a
+/a
+freed 2 folders at exit

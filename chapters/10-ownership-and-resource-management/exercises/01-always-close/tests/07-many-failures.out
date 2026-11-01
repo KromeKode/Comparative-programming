@@ -1,0 +1,32 @@
+open src.txt
+close src.txt
+wrote 2 lines
+open safe.txt
+close safe.txt
+wrote 1 line
+locked safe.txt
+open src.txt
+close src.txt
+error: "safe.txt" is read-only
+open src.txt
+close src.txt
+error: "safe.txt" is read-only
+open src.txt
+close src.txt
+error: "safe.txt" is read-only
+open src.txt
+open out.txt
+close out.txt
+close src.txt
+copied 2 lines
+error: no file "ghost.txt"
+open out.txt
+open again.txt
+close again.txt
+close out.txt
+copied 2 lines
+open again.txt
+  hello
+  world
+close again.txt
+files still open: 0

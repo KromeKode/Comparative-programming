@@ -1,0 +1,11 @@
+clone then move: b = [1, 2, 3], c = [1, 2, 3]
+after the move, q = 7, and p is gone
+keep(big.clone()) = 5
+keep(big) = 5, and big is gone
+with_six gave back [4, 5, 6]
+take: slot = None, job = Some("job"), list = [], old = [1, 2]
+a value is dropped by its last owner, once:
+  moved from first to second
+  drop token
+  first's scope ends, and nothing is dropped twice
+into_raw, then from_raw: on the heap

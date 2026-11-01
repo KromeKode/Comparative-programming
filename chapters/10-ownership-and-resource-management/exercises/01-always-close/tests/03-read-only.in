@@ -1,0 +1,9 @@
+write rules.txt be kind
+lock rules.txt
+lock rules.txt
+write rules.txt be loud
+copy rules.txt rules2.txt
+write notes.txt draft
+copy notes.txt rules.txt
+cat rules.txt
+cat rules2.txt

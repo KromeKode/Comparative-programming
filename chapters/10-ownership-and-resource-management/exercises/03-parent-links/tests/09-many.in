@@ -1,0 +1,300 @@
+rm /
+mkdir f1 /
+rm /
+mkdir / /
+mv f1 f1
+mkdir f3 /
+path f1
+path /
+ls /
+mv f3 f1
+ls f1
+ls f1
+mkdir f4 /
+ls /
+ls f4
+mkdir f5 /
+ls /
+mkdir f6 f1
+mkdir f7 /
+rm f5
+rm f1
+rm f4
+mkdir f8 /
+mkdir f9 g23
+mkdir f10 /
+path /
+mkdir f11 g26
+mkdir f12 f8
+path f12
+mv / f8
+mkdir f13 f7
+rm f12
+path f10
+path f8
+mkdir f14 f8
+mkdir f15 /
+rm /
+mkdir f16 f10
+mkdir f17 f7
+rm f10
+mkdir f18 f17
+mv f8 f14
+mkdir f19 /
+ls f8
+mkdir f20 f8
+mkdir f21 f17
+mkdir f22 f14
+mkdir f23 f7
+path f14
+mv f7 f17
+rm f22
+mv f17 f20
+ls f8
+mv f14 f20
+ls f18
+mkdir f14 f8
+path f7
+mkdir f25 f13
+mkdir f26 f17
+mkdir f27 f14
+mv f21 /
+mv f20 f27
+rm f14
+mv f20 f23
+ls f7
+ls f21
+mv f15 f7
+path f25
+mkdir f28 /
+rm f23
+path /
+mkdir f29 f25
+ls /
+mv f7 f29
+mkdir f30 f7
+mkdir f31 f7
+mkdir f32 f25
+mkdir f33 f32
+mkdir f34 f8
+ls f25
+path f7
+ls f30
+mkdir f35 f13
+mkdir f36 f8
+mkdir f37 f36
+mkdir f38 /
+mkdir f39 f34
+mkdir f40 g87
+rm f33
+mkdir f41 f25
+mv f28 f15
+mkdir f42 g91
+path f32
+ls f29
+ls f13
+mkdir f43 f30
+rm f31
+ls f34
+rm f8
+mkdir f44 f30
+rm f38
+mkdir f45 f13
+mkdir f46 f35
+mv f19 f13
+mkdir f47 f41
+mkdir f48 /
+mv f43 f45
+mkdir f49 f46
+rm f44
+mv f30 f48
+mkdir f50 g110
+mkdir f51 f15
+rm f41
+mv f43 f43
+ls f49
+ls f49
+mv f35 f29
+mkdir f21 f21
+mv / f30
+mv / f29
+rm f45
+ls f13
+mkdir f53 f28
+mkdir f54 f7
+mv f35 /
+mv f54 f15
+rm f32
+mkdir f55 f25
+rm f49
+mkdir f56 f46
+rm f7
+mkdir f57 f35
+mv f35 f21
+ls f21
+ls f46
+ls f57
+ls f30
+path /
+ls f48
+mv f30 /
+mkdir f58 f35
+mv f48 f46
+mv f48 f46
+mkdir f59 f35
+rm /
+mkdir f60 f35
+mv f58 f59
+mkdir f61 f58
+mkdir f62 g148
+mkdir f63 f30
+path f60
+mv f21 f58
+ls f58
+mkdir f64 f48
+mv f35 f61
+mkdir f65 f64
+mkdir f66 f61
+mkdir f67 f48
+mv f64 f58
+mkdir f68 f48
+mv / f46
+path f56
+mkdir f69 f65
+mkdir f70 f30
+mkdir f71 f48
+mkdir f72 f64
+mkdir f73 f61
+path f67
+ls f21
+mkdir f74 f59
+mkdir f75 f74
+path f21
+ls f74
+mv f57 f64
+mkdir f76 f64
+rm f74
+mkdir f77 f71
+mkdir f78 f30
+mkdir f69 g178
+ls f48
+mv f57 f59
+mv f67 f35
+mv / f56
+rm f35
+mkdir f80 g184
+mkdir f81 f78
+mkdir f82 f21
+mkdir f83 f82
+path f83
+mv f78 f83
+path f82
+mkdir f84 f21
+mkdir f85 f78
+mkdir f86 f83
+mv f85 f82
+mv f83 f82
+ls f84
+rm f86
+mkdir f87 f84
+mv f83 f30
+mkdir f88 f87
+rm f83
+ls f82
+mkdir f89 f82
+mv f82 f82
+rm f82
+ls f70
+ls f70
+mkdir f90 f88
+mkdir f91 f87
+rm /
+ls f30
+path f21
+mv f21 f21
+path f70
+mkdir f92 f88
+path f30
+path f70
+ls f21
+mkdir f93 f92
+mkdir f94 f92
+path f88
+mv f63 f87
+ls f92
+mkdir f95 f70
+mkdir f96 f94
+mkdir f97 f88
+mkdir f98 f94
+mv f92 f70
+mkdir f99 f30
+mkdir f100 f93
+mv f96 f99
+ls /
+mv f90 f100
+mkdir f101 f87
+mkdir f102 f63
+mkdir f103 /
+mv f84 f101
+mkdir f70 f90
+mv f97 f30
+rm f90
+mkdir f105 f99
+mkdir f106 f101
+mv f92 f103
+mkdir f107 f100
+path f99
+mv f94 f91
+mkdir f108 f107
+mkdir f109 f95
+mv f107 f98
+mkdir f110 f107
+path f87
+mkdir f111 f30
+rm f109
+mkdir f112 f63
+mkdir f113 f105
+mkdir f114 f94
+mkdir f113 f107
+mkdir f116 f30
+path f108
+mkdir f117 f110
+mv f94 f21
+mv f112 /
+mv f106 f70
+mkdir f114 f103
+ls f113
+mv f97 f95
+rm f100
+rm f98
+mv f70 f97
+mkdir f119 f84
+mkdir f120 f70
+mkdir f121 g272
+rm f91
+mkdir f122 f119
+ls f87
+mkdir f123 g276
+ls f95
+mkdir f124 f21
+mkdir f125 f119
+ls f120
+rm f95
+mv f112 f114
+mkdir f126 f102
+mkdir f120 f88
+mkdir f99 f101
+mkdir f129 f101
+mv f129 f105
+mkdir f130 f125
+mkdir f131 f101
+mkdir f132 f21
+mv f124 f114
+mv f130 f21
+mkdir f133 g293
+ls f120
+mv f70 f116
+rm f99
+ls f101
+ls f88
+ls f131

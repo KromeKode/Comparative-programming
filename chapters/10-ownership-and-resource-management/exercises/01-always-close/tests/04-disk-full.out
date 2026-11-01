@@ -1,0 +1,25 @@
+open big.txt
+close big.txt
+wrote 8 lines
+open more.txt
+close more.txt
+error: disk full
+open more.txt
+close more.txt
+open big.txt
+close big.txt
+wrote 1 line
+open more.txt
+close more.txt
+wrote 4 lines
+open more.txt
+open half.txt
+close half.txt
+close more.txt
+error: disk full
+open half.txt
+  a
+  b
+  c
+close half.txt
+files still open: 0

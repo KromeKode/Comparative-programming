@@ -1,0 +1,5 @@
+longest("apple", "fig") = apple
+words of "the quick brown fox": [the] [quick] [brown] [fox]
+"quick" starts 4 bytes into the text
+first = 90
+after the push, scores = [90, 85, 70]

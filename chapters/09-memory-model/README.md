@@ -1761,4 +1761,4 @@ are still possible, and why do the others go away?
 ---
 
 Previous: [Chapter 8: Structs, enums, and null](../08-structs-enums-and-null/) ·
-Next: Chapter 10: Ownership and resource management (coming soon)
+Next: [Chapter 10: Ownership and resource management](../10-ownership-and-resource-management/)
