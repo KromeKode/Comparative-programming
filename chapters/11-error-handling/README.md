@@ -3091,4 +3091,4 @@ Python or JavaScript, and compare.
 ---
 
 Previous: [Chapter 10: Ownership and resource management](../10-ownership-and-resource-management/) ·
-Next: Chapter 12: Abstraction and OOP (coming soon)
+Next: [Chapter 12: Abstraction and OOP](../12-abstraction-and-oop/)

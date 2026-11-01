@@ -1,0 +1,4 @@
+upper: make every letter uppercase
+lower: make every letter lowercase
+reverse: reverse the order of the words
+censor WORD: hide WORD wherever it appears

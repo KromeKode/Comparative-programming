@@ -1,0 +1,11 @@
+add alpha
+add beta
+add gamma
+delete 2
+show
+undo
+show
+replace 1 ALPHA again
+show
+undo
+show

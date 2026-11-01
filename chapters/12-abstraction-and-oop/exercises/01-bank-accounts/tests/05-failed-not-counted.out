@@ -1,0 +1,7 @@
+erin: opened a savings account
+erin: deposited 50, balance 50
+error: erin: insufficient funds
+error: erin: insufficient funds
+erin: withdrew 20, balance 30
+erin: withdrew 30, balance 0
+error: erin: only 2 withdrawals a month

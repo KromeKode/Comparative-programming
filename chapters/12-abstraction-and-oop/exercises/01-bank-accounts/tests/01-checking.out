@@ -1,0 +1,7 @@
+alice: opened a checking account
+alice: deposited 100, balance 100
+alice: withdrew 150, balance -50
+error: alice: over the overdraft limit of 100
+alice: withdrew 50, balance -100
+error: alice: over the overdraft limit of 100
+alice: fee 5, balance -105

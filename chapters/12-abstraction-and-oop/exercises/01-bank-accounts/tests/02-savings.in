@@ -1,0 +1,8 @@
+open savings bob
+deposit bob 250
+withdraw bob 300
+withdraw bob 10
+withdraw bob 10
+withdraw bob 10
+month
+withdraw bob 10

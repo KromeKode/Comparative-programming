@@ -1,0 +1,8 @@
+bob: opened a savings account
+bob: deposited 250, balance 250
+error: bob: insufficient funds
+bob: withdrew 10, balance 240
+bob: withdrew 10, balance 230
+error: bob: only 2 withdrawals a month
+bob: interest 2, balance 232
+bob: withdrew 10, balance 222

@@ -1,0 +1,7 @@
+
+   add    hello     world  
+ show
+
+  replace   1   good    bye 
+ show 
+  undo  

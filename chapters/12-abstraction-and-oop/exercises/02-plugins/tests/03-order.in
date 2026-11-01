@@ -1,0 +1,7 @@
+add reverse
+add upper
+pipeline
+run one two three
+add lower
+run Mixed CASE words
+pipeline

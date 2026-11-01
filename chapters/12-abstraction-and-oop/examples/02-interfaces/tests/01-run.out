@@ -1,0 +1,15 @@
+== csv
+name,score
+ada,90
+grace,85
+alan,78
+== json
+[{"name":"ada","score":90},{"name":"grace","score":85},{"name":"alan","score":78}]
+== markdown
+| name | score |
+| --- | --- |
+| ada | 90 |
+| grace | 85 |
+| alan | 78 |
+== summary
+3 rows, top score 90 by ada
