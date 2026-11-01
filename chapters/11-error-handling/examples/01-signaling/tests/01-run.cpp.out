@@ -1,0 +1,10 @@
+std::stoi:
+  "42" -> 42
+  "4x2" -> 4 (it used 1 of 3 characters)
+  "" -> std::invalid_argument: stoi
+  "99999999999999999999" -> std::out_of_range: stoi
+std::from_chars:
+  "42" -> 42
+  "4x2" -> 4, with characters left over
+  "" -> error: Invalid argument
+  "99999999999999999999" -> error: Numerical result out of range

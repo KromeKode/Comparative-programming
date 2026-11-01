@@ -1,0 +1,10 @@
+int:
+  '42' -> 42
+  '4x2' -> ValueError: invalid literal for int() with base 10: '4x2'
+  '' -> ValueError: invalid literal for int() with base 10: ''
+  '99999999999999999999' -> 99999999999999999999
+str.isdigit:
+  '42' -> True
+  '4x2' -> False
+  '' -> False
+  '99999999999999999999' -> True

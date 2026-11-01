@@ -1,0 +1,20 @@
+a.conf: ok
+  name = alpha
+  port = 1
+  debug = false
+  timeout = 30
+b.conf: 2 errors
+  line 2: port: 65536 is not between 1 and 65535
+  line 3: timeout: 3601 is not between 1 and 3600
+c.conf: ok
+  name = gamma
+  port = 65535
+  debug = false
+  timeout = 1
+d.conf: 4 errors
+  line 3: debug: "TRUE" is not true or false
+  line 4: unknown key "size"
+  line 5: "port" is already set on line 2
+  line 6: expected "key = value"
+files loaded: 2 of 4
+syntax: 1, unknown key: 1, duplicate key: 1, bad value: 3, missing key: 0

@@ -1,0 +1,6 @@
+numbers[5]: panicked: index out of bounds: the len is 3 but the index is 5
+10 / zero: panicked: attempt to divide by zero
+find_user(7).unwrap().name: panicked: called `Option::unwrap()` on a `None` value
+assert!(numbers.len() == 4): panicked: assertion failed: numbers.len() == 4
+numbers.get(5): None
+10.checked_div(zero): None

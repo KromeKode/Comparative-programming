@@ -1,0 +1,3 @@
+a.txt timeout
+b.txt busy ok
+c.txt ok timeout

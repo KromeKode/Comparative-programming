@@ -1,0 +1,9 @@
+strconv.Atoi:
+  "42" -> 42
+  "4x2" -> error: strconv.Atoi: parsing "4x2": invalid syntax
+  "" -> error: strconv.Atoi: parsing "": invalid syntax
+  "99999999999999999999" -> error: strconv.Atoi: parsing "99999999999999999999": value out of range
+errors.Is:
+  "4x2" -> syntax: true, range: false
+  "" -> syntax: true, range: false
+  "99999999999999999999" -> syntax: false, range: true

@@ -1,0 +1,8 @@
+== odd.conf
+name = a = b
+  port=8080  
+debug =    false
+== odder.conf
+name = c
+port = 8 0
+timeout = +30

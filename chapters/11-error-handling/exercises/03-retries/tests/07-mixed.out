@@ -1,0 +1,10 @@
+index.html: ok after 1 attempt
+style.css: timed out, retrying in 1s
+style.css: ok after 2 attempts
+logo.png: skipped: not found
+script.js: server busy, retrying in 1s
+script.js: server busy, retrying in 2s
+script.js: failed: gave up after 3 attempts: server busy
+font.woff: timed out, retrying in 1s
+font.woff: stopped: login refused
+downloaded 2, skipped 1, failed 2, not tried 2

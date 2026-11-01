@@ -1,0 +1,9 @@
+parse_long, built on strtol:
+  "42" -> 42
+  "4x2" -> error: extra characters after the number
+  "" -> error: no digits
+  "99999999999999999999" -> error: out of range
+atoi:
+  "42" -> 42
+  "4x2" -> 4
+  "" -> 0

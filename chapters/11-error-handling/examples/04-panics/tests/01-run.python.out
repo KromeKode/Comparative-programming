@@ -1,0 +1,4 @@
+numbers[5]: IndexError: list index out of range
+10 // zero: ZeroDivisionError: integer division or modulo by zero
+find_user(7).name: AttributeError: 'NoneType' object has no attribute 'name'
+assert len(numbers) == 4: AssertionError: expected 4 numbers

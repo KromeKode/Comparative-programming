@@ -1,0 +1,5 @@
+numbers[5]: ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 3
+10 / zero: ArithmeticException: / by zero
+findUser(7)!!.name: NullPointerException
+check(numbers.size == 4): IllegalStateException: expected 4 numbers
+numbers.getOrNull(5): null

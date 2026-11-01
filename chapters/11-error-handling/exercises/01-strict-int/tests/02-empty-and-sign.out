@@ -1,0 +1,4 @@
+"" -> error: empty input
+"+" -> error: no digits after the sign
+"-" -> error: no digits after the sign
+"5" -> 5

@@ -1,0 +1,7 @@
+one file at a time:
+  good.txt -> 6
+  bad.txt -> error: bad.txt: line 2: "five" is not a number
+  missing.txt -> error: missing.txt: no such file
+several files, where a missing file counts as 0:
+  good.txt + missing.txt -> 6
+  good.txt + bad.txt -> error: bad.txt: line 2: "five" is not a number

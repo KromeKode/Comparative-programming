@@ -2133,4 +2133,4 @@ it hold `Rc` or `Weak`? Try both, and watch what `rm` reports.
 ---
 
 Previous: [Chapter 9: Memory model](../09-memory-model/) ·
-Next: Chapter 11: Error handling (coming soon)
+Next: [Chapter 11: Error handling](../11-error-handling/)

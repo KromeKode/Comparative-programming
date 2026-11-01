@@ -1,0 +1,7 @@
+a.txt: timed out, retrying in 1s
+a.txt: timed out, retrying in 2s
+a.txt: failed: gave up after 3 attempts: timed out
+b.txt: server busy, retrying in 1s
+b.txt: ok after 2 attempts
+c.txt: ok after 1 attempt
+downloaded 2, skipped 0, failed 1, not tried 0

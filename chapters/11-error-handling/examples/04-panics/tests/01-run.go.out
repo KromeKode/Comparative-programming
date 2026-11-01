@@ -1,0 +1,4 @@
+numbers[5]: panic: runtime error: index out of range [5] with length 3
+10 / zero: panic: runtime error: integer divide by zero
+findUser(7).Name: panic: runtime error: invalid memory address or nil pointer dereference
+len(numbers) != 4: panic: expected 4 numbers

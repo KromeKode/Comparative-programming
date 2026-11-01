@@ -1,0 +1,4 @@
+numbers[5]: undefined
+10 / zero: Infinity
+findUser(7).name: TypeError: Cannot read properties of undefined (reading 'name')
+assert(numbers.length === 4): AssertionError: expected 4 numbers

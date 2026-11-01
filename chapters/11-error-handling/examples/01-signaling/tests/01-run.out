@@ -1,0 +1,15 @@
+Number:
+  "42" -> 42
+  "4x2" -> NaN
+  "" -> 0
+  "99999999999999999999" -> 100000000000000000000
+parseInt:
+  "42" -> 42
+  "4x2" -> 4
+  "" -> NaN
+  "99999999999999999999" -> 100000000000000000000
+parseInteger:
+  "42" -> 42
+  "4x2" -> SyntaxError: not an integer: "4x2"
+  "" -> SyntaxError: not an integer: ""
+  "99999999999999999999" -> RangeError: too large to be exact: 99999999999999999999

@@ -1,0 +1,10 @@
+big.conf: 2 errors
+  line 2: port: 99999999999999999999 is not between 1 and 65535
+  line 3: timeout: "-5" is not a whole number
+zeros.conf: ok
+  name = zeros
+  port = 80
+  debug = false
+  timeout = 7
+files loaded: 1 of 2
+syntax: 0, unknown key: 0, duplicate key: 0, bad value: 2, missing key: 0

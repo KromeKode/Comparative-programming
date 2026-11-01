@@ -1,0 +1,7 @@
+repeat.conf: 4 errors
+  line 2: unknown key "colour"
+  line 4: "name" is already set on line 1
+  line 5: unknown key "Port"
+  line 6: "port" is already set on line 3
+files loaded: 0 of 1
+syntax: 0, unknown key: 2, duplicate key: 2, bad value: 0, missing key: 0

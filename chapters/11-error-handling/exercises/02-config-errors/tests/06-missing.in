@@ -1,0 +1,10 @@
+== nothing.conf
+# only a comment
+== half.conf
+port = 80
+== bad-port.conf
+name = demo
+port = seventy
+== mixed.conf
+colour = red
+port = 80

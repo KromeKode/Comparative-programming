@@ -1,0 +1,3 @@
+numbers.at(5): threw std::out_of_range
+find_user(7).value().name: threw std::bad_optional_access
+10 / zero: skipped, because zero is 0

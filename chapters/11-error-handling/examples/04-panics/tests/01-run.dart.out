@@ -1,0 +1,6 @@
+numbers[5]: RangeError (length): Invalid value: Not in inclusive range 0..2: 5
+10 ~/ zero: IntegerDivisionByZeroException
+10 / zero: Infinity
+findUser(7)!.name: TypeError: Null check operator used on a null value
+assert(numbers.length == 4): passed
+numbers.elementAtOrNull(5): null

@@ -1,0 +1,12 @@
+nothing.conf: 2 errors
+  missing key "name"
+  missing key "port"
+half.conf: 1 error
+  missing key "name"
+bad-port.conf: 1 error
+  line 2: port: "seventy" is not a whole number
+mixed.conf: 2 errors
+  line 1: unknown key "colour"
+  missing key "name"
+files loaded: 0 of 4
+syntax: 0, unknown key: 1, duplicate key: 0, bad value: 1, missing key: 4
