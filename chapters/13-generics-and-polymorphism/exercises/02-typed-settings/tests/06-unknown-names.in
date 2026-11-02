@@ -1,0 +1,5 @@
+set colour blue
+get colour
+reset colour
+set Volume 3
+get volume

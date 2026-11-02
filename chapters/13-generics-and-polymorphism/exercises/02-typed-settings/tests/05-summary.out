@@ -1,0 +1,9 @@
+guest hears the sound at 50%
+volume = 11
+guest hears the sound at 110%
+name = Ada Lovelace
+muted = true
+Ada Lovelace has muted the sound
+muted = false
+volume = 0
+Ada Lovelace hears the sound at 0%

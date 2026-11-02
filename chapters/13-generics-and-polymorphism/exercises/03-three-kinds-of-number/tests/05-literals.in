@@ -1,0 +1,12 @@
+int +3
+int 007
+int 1/2
+frac 4/6
+frac -0/5
+frac 0/0
+frac 1/0
+frac -6/-4
+frac 1/+2
+frac 1 / 2
+mod7 3.5
+int 1e3

@@ -1,0 +1,9 @@
+volume = 5 (default)
+muted = false (default)
+name = guest (default)
+tags = [] (default)
+volume = 5
+muted = false
+name = guest
+tags = []
+guest hears the sound at 50%
