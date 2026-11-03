@@ -1,0 +1,15 @@
+volume = 5
+name = guest
+tags = [one]
+volume = 5 (default)
+muted = false (default)
+name = guest (default)
+tags = [one]
+name = true
+volume = 7
+volume = 7
+volume = 0
+volume = 0
+muted = false (default)
+name = true
+tags = [one]

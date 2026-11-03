@@ -3534,4 +3534,4 @@ what had to change in each.
 ---
 
 Previous: [Chapter 11: Error handling](../11-error-handling/) ·
-Next: Chapter 13: Generics and polymorphism (coming soon)
+Next: [Chapter 13: Generics and polymorphism](../13-generics-and-polymorphism/)

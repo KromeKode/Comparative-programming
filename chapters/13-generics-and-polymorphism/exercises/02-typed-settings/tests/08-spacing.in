@@ -1,0 +1,7 @@
+
+set   name   Ada    King
+
+set tags   x   y  z
+get  name
+get tags
+list

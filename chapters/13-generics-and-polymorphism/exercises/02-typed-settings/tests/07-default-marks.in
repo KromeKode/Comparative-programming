@@ -1,0 +1,9 @@
+set volume 5
+set name guest
+set tags one
+list
+set name true
+set volume 007
+get volume
+set volume -0
+list

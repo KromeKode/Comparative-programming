@@ -1,0 +1,7 @@
+set volume 7
+set muted true
+set name Ada
+set tags red green
+get volume
+get tags
+list

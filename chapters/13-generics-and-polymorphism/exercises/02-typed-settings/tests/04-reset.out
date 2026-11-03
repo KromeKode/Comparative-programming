@@ -1,0 +1,11 @@
+volume = 9
+name = Grace
+volume = 5
+name = guest
+muted = false
+tags = [a]
+tags = []
+volume = 5 (default)
+muted = false (default)
+name = guest (default)
+tags = [] (default)

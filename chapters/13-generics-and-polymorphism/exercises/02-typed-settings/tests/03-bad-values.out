@@ -1,0 +1,13 @@
+error: volume needs a whole number, not "loud"
+error: volume needs a whole number, not "1.5"
+error: muted needs true or false, not "yes"
+error: muted needs true or false, not "True"
+error: volume needs a whole number, not "3000000000"
+error: volume needs a whole number, not "-2147483649"
+volume = 2147483647
+volume = -2147483648
+error: volume needs a whole number, not "+3"
+volume = -2147483648
+muted = false (default)
+name = guest (default)
+tags = [] (default)

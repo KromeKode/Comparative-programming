@@ -1,0 +1,12 @@
+error: bad token "+3"
+7
+error: bad token "1/2"
+2/3
+0
+error: bad token "0/0"
+error: bad token "1/0"
+error: bad token "-6/-4"
+error: bad token "1/+2"
+error: not enough numbers
+error: bad token "3.5"
+error: bad token "1e3"

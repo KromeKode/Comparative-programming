@@ -1,0 +1,9 @@
+int 1 2 + 3 *
+int 10 4 -
+int 4 10 -
+int 7 2 /
+int 7 -2 /
+int -7 2 /
+int -7 -2 /
+int 6 3 /
+int 42

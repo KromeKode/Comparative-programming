@@ -1,0 +1,10 @@
+set volume loud
+set volume 1.5
+set muted yes
+set muted True
+set volume 3000000000
+set volume -2147483649
+set volume 2147483647
+set volume -2147483648
+set volume +3
+list

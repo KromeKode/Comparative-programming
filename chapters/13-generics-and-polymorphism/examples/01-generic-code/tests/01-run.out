@@ -1,0 +1,7 @@
+numbers: popped 4, top is 1, 2 left
+words: popped fig, top is pear, 1 left
+empty: popped none, top is none, 0 left
+largest number: 5
+largest word: pear
+largest of nothing: none
+(7, seven) swapped is (seven, 7)

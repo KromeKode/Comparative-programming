@@ -1,0 +1,8 @@
+set volume 9
+set name Grace
+reset volume
+reset name
+reset muted
+set tags a
+reset tags
+list
