@@ -2816,4 +2816,4 @@ Then compare the size of the compiled program before and after in C++ or Rust.
 ---
 
 Previous: [Chapter 12: Abstraction and OOP](../12-abstraction-and-oop/) ·
-Next: Chapter 14: Iterators and functional style (coming soon)
+Next: [Chapter 14: Iterators and functional style](../14-iterators-and-functional-style/)
