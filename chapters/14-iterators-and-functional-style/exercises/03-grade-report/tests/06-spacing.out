@@ -1,0 +1,7 @@
+subjects:
+  art: average 83, best 91 (ada)
+  math: average 70, best 70 (ada)
+ranking:
+  1. ada 161
+  2. bob 75
+passed everything: ada, bob

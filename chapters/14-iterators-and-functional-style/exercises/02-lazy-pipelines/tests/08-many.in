@@ -1,0 +1,60 @@
+range -17 11 | skip 4 | takewhile above 73
+range 57 104 | step 1 | takewhile prime | takewhile prime
+range 50 66 | take 10
+range -9 -11 | map add -6 | map negate | step 4 | dropwhile above 54 | take 1
+range 57 68 | take 10 | skip 5 | filter above 90 | take 10 | count
+range 49 73 | step 3 | take 4 | map square | sum
+range -27 -10 | dropwhile below 67 | take 1 | dropwhile odd | take 6 | dropwhile above 19
+range 46 55 | dropwhile above 30 | step 4 | sum
+range 32 63 | dropwhile above -18 | dropwhile below 24 | takewhile prime | takewhile odd | count
+range 2 11 | map add -8 | map add -9 | take 12
+range 2 13
+range -5 -8 | takewhile prime | sum
+range 47 86 | skip 12 | takewhile below 51
+range -10 12 | dropwhile above 29 | take 8
+range 10 69 | map mul 2 | dropwhile even | takewhile odd | filter odd | count
+range 27 40 | dropwhile even | takewhile below 27 | dropwhile above 33 | filter odd | sum
+range 52 94 | skip 8 | skip 0 | take 6 | dropwhile prime
+range 16 20 | skip 10 | take 1 | step 1 | dropwhile even | step 2 | count
+range -25 -11 | take 2 | map mul 0 | skip 8 | sum
+range 4 32 | skip 9 | skip 8 | sum
+range -30 12
+range 20 65 | takewhile prime | map add -1 | take 12
+range 9 33 | take 7 | map add -7 | take 6 | step 4 | count
+range -5 -5 | step 4 | filter below 84 | map negate | sum
+range 1 9 | step 1 | map add -3 | step 4
+range -22 -16 | skip 2 | skip 5 | dropwhile above 68 | map negate | step 3
+range 38 74 | count
+range -13 19 | takewhile odd | map add 7 | dropwhile prime
+range -8 5 | sum
+range -14 12 | step 4 | take 7
+range 14 33 | filter below 90 | skip 5
+range 36 88 | count
+range 4 22 | filter odd | map negate
+range 6 59
+range -16 37 | step 1 | skip 8 | step 2 | map negate
+range 45 90 | take 1 | count
+range -15 -8 | map negate | filter odd | dropwhile prime | dropwhile prime | map add 7 | count
+range -18 24
+range 10 8
+range -5 23 | map negate | takewhile odd | step 1 | dropwhile above 60
+range 41 93 | step 4
+range 1 35 | filter even | sum
+range -4 11 | dropwhile odd | sum
+range 56 92
+range 41 68 | takewhile even
+range -7 -10 | step 4 | skip 8 | takewhile odd | skip 0
+range -11 44 | skip 11
+range -5 31
+range 21 21 | take 5 | dropwhile below 17 | takewhile even
+range -29 11 | sum
+range 26 55 | dropwhile above 99 | step 4 | map negate
+range -21 12
+range 43 66 | skip 8 | dropwhile above 82 | skip 12 | dropwhile above 22 | step 4
+range 3 49 | takewhile odd | skip 4 | count
+range 54 58 | dropwhile even | sum
+range 46 68 | filter odd | takewhile even | takewhile below -12 | filter even | map square
+range 41 90 | map mul -1
+range 48 47 | take 7 | map square | skip 6 | filter even | step 2 | count
+range -28 -26 | skip 3 | step 4 | step 3 | filter prime
+range 30 80 | dropwhile odd

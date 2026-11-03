@@ -1,0 +1,6 @@
+naturals | take 5
+primes | take 6
+fibonacci | take 10
+range 3 7
+repeat 4 | take 3
+range 5 1

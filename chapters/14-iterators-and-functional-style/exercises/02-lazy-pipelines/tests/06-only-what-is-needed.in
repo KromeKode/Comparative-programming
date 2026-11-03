@@ -1,0 +1,5 @@
+primes | filter below 10 | take 4
+naturals | filter below 1 | take 0
+naturals | takewhile below 4 | filter even
+naturals | map mul 3 | filter even | takewhile below 30 | count
+fibonacci | skip 30 | take 1

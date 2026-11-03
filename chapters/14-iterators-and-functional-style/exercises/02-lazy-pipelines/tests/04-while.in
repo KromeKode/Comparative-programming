@@ -1,0 +1,6 @@
+naturals | takewhile below 5
+primes | dropwhile below 100 | take 3
+fibonacci | takewhile below 100
+range 1 10 | dropwhile odd
+range 1 10 | takewhile even
+naturals | map square | dropwhile below 50 | takewhile below 200

@@ -1,0 +1,10 @@
+subjects:
+  art: average 84, best 91 (ada)
+  math: average 82, best 88 (cy, dee)
+  music: average 66, best 89 (ada)
+ranking:
+  1. ada 250
+  2. cy 240
+  3. bob 139
+  4. dee 133
+passed everything: ada, bob, cy
