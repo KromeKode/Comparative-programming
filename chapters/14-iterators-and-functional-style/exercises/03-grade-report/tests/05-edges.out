@@ -1,0 +1,9 @@
+subjects:
+  art: average 50, best 100 (lee)
+  math: average 50, best 100 (lee)
+  music: average 49, best 49 (max)
+ranking:
+  1. lee 200
+  2. max 99
+  3. kim 0
+passed everything: lee

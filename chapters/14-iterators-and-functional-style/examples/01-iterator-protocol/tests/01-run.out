@@ -1,0 +1,4 @@
+loop: 3 4 5
+again: 3 4 5
+by hand: 3, then 4, then 5, then nothing
+resumed: took 3, then the loop got 4 5

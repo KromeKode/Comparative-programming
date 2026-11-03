@@ -1,0 +1,4 @@
+  naturals|take 3
+
+range   1  4 |   map    square|sum
+	primes |  take 2  

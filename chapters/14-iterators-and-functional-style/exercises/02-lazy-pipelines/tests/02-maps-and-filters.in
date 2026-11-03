@@ -1,0 +1,7 @@
+naturals | map square | take 5
+naturals | map square | filter even | take 3
+range 1 10 | filter odd
+range -3 3 | map negate
+range 1 5 | map add 10 | map mul 2
+range 1 20 | filter prime
+range -5 5 | filter odd

@@ -1,0 +1,27 @@
+eager:
+  square 1
+  square 2
+  square 3
+  square 4
+  square 5
+  even? 1
+  even? 4
+  even? 9
+  even? 16
+  even? 25
+  first two: 4 16
+lazy:
+  square 1
+  even? 1
+  square 2
+  even? 4
+  square 2
+  square 3
+  even? 9
+  square 4
+  even? 16
+  square 4
+  square 5
+  even? 25
+  first two: 4 16
+endless: 64 100 144

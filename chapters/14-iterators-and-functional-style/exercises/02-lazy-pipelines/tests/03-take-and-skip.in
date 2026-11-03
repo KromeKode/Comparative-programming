@@ -1,0 +1,7 @@
+naturals | skip 5 | take 3
+range 1 10 | step 3
+naturals | step 4 | take 4
+primes | skip 10 | take 2
+range 1 5 | take 0
+range 1 3 | skip 5
+range 1 5 | take 10

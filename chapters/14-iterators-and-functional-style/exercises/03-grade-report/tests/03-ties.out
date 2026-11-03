@@ -1,0 +1,8 @@
+subjects:
+  art: average 80, best 80 (ann, leo, mia)
+  math: average 60, best 60 (ann, leo, mia)
+ranking:
+  1. ann 140
+  2. leo 140
+  3. mia 140
+passed everything: ann, leo, mia

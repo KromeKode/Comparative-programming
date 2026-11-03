@@ -1,0 +1,7 @@
+fibonacci | filter odd | takewhile below 100 | sum
+repeat 7 | take 3 | count
+range 1 100 | sum
+primes | takewhile below 1000 | count
+range 5 1 | sum
+range 5 1 | count
+naturals | map square | take 10 | sum

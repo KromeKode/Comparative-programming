@@ -1,0 +1,31 @@
+subjects:
+  art: average 73, best 100 (max)
+  biology: average 65, best 100 (pia, sue)
+  chemistry: average 63, best 100 (gus)
+  drama: average 63, best 95 (cy)
+  history: average 64, best 100 (oli)
+  math: average 60, best 84 (finn)
+  music: average 72, best 99 (finn, oli)
+  physics: average 68, best 100 (ida, sue)
+ranking:
+  1. sue 496
+  2. pia 492
+  3. oli 488
+  4. eve 471
+  5. jo 468
+  6. ray 442
+  7. bob 435
+  8. finn 422
+  9. quin 414
+  10. lu 407
+  11. ada 391
+  12. kai 388
+  13. gus 379
+  14. ned 379
+  15. max 368
+  16. tom 360
+  17. hal 351
+  18. cy 324
+  19. dee 261
+  20. ida 246
+passed everything: cy, gus, ida, jo, oli

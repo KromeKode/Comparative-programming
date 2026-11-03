@@ -28,7 +28,7 @@ Status: ✅ written · ⬜ planned
 | 11 | [Error handling](chapters/11-error-handling/) | ✅ |
 | 12 | [Abstraction and OOP](chapters/12-abstraction-and-oop/) | ✅ |
 | 13 | [Generics and polymorphism](chapters/13-generics-and-polymorphism/) ★ C++, Rust, Go, TypeScript, Kotlin | ✅ |
-| 14 | Iterators and functional style | ⬜ |
+| 14 | [Iterators and functional style](chapters/14-iterators-and-functional-style/) | ✅ |
 | 15 | Macros and metaprogramming ★ C, C++, Rust, Python | ⬜ |
 | 16 | Concurrency and parallelism | ⬜ |
 
