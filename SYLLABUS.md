@@ -1,8 +1,10 @@
 # Syllabus
 
-48 chapters in 11 parts. Every chapter compares C, C++, Rust, Go, Python, JavaScript,
-TypeScript, Dart, and Kotlin. Chapters marked ★ are spotlight chapters: the text shows 3
-to 6 languages in full and a table covers the rest. Chapters 31 and 32 use plain SQL only.
+49 chapters in 11 parts. Every chapter compares C, C++, Rust, Go, Python, JavaScript,
+TypeScript, Dart, and Kotlin, with three exceptions: chapter 17 is about Git itself and
+uses no programming language, and chapters 32 and 33 use plain SQL only. Chapters marked
+★ are spotlight chapters: the text shows 3 to 6 languages in full and a table covers the
+rest.
 
 Status: ✅ written · ⬜ planned
 
@@ -36,75 +38,76 @@ Status: ✅ written · ⬜ planned
 
 | # | Chapter | Status |
 | --- | --- | --- |
-| 17 | Modules, packages, builds | ⬜ |
-| 18 | Testing basics | ⬜ |
-| 19 | Debugging and profiling | ⬜ |
-| 20 | Files, JSON, and the CLI | ⬜ |
-| 21 | Text parsing | ⬜ |
-| 22 | FFI and interop | ⬜ |
+| 17 | Version control with Git (Git only) | ⬜ |
+| 18 | Modules, packages, builds | ⬜ |
+| 19 | Testing basics | ⬜ |
+| 20 | Debugging and profiling | ⬜ |
+| 21 | Files, JSON, and the CLI | ⬜ |
+| 22 | Text parsing | ⬜ |
+| 23 | FFI and interop | ⬜ |
 
 ## Part 4: Data structures and algorithms
 
 | # | Chapter | Status |
 | --- | --- | --- |
-| 23 | Complexity and benchmarking | ⬜ |
-| 24 | Arrays, strings, hashing | ⬜ |
-| 25 | Linked lists, stacks, queues | ⬜ |
-| 26 | Trees and heaps | ⬜ |
-| 27 | Graphs | ⬜ |
-| 28 | Sorting and searching | ⬜ |
-| 29 | Recursion, backtracking, dynamic programming | ⬜ |
-| 30 | Design problems | ⬜ |
+| 24 | Complexity and benchmarking | ⬜ |
+| 25 | Arrays, strings, hashing | ⬜ |
+| 26 | Linked lists, stacks, queues | ⬜ |
+| 27 | Trees and heaps | ⬜ |
+| 28 | Graphs | ⬜ |
+| 29 | Sorting and searching | ⬜ |
+| 30 | Recursion, backtracking, dynamic programming | ⬜ |
+| 31 | Design problems | ⬜ |
 
 ## Part 5: SQL databases
 
 | # | Chapter | Status |
 | --- | --- | --- |
-| 31 | SQL fundamentals (SQL only) | ⬜ |
-| 32 | Schema design and query performance (SQL only) | ⬜ |
-| 33 | SQLite from code | ⬜ |
-| 34 | Transactions and data access | ⬜ |
+| 32 | SQL fundamentals (SQL only) | ⬜ |
+| 33 | Schema design and query performance (SQL only) | ⬜ |
+| 34 | SQLite from code | ⬜ |
+| 35 | Transactions and data access | ⬜ |
 
 ## Part 6: Web servers
 
 | # | Chapter | Status |
 | --- | --- | --- |
-| 35 | HTTP from sockets | ⬜ |
-| 36 | Text handling in web servers | ⬜ |
-| 37 | REST CRUD API | ⬜ |
-| 38 | WebSockets | ⬜ |
-| 39 | Security basics ★ C, C++, Rust (memory safety); Go, Python, TypeScript (web) | ⬜ |
+| 36 | HTTP from sockets | ⬜ |
+| 37 | Text handling in web servers | ⬜ |
+| 38 | REST CRUD API | ⬜ |
+| 39 | WebSockets | ⬜ |
+| 40 | Security basics ★ C, C++, Rust (memory safety); Go, Python, TypeScript (web) | ⬜ |
 
 ## Bonus A: Number theory and competitive programming
 
 | # | Chapter | Status |
 | --- | --- | --- |
-| 40 | Number theory | ⬜ |
-| 41 | Competitive programming toolkit ★ C++, Python, Rust, Kotlin | ⬜ |
+| 41 | Number theory | ⬜ |
+| 42 | Competitive programming toolkit ★ C++, Python, Rust, Kotlin | ⬜ |
 
 ## Bonus B: Linear algebra and data analysis
 
 | # | Chapter | Status |
 | --- | --- | --- |
-| 42 | Linear algebra ★ Python, C++, Rust, Go | ⬜ |
-| 43 | Data analysis ★ Python, Rust, Go | ⬜ |
+| 43 | Linear algebra ★ Python, C++, Rust, Go | ⬜ |
+| 44 | Data analysis ★ Python, Rust, Go | ⬜ |
 
 ## Bonus C: 2D wave shooter
 
 | # | Chapter | Status |
 | --- | --- | --- |
-| 44 | Game loop and rendering with raylib ★ C, Go, Python, Rust; TypeScript with Canvas | ⬜ |
-| 45 | Physics and collisions | ⬜ |
-| 46 | Game engines and ECS ★ Rust (Bevy), Dart (Flame), C | ⬜ |
+| 45 | Game loop and rendering with raylib ★ C, Go, Python, Rust; TypeScript with Canvas | ⬜ |
+| 46 | Physics and collisions | ⬜ |
+| 47 | Game engines and ECS ★ Rust (Bevy), Dart (Flame), C | ⬜ |
 
 ## Bonus D: Multiplayer networking
 
 | # | Chapter | Status |
 | --- | --- | --- |
-| 47 | Multiplayer networking for games ★ Rust, Go, TypeScript | ⬜ |
+| 48 | Multiplayer networking for games ★ Rust, Go, TypeScript | ⬜ |
 
 ## Bonus E: GUI apps
 
 | # | Chapter | Status |
 | --- | --- | --- |
-| 48 | GUI and desktop apps ★ Dart (Flutter), C++ (Qt), Rust (egui), TypeScript (Tauri), Python (Tkinter), Kotlin (Compose Multiplatform) | ⬜ |
+| 49 | GUI and desktop apps ★ Dart (Flutter), C++ (Qt), Rust (egui), TypeScript (Tauri), Python (Tkinter), Kotlin (Compose Multiplatform) | ⬜ |

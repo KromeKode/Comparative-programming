@@ -13,12 +13,12 @@ you did not ask for. This chapter compares those choices.
 
 | You will learn | Why it matters later |
 | --- | --- |
-| How arrays, growable lists, hash maps, and sets work inside, and what each operation costs | Complexity and benchmarking (chapter 23), hashing (chapter 24) |
+| How arrays, growable lists, hash maps, and sets work inside, and what each operation costs | Complexity and benchmarking (chapter 24), hashing (chapter 25) |
 | Each language's names for them | Every chapter |
 | Which assignments copy a collection and which share it | The memory model and ownership (chapters 9 and 10) |
 | What a missing key or a bad index does | Error handling (chapter 11) |
-| Which maps and sets keep order, and which values can be keys | Data structures (chapters 24 to 27), JSON (chapter 20) |
-| Tuples, and using them as keys | Graphs and grids (chapter 27), dynamic programming (chapter 29) |
+| Which maps and sets keep order, and which values can be keys | Data structures (chapters 25 to 28), JSON (chapter 21) |
+| Tuples, and using them as keys | Graphs and grids (chapter 28), dynamic programming (chapter 30) |
 
 ---
 
@@ -1015,7 +1015,7 @@ fmt.Println(a[3], b[3]) // 2 2
 The program below keeps the stock of a small shop in a map, reads a key that is there
 and one that is not, updates a value, removes a key, and prints the map after each
 change. The C version is an array of key-value pairs searched one by one, which is fine
-for a handful of keys; chapter 24 builds a real hash table. The code is in
+for a handful of keys; chapter 25 builds a real hash table. The code is in
 [`examples/03-maps/`](examples/03-maps/).
 
 **C**
@@ -1026,7 +1026,7 @@ for a handful of keys; chapter 24 builds a real hash table. The code is in
 #include <string.h>
 
 // C has no map. For a handful of keys, an array of pairs searched from the start is
-// enough; chapter 24 builds a hash table, which stays fast with millions of keys.
+// enough; chapter 25 builds a hash table, which stays fast with millions of keys.
 typedef struct {
     const char *key;
     int value;
@@ -1999,7 +1999,7 @@ in JavaScript, `removeWhere` in Dart, and `removeAll { }` in Kotlin.
 | Language | Mistake | What happens |
 | --- | --- | --- |
 | C | `sizeof a / sizeof a[0]` on an array parameter | Gives the size of a pointer, not of the array; pass the length separately |
-| C | Writing past the end of an array | Undefined behavior, with no error; the classic buffer overflow (chapter 39) |
+| C | Writing past the end of an array | Undefined behavior, with no error; the classic buffer overflow (chapter 40) |
 | C++ | `m[key]` just to check a value | Adds the key with a default value |
 | C++ | `push_back` or `erase` while looping over the same vector | Undefined behavior: iterators point at moved or freed memory |
 | C++ | Passing a `std::vector` by value | Copies every element; take `const std::vector<T>&` |
@@ -2040,7 +2040,7 @@ Kotlin fixed one Java pitfall worth knowing about if you read Java code. In Java
 **C: a struct that knows its length.** Keep the pointer, the length, and the capacity
 together, as the example's `IntList` does, and pass the struct around instead of a bare
 pointer. Grow by doubling with `realloc`, and check the result for `NULL`. For a real
-hash map, use a library or write one as in chapter 24.
+hash map, use a library or write one as in chapter 25.
 
 **C++: `std::vector` and `std::unordered_map` by default.** Reach for `std::map` only
 when you need sorted keys. Take containers by `const&` when reading and `&` when

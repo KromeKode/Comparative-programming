@@ -14,11 +14,11 @@ Kotlin together in section 9.8 · **Time:** about 3 hours
 
 | You will learn | Why it matters later |
 | --- | --- |
-| How memory is laid out: addresses, the stack, the heap, and static data | Ownership (chapter 10), debugging (chapter 19), FFI (chapter 22) |
-| What pointers and references are, and how C, C++, and Rust differ | Linked lists and trees (chapters 25 and 26) |
+| How memory is laid out: addresses, the stack, the heap, and static data | Ownership (chapter 10), debugging (chapter 20), FFI (chapter 23) |
+| What pointers and references are, and how C, C++, and Rust differ | Linked lists and trees (chapters 26 and 27) |
 | Why a function can change some arguments and not others | Every function you write |
-| Aliasing: two names for one place, and the bugs it causes | Concurrency (chapter 16), security (chapter 39) |
-| Shallow and deep copies, and how each language spells them | Design problems (chapter 30) |
+| Aliasing: two names for one place, and the bugs it causes | Concurrency (chapter 16), security (chapter 40) |
+| Shallow and deep copies, and how each language spells them | Design problems (chapter 31) |
 
 ---
 
@@ -277,7 +277,7 @@ never outlives what it points at, as section 9.4 shows.
 Rust has no pointer arithmetic on references. A **slice**, such as `&scores[1..3]`, is
 a pointer and a length together, which is why it takes 16 bytes. Every index is checked
 against that length, so walking off the end panics instead of reading a neighbor's
-memory. Raw pointers exist for talking to C (chapter 22): `&raw const x` (Rust 1.82)
+memory. Raw pointers exist for talking to C (chapter 23): `&raw const x` (Rust 1.82)
 makes one safely, but reading through it needs an `unsafe` block, because the compiler
 can no longer promise that it points at anything.
 
@@ -572,7 +572,7 @@ stack differently. The probe was `depth(n) = 1 + depth(n + 1)`:
 Go is the odd one. Each goroutine's stack starts at 2 KB and grows by copying itself to
 a bigger block when needed, up to 1 GB on 64-bit systems, so deep recursion that would
 crash C works fine in Go. Python counts frames rather than bytes, and
-`sys.setrecursionlimit` changes the limit. Chapter 29 turns deep recursion into loops
+`sys.setrecursionlimit` changes the limit. Chapter 30 turns deep recursion into loops
 when it matters.
 
 ### Pointers that outlive their memory

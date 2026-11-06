@@ -2,7 +2,7 @@
 #include <string.h>
 
 // Decodes the code point that starts at p, stores it in *code_point, and returns how
-// many bytes it used. It assumes valid UTF-8; chapter 36 shows how to check.
+// many bytes it used. It assumes valid UTF-8; chapter 37 shows how to check.
 static int decode_utf8(const unsigned char *p, unsigned long *code_point) {
     if (p[0] < 0x80) {  // 0xxxxxxx: one byte, plain ASCII
         *code_point = p[0];

@@ -3,7 +3,7 @@
 #include <string.h>
 
 // C has no map. For a handful of keys, an array of pairs searched from the start is
-// enough; chapter 24 builds a hash table, which stays fast with millions of keys.
+// enough; chapter 25 builds a hash table, which stays fast with millions of keys.
 typedef struct {
     const char *key;
     int value;
