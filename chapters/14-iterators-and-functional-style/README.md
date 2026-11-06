@@ -17,10 +17,10 @@ each step, on which pipelines are lazy, and on whether generators exist at all.
 
 | You will learn | Why it matters later |
 | --- | --- |
-| What a `for` loop asks for in each language, and how to make your own types work with it | Linked lists, stacks, and queues (chapter 25), trees and heaps (chapter 26) |
-| Pipelines: map, filter, fold, and the rest, and what each language calls them | Files, JSON, and the CLI (chapter 20), text parsing (chapter 21), SQL fundamentals (chapter 31) |
-| Lazy and eager pipelines, and sources that never end | Concurrency and parallelism (chapter 16), complexity and benchmarking (chapter 23) |
-| Generators, and the difference between pull and push iterators | Concurrency and parallelism (chapter 16), graphs (chapter 27) |
+| What a `for` loop asks for in each language, and how to make your own types work with it | Linked lists, stacks, and queues (chapter 26), trees and heaps (chapter 27) |
+| Pipelines: map, filter, fold, and the rest, and what each language calls them | Files, JSON, and the CLI (chapter 21), text parsing (chapter 22), SQL fundamentals (chapter 32) |
+| Lazy and eager pipelines, and sources that never end | Concurrency and parallelism (chapter 16), complexity and benchmarking (chapter 24) |
+| Generators, and the difference between pull and push iterators | Concurrency and parallelism (chapter 16), graphs (chapter 28) |
 | When a loop reads better than a pipeline | Every chapter from here on |
 
 ---
@@ -2675,7 +2675,7 @@ same code as a hand-written loop. In Python, JavaScript, and Dart, each step cal
 function for each item. Kotlin's list functions are `inline`, so the lambda's code is
 copied into a loop, but a sequence's functions call it for each item. Wherever a step is
 eager, it builds a whole new list, which costs time and memory on a large input. Chapter
-23 shows how to measure the difference. Debugging is a smaller cost: a pipeline is one
+24 shows how to measure the difference. Debugging is a smaller cost: a pipeline is one
 expression, which is harder to step through, and Rust's `inspect` and Kotlin's `onEach`
 help by running a function on each item as it passes.
 

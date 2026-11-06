@@ -14,8 +14,8 @@ all of that.
 | `if` as a statement and as an expression | Writing compact, readable code in every later chapter |
 | `switch` vs `match`, fallthrough, and exhaustiveness | Enums and null (chapter 8), error handling (chapter 11) |
 | The loop forms and ranges | Every algorithm in Part 4 |
-| `break` and `continue` with labels | Searches and graph traversals (chapters 27 and 29) |
-| Pattern matching and destructuring | Parsers (chapter 21), protocol handling (chapters 35 to 38) |
+| `break` and `continue` with labels | Searches and graph traversals (chapters 28 and 30) |
+| Pattern matching and destructuring | Parsers (chapter 22), protocol handling (chapters 36 to 39) |
 
 ---
 

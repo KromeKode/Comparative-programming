@@ -14,10 +14,10 @@ way to stop when one happens.
 | You will learn | Why it matters later |
 | --- | --- |
 | The four ways a function can report failure, and what each one costs | Every chapter from here on |
-| Passing errors up with `?`, `if err != nil`, and exceptions, adding context on the way | Files, JSON, and the CLI (chapter 20), web servers (chapters 35 to 38) |
-| Error types that callers can match on, and errors that carry their cause | Text parsing (chapter 21), REST CRUD API (chapter 37) |
-| Which failures are bugs, and what panics, assertions, and crashes are for | Testing basics (chapter 18), debugging and profiling (chapter 19) |
-| Collecting many errors at once, and retrying the ones that may go away | Transactions and data access (chapter 34), HTTP from sockets (chapter 35) |
+| Passing errors up with `?`, `if err != nil`, and exceptions, adding context on the way | Files, JSON, and the CLI (chapter 21), web servers (chapters 36 to 39) |
+| Error types that callers can match on, and errors that carry their cause | Text parsing (chapter 22), REST CRUD API (chapter 38) |
+| Which failures are bugs, and what panics, assertions, and crashes are for | Testing basics (chapter 19), debugging and profiling (chapter 20) |
+| Collecting many errors at once, and retrying the ones that may go away | Transactions and data access (chapter 35), HTTP from sockets (chapter 36) |
 
 ---
 

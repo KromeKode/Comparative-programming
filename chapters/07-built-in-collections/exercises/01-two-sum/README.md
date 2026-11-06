@@ -47,7 +47,7 @@ python3 tools/check.py 07 --lang go
   a `number` holds every integer up to 2^53 exactly.
 - **C has no map.** The C solution builds a small hash table with open addressing:
   hash the number to a slot, and if the slot holds a different number, try the next
-  one. Chapter 24 covers hash tables properly.
+  one. Chapter 25 covers hash tables properly.
 
 **Stretch:** make a big input and time both approaches. This prints a line with 10,000
 numbers whose only pair is the two 1s at the end:

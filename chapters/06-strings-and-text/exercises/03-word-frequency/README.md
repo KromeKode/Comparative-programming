@@ -44,7 +44,7 @@ python3 tools/check.py 06 --lang go
 - **Splitting on a rule, not a character.** Rust's `split` takes a closure, Go has
   `strings.FieldsFunc`, and JavaScript and Dart can match the words directly with a
   regular expression. A regex character class needs the `u` flag in JavaScript to treat
-  an emoji as one character. Chapter 21 covers regular expressions properly.
+  an emoji as one character. Chapter 22 covers regular expressions properly.
 - **Counting needs a map.** `HashMap` in Rust, `map[string]int` in Go, `Counter` in
   Python, `Map` in JavaScript, and `groupingBy { it }.eachCount()` in Kotlin. Chapter 7
   compares maps across the languages. C has none, so the solution keeps a growing array

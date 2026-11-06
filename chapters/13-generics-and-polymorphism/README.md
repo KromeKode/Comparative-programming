@@ -17,10 +17,10 @@ Dart together in section 13.8 · **Time:** about 3 hours
 
 | You will learn | Why it matters later |
 | --- | --- |
-| Generic functions and types, and how each language fills in the type | Iterators and functional style (chapter 14), linked lists, stacks, and queues (chapter 25) |
-| Constraints: trait bounds, concepts, type sets, and upper bounds | Iterators and functional style (chapter 14), sorting and searching (chapter 28) |
-| Giving one name separate code for each type: traits, overloads, and functions passed in | Macros and metaprogramming (chapter 15), files, JSON, and the CLI (chapter 20) |
-| Static and dynamic dispatch, and what each one costs | Debugging and profiling (chapter 19), complexity and benchmarking (chapter 23) |
+| Generic functions and types, and how each language fills in the type | Iterators and functional style (chapter 14), linked lists, stacks, and queues (chapter 26) |
+| Constraints: trait bounds, concepts, type sets, and upper bounds | Iterators and functional style (chapter 14), sorting and searching (chapter 29) |
+| Giving one name separate code for each type: traits, overloads, and functions passed in | Macros and metaprogramming (chapter 15), files, JSON, and the CLI (chapter 21) |
+| Static and dynamic dispatch, and what each one costs | Debugging and profiling (chapter 20), complexity and benchmarking (chapter 24) |
 | Variance: when a list of cats counts as a list of animals | Every function that takes a collection of a base type |
 
 ---

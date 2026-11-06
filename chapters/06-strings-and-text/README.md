@@ -12,13 +12,13 @@ replace, and change case), comparing and sorting, and writing string literals.
 
 | You will learn | Why it matters later |
 | --- | --- |
-| Bytes, code points, and grapheme clusters; UTF-8 and UTF-16 | Files and the command line (chapter 20), text parsing (chapter 21), web servers (chapter 36) |
+| Bytes, code points, and grapheme clusters; UTF-8 and UTF-16 | Files and the command line (chapter 21), text parsing (chapter 22), web servers (chapter 37) |
 | Each language's string types, and which ones can change | The memory model and ownership (chapters 9 and 10) |
-| Measuring, indexing, and slicing without cutting a character in half | Text parsing (chapter 21), arrays and strings (chapter 24) |
-| Building strings without copying them over and over | Complexity and benchmarking (chapter 23) |
-| Formatting numbers and padding columns | Command-line tools (chapter 20) |
-| Searching, splitting, replacing, and changing case | Text parsing (chapter 21) |
-| Comparing and sorting text | Sorting and searching (chapter 28) |
+| Measuring, indexing, and slicing without cutting a character in half | Text parsing (chapter 22), arrays and strings (chapter 25) |
+| Building strings without copying them over and over | Complexity and benchmarking (chapter 24) |
+| Formatting numbers and padding columns | Command-line tools (chapter 21) |
+| Searching, splitting, replacing, and changing case | Text parsing (chapter 22) |
+| Comparing and sorting text | Sorting and searching (chapter 29) |
 
 ---
 
@@ -443,7 +443,7 @@ bit patterns from section 6.1. The code is in
 #include <string.h>
 
 // Decodes the code point that starts at p, stores it in *code_point, and returns how
-// many bytes it used. It assumes valid UTF-8; chapter 36 shows how to check.
+// many bytes it used. It assumes valid UTF-8; chapter 37 shows how to check.
 static int decode_utf8(const unsigned char *p, unsigned long *code_point) {
     if (p[0] < 0x80) {  // 0xxxxxxx: one byte, plain ASCII
         *code_point = p[0];
@@ -503,7 +503,7 @@ int main(void) {
 #include <string_view>
 
 // Decodes the code point that starts at s[i] and moves i past it.
-// It assumes valid UTF-8; chapter 36 shows how to check.
+// It assumes valid UTF-8; chapter 37 shows how to check.
 char32_t decode_utf8(std::string_view s, std::size_t& i) {
     auto byte = [&](std::size_t k) -> char32_t { return static_cast<unsigned char>(s[k]); };
     char32_t first = byte(i);
@@ -1712,7 +1712,7 @@ which turns off interpolation entirely.
 | C | `strncpy(dst, src, n)` when `src` has `n` or more bytes | `dst` gets no `'\0'` at the end |
 | C | `strcat` in a loop | Walks from the start every time; keep track of the end yourself |
 | C++ | `std::string s = "count: " + n;` with an `int n` | Pointer arithmetic: with `n` equal to 5, `s` is `": "`. GCC 13 gives no warning; Clang warns `adding 'int' to a string does not append to the string` |
-| C++ | `std::string_view v = a + b;` | `v` points into a temporary that is already gone. It compiles silently and may even print the right text; AddressSanitizer (chapter 19) catches it |
+| C++ | `std::string_view v = a + b;` | `v` points into a temporary that is already gone. It compiles silently and may even print the right text; AddressSanitizer (chapter 20) catches it |
 | C++ | `std::string s = u8"Zoë";` | Compile error in C++20: `u8` literals are `char8_t` |
 | C++, Python | `{:.2}` to get two decimals | Two significant digits: `3.1`. Write `{:.2f}` |
 | Rust | `&s[..n]` with `n` from somewhere else | Panics if `n` falls inside a character; use `s.get(..n)` or `char_indices` |
