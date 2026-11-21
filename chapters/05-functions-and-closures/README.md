@@ -13,11 +13,11 @@ idea, the **closure**, is the main subject of this chapter.
 | You will learn | Why it matters later |
 | --- | --- |
 | Declaring functions, parameters, and return types | Every chapter |
-| Default and named arguments, and any number of arguments | API design (chapter 12), request handlers (chapter 37) |
+| Default and named arguments, and any number of arguments | API design (chapter 12), request handlers (chapter 38) |
 | Returning several values | Go's `value, err` and error handling (chapter 11) |
-| Functions as values: passing, returning, and storing them | Iterators (chapter 14), sorting with a comparator (chapter 28) |
-| Closures and what they capture | Threads and tasks (chapter 16), web servers (chapters 35 to 38), GUI callbacks (chapter 48) |
-| Recursion and memoization | Backtracking and dynamic programming (chapter 29) |
+| Functions as values: passing, returning, and storing them | Iterators (chapter 14), sorting with a comparator (chapter 29) |
+| Closures and what they capture | Threads and tasks (chapter 16), web servers (chapters 36 to 39), GUI callbacks (chapter 49) |
+| Recursion and memoization | Backtracking and dynamic programming (chapter 30) |
 
 ---
 
@@ -95,7 +95,7 @@ compiles with no warning even under `-Wall -Wextra`. Write `int answer(void)`. C
 changed `()` to mean no parameters, as it always has in C++.
 
 **`static` functions in C.** The C examples mark helper functions `static`, which
-makes them visible only inside their own file. Chapter 17 covers what that means for
+makes them visible only inside their own file. Chapter 18 covers what that means for
 building programs out of several files.
 
 **How arguments are passed.** C passes everything by value, so a function gets a copy,

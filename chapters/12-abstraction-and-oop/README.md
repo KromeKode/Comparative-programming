@@ -15,10 +15,10 @@ by composition, and behavior shared between classes that are not related.
 | You will learn | Why it matters later |
 | --- | --- |
 | Classes, constructors that check their input, and private fields, in nine forms | Every chapter from here on |
-| Defining equality, ordering, and printing for your own types | Generics and polymorphism (chapter 13), sorting and searching (chapter 28) |
-| Interfaces and traits, and how a call finds its method at run time | Generics and polymorphism (chapter 13), iterators (chapter 14), testing basics (chapter 18) |
-| When inheritance helps, when it breaks, and how composition replaces it | Design problems (chapter 30), game engines and ECS (chapter 46) |
-| Default methods and mixins: sharing code without a common base class | Iterators and functional style (chapter 14), GUI and desktop apps (chapter 48) |
+| Defining equality, ordering, and printing for your own types | Generics and polymorphism (chapter 13), sorting and searching (chapter 29) |
+| Interfaces and traits, and how a call finds its method at run time | Generics and polymorphism (chapter 13), iterators (chapter 14), testing basics (chapter 19) |
+| When inheritance helps, when it breaks, and how composition replaces it | Design problems (chapter 31), game engines and ECS (chapter 47) |
+| Default methods and mixins: sharing code without a common base class | Iterators and functional style (chapter 14), GUI and desktop apps (chapter 49) |
 
 ---
 

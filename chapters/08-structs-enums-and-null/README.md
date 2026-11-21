@@ -16,8 +16,8 @@ split sharply on whether the compiler checks for a missing value.
 | --- | --- |
 | How to define structs, records, and data classes, and what each language writes for you: printing, equality, and copies | Abstraction and OOP (chapter 12) |
 | Which structs copy on assignment and which share | The memory model and ownership (chapters 9 and 10) |
-| Plain enums, and how far each language lets a bad value in | State machines, parsers (chapter 21) |
-| Sum types, and compilers that check that every case is handled | Error handling (chapter 11), trees (chapter 26) |
+| Plain enums, and how far each language lets a bad value in | State machines, parsers (chapter 22) |
+| Sum types, and compilers that check that every case is handled | Error handling (chapter 11), trees (chapter 27) |
 | How each language says "no value", and which ones catch a missing check before the program runs | Every chapter, starting with error handling (chapter 11) |
 
 ---

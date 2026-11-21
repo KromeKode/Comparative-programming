@@ -12,8 +12,8 @@ an error, or a bug that only shows up in production.
 | --- | --- |
 | Static vs dynamic and strong vs weak typing | The single biggest difference in how the languages feel |
 | Mutable variables, read-only variables, and constants | Chapter 10 (ownership) builds on Rust's `let` vs `let mut` |
-| Fixed-size integers and what overflow does | Every DSA chapter, and chapter 39's security bugs |
-| Why `0.1 + 0.2` is not `0.3` | Chapters 42 to 45 (numeric code and game physics) |
+| Fixed-size integers and what overflow does | Every DSA chapter, and chapter 40's security bugs |
+| Why `0.1 + 0.2` is not `0.3` | Chapters 43 to 46 (numeric code and game physics) |
 | Explicit and implicit conversions | Chapter 11 (error handling): what happens when parsing fails |
 
 ---
@@ -622,7 +622,7 @@ int will_overflow(int x) {
 ```
 
 GCC at `-O2` compiles it to `return 0;`. Since `x + 1` can never overflow in a correct
-program, `x + 1 < x` can never be true, so the compiler deletes the check. Chapter 39
+program, `x + 1 < x` can never be true, so the compiler deletes the check. Chapter 40
 shows how bugs like this become security holes. Check *before* you add, as the
 checked-add exercise does, or use `__builtin_add_overflow`.
 

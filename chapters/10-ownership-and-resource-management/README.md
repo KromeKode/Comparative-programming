@@ -15,10 +15,10 @@ Kotlin together in section 10.9 · **Time:** about 3 hours
 | You will learn | Why it matters later |
 | --- | --- |
 | What owning a resource means, and the three ways a language can give it back | Every program that opens a file or a connection |
-| Cleanup that runs on every path: `goto` labels, destructors, `Drop`, `defer`, `with`, `finally`, and `use` | Error handling (chapter 11), files (chapter 20), databases (chapter 33) |
-| Moving ownership, sharing it with reference counts, and the cycles that leak | Linked lists and trees (chapters 25 and 26) |
+| Cleanup that runs on every path: `goto` labels, destructors, `Drop`, `defer`, `with`, `finally`, and `use` | Error handling (chapter 11), files (chapter 21), databases (chapter 34) |
+| Moving ownership, sharing it with reference counts, and the cycles that leak | Linked lists and trees (chapters 26 and 27) |
 | How Rust's borrow checker uses lifetimes | Iterators (chapter 14), concurrency (chapter 16) |
-| Finding leaks and use-after-free bugs with AddressSanitizer and Valgrind | Debugging and profiling (chapter 19), FFI (chapter 22) |
+| Finding leaks and use-after-free bugs with AddressSanitizer and Valgrind | Debugging and profiling (chapter 20), FFI (chapter 23) |
 
 ---
 
@@ -1059,7 +1059,7 @@ does, checked by the compiler.
 pointer. Nothing frees that value until `Box::from_raw`, inside `unsafe`, takes it back.
 Rust 1.99 added the same for vectors, `Vec::into_parts` and `Vec::from_parts`, along
 with `Box::into_non_null`. These exist for handing memory to C and back, which chapter
-22 does.
+23 does.
 
 The two languages mean different things by "move". In C++, a move is a function that
 runs and leaves an empty shell behind, which you can still use by mistake. In Rust, it
@@ -1985,7 +1985,7 @@ Valgrind works on any compiled program, so it finds the `Rc` cycle in a Rust bin
 Use AddressSanitizer while you develop and in tests, since it is fast enough to leave
 on. Use Valgrind when you cannot rebuild the program, or to check a build without the
 sanitizer. Neither one proves a program is correct. They report what happened in the
-runs you gave them, which is why exercise 10.2 has you run every test. Chapter 19 comes
+runs you gave them, which is why exercise 10.2 has you run every test. Chapter 20 comes
 back to both.
 
 ---

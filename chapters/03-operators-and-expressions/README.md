@@ -10,10 +10,10 @@ languages, and shows where the same symbols give different answers.
 
 | You will learn | Why it matters later |
 | --- | --- |
-| Integer division and remainder, and why `-7 / 2` has two answers | Circular buffers, hash tables (chapter 24), and number theory (chapter 40) |
+| Integer division and remainder, and why `-7 / 2` has two answers | Circular buffers, hash tables (chapter 25), and number theory (chapter 41) |
 | Equality: the same value vs the same object | Every collection chapter, and defining your own `==` in chapter 12 |
 | Short-circuit logic and truthiness | Guard clauses and error handling (chapter 11) |
-| Bitwise operators and shifts | Flags, hashing, and the competitive programming toolkit (chapter 41) |
+| Bitwise operators and shifts | Flags, hashing, and the competitive programming toolkit (chapter 42) |
 | Precedence rules that differ between languages | Reading code written in a language you know less well |
 
 ---
@@ -1614,7 +1614,7 @@ println(Vec2(1.0, 2.0) + Vec2(3.0, 4.0))  // Vec2(x=4.0, y=6.0)
 
 In Go, JavaScript, and TypeScript you write a method instead: `a.Add(b)` or
 `a.add(b)`. Chapter 12 covers defining equality and ordering for your own types, and
-chapter 45 uses vector operators for game physics.
+chapter 46 uses vector operators for game physics.
 
 ---
 

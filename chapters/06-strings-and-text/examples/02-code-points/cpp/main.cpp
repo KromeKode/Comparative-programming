@@ -5,7 +5,7 @@
 #include <string_view>
 
 // Decodes the code point that starts at s[i] and moves i past it.
-// It assumes valid UTF-8; chapter 36 shows how to check.
+// It assumes valid UTF-8; chapter 37 shows how to check.
 char32_t decode_utf8(std::string_view s, std::size_t& i) {
     auto byte = [&](std::size_t k) -> char32_t { return static_cast<unsigned char>(s[k]); };
     char32_t first = byte(i);

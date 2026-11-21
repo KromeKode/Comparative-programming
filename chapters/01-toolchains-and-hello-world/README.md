@@ -239,20 +239,20 @@ automatically.
 ## 1.4 Building and running
 
 Each language has a quick way to run one file and a proper way to start a project.
-Single files are fine for chapters 1 to 16. Chapter 17 covers projects and builds in
+Single files are fine for chapters 1 to 17. Chapter 18 covers projects and builds in
 depth.
 
 | Language | Run one file | Start a real project | Build for release |
 | --- | --- | --- | --- |
-| C | `cc -std=c17 -Wall -Wextra main.c -o main && ./main` | CMake (chapter 17) | add `-O2` |
-| C++ | `c++ -std=c++20 -Wall -Wextra main.cpp -o main && ./main` | CMake (chapter 17) | add `-O2` |
+| C | `cc -std=c17 -Wall -Wextra main.c -o main && ./main` | CMake (chapter 18) | add `-O2` |
+| C++ | `c++ -std=c++20 -Wall -Wextra main.cpp -o main && ./main` | CMake (chapter 18) | add `-O2` |
 | Rust | `rustc main.rs && ./main` | `cargo new hello && cd hello && cargo run` | `cargo build --release` |
 | Go | `go run main.go` | `go mod init example.com/hello` | `go build` |
-| Python | `python3 main.py` | `uv init hello` | not compiled; see chapter 17 for packaging |
+| Python | `python3 main.py` | `uv init hello` | not compiled; see chapter 18 for packaging |
 | JavaScript | `node main.js` | `npm init -y` | runs as is |
 | TypeScript | `node main.ts` (types stripped, **not** checked) and `npx tsc --noEmit main.ts` to check them | `npm init -y && npm install -D typescript` | `tsc` writes `.js` files |
 | Dart | `dart run main.dart` | `dart create hello` | `dart compile exe main.dart` |
-| Kotlin | `kotlinc main.kt -include-runtime -d main.jar && java -jar main.jar` | `gradle init --type kotlin-application` (Gradle, chapter 17) | `./gradlew build` |
+| Kotlin | `kotlinc main.kt -include-runtime -d main.jar && java -jar main.jar` | `gradle init --type kotlin-application` (Gradle, chapter 18) | `./gradlew build` |
 
 Always compile C and C++ with `-Wall -Wextra`. Without them the compiler stays quiet
 about mistakes it has already noticed, such as an unused variable or a missing

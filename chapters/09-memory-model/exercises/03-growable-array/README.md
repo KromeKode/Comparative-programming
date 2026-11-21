@@ -60,7 +60,7 @@ python3 tools/check.py 09 --lang c
 - **Doubling keeps pushes cheap.** Growing by one each time would copy every item on
   every push. With doubling, N pushes copy items fewer than 2N times in all, so a push
   costs a constant amount on average, which is called amortized constant time
-  (chapter 23).
+  (chapter 24).
 - **Read numbers with `strtol`, and check all three ways it can fail:** nothing was
   read (`end == text`), something was left over (`*end != '\0'`), or the number was
   too big (`errno == ERANGE`). A `long` is wider than an `int` on 64-bit Linux and

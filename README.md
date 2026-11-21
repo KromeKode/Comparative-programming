@@ -32,7 +32,7 @@ chapters/
     solutions/         reference answers
 tools/
   check.py             builds and tests exercises in all 9 languages
-SYLLABUS.md            all 48 chapters and their status
+SYLLABUS.md            all 49 chapters and their status
 ```
 
 Every chapter follows the same template:

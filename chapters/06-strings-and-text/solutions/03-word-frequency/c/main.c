@@ -16,7 +16,7 @@ static int is_word_byte(unsigned char b) {
     return (b >= 'a' && b <= 'z') || (b >= 'A' && b <= 'Z') || b >= 0x80;
 }
 
-// A linear search keeps this short. Chapter 24 builds a hash table that scales.
+// A linear search keeps this short. Chapter 25 builds a hash table that scales.
 static void add_word(const char *word, size_t length) {
     for (size_t i = 0; i < entry_count; i++) {
         if (strlen(entries[i].word) == length && memcmp(entries[i].word, word, length) == 0) {
