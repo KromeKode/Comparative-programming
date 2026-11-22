@@ -62,7 +62,9 @@ Chapter 17, on Git, is the exception: its exercises are scripts of Git commands,
 the checker runs in a throwaway repository.
 
 Write your answers in the starter files under `exercises/`. Languages whose toolchain
-is not installed are skipped rather than failed.
+is not installed are skipped rather than failed. From chapter 18 on, some examples are
+projects that build with each language's own build tool, such as CMake or Cargo, and
+`python3 tools/check.py --doctor` lists which of those are installed.
 
 ## Versions
 
@@ -78,3 +80,4 @@ is not installed are skipped rather than failed.
 | Dart | 3.x | `dart analyze`, then `dart run` |
 | Kotlin | 2.4+ on JDK 21 | `kotlinc -Werror`, then `java -jar` |
 | Git (chapter 17) | 2.43+ | `bash`, in a throwaway repository |
+| Build tools (chapter 18) | CMake 3.20+, Gradle 8.14+, and uv | Cargo, `go`, npm, and `dart pub` come with their languages |

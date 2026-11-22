@@ -1354,4 +1354,4 @@ branch, and open a pull request to yourself to see what a reviewer sees.
 ---
 
 Previous: [Chapter 16: Concurrency and parallelism](../16-concurrency-and-parallelism/) ·
-Next: Chapter 18: Modules, packages, builds (coming soon)
+Next: [Chapter 18: Modules, packages, builds](../18-modules-packages-and-builds/)

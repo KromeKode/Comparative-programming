@@ -39,7 +39,7 @@ Status: ✅ written · ⬜ planned
 | # | Chapter | Status |
 | --- | --- | --- |
 | 17 | [Version control with Git](chapters/17-version-control-with-git/) (Git only) | ✅ |
-| 18 | Modules, packages, builds | ⬜ |
+| 18 | [Modules, packages, builds](chapters/18-modules-packages-and-builds/) | ✅ |
 | 19 | Testing basics | ⬜ |
 | 20 | Debugging and profiling | ⬜ |
 | 21 | Files, JSON, and the CLI | ⬜ |
