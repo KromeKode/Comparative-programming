@@ -2444,4 +2444,4 @@ change in a year?
 ---
 
 Previous: [Chapter 14: Iterators and functional style](../14-iterators-and-functional-style/) ·
-Next: Chapter 16: Concurrency and parallelism (coming soon)
+Next: [Chapter 16: Concurrency and parallelism](../16-concurrency-and-parallelism/)
