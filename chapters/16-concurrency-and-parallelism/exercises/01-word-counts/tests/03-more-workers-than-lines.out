@@ -1,0 +1,9 @@
+5 workers, 3 lines
+worker 0: 1 line, 2 words
+worker 1: 1 line, 2 words
+worker 2: 1 line, 3 words
+worker 3: 0 lines, 0 words
+worker 4: 0 lines, 0 words
+7 words, 3 different
+gamma: 3
+alpha: 2

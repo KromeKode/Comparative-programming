@@ -1,0 +1,11 @@
+[4] d: at 4
+[5] b: halfway
+[10] a: woke first, because it went to sleep first
+[10] a: done
+[10] c: woke second
+[10] c: done
+[10] d: woke third
+[10] d: done
+[10] b: woke last
+[10] b: done
+[10] all done

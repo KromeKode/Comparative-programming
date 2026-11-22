@@ -1,0 +1,225 @@
+task t0
+  sleep 13
+  print step 1
+  sleep 2
+  print step 4
+  print step 5
+  print step 6
+  print step 7
+task t1
+task t2
+  print step 0
+  print step 1
+  wait t0
+  sleep 0
+  sleep 3
+  print step 5
+  print step 6
+  sleep 1
+  sleep 5
+  sleep 8
+  print step 10
+task t3
+  print step 0
+  sleep 0
+  sleep 5
+  sleep 13
+  wait t2
+  sleep 2
+  print step 6
+  print step 7
+  print step 8
+  wait t0
+task t4
+  print step 0
+  sleep 10
+  print step 2
+  print step 3
+  print step 4
+  print step 5
+  print step 6
+task t5
+  sleep 5
+  sleep 3
+  sleep 0
+  sleep 2
+  wait t1
+  wait t0
+  print step 6
+task t6
+  sleep 5
+  sleep 5
+  sleep 10
+  wait t5
+  print step 4
+  wait t1
+  print step 6
+task t7
+  sleep 10
+  print step 1
+  print step 2
+  print step 3
+  print step 4
+  sleep 2
+  print step 6
+  wait t1
+  sleep 0
+  sleep 2
+task t8
+  sleep 10
+  print step 1
+  wait t7
+  print step 3
+  print step 4
+  wait t0
+  sleep 5
+  sleep 0
+task t9
+  wait t2
+  print step 1
+task t10
+  wait t9
+  sleep 8
+  print step 2
+  sleep 0
+  print step 4
+task t11
+  print step 0
+  sleep 5
+  print step 2
+  wait t3
+  print step 4
+  print step 5
+  print step 6
+  print step 7
+  wait t3
+  wait t2
+  print step 10
+task t12
+  print step 0
+  sleep 5
+  wait t11
+  print step 3
+  print step 4
+  sleep 5
+  wait t9
+  wait t5
+  sleep 8
+  wait t1
+  sleep 0
+task t13
+  print step 0
+  print step 1
+  print step 2
+task t14
+  print step 0
+  print step 1
+  print step 2
+  print step 3
+  print step 4
+  print step 5
+  print step 6
+  print step 7
+task t15
+  print step 0
+  wait t4
+  sleep 10
+  print step 3
+  print step 4
+  sleep 8
+  wait t10
+task t16
+  sleep 8
+  wait t15
+  print step 2
+  wait t10
+  wait t8
+  sleep 13
+task t17
+  wait t10
+  print step 1
+  print step 2
+  print step 3
+  sleep 5
+  sleep 5
+task t18
+task t19
+  print step 0
+  print step 1
+  print step 2
+  sleep 0
+  print step 4
+  print step 5
+task t20
+  print step 0
+  print step 1
+  print step 2
+  print step 3
+  print step 4
+  print step 5
+task t21
+  print step 0
+task t22
+  print step 0
+  print step 1
+  wait t13
+  sleep 13
+  sleep 3
+  print step 5
+task t23
+  sleep 3
+  print step 1
+  print step 2
+  print step 3
+  print step 4
+  print step 5
+  sleep 3
+  wait t9
+  sleep 1
+  print step 9
+  sleep 2
+  print step 11
+task t24
+  print step 0
+  print step 1
+  print step 2
+  sleep 1
+  print step 4
+  print step 5
+  print step 6
+  wait t0
+task t25
+  print step 0
+  sleep 1
+  print step 2
+  print step 3
+  sleep 5
+  sleep 3
+  print step 6
+  print step 7
+task t26
+  print step 0
+  print step 1
+  print step 2
+task t27
+  sleep 3
+  wait t26
+  print step 2
+  print step 3
+  print step 4
+task t28
+  sleep 1
+  print step 1
+  sleep 1
+  sleep 2
+  sleep 13
+task t29
+  wait t8
+  print step 1
+  wait t14
+  wait t14
+  sleep 10
+  sleep 0
+  wait t19
+  print step 7
+  sleep 10

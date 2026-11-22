@@ -1,0 +1,17 @@
+task fetch
+  print start the download
+  sleep 30
+  print downloaded
+task parse
+  print wait for the download
+  wait fetch
+  print parsing
+  sleep 5
+  print parsed
+task tick
+  sleep 10
+  print tick
+  sleep 10
+  print tick
+  sleep 10
+  print tick

@@ -1,0 +1,9 @@
+3 workers, 4 accounts, 6 transfers
+worker 0: 2 transfers, 35 moved
+worker 1: 2 transfers, 70 moved
+worker 2: 2 transfers, 35 moved
+account 0: 65
+account 1: 0
+account 2: 130
+account 3: 30
+total: 225

@@ -1,0 +1,30 @@
+8 workers, 20 accounts, 10000 transfers
+worker 0: 1250 transfers, 63511 moved
+worker 1: 1250 transfers, 61978 moved
+worker 2: 1250 transfers, 60994 moved
+worker 3: 1250 transfers, 65799 moved
+worker 4: 1250 transfers, 62148 moved
+worker 5: 1250 transfers, 62221 moved
+worker 6: 1250 transfers, 63326 moved
+worker 7: 1250 transfers, 63745 moved
+account 0: -1080
+account 1: -2182
+account 2: 2956
+account 3: 679
+account 4: 856
+account 5: 1316
+account 6: 880
+account 7: 2754
+account 8: -3996
+account 9: 1462
+account 10: -45
+account 11: 3738
+account 12: 507
+account 13: 2774
+account 14: -2150
+account 15: 16
+account 16: -1488
+account 17: -978
+account 18: 2184
+account 19: 1104
+total: 9307

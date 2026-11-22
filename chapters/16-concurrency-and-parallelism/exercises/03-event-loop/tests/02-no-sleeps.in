@@ -1,0 +1,6 @@
+task first
+  print one
+  print two
+task empty
+task second
+  print three

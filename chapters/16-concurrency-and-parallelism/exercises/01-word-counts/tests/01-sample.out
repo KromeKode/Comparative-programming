@@ -1,0 +1,9 @@
+4 workers, 9 lines
+worker 0: 3 lines, 33 words
+worker 1: 2 lines, 16 words
+worker 2: 2 lines, 17 words
+worker 3: 2 lines, 19 words
+85 words, 42 different
+the: 17
+and: 6
+river: 5
