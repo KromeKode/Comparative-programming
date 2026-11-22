@@ -32,6 +32,7 @@ chapters/
     solutions/         reference answers
 tools/
   check.py             builds and tests exercises in all 9 languages
+  git-sandbox.sh       runs chapter 17's Git exercises in a throwaway repository
 SYLLABUS.md            all 49 chapters and their status
 ```
 
@@ -57,6 +58,9 @@ python3 tools/check.py 01 --solutions      # the reference answers
 python3 tools/check.py all --solutions     # everything, which is what CI runs
 ```
 
+Chapter 17, on Git, is the exception: its exercises are scripts of Git commands, which
+the checker runs in a throwaway repository.
+
 Write your answers in the starter files under `exercises/`. Languages whose toolchain
 is not installed are skipped rather than failed.
 
@@ -73,3 +77,4 @@ is not installed are skipped rather than failed.
 | TypeScript | 7 | `tsc --strict --noEmit`, run by Node's built-in type stripping |
 | Dart | 3.x | `dart analyze`, then `dart run` |
 | Kotlin | 2.4+ on JDK 21 | `kotlinc -Werror`, then `java -jar` |
+| Git (chapter 17) | 2.43+ | `bash`, in a throwaway repository |

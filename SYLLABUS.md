@@ -38,7 +38,7 @@ Status: ✅ written · ⬜ planned
 
 | # | Chapter | Status |
 | --- | --- | --- |
-| 17 | Version control with Git (Git only) | ⬜ |
+| 17 | [Version control with Git](chapters/17-version-control-with-git/) (Git only) | ✅ |
 | 18 | Modules, packages, builds | ⬜ |
 | 19 | Testing basics | ⬜ |
 | 20 | Debugging and profiling | ⬜ |
