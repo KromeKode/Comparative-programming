@@ -1,0 +1,6 @@
+counting primes below 200000 with 4 workers
+worker 0: [0, 50000) has 5133 primes
+worker 1: [50000, 100000) has 4459 primes
+worker 2: [100000, 150000) has 4256 primes
+worker 3: [150000, 200000) has 4136 primes
+total: 17984 primes

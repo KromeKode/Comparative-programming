@@ -1,0 +1,16 @@
+task a
+  sleep 10
+  print woke first, because it went to sleep first
+task b
+  sleep 5
+  print halfway
+  sleep 5
+  print woke last
+task c
+  sleep 10
+  print woke second
+task d
+  sleep 4
+  print at 4
+  sleep 6
+  print woke third

@@ -1,0 +1,12 @@
+[0] fetch: start the download
+[0] parse: wait for the download
+[10] tick: tick
+[20] tick: tick
+[30] fetch: downloaded
+[30] fetch: done
+[30] tick: tick
+[30] tick: done
+[30] parse: parsing
+[35] parse: parsed
+[35] parse: done
+[35] all done

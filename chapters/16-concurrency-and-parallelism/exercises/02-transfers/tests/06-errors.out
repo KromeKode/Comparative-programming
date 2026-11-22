@@ -1,0 +1,12 @@
+error: line 5: a transfer is three numbers: from, to, and amount
+error: line 6: a transfer is three numbers: from, to, and amount
+error: line 7: no account 3
+error: line 8: no account 9
+error: line 10: a transfer is three numbers: from, to, and amount
+2 workers, 3 accounts, 3 transfers
+worker 0: 2 transfers, 30 moved
+worker 1: 1 transfer, 7 moved
+account 0: 110
+account 1: 103
+account 2: 87
+total: 300

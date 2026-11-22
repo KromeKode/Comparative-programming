@@ -1,0 +1,2 @@
+4 threads add 1, 100000 times each
+with a lock: 400000

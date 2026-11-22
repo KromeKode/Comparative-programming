@@ -1,0 +1,20 @@
+8 workers, 3000 lines
+worker 0: 375 lines, 2531 words
+worker 1: 375 lines, 2624 words
+worker 2: 375 lines, 2695 words
+worker 3: 375 lines, 2631 words
+worker 4: 375 lines, 2601 words
+worker 5: 375 lines, 2627 words
+worker 6: 375 lines, 2684 words
+worker 7: 375 lines, 2664 words
+21057 words, 70 different
+and: 914
+of: 879
+the: 871
+to: 860
+in: 856
+a: 835
+is: 757
+it: 689
+was: 676
+for: 646

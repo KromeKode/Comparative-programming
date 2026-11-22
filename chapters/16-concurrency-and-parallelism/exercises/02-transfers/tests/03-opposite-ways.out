@@ -1,0 +1,6 @@
+2 workers, 2 accounts, 2000 transfers
+worker 0: 1000 transfers, 1000 moved
+worker 1: 1000 transfers, 2000 moved
+account 0: 2000
+account 1: 0
+total: 2000

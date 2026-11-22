@@ -1,0 +1,15 @@
+task a
+  print a starts
+  wait b
+  print never printed
+task b
+  sleep 5
+  print b waits for a
+  wait a
+task c
+  sleep 7
+  print c finishes
+task d
+  wait a
+task e
+  wait e

@@ -1,0 +1,14 @@
+three tasks, each pausing at every await
+a: step 1
+b: step 1
+c: step 1
+a: step 2
+b: step 2
+c: done
+a: done
+b: step 3
+b: done
+results: 2, 3, 1
+4 tasks add 1 to a shared count
+with no await between reading and writing: 4
+with an await between reading and writing: 1

@@ -1,0 +1,15 @@
+3 workers, 5 lines
+worker 0: 2 lines, 6 words
+worker 1: 2 lines, 12 words
+worker 2: 1 line, 4 words
+22 words, 19 different
+don: 2
+stop: 2
+t: 2
+abc: 1
+at: 1
+braces: 1
+brackets: 1
+com: 1
+def: 1
+e: 1

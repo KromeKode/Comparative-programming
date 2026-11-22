@@ -1,0 +1,16 @@
+print too early
+task a
+  print hello
+  jump 5
+  sleep soon
+  sleep -3
+  wait nobody
+  sleep 2
+  print bye
+task b
+  wait a
+
+  print after a
+  wait c
+task c
+  print c runs

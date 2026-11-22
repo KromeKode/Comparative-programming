@@ -1,0 +1,10 @@
+2 workers, 4 lines
+worker 0: 2 lines, 6 words
+worker 1: 2 lines, 5 words
+11 words, 6 different
+date: 2
+fig: 2
+kiwi: 2
+pear: 2
+plum: 2
+lime: 1

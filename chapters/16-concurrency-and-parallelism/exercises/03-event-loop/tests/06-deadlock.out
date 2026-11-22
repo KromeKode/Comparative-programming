@@ -1,0 +1,5 @@
+[0] a: a starts
+[5] b: b waits for a
+[7] c: c finishes
+[7] c: done
+[7] deadlock: a waits for b, b waits for a, d waits for a, e waits for e

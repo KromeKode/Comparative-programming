@@ -1,0 +1,4 @@
+4 isolates add 1, 100000 times each
+each isolate counted: 100000, 100000, 100000, 100000
+main's count: 0
+added up: 400000
