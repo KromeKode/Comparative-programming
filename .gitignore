@@ -23,3 +23,6 @@ __pycache__/
 # Gradle and Kotlin build state (chapter 18)
 .gradle/
 .kotlin/
+
+# pytest's record of the last run (chapter 19)
+.pytest_cache/

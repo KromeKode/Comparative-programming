@@ -16,6 +16,12 @@ Chapter 17 is about Git, so its programs are shell scripts of Git commands
 (main.sh in a git folder). There each NAME.in is a script that sets up a
 repository, and tools/git-sandbox.sh runs your script in it.
 
+From chapter 19, a folder can also hold tests, such as leap_test.go or
+test_leap.py, next to the code they test. Then the checker runs them with the
+language's test runner, and each NAME.in describes a version of the code to
+run them on: the code as given, or the code with one bug put in, as edits to
+its files. NAME.out says whether the tests should pass or fail on it.
+
 Examples:
     python3 tools/check.py --doctor            # which toolchains are installed?
     python3 tools/check.py 01                  # check your chapter 1 exercises
@@ -50,6 +56,15 @@ class Project:
 
 
 @dataclass
+class Suite:
+    """A language folder with tests in it, found by the names of its test files."""
+    marker: str                      # a glob for the test files, such as *_test.go
+    tools: list[str]
+    setup: list[list[str]]           # run once, in the language folder
+    test: list[list[str]]            # run on each version of the code, in a copy of it
+
+
+@dataclass
 class Language:
     name: str
     source: str                      # file name inside the language folder
@@ -58,12 +73,13 @@ class Language:
     run: list[str] = field(default_factory=list)          # command per test
     version: list[str] = field(default_factory=list)      # for --doctor
     projects: list[Project] = field(default_factory=list)  # chapter 18 on
+    suite: Suite | None = None                             # chapter 19 on
 
 
 # Commands run in the language folder. {src} = the source file, {srcs} = every
 # source file in the folder and below it (one argument each), {out} = a temporary
 # build folder, {tests} = the folder of test cases, {folder} = examples, exercises,
-# or solutions.
+# or solutions, {testfiles} = a test suite's test files (one argument each).
 CMAKE = Project(
     "CMakeLists.txt", ["cmake"],
     build=[["cmake", "-S", ".", "-B", "{out}", "-DCMAKE_BUILD_TYPE=Release"],
@@ -85,6 +101,10 @@ LANGUAGES: dict[str, Language] = {
         run=["{out}/main"],
         version=["cc", "--version"],
         projects=[CMAKE],
+        # Tests in test_*.c, built with the code they test into one program.
+        suite=Suite("test_*.c", ["cc"], setup=[],
+                    test=[["cc", "-std=c17", "-Wall", "-Wextra", "-Werror", "-O2",
+                           "-o", "{out}/tests", "{srcs}", "-lm"], ["{out}/tests"]]),
     ),
     "cpp": Language(
         "C++", "main.cpp", ["c++"],
@@ -93,6 +113,9 @@ LANGUAGES: dict[str, Language] = {
         run=["{out}/main"],
         version=["c++", "--version"],
         projects=[CMAKE],
+        suite=Suite("*_test.cpp", ["c++"], setup=[],
+                    test=[["c++", "-std=c++20", "-Wall", "-Wextra", "-Werror", "-O2",
+                           "-o", "{out}/tests", "{srcs}"], ["{out}/tests"]]),
     ),
     "rust": Language(
         "Rust", "main.rs", ["rustc"],
@@ -106,6 +129,10 @@ LANGUAGES: dict[str, Language] = {
                     "--offline", "--quiet", "--target-dir", "{out}"]],
             run=["{out}/release/main"],
         )],
+        # A crate whose lib.rs ends with `#[cfg(test)] mod tests;`, for src/tests.rs.
+        suite=Suite("src/tests.rs", ["cargo"], setup=[],
+                    test=[["env", "RUSTFLAGS=-D warnings", "cargo", "test", "--offline",
+                           "--quiet", "--target-dir", "{out}/target"]]),
     ),
     "go": Language(
         "Go", "main.go", ["go"],
@@ -118,6 +145,9 @@ LANGUAGES: dict[str, Language] = {
             build=[["go", "vet", "./..."], ["go", "build", "-o", "{out}/main", "."]],
             run=["{out}/main"],
         )],
+        # -count=1 runs the tests even when go test has cached a result for them.
+        suite=Suite("*_test.go", ["go"], setup=[["go", "vet", "./..."]],
+                    test=[["go", "test", "-count=1", "./..."]]),
     ),
     "python": Language(
         "Python", "main.py", ["python3"],
@@ -131,6 +161,12 @@ LANGUAGES: dict[str, Language] = {
                     "--quiet"]],
             run=["{out}/venv/bin/python", "main.py"],
         )],
+        # pytest, which uv installs from uv.lock, as a dev dependency.
+        suite=Suite("test_*.py", ["uv"],
+                    setup=[["env", "UV_PROJECT_ENVIRONMENT={out}/venv", "uv", "sync",
+                            "--locked", "--quiet"]],
+                    test=[["{out}/venv/bin/python", "-m", "pytest", "-q",
+                           "-p", "no:cacheprovider"]]),
     ),
     "javascript": Language(
         "JavaScript", "main.js", ["node"],
@@ -142,6 +178,7 @@ LANGUAGES: dict[str, Language] = {
             build=[NPM_INSTALL, ["node", "--check", "main.js"]],
             run=["node", "main.js"],
         )],
+        suite=Suite("*.test.js", ["node"], setup=[], test=[["node", "--test", "{testfiles}"]]),
     ),
     "typescript": Language(
         "TypeScript", "main.ts", ["node"],
@@ -154,6 +191,9 @@ LANGUAGES: dict[str, Language] = {
             build=[NPM_INSTALL, [a.replace("{src}", "main.ts") for a in TSC_CHECK]],
             run=["node", "main.ts"],
         )],
+        suite=Suite("*.test.ts", ["node"],
+                    setup=[[a.replace("{src}", "{testfiles}") for a in TSC_CHECK]],
+                    test=[["node", "--test", "{testfiles}"]]),
     ),
     "dart": Language(
         "Dart", "main.dart", ["dart"],
@@ -166,6 +206,11 @@ LANGUAGES: dict[str, Language] = {
             build=[["dart", "pub", "get", "--offline"], ["dart", "analyze", "--fatal-infos"]],
             run=["dart", "run", "bin/main.dart"],
         )],
+        # package:test, from pubspec.lock; `dart test` runs test/*_test.dart.
+        suite=Suite("test/*_test.dart", ["dart"],
+                    setup=[["dart", "pub", "get", "--enforce-lockfile"],
+                           ["dart", "analyze", "--fatal-infos"]],
+                    test=[["dart", "test"]]),
     ),
     "kotlin": Language(
         "Kotlin", "main.kt", ["kotlinc", "java"],
@@ -181,6 +226,10 @@ LANGUAGES: dict[str, Language] = {
             build=[["gradle", "--quiet", "installDist"]],
             run=["build/install/main/bin/main"],
         )],
+        # kotlin.test on JUnit 5, from Gradle; setup downloads them and compiles once.
+        suite=Suite("src/test/kotlin/*.kt", ["gradle", "java"],
+                    setup=[["gradle", "--quiet", "testClasses"]],
+                    test=[["gradle", "--quiet", "test"]]),
     ),
     # Chapter 17 only: a bash script of Git commands, run in a throwaway repository.
     "git": Language(
@@ -205,9 +254,12 @@ class Plan:
     tools: list[str]
     build: list[list[str]]
     run: list[str]
+    suite: Suite | None = None       # set when the folder is a test suite
 
 
 def find_plan(lang: Language, folder: Path) -> Plan | None:
+    if lang.suite and (tests := sorted(folder.glob(lang.suite.marker))):
+        return Plan(tests[0], lang.suite.tools, lang.suite.setup, [], lang.suite)
     for project in lang.projects:
         if (folder / project.marker).exists():
             return Plan(folder / project.marker, project.tools, project.build, project.run)
@@ -228,13 +280,17 @@ def message_lines(text: str) -> list[str]:
     return [line for line in text.strip().splitlines() if not line.startswith("Picked up ")]
 
 
-def fill(args: list[str], src: Path, out: Path, tests: Path) -> list[str]:
+def fill(args: list[str], src: Path, out: Path, tests: Path,
+         testfiles: list[str] | None = None) -> list[str]:
     names = {"{src}": str(src), "{out}": str(out), "{tests}": str(tests),
              "{folder}": src.parent.parent.parent.name}
     filled = []
     for arg in args:
         if arg == "{srcs}":
             filled += [str(path) for path in sorted(src.parent.rglob("*" + src.suffix))]
+            continue
+        if arg == "{testfiles}":
+            filled += testfiles or []
             continue
         for name, value in names.items():
             arg = arg.replace(name, value)
@@ -303,6 +359,129 @@ def check_one(key: str, plan: Plan, tests: list[Path]) -> tuple[str, str]:
             if got != want:
                 return "FAIL", f"{case.stem}: {first_difference(got, want)}"
     return "PASS", f"{len(tests)} test{'s' if len(tests) != 1 else ''}"
+
+
+# A test suite's versions of the code, from chapter 19. A NAME.in file says what
+# the version is, and then gives each language's edits to the code, in the form
+#
+#     --- go/leap.go
+#     -	return year%4 == 0 && (year%100 != 0 || year%400 == 0)
+#     +	return year%4 == 0 && year%100 != 0
+#
+# where the lines after "-" are lines of the file, which must appear in it exactly
+# once, and the lines after "+" replace them. A file with no edits is the code as
+# given. NAME.out is "pass" or "fail": what the tests should do on that version.
+Edit = tuple[str, list[str], list[str]]      # path in the language folder, old, new
+
+
+def parse_variant(text: str) -> dict[str, list[Edit]]:
+    edits: dict[str, list[Edit]] = {}
+    current: list[Edit] | None = None
+    for line in text.splitlines():
+        if line.startswith("--- ") and "/" in line:
+            key, path = line[4:].strip().split("/", 1)
+            current = edits.setdefault(key, [])
+            current.append((path, [], []))
+        elif current is not None and line[:1] in ("-", "+"):
+            path, old, new = current[-1]
+            if line[0] == "-" and new:      # a "-" after a "+" starts another edit
+                current.append((path, [], []))
+                path, old, new = current[-1]
+            (old if line[0] == "-" else new).append(line[1:])
+    return edits
+
+
+def apply_edits(folder: Path, edits: list[Edit]) -> str | None:
+    """Edit the files in folder, or return what is wrong with an edit."""
+    for path, old, new in edits:
+        file = folder / path
+        if not file.is_file():
+            return f"no file {path}"
+        lines = file.read_text(encoding="utf-8").split("\n")
+        starts = [i for i in range(len(lines) - len(old) + 1) if lines[i:i + len(old)] == old]
+        if len(starts) != 1:
+            return f"an edit matches {len(starts)} places in {path}, not 1"
+        lines[starts[0]:starts[0] + len(old)] = new
+        file.write_text("\n".join(lines), encoding="utf-8")
+    return None
+
+
+def first_failure(lines: list[str]) -> str:
+    """The first line that says something failed, or else the first line."""
+    for line in lines:
+        if line.startswith(("==", "__")):          # a banner, such as pytest's FAILURES
+            continue
+        if "fail" in line.lower() or "error" in line.lower():
+            return line.strip()
+    return lines[0].strip() if lines else "failed"
+
+
+SUITE_TIMEOUT_SECONDS = 300
+# Build outputs that aren't copied with the folder, since each version of the code
+# needs its own.
+NOT_COPIED = shutil.ignore_patterns("target", "build", ".gradle", ".kotlin", "__pycache__",
+                                    ".pytest_cache")
+
+
+def check_suite(key: str, plan: Plan, tests: list[Path]) -> tuple[str, str]:
+    """Run a language's tests on each version of the code, and say which went wrong."""
+    assert plan.suite is not None
+    root = plan.src.parent
+    while not plan.src.relative_to(root).match(plan.suite.marker):
+        root = root.parent             # markers like src/tests.rs are below the folder
+    testfiles = sorted(str(p.relative_to(root)) for p in root.glob(plan.suite.marker))
+    problems: list[str] = []
+    missed: list[str] = []
+    bugs = 0
+    with tempfile.TemporaryDirectory(prefix="check-") as tmp:
+        out = Path(tmp) / "out"
+        out.mkdir()
+        folder = tests[0].parent
+        for cmd in plan.suite.setup:
+            proc = subprocess.run(fill(cmd, plan.src, out, folder, testfiles),
+                                  capture_output=True, text=True, cwd=root, timeout=600)
+            if proc.returncode != 0:
+                message = message_lines(proc.stdout + "\n" + proc.stderr)
+                return "FAIL", "setup: " + first_error(message)
+        for case in tests:
+            expected = case.with_suffix(".out")
+            want = normalize(expected.read_text(encoding="utf-8")) if expected.exists() else []
+            if want not in (["pass"], ["fail"]):
+                return "FAIL", f"{case.stem}: {expected.name} must say pass or fail"
+            edits = parse_variant(case.read_text(encoding="utf-8"))
+            if edits and key not in edits:
+                return "FAIL", f"{case.stem}: no edits for {key}"
+            bugs += want == ["fail"]
+            copy = Path(tmp) / "code"
+            shutil.rmtree(copy, ignore_errors=True)
+            shutil.copytree(root, copy, symlinks=True, ignore=NOT_COPIED)
+            wrong = apply_edits(copy, edits.get(key, []))
+            if wrong:
+                return "FAIL", f"{case.stem}: {wrong}"
+            got, detail = "pass", ""
+            for cmd in plan.suite.test:
+                try:
+                    proc = subprocess.run(fill(cmd, copy / plan.src.relative_to(root), out,
+                                               folder, testfiles),
+                                          capture_output=True, text=True, cwd=copy,
+                                          timeout=SUITE_TIMEOUT_SECONDS)
+                except subprocess.TimeoutExpired:
+                    got, detail = "fail", f"timed out after {SUITE_TIMEOUT_SECONDS}s"
+                    break
+                if proc.returncode != 0:
+                    got = "fail"
+                    detail = first_failure(message_lines(proc.stdout + "\n" + proc.stderr))
+                    break
+            if want == ["pass"] and got == "fail":
+                problems.append(f"{case.stem}: the tests fail on the code as given ({detail})")
+            elif want == ["fail"] and got == "pass":
+                missed.append(case.stem)
+    if missed:
+        problems.append(f"missed {len(missed)} of {bugs} bugs: {', '.join(missed)}")
+    if problems:
+        return "FAIL", "; ".join(problems)
+    caught = f", caught {bugs} of {bugs} bug{'s' if bugs != 1 else ''}" if bugs else ""
+    return "PASS", f"passed on the code as given{caught}"
 
 
 def find_chapters(selector: str) -> list[Path]:
@@ -379,6 +558,8 @@ def main() -> int:
                     missing = missing_tools(lang, plan.tools)
                     if missing:
                         status, detail = "SKIP", "needs " + ", ".join(missing)
+                    elif plan.suite:
+                        status, detail = check_suite(key, plan, tests)
                     else:
                         status, detail = check_one(key, plan, tests)
                     counts[status] += 1
