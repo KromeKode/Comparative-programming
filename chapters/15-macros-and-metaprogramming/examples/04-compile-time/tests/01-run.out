@@ -1,0 +1,6 @@
+table[1] = 77073096
+table[255] = 2d02ef8d
+crc32("123456789") = cbf43926
+crc32("hello") = 3610a686
+crc32("The quick brown fox jumps over the lazy dog") = 414fa339
+crc32("") = 00000000

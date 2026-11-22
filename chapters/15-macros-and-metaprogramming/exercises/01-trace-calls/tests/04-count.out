@@ -1,0 +1,3 @@
+fib(20) = 6765 in 21891 calls
+gcd(1071, 462) = 21 in 4 calls
+power(3, 13) = 1594323 in 7 calls

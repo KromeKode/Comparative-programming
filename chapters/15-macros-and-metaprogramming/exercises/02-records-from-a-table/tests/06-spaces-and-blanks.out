@@ -1,0 +1,5 @@
+Book(title="The Odyssey", author="Homer", year=0, pages=300, in_print=false)
+Book(title="Untitled", author="", year=0, pages=0, in_print=true)
+Book(title="Negative pages", author="Nobody", year=0, pages=-12, in_print=true)
+row 4: in_print: "" is not true or false
+3 books, 1 bad row

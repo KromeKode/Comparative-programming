@@ -1,0 +1,10 @@
+fields: title author year inPrint
+dune: { title: 'Dune', author: 'Frank Herbert', year: 1965, inPrint: true }
+copy === dune: false
+equal(copy, dune): true
+reissue: { title: 'Dune', author: 'Frank Herbert', year: 1966, inPrint: true }
+equal(reissue, dune): false
+dune < reissue: true
+distinct objects: 3
+distinct books: 2
+json: {"title":"Dune","author":"Frank Herbert","year":1965,"inPrint":true}

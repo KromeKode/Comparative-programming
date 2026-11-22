@@ -1,0 +1,12 @@
+#define SHOW(e) #e = e
+#define SQUARE(x) x * x
+SHOW(SQUARE(3))
+#define QUOTE(x) # x
+QUOTE( spaced out )
+#define HASH # not a parameter
+HASH
+#define TEXT(x) "x" is not x
+TEXT(1)
+#define QUOTE(x) #x
+#define SQUARE(x) x * x
+QUOTE(SQUARE(1, 2))

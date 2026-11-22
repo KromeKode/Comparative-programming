@@ -1,0 +1,5 @@
+trace fib 1 2
+count gcd 12
+trace power
+trace sqrt 16
+print fib 3

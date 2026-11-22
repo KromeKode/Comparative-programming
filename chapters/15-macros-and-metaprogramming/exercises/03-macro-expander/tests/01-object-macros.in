@@ -1,0 +1,9 @@
+#define LIMIT 100
+#define DOUBLE_LIMIT LIMIT * 2
+limit is LIMIT, double is DOUBLE_LIMIT
+LIMITS and _LIMIT and LIMIT_ and 2LIMIT are other words
+"LIMIT" in quotes stays, LIMIT outside them doesn't
+#define EMPTY
+a EMPTY b
+#define LIMIT 5
+the limit is now LIMIT

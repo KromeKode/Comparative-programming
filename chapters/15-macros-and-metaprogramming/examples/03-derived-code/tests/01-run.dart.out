@@ -1,0 +1,6 @@
+dune: (author: Frank Herbert, inPrint: true, title: Dune, year: 1965)
+copy == dune: true
+reissue: (author: Frank Herbert, inPrint: true, title: Dune, year: 1966)
+reissue == dune: false
+dune < reissue: true
+distinct books: 2

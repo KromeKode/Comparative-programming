@@ -1,0 +1,19 @@
+#define SQUARE(x) x * x
+SQUARE(1, 2)
+SQUARE(1
+MAX(1)
+#define MAX(a, b) a > b ? a : b
+MAX(1)
+#define 3D bad
+#define
+#define F(x y) bad
+#define G(a, a) bad
+#define H(a,) bad
+#undef
+#undef SQUARE
+SQUARE(5)
+#define NOW() 42
+NOW(1)
+#define ID(x) x
+ID(MAX(1))
+everything after an error still works: NOW()

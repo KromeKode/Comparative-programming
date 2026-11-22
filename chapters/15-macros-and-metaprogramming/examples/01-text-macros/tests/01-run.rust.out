@@ -1,0 +1,7 @@
+line 41: LIMIT * 2 = 6
+line 42: square!(1 + 2) = 9
+line 50: square!(bump()) = 2
+line 51: square_once!(bump()) = 9
+line 52: clicks.get() = 3
+after swap!(tmp, other): tmp = 2, other = 1
+debug_assertions is off, so debug_assert! compiles to nothing

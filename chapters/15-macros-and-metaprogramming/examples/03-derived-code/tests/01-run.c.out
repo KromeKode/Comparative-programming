@@ -1,0 +1,7 @@
+fields: title author year in_print
+dune: (struct book){.title = "Dune", .author = "Frank Herbert", .year = 1965, .in_print = true}
+copy == dune: true
+reissue: (struct book){.title = "Dune", .author = "Frank Herbert", .year = 1966, .in_print = true}
+reissue == dune: false
+dune < reissue: true
+distinct books: 2

@@ -1,0 +1,8 @@
+fields: Title (string, tag "title") Author (string, tag "author") Year (int, tag "year") InPrint (bool, tag "in_print")
+dune: {Title:Dune Author:Frank Herbert Year:1965 InPrint:true}
+copied == dune: true
+reissue: {Title:Dune Author:Frank Herbert Year:1966 InPrint:true}
+reissue == dune: false
+dune < reissue: true
+distinct books: 2
+json: {"title":"Dune","author":"Frank Herbert","year":1965,"in_print":true}

@@ -1,0 +1,9 @@
+Book(title="Dune", author="", year=1965, pages=412, in_print=true)
+row 2: year: "MCMLXXI" is not a whole number
+row 3: in_print: "yes" is not true or false
+row 4: pages: "-" is not a whole number
+row 5: expected 4 values, got 2
+row 6: expected 4 values, got 5
+row 7: in_print: "FALSE" is not true or false
+Book(title="Kindred", author="", year=1979, pages=264, in_print=false)
+2 books, 6 bad rows

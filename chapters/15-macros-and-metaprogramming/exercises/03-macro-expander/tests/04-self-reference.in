@@ -1,0 +1,9 @@
+#define LOOP LOOP + 1
+LOOP
+#define A B
+#define B A
+A and B
+#define F(x) F(x + 1)
+F(0)
+#define G(x) x
+G(G(G(1)))

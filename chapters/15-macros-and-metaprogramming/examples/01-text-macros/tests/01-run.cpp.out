@@ -1,0 +1,7 @@
+line 41: limit * 2 = 6
+line 42: square(1 + 2) = 9
+line 43: square(1.5) = 2.25
+line 46: square(bump_clicks()) = 1
+line 47: clicks = 1
+log: clicks = 1 | limit = 3
+verbose is off, and the compiler dropped the other branch

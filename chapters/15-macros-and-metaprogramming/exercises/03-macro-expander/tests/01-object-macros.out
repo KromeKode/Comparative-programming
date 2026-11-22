@@ -1,0 +1,5 @@
+limit is 100, double is 100 * 2
+LIMITS and _LIMIT and LIMIT_ and 2LIMIT are other words
+"LIMIT" in quotes stays, 100 outside them doesn't
+a  b
+the limit is now 5

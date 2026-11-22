@@ -1,0 +1,10 @@
+5 statuses
+200 Ok: OK
+301 Moved: Moved Permanently
+404 NotFound: Not Found
+418 Teapot: I'm a teapot
+500 ServerError: Internal Server Error
+lookup 404: Not Found
+lookup 999: unknown
+lookup Teapot: 418
+lookup Brewing: unknown
