@@ -34,5 +34,5 @@ git commit -q -m "Name the cook"
 printf 'Open 9 to 7\n' > hours.txt
 git commit -q -a --fixup HEAD~1
 git log --oneline -4
-GIT_SEQUENCE_EDITOR='sed -n /^[^#]/p' git rebase -i --autosquash HEAD~3
+GIT_SEQUENCE_EDITOR="sed -n 's/ # / /; /^[^#]/p'" git rebase -i --autosquash HEAD~3
 git log --oneline -3

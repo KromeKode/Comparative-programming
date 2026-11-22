@@ -86,7 +86,7 @@ $ git log --oneline -4
 2b62596 Name the cook
 d4270bd Open an hour later
 1c4624f Charge more for soup
-$ GIT_SEQUENCE_EDITOR='sed -n /^[^#]/p' git rebase -i --autosquash HEAD~3
+$ GIT_SEQUENCE_EDITOR="sed -n 's/ # / /; /^[^#]/p'" git rebase -i --autosquash HEAD~3
 pick d4270bd Open an hour later
 fixup 18f6041 fixup! Open an hour later
 pick 2b62596 Name the cook

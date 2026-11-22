@@ -41,21 +41,9 @@ bad
 $ git bisect start main v1.0
 Bisecting: 2 revisions left to test after this (roughly 2 steps)
 [e01f6f49131da4470b7c247ab87f940b435285f7] Add cake
-$ git bisect run ./check.sh
-running './check.sh'
-Bisecting: 0 revisions left to test after this (roughly 1 step)
-[dc463680ea77323d4d103b21f75015685470ce3b] Add pie
-running './check.sh'
-e01f6f49131da4470b7c247ab87f940b435285f7 is the first bad commit
-commit e01f6f49131da4470b7c247ab87f940b435285f7
-Author: Ada Lovelace <ada@example.com>
-Date:   Sun Mar 1 09:06:00 2026 +0000
-
-    Add cake
-
- menu.txt | 1 +
- 1 file changed, 1 insertion(+)
-bisect found first bad commit
+$ git bisect run ./check.sh > /dev/null
+$ git log -1 --oneline refs/bisect/bad
+e01f6f4 Add cake
 $ git bisect reset
 Previous HEAD position was dc46368 Add pie
 Switched to branch 'main'

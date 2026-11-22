@@ -722,8 +722,12 @@ reorder the lines, change `pick` to `reword` to change a message, to `squash` or
 to fold a commit into the one before it, or to `drop` to leave it out. Git opens the
 list in your editor. A commit made with `git commit --fixup COMMIT` is called
 `fixup! SUBJECT`, and `--autosquash` moves it under the commit it fixes and marks it
-`fixup` for you. Below, the "editor" is a `sed` command that prints the list and leaves
-it as it is, so you can see what Git suggested:
+`fixup` for you. Below, the "editor" is a `sed` command that prints the list, without
+the comment lines that explain the commands, and leaves it as it is, so you can see what
+Git suggested. Newer versions of Git write each line as
+`pick d4270bd # Open an hour later`, with the subject after a `#` to show that only the
+hash counts, and `s/ # / /` takes the `#` out so that the list prints the same in every
+version:
 
 ```console
 $ git restore staff.txt
@@ -739,7 +743,7 @@ $ git log --oneline -4
 2b62596 Name the cook
 d4270bd Open an hour later
 1c4624f Charge more for soup
-$ GIT_SEQUENCE_EDITOR='sed -n /^[^#]/p' git rebase -i --autosquash HEAD~3
+$ GIT_SEQUENCE_EDITOR="sed -n 's/ # / /; /^[^#]/p'" git rebase -i --autosquash HEAD~3
 pick d4270bd Open an hour later
 fixup 18f6041 fixup! Open an hour later
 pick 2b62596 Name the cook
@@ -977,8 +981,10 @@ When a test passes at an old commit and fails now, `git bisect` finds the commit
 broke it by halving: it checks out a commit in the middle, you say whether it is good or
 bad, and it halves again, so a thousand commits take about ten tries. `git bisect run`
 does the saying for you: it runs a command at each step, and reads exit code 0 as good,
-125 as "can't test this one", and anything else from 1 to 127 as bad. `git bisect reset`
-puts you back where you started:
+125 as "can't test this one", and anything else from 1 to 127 as bad. It prints a few
+lines for each step, so below its output goes to `/dev/null`, and the answer comes from
+`refs/bisect/bad`, which bisect keeps pointed at the first bad commit it knows of.
+`git bisect reset` puts you back where you started:
 
 ```console
 $ ./check.sh && echo good || echo bad
@@ -986,21 +992,9 @@ bad
 $ git bisect start main v1.0
 Bisecting: 2 revisions left to test after this (roughly 2 steps)
 [e01f6f49131da4470b7c247ab87f940b435285f7] Add cake
-$ git bisect run ./check.sh
-running './check.sh'
-Bisecting: 0 revisions left to test after this (roughly 1 step)
-[dc463680ea77323d4d103b21f75015685470ce3b] Add pie
-running './check.sh'
-e01f6f49131da4470b7c247ab87f940b435285f7 is the first bad commit
-commit e01f6f49131da4470b7c247ab87f940b435285f7
-Author: Ada Lovelace <ada@example.com>
-Date:   Sun Mar 1 09:06:00 2026 +0000
-
-    Add cake
-
- menu.txt | 1 +
- 1 file changed, 1 insertion(+)
-bisect found first bad commit
+$ git bisect run ./check.sh > /dev/null
+$ git log -1 --oneline refs/bisect/bad
+e01f6f4 Add cake
 $ git bisect reset
 Previous HEAD position was dc46368 Add pie
 Switched to branch 'main'
