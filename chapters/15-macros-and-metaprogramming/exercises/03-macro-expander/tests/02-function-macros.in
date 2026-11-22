@@ -1,0 +1,13 @@
+#define SQUARE(x) x * x
+#define SQUARE_SAFE(x) ((x) * (x))
+SQUARE(3)
+SQUARE(1 + 2) versus SQUARE_SAFE(1 + 2)
+SQUARE (4) has a space before the parenthesis
+SQUARE alone is not a call
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+MAX(f(1, 2), 3)
+MAX( "a, b" , c )
+#define NOW() 42
+NOW() and NOW( )
+#define PAIR (x) x
+PAIR(1)

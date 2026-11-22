@@ -1,0 +1,3 @@
+Book(title="Nineteen Eighty-Four", author="George Orwell", year=1949, pages=0, in_print=false)
+Book(title="Frankenstein", author="Mary Shelley", year=1818, pages=0, in_print=false)
+2 books, 0 bad rows

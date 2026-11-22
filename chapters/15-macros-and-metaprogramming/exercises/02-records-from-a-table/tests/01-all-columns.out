@@ -1,0 +1,4 @@
+Book(title="Dune", author="Frank Herbert", year=1965, pages=412, in_print=true)
+Book(title="Emma", author="Jane Austen", year=1815, pages=474, in_print=true)
+Book(title="The Dispossessed", author="Ursula K. Le Guin", year=1974, pages=387, in_print=false)
+3 books, 0 bad rows

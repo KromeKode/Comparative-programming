@@ -1,0 +1,6 @@
+LIMIT * 2 = 6
+square(1 + 2) = 9
+square(bump_clicks()) = 1
+clicks = 1
+line 37: log: 1 clicks
+__debug__ is on, so assert statements run

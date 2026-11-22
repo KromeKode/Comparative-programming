@@ -1,0 +1,6 @@
+running 4 tests
+PASS addition
+PASS strings
+FAIL rounding: 0.1 + 0.2 == 0.3
+PASS sorting
+3 passed, 1 failed

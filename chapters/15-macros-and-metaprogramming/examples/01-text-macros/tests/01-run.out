@@ -1,0 +1,7 @@
+line 33: LIMIT * 2 = 6
+line 34: SQUARE_BAD(1 + 2) = 5
+line 35: SQUARE(1 + 2) = 9
+line 38: SQUARE(bump_clicks()) = 2
+line 39: clicks_count = 2
+log: 2 clicks, 1 view
+VERBOSE is off, so the line that logs it was never compiled

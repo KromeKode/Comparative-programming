@@ -1,0 +1,7 @@
+row 1: pages: "+12" is not a whole number
+Book(title="Leading zeros", author="", year=42, pages=7, in_print=false)
+row 3: year: "" is not a whole number
+row 4: year: "2001.5" is not a whole number
+row 5: year: "19 65" is not a whole number
+Book(title="Fine", author="", year=2024, pages=1000000, in_print=false)
+2 books, 4 bad rows

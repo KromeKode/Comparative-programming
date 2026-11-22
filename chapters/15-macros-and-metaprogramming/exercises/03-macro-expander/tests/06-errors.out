@@ -1,0 +1,14 @@
+error: SQUARE takes 1 argument, got 2
+error: unterminated call to SQUARE
+MAX(1)
+error: MAX takes 2 arguments, got 1
+error: bad #define
+error: bad #define
+error: bad #define
+error: bad #define
+error: bad #define
+error: bad #undef
+SQUARE(5)
+error: NOW takes 0 arguments, got 1
+error: MAX takes 2 arguments, got 1
+everything after an error still works: 42

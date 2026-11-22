@@ -1,0 +1,8 @@
+
+trace fib 1
+   count    fib   10   
+
+trace gcd 7 0
+count fib 0
+trace power 5 0
+trace power 7 3

@@ -1,0 +1,9 @@
+#define DOUBLE(x) ((x) + (x))
+#define QUAD(x) DOUBLE(DOUBLE(x))
+QUAD(5)
+#define ONE 1
+DOUBLE(ONE)
+#define CALL(f, x) f(x)
+CALL(DOUBLE, 7)
+#define ADD(a, b) a + b
+ADD(ADD(1, 2), ADD(3, 4))
