@@ -1,0 +1,44 @@
+git init -q
+save() { tick; git add --all; git commit -q -m "$1"; }
+
+# check.sh is the test. It passes when every dish on the menu has a price from
+# 1 to 20, fails when one doesn't, and exits 125 when there is no menu to check.
+cat > check.sh <<'END'
+#!/bin/sh
+[ -d menu ] || exit 125
+for dish in menu/*; do
+    price=$(cat "$dish")
+    [ "$price" -ge 1 ] 2> /dev/null && [ "$price" -le 20 ] || exit 1
+done
+END
+chmod +x check.sh
+mkdir menu
+echo 4 > menu/soup
+save "Open the shop"
+
+# add puts a dish on the menu, in a file of its own that holds its price.
+add() {
+    echo "$2" > "menu/$1"
+    save "Add $1"
+}
+
+for i in $(seq 1 40); do add "old$i" 1; done
+git tag v1.0
+for round in $(seq 1 12); do
+    git switch -q -c "branch$round"
+    for i in $(seq 1 10); do add "dish$round-$i" "$i"; done
+    if [ "$round" -eq 9 ]; then
+        echo 40 > menu/dish9-4
+        save "Typo in the price of dish9-4"
+    fi
+    if [ "$round" -eq 4 ] || [ "$round" -eq 11 ]; then
+        git mv menu draft
+        save "Take the menu down in round $round"
+        git mv draft menu
+        save "Put the menu back in round $round"
+    fi
+    for i in $(seq 11 20); do add "dish$round-$i" 1; done
+    git switch -q main
+    add "special$round" 2
+    git merge -q -m "Merge round $round" "branch$round"
+done

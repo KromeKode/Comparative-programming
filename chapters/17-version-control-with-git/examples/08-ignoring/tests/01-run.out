@@ -1,0 +1,61 @@
+$ cd app
+$ git status --short --untracked-files=all
+?? .dart_tool/package_config.json
+?? .env
+?? __pycache__/main.cpython-313.pyc
+?? build/main.jar
+?? main
+?? main.c
+?? main.cpp
+?? main.dart
+?? main.go
+?? main.js
+?? main.js.map
+?? main.kt
+?? main.o
+?? main.py
+?? main.rs
+?? main.ts
+?? node_modules/left-pad/index.js
+?? notes.txt
+?? target/debug/main
+# ---
+$ cat > .gitignore <<'END'
+> # Build output
+> *.o
+> /main
+> target/
+> __pycache__/
+> node_modules/
+> *.js.map
+> .dart_tool/
+> build/
+> # Secrets
+> .env
+> END
+$ git status --short --untracked-files=all
+?? .gitignore
+?? main.c
+?? main.cpp
+?? main.dart
+?? main.go
+?? main.js
+?? main.kt
+?? main.py
+?? main.rs
+?? main.ts
+?? notes.txt
+$ git check-ignore -v main.o .env build/main.jar
+.gitignore:2:*.o	main.o
+.gitignore:11:.env	.env
+.gitignore:9:build/	build/main.jar
+# ---
+$ git add .
+$ git commit -q -m "Start the app"
+$ git tag -a v1.0 -m "First release"
+$ echo "more notes" >> notes.txt
+$ git commit -q -a -m "Add notes"
+$ git describe
+v1.0-1-ga794033
+$ git tag -n
+v1.0            First release

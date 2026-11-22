@@ -2663,4 +2663,4 @@ same in Python with a `queue.Queue`, and compare the two.
 ---
 
 Previous: [Chapter 15: Macros and metaprogramming](../15-macros-and-metaprogramming/) ·
-Next: Chapter 17: Version control with Git (coming soon)
+Next: [Chapter 17: Version control with Git](../17-version-control-with-git/)

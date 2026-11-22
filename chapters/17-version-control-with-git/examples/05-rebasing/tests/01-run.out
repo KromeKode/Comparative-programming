@@ -1,0 +1,97 @@
+$ cd cafe
+$ git log --oneline --graph --all
+* 4993811 Add opening hours
+* 9fb60aa Add the staff list
+| * da23edc Add tomato soup
+| * 62db526 Add leek soup
+|/  
+* d9732ee Start the menu
+$ git switch soups
+Switched to branch 'soups'
+$ git rebase main
+Successfully rebased and updated refs/heads/soups.
+$ git log --oneline --graph --all
+* d8e4707 Add tomato soup
+* f911f34 Add leek soup
+* 4993811 Add opening hours
+* 9fb60aa Add the staff list
+* d9732ee Start the menu
+# ---
+$ git switch main
+Switched to branch 'main'
+$ git merge soups
+Updating 4993811..d8e4707
+Fast-forward
+ leek.txt   | 1 +
+ tomato.txt | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 leek.txt
+ create mode 100644 tomato.txt
+$ git branch -d soups
+Deleted branch soups (was d8e4707).
+# ---
+$ git switch -c winter
+Switched to a new branch 'winter'
+$ printf 'Open 10 to 4\n' > hours.txt
+$ git commit -q -a -m "Open later in winter"
+$ printf 'Soup 5\nSalad 5\n' > menu.txt
+$ git commit -q -a -m "Charge more for soup"
+$ git switch main
+Switched to branch 'main'
+$ git cherry-pick winter
+[main 1c4624f] Charge more for soup
+ Date: Sun Mar 1 09:20:00 2026 +0000
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+$ git log --oneline --graph --all
+* 1c4624f Charge more for soup
+| * b6377f6 Charge more for soup
+| * c7437ac Open later in winter
+|/  
+* d8e4707 Add tomato soup
+* f911f34 Add leek soup
+* 4993811 Add opening hours
+* 9fb60aa Add the staff list
+* d9732ee Start the menu
+# ---
+$ printf 'Ada\nGrace\n' > staff.txt
+$ git status --short
+ M staff.txt
+$ git stash
+Saved working directory and index state WIP on main: 1c4624f Charge more for soup
+$ git status --short
+$ git stash list
+stash@{0}: WIP on main: 1c4624f Charge more for soup
+$ git stash pop
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   staff.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (0b6d40b7f302261af4b71930a39279c18e4d76f5)
+$ git status --short
+ M staff.txt
+# ---
+$ git restore staff.txt
+$ printf 'Open 9 to 6\n' > hours.txt
+$ git commit -q -a -m "Open an hour later"
+$ printf 'Grace\n' > cook.txt
+$ git add cook.txt
+$ git commit -q -m "Name the cook"
+$ printf 'Open 9 to 7\n' > hours.txt
+$ git commit -q -a --fixup HEAD~1
+$ git log --oneline -4
+18f6041 fixup! Open an hour later
+2b62596 Name the cook
+d4270bd Open an hour later
+1c4624f Charge more for soup
+$ GIT_SEQUENCE_EDITOR="sed -n 's/ # / /; /^[^#]/p'" git rebase -i --autosquash HEAD~3
+pick d4270bd Open an hour later
+fixup 18f6041 fixup! Open an hour later
+pick 2b62596 Name the cook
+Successfully rebased and updated refs/heads/main.
+$ git log --oneline -3
+c47ae0c Name the cook
+85296ab Open an hour later
+1c4624f Charge more for soup

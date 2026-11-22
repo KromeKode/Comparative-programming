@@ -1,0 +1,13 @@
+git init -q
+save() { tick; git add --all; git commit -q -m "$1"; }
+
+printf 'Open 9 to 5\nClosed on Sunday\n' > hours.txt
+save "Add opening hours"
+
+git switch -q -c feature
+printf 'Open 8 to 6\nClosed on Sunday\n' > hours.txt
+save "Open longer"
+
+git switch -q main
+printf 'Open 10 to 4\nClosed on Sunday\n' > hours.txt
+save "Open shorter"

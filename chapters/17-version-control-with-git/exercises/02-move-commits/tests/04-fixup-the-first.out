@@ -1,0 +1,14 @@
+on branch: topic
+branches: main topic
+main is at published
+commits on topic after published, with the files each one changed:
+* Write the soup recipe
+    soup.txt: Soup: boil water, then add salt
+* Write the pie recipe
+    pie.txt: Pie: bake it
+* Write the tea recipe
+    tea.txt: Tea: add hot water
+* Put pie and tea on the menu
+    menu.txt: Soup|Salad|Pie|Tea
+uncommitted changes:
+stash entries:

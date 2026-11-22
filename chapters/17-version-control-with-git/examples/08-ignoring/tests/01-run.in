@@ -1,0 +1,10 @@
+# A project with the files that building it in each of the nine languages leaves
+# behind, next to the sources.
+mkdir -p app/target/debug app/node_modules/left-pad app/__pycache__ app/build app/.dart_tool
+cd app
+touch main.c main.cpp main.o main main.go main.rs target/debug/main
+touch main.py __pycache__/main.cpython-313.pyc
+touch main.js main.ts main.js.map node_modules/left-pad/index.js
+touch main.dart .dart_tool/package_config.json main.kt build/main.jar
+touch .env notes.txt
+git init -q

@@ -1,0 +1,15 @@
+on branch: main
+branches: main
+history of main:
+* Add prices
+* Add pie
+* Start the menu
+uncommitted changes:
+--- menu.txt
+Soup
+Salad
+Pie
+--- prices.txt
+Soup 4
+Salad 5
+Pie 3

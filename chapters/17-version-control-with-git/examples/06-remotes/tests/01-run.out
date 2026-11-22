@@ -1,0 +1,81 @@
+$ git init -q --bare cafe.git
+$ git clone cafe.git ada
+Cloning into 'ada'...
+warning: You appear to have cloned an empty repository.
+done.
+$ cd ada
+$ printf 'Soup 4\nSalad 5\n' > menu.txt
+$ git add menu.txt
+$ git commit -q -m "Start the menu"
+$ git push -u origin main
+To /home/ada/cafe.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+$ git branch -vv
+* main d655f6e [origin/main] Start the menu
+# ---
+$ cd ..
+$ git clone -q cafe.git grace
+$ cd grace
+$ git config user.name "Grace Hopper"
+$ git config user.email grace@example.com
+$ printf 'Grace\n' > staff.txt
+$ git add staff.txt
+$ git commit -q -m "Add the staff list"
+$ git push -q
+# ---
+$ cd ../ada
+$ printf 'Soup 4\nSalad 5\nPie 3\n' > menu.txt
+$ git commit -q -a -m "Add pie"
+$ git push
+To /home/ada/cafe.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to '/home/ada/cafe.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+$ git fetch
+From /home/ada/cafe
+   d655f6e..f753490  main       -> origin/main
+$ git status
+On branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+nothing to commit, working tree clean
+$ git log --oneline --graph --all
+* 0b07296 Add pie
+| * f753490 Add the staff list
+|/  
+* d655f6e Start the menu
+# ---
+$ git pull
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint: 
+hint:   git config pull.rebase false  # merge
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint: 
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+fatal: Need to specify how to reconcile divergent branches.
+$ git pull --rebase
+Successfully rebased and updated refs/heads/main.
+$ git log --oneline --graph --all
+* d8a523d Add pie
+* f753490 Add the staff list
+* d655f6e Start the menu
+$ git push
+To /home/ada/cafe.git
+   f753490..d8a523d  main -> main
+$ git log --format='%h %an: %s'
+d8a523d Ada Lovelace: Add pie
+f753490 Grace Hopper: Add the staff list
+d655f6e Ada Lovelace: Start the menu

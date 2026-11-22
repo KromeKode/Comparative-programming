@@ -1,0 +1,49 @@
+$ cd cafe
+$ git log --oneline
+3c86a76 Add tea
+c2454a1 Charge more for salad
+412ee24 Hire Grace
+e01f6f4 Add cake
+dc46368 Add pie
+c0c57c3 Add the staff list
+3f19ce8 Add bread
+ef17abc Start the menu
+$ git log --oneline -- staff.txt
+412ee24 Hire Grace
+c0c57c3 Add the staff list
+$ git log --oneline -S Cake
+e01f6f4 Add cake
+$ git log -p -1 --format='%h %s' -- staff.txt
+412ee24 Hire Grace
+
+diff --git a/staff.txt b/staff.txt
+index a341e20..1922815 100644
+--- a/staff.txt
++++ b/staff.txt
+@@ -1 +1,2 @@
+ Ada
++Grace
+# ---
+$ git blame menu.txt
+^ef17abc (Ada Lovelace 2026-03-01 09:02:00 +0000 1) Soup 4
+c2454a14 (Grace Hopper 2026-03-01 09:08:00 +0000 2) Salad 6
+3f19ce8c (Ada Lovelace 2026-03-01 09:03:00 +0000 3) Bread 2
+dc463680 (Ada Lovelace 2026-03-01 09:05:00 +0000 4) Pie 3
+e01f6f49 (Ada Lovelace 2026-03-01 09:06:00 +0000 5) Cake 40
+3c86a764 (Ada Lovelace 2026-03-01 09:09:00 +0000 6) Tea 1
+$ git grep -n Salad
+menu.txt:2:Salad 6
+$ git grep -n Salad v1.0
+v1.0:menu.txt:2:Salad 5
+# ---
+$ ./check.sh && echo good || echo bad
+bad
+$ git bisect start main v1.0
+Bisecting: 2 revisions left to test after this (roughly 2 steps)
+[e01f6f49131da4470b7c247ab87f940b435285f7] Add cake
+$ git bisect run ./check.sh > /dev/null
+$ git log -1 --oneline refs/bisect/bad
+e01f6f4 Add cake
+$ git bisect reset
+Previous HEAD position was dc46368 Add pie
+Switched to branch 'main'

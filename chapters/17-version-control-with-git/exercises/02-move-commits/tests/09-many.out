@@ -1,0 +1,73 @@
+on branch: topic
+branches: main topic
+main is at published
+commits on topic after published, with the files each one changed:
+* Add dish 11
+    dish11.txt: dish 11
+* Add dish 12
+    dish12.txt: dish 12
+* fixup! Add dish 10
+    dish10.txt: dish 10, with salt
+* Add dish 13
+    dish13.txt: dish 13, with salt and pepper
+* Add dish 14
+    dish14.txt: dish 14
+* Add dish 15
+    dish15.txt: dish 15
+* Add dish 16
+    dish16.txt: dish 16, with salt
+* Add dish 17
+    dish17.txt: dish 17
+* Add dish 18
+    dish18.txt: dish 18
+* Add dish 19
+    dish19.txt: dish 19, with salt
+* Add dish 20
+    dish20.txt: dish 20
+* Add dish 21
+    dish21.txt: dish 21
+* Add dish 22
+    dish22.txt: dish 22, with salt
+* Add dish 23
+    dish23.txt: dish 23
+* Add dish 24
+    dish24.txt: dish 24
+* Add dish 25
+    dish25.txt: dish 25, with salt
+* Add dish 26
+    dish26.txt: dish 26
+* Add dish 27
+    dish27.txt: dish 27
+* Add dish 28
+    dish28.txt: dish 28, with salt
+* Add dish 29
+    dish29.txt: dish 29
+* Add dish 30
+    dish30.txt: dish 30
+* Add dish 31
+    dish31.txt: dish 31, with salt
+* Add dish 32
+    dish32.txt: dish 32
+* Add dish 33
+    dish33.txt: dish 33
+* Add dish 34
+    dish34.txt: dish 34, with salt
+* Add dish 35
+    dish35.txt: dish 35
+* Add dish 36
+    dish36.txt: dish 36
+* Add dish 37
+    dish37.txt: dish 37, with salt
+* Add dish 38
+    dish38.txt: dish 38
+* Add dish 39
+    dish39.txt: dish 39
+* Add dish 40
+    dish40.txt: dish 40
+uncommitted changes:
+ M dish39.txt
+M  dish40.txt
+?? idea.txt
+stash entries:
+On main: reheat dish 1
+On main: an old idea

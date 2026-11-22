@@ -1,0 +1,16 @@
+on branch: main
+branches: main
+history of main:
+*   Merge branch 'feature'
+|\  
+| * Add pie
+* | Add the staff list
+|/  
+* Start the menu
+uncommitted changes:
+--- menu.txt
+Soup
+Salad
+Pie
+--- staff.txt
+Ada

@@ -1,0 +1,55 @@
+$ git init -q notes
+$ cd notes
+$ echo hello > greeting.txt
+$ git hash-object greeting.txt
+ce013625030ba8dba906f756967f9e9ca394464a
+$ echo hello | git hash-object --stdin
+ce013625030ba8dba906f756967f9e9ca394464a
+$ printf 'blob 6\0hello\n' | sha1sum
+ce013625030ba8dba906f756967f9e9ca394464a  -
+$ git add greeting.txt
+$ find .git/objects -type f
+.git/objects/ce/013625030ba8dba906f756967f9e9ca394464a
+$ git cat-file -t ce01362
+blob
+$ git cat-file -p ce01362
+hello
+# ---
+$ git commit -q -m "Say hello"
+$ git cat-file -p HEAD
+tree 57e9529754dc514a3ec10db2ff882018fbe1fcbf
+author Ada Lovelace <ada@example.com> 1772356380 +0000
+committer Ada Lovelace <ada@example.com> 1772356380 +0000
+
+Say hello
+$ git cat-file -p 'HEAD^{tree}'
+100644 blob ce013625030ba8dba906f756967f9e9ca394464a	greeting.txt
+$ cat .git/HEAD
+ref: refs/heads/main
+$ cat .git/refs/heads/main
+4d5a9c74907023dcc35703ab906bd53b909842d7
+# ---
+$ cp greeting.txt copy.txt
+$ mkdir docs
+$ echo "Notes about notes." > docs/about.txt
+$ git add .
+$ git commit -q -m "Add a copy and a folder"
+$ git cat-file -p 'HEAD^{tree}'
+100644 blob ce013625030ba8dba906f756967f9e9ca394464a	copy.txt
+040000 tree 552645e24738e6efce7c8d40448d8b40d18faf66	docs
+100644 blob ce013625030ba8dba906f756967f9e9ca394464a	greeting.txt
+$ git cat-file -p HEAD
+tree 7c5592fb4a7a976b7a011dc7f557058d1ccae262
+parent 4d5a9c74907023dcc35703ab906bd53b909842d7
+author Ada Lovelace <ada@example.com> 1772356920 +0000
+committer Ada Lovelace <ada@example.com> 1772356920 +0000
+
+Add a copy and a folder
+$ find .git/objects -type f | sort
+.git/objects/4d/5a9c74907023dcc35703ab906bd53b909842d7
+.git/objects/55/2645e24738e6efce7c8d40448d8b40d18faf66
+.git/objects/57/e9529754dc514a3ec10db2ff882018fbe1fcbf
+.git/objects/7c/5592fb4a7a976b7a011dc7f557058d1ccae262
+.git/objects/83/a89385bf401268f45295f9bc3c83d3d9be2b1c
+.git/objects/9a/68ce438475cf6a547c052f3705e270f501270c
+.git/objects/ce/013625030ba8dba906f756967f9e9ca394464a

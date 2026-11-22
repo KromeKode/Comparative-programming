@@ -1,0 +1,16 @@
+on branch: main
+branches: main
+history of main:
+*   Merge branch 'feature'
+|\  
+| * Raise the price of tea
+* | Raise the prices of soup and tea
+|/  
+* Add prices
+uncommitted changes:
+--- prices.txt
+Soup 6
+Salad 5
+Bread 2
+Pie 3
+Tea 2

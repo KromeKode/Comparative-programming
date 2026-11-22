@@ -1,0 +1,18 @@
+git init -q
+save() { tick; git add --all; git commit -q -m "$1"; }
+
+printf 'Soup\nSalad\n' > menu.txt
+printf 'Call Bob about the oven\n' > notes.txt
+printf 'Ada\n' > staff.txt
+save "Start the shop"
+
+git switch -q -c feature
+git rm -q notes.txt
+save "Remove the notes"
+mkdir -p photos
+printf 'not really a photo\n' > photos/soup.jpg
+save "Add a photo of the soup"
+
+git switch -q main
+printf 'Ada\nGrace\n' > staff.txt
+save "Hire Grace"

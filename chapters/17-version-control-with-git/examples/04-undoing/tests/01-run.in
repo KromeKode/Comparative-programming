@@ -1,0 +1,11 @@
+# A repository with three commits, to undo things in.
+git init -q cafe
+cd cafe
+printf 'Soup 4\nSalad 5\n' > menu.txt
+git add menu.txt
+tick; git commit -q -m "Start the menu"
+printf 'Ada\n' > staff.txt
+git add staff.txt
+tick; git commit -q -m "Add the staff list"
+printf 'Soup 4\nSalad 5\nPie 3\n' > menu.txt
+tick; git commit -q -a -m "Add pie"

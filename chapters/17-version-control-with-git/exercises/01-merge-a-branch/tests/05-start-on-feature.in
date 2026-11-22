@@ -1,0 +1,15 @@
+git init -q
+save() { tick; git add --all; git commit -q -m "$1"; }
+
+printf 'Soup\nSalad\n' > menu.txt
+save "Start the menu"
+
+git switch -q -c feature
+printf 'Soup\nSalad\nPie\n' > menu.txt
+save "Add pie"
+
+git switch -q main
+printf 'Ada\n' > staff.txt
+save "Add the staff list"
+
+git switch -q feature

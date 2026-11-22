@@ -7,6 +7,10 @@ folder. This script runs your program on every .in file and compares what it
 prints with the matching .out file. When one language's correct output is
 different, it gets its own file, such as NAME.python.out.
 
+Chapter 17 is about Git, so its programs are shell scripts of Git commands
+(main.sh in a git folder). There each NAME.in is a script that sets up a
+repository, and tools/git-sandbox.sh runs your script in it.
+
 Examples:
     python3 tools/check.py --doctor            # which toolchains are installed?
     python3 tools/check.py 01                  # check your chapter 1 exercises
@@ -41,7 +45,8 @@ class Language:
     version: list[str] = field(default_factory=list)      # for --doctor
 
 
-# {src} = the source file, {out} = a temporary build folder.
+# {src} = the source file, {out} = a temporary build folder, {tests} = the folder of
+# test cases, {folder} = examples, exercises, or solutions.
 LANGUAGES: dict[str, Language] = {
     "c": Language(
         "C", "main.c", ["cc"],
@@ -106,6 +111,13 @@ LANGUAGES: dict[str, Language] = {
              "-jar", "{out}/main.jar"],
         version=["kotlinc", "-version"],
     ),
+    # Chapter 17 only: a bash script of Git commands, run in a throwaway repository.
+    "git": Language(
+        "Git", "main.sh", ["git", "bash"],
+        build=[["bash", "-n", "{src}"]],
+        run=["bash", str(ROOT / "tools" / "git-sandbox.sh"), "{folder}", "{src}", "{tests}"],
+        version=["git", "--version"],
+    ),
 }
 
 GREEN, RED, YELLOW, DIM, RESET = (
@@ -127,8 +139,15 @@ def message_lines(text: str) -> list[str]:
     return [line for line in text.strip().splitlines() if not line.startswith("Picked up ")]
 
 
-def fill(args: list[str], src: Path, out: Path) -> list[str]:
-    return [a.replace("{src}", str(src)).replace("{out}", str(out)) for a in args]
+def fill(args: list[str], src: Path, out: Path, tests: Path) -> list[str]:
+    names = {"{src}": str(src), "{out}": str(out), "{tests}": str(tests),
+             "{folder}": src.parent.parent.parent.name}
+    filled = []
+    for arg in args:
+        for name, value in names.items():
+            arg = arg.replace(name, value)
+        filled.append(arg)
+    return filled
 
 
 def normalize(text: str) -> list[str]:
@@ -152,8 +171,9 @@ def check_one(key: str, lang: Language, src: Path, tests: list[Path]) -> tuple[s
     """Return (status, detail) for one language's program on all test cases."""
     with tempfile.TemporaryDirectory(prefix="check-") as tmp:
         out = Path(tmp)
+        folder = tests[0].parent
         for cmd in lang.build:
-            proc = subprocess.run(fill(cmd, src, out), capture_output=True, text=True,
+            proc = subprocess.run(fill(cmd, src, out, folder), capture_output=True, text=True,
                                   cwd=src.parent, timeout=120)
             if proc.returncode != 0:
                 message = message_lines(proc.stderr) or message_lines(proc.stdout)
@@ -168,7 +188,7 @@ def check_one(key: str, lang: Language, src: Path, tests: list[Path]) -> tuple[s
                 return "FAIL", f"{case.stem}: no {case.stem}.out or {case.stem}.{key}.out file"
             want = normalize(expected.read_text(encoding="utf-8"))
             try:
-                proc = subprocess.run(fill(lang.run, src, out), input=case.read_bytes(),
+                proc = subprocess.run(fill(lang.run, src, out, folder), input=case.read_bytes(),
                                       capture_output=True, cwd=src.parent,
                                       timeout=TIMEOUT_SECONDS)
             except subprocess.TimeoutExpired:

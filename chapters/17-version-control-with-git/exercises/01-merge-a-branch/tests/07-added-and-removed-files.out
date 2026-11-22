@@ -1,0 +1,19 @@
+on branch: main
+branches: main
+history of main:
+*   Merge branch 'feature'
+|\  
+| * Add a photo of the soup
+| * Remove the notes
+* | Hire Grace
+|/  
+* Start the shop
+uncommitted changes:
+--- menu.txt
+Soup
+Salad
+--- photos/soup.jpg
+not really a photo
+--- staff.txt
+Ada
+Grace
