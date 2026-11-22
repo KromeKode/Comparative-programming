@@ -1,3 +1,3 @@
 module example.com/loadorder
 
-go 1.24
+go 1.23

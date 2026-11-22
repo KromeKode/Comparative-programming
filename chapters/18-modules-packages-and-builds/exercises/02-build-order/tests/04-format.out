@@ -1,0 +1,3 @@
+build order: lib/core, lib/str_utils, app/ui, app/main, v2.0-beta
+rebuild lib/core: lib/core, lib/str_utils, app/ui, app/main
+rebuild v2.0-beta: v2.0-beta

@@ -1,0 +1,6 @@
+add bolts 10
+add nuts 4
+add bolts 15
+count bolts
+count nuts
+count washers

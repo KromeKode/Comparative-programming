@@ -1,0 +1,12 @@
+main: server cli
+server: http db
+cli: args
+http: net
+db: net
+net: bytes
+args: bytes
+bytes:
+rebuild net
+rebuild args
+rebuild bytes
+rebuild main

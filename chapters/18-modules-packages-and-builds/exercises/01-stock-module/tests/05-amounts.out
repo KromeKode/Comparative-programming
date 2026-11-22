@@ -1,0 +1,18 @@
+added 7 a, now 7
+added 999999999999990 a, now 999999999999997
+a: 999999999999997
+error: line 4: expected add, take, count, or list
+error: line 5: expected add, take, count, or list
+error: line 6: expected add, take, count, or list
+error: line 7: expected add, take, count, or list
+added 99 b, now 99
+error: line 9: expected add, take, count, or list
+error: line 10: expected add, take, count, or list
+error: line 11: expected add, take, count, or list
+error: line 12: expected add, take, count, or list
+error: line 13: expected add, take, count, or list
+b: 99
+error: line 15: expected add, take, count, or list
+took 999999999999997 a, now 0
+a: 0
+stock: b 99

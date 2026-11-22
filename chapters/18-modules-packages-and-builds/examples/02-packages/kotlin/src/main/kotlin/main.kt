@@ -1,5 +1,6 @@
 // main.kt has no package statement, so its names are in the default package.
-// It imports the names it uses from textstats; kotlinc compiles both files.
+// It imports the names it uses from textstats, which Gradle compiles first, as a
+// project of its own, and puts on this project's classpath.
 import textstats.VERSION
 import textstats.longestWord
 import textstats.wordCount

@@ -1,0 +1,18 @@
+add a 007
+add a 999999999999990
+count a
+add b 0
+add b 000
+add b 1000000000000000
+add b 0001000000000000000
+add b 000099
+add b -5
+add b +5
+add b 1.5
+add b 1e3
+add b 1,000
+count b
+take a 0
+take a 999999999999997
+count a
+list

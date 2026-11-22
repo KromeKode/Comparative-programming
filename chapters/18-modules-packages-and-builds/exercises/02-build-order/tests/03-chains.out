@@ -1,0 +1,5 @@
+build order: bytes, args, cli, net, db, http, server, main
+rebuild net: net, db, http, server, main
+rebuild args: args, cli, main
+rebuild bytes: bytes, args, cli, net, db, http, server, main
+rebuild main: main

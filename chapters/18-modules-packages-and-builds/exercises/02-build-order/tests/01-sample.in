@@ -1,0 +1,8 @@
+app: ui net
+ui: core
+net: core log
+core:
+log:
+rebuild core
+rebuild log
+rebuild app

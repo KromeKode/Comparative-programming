@@ -1,0 +1,399 @@
+added 172 a, now 172
+added 322 z9, now 322
+took 152 z9, now 170
+error: line 4: only 0 pins in stock
+added 167 screws, now 167
+error: line 6: only 0 hinges in stock
+added 377 Hooks, now 377
+added 415 Hooks, now 792
+took 111 z9, now 59
+pins: 0
+added 113 cogs, now 113
+cogs: 113
+error: line 13: only 0 pins in stock
+error: line 14: only 0 clips in stock
+added 291 z9, now 350
+error: line 16: only 0 nails in stock
+error: line 17: only 0 hinges in stock
+added 68 nails-long, now 68
+took 294 z9, now 56
+added 302 Hooks, now 1094
+added 405 springs, now 405
+stock: Hooks 1094, a 172, cogs 113, nails-long 68, screws 167, springs 405, z9 56
+added 245 nails, now 245
+added 128 washers, now 128
+error: line 25: only 0 gears in stock
+error: line 26: only 113 cogs in stock
+error: line 27: only 0 bolts in stock
+washers: 128
+took 93 cogs, now 20
+added 139 nails, now 384
+gears: 0
+added 374 springs, now 779
+stock: Hooks 1094, a 172, cogs 20, nails 384, nails-long 68, screws 167, springs 779, washers 128, z9 56
+error: line 34: only 68 nails-long in stock
+error: line 35: only 0 bolts in stock
+error: line 36: only 0 hinges in stock
+added 281 a, now 453
+added 217 pins, now 217
+z9: 56
+error: line 40: only 56 z9 in stock
+stock: Hooks 1094, a 453, cogs 20, nails 384, nails-long 68, pins 217, screws 167, springs 779, washers 128, z9 56
+added 491 hinges, now 491
+added 254 clips, now 254
+added 477 washers, now 605
+added 499 hinges, now 990
+added 4719141459274 nails, now 4719141459658
+added 84 washers, now 689
+stock: Hooks 1094, a 453, clips 254, cogs 20, hinges 990, nails 4719141459658, nails-long 68, pins 217, screws 167, springs 779, washers 689, z9 56
+added 55 clips, now 309
+took 184 washers, now 505
+added 480 pins, now 697
+added 204 hinges, now 1194
+error: line 53: only 68 nails-long in stock
+error: line 54: only 0 bolts in stock
+error: line 55: only 0 nuts in stock
+added 46 pins, now 743
+added 192 hinges, now 1386
+added 46 a, now 499
+added 428 springs, now 1207
+took 272 a, now 227
+error: line 61: only 0 rivets in stock
+added 4874462176369 springs, now 4874462177576
+added 272 z9, now 328
+cogs: 20
+added 9950800407112 clips, now 9950800407421
+took 105 Hooks, now 989
+added 339 cogs, now 359
+washers: 505
+took 110 pins, now 633
+added 366 nails, now 4719141460024
+error: line 71: only 0 bolts in stock
+added 142 a, now 369
+added 346 nails-long, now 414
+took 550 hinges, now 836
+took 125 z9, now 203
+took 32 z9, now 171
+error: line 77: only 0 gears in stock
+added 150 a, now 519
+stock: Hooks 989, a 519, clips 9950800407421, cogs 359, hinges 836, nails 4719141460024, nails-long 414, pins 633, screws 167, springs 4874462177576, washers 505, z9 171
+bolts: 0
+added 12 Hooks, now 1001
+added 430 clips, now 9950800407851
+added 35 nails-long, now 449
+stock: Hooks 1001, a 519, clips 9950800407851, cogs 359, hinges 836, nails 4719141460024, nails-long 449, pins 633, screws 167, springs 4874462177576, washers 505, z9 171
+added 236 rivets, now 236
+added 246 z9, now 417
+added 166 a, now 685
+took 153 nails-long, now 296
+added 432 cogs, now 791
+took 191 pins, now 442
+added 317 washers, now 822
+took 802 nails, now 4719141459222
+added 491 z9, now 908
+error: line 94: only 0 gears in stock
+added 454 washers, now 1276
+added 78 gears, now 78
+added 221 bolts, now 221
+added 476 nuts, now 476
+added 484 rivets, now 720
+added 177 nails, now 4719141459399
+stock: Hooks 1001, a 685, bolts 221, clips 9950800407851, cogs 791, gears 78, hinges 836, nails 4719141459399, nails-long 296, nuts 476, pins 442, rivets 720, screws 167, springs 4874462177576, washers 1276, z9 908
+added 65 nuts, now 541
+took 77 springs, now 4874462177499
+added 174 hinges, now 1010
+added 399 springs, now 4874462177898
+took 133 springs, now 4874462177765
+added 120 gears, now 198
+error: line 108: only 198 gears in stock
+took 141 screws, now 26
+took 252 Hooks, now 749
+added 145 a, now 830
+stock: Hooks 749, a 830, bolts 221, clips 9950800407851, cogs 791, gears 198, hinges 1010, nails 4719141459399, nails-long 296, nuts 541, pins 442, rivets 720, screws 26, springs 4874462177765, washers 1276, z9 908
+added 456 clips, now 9950800408307
+added 388 gears, now 586
+added 159 z9, now 1067
+added 357 bolts, now 578
+added 388 rivets, now 1108
+cogs: 791
+added 438 screws, now 464
+took 202 nuts, now 339
+washers: 1276
+took 247 gears, now 339
+added 497 Hooks, now 1246
+error: line 124: only 296 nails-long in stock
+added 294 cogs, now 1085
+added 175 nails-long, now 471
+stock: Hooks 1246, a 830, bolts 578, clips 9950800408307, cogs 1085, gears 339, hinges 1010, nails 4719141459399, nails-long 471, nuts 339, pins 442, rivets 1108, screws 464, springs 4874462177765, washers 1276, z9 1067
+added 278 springs, now 4874462178043
+error: line 130: expected add, take, count, or list
+took 145 hinges, now 865
+added 11 springs, now 4874462178054
+Hooks: 1246
+added 168 rivets, now 1276
+took 56 z9, now 1011
+took 166 clips, now 9950800408141
+stock: Hooks 1246, a 830, bolts 578, clips 9950800408141, cogs 1085, gears 339, hinges 865, nails 4719141459399, nails-long 471, nuts 339, pins 442, rivets 1276, screws 464, springs 4874462178054, washers 1276, z9 1011
+added 114 pins, now 556
+error: line 139: expected add, take, count, or list
+added 213 screws, now 677
+added 404 springs, now 4874462178458
+took 45 bolts, now 533
+hinges: 865
+added 4 bolts, now 537
+took 272 cogs, now 813
+added 429 nails, now 4719141459828
+took 210 Hooks, now 1036
+took 72 springs, now 4874462178386
+took 221 cogs, now 592
+error: line 150: only 592 cogs in stock
+added 465 springs, now 4874462178851
+took 30 a, now 800
+took 266 nuts, now 73
+took 32 hinges, now 833
+took 67 pins, now 489
+took 58 springs, now 4874462178793
+added 15 nuts, now 88
+added 138 springs, now 4874462178931
+error: line 159: only 800 a in stock
+took 202 springs, now 4874462178729
+stock: Hooks 1036, a 800, bolts 537, clips 9950800408141, cogs 592, gears 339, hinges 833, nails 4719141459828, nails-long 471, nuts 88, pins 489, rivets 1276, screws 677, springs 4874462178729, washers 1276, z9 1011
+added 453 nails-long, now 924
+added 135 nails, now 4719141459963
+took 507 springs, now 4874462178222
+took 262 bolts, now 275
+error: line 166: only 800 a in stock
+added 431 springs, now 4874462178653
+added 340 nails-long, now 1264
+added 348 hinges, now 1181
+springs: 4874462178653
+clips: 9950800408141
+added 97 hinges, now 1278
+stock: Hooks 1036, a 800, bolts 275, clips 9950800408141, cogs 592, gears 339, hinges 1278, nails 4719141459963, nails-long 1264, nuts 88, pins 489, rivets 1276, screws 677, springs 4874462178653, washers 1276, z9 1011
+took 25 rivets, now 1251
+added 186 gears, now 525
+added 313 hinges, now 1591
+added 269 a, now 1069
+added 333 rivets, now 1584
+added 370 z9, now 1381
+added 432 z9, now 1813
+added 393 cogs, now 985
+added 185 bolts, now 460
+added 255 Hooks, now 1291
+took 121 nails-long, now 1143
+added 362 clips, now 9950800408503
+error: line 186: only 88 nuts in stock
+took 126 z9, now 1687
+took 193 washers, now 1083
+error: line 189: only 88 nuts in stock
+took 1736 clips, now 9950800406767
+added 177 hinges, now 1768
+error: line 192: only 677 screws in stock
+added 451 hinges, now 2219
+stock: Hooks 1291, a 1069, bolts 460, clips 9950800406767, cogs 985, gears 525, hinges 2219, nails 4719141459963, nails-long 1143, nuts 88, pins 489, rivets 1584, screws 677, springs 4874462178653, washers 1083, z9 1687
+added 436 nuts, now 524
+took 201 pins, now 288
+added 496 z9, now 2183
+added 80 gears, now 605
+added 131 washers, now 1214
+nails-long: 1143
+took 131 gears, now 474
+took 103 nuts, now 421
+added 278 z9, now 2461
+took 213 a, now 856
+took 229 nails-long, now 914
+added 278 z9, now 2739
+took 274 gears, now 200
+added 391 hinges, now 2610
+took 191 hinges, now 2419
+added 429 nuts, now 850
+took 73 Hooks, now 1218
+added 413 hinges, now 2832
+added 461 washers, now 1675
+hinges: 2832
+added 124 springs, now 4874462178777
+stock: Hooks 1218, a 856, bolts 460, clips 9950800406767, cogs 985, gears 200, hinges 2832, nails 4719141459963, nails-long 914, nuts 850, pins 288, rivets 1584, screws 677, springs 4874462178777, washers 1675, z9 2739
+took 25 z9, now 2714
+took 1567 nails, now 4719141458396
+added 303 cogs, now 1288
+added 445 bolts, now 905
+added 430 nuts, now 1280
+error: line 222: only 200 gears in stock
+took 223 clips, now 9950800406544
+added 137 clips, now 9950800406681
+error: line 225: expected add, take, count, or list
+springs: 4874462178777
+added 62 nuts, now 1342
+added 29 cogs, now 1317
+took 170 nails, now 4719141458226
+added 375 screws, now 1052
+took 6 screws, now 1046
+added 9246237976990 pins, now 9246237977278
+took 95 screws, now 951
+took 184 nails-long, now 730
+took 218 nails, now 4719141458008
+took 192 nails-long, now 538
+added 299 rivets, now 1883
+stock: Hooks 1218, a 856, bolts 905, clips 9950800406681, cogs 1317, gears 200, hinges 2832, nails 4719141458008, nails-long 538, nuts 1342, pins 9246237977278, rivets 1883, screws 951, springs 4874462178777, washers 1675, z9 2714
+added 99 gears, now 299
+took 247 nails-long, now 291
+took 19 Hooks, now 1199
+took 265 bolts, now 640
+stock: Hooks 1199, a 856, bolts 640, clips 9950800406681, cogs 1317, gears 299, hinges 2832, nails 4719141458008, nails-long 291, nuts 1342, pins 9246237977278, rivets 1883, screws 951, springs 4874462178777, washers 1675, z9 2714
+took 204 screws, now 747
+added 6 bolts, now 646
+added 3 clips, now 9950800406684
+nails-long: 291
+added 236 a, now 1092
+added 59 bolts, now 705
+stock: Hooks 1199, a 1092, bolts 705, clips 9950800406684, cogs 1317, gears 299, hinges 2832, nails 4719141458008, nails-long 291, nuts 1342, pins 9246237977278, rivets 1883, screws 747, springs 4874462178777, washers 1675, z9 2714
+took 45 cogs, now 1272
+added 2104401332351 washers, now 2104401334026
+took 175 a, now 917
+added 276 cogs, now 1548
+added 324 cogs, now 1872
+stock: Hooks 1199, a 917, bolts 705, clips 9950800406684, cogs 1872, gears 299, hinges 2832, nails 4719141458008, nails-long 291, nuts 1342, pins 9246237977278, rivets 1883, screws 747, springs 4874462178777, washers 2104401334026, z9 2714
+took 192 hinges, now 2640
+took 41 nails-long, now 250
+took 118 hinges, now 2522
+took 75 nuts, now 1267
+added 239 nuts, now 1506
+added 52 nuts, now 1558
+took 990 nuts, now 568
+added 154 bolts, now 859
+added 251 gears, now 550
+added 322 springs, now 4874462179099
+took 175 pins, now 9246237977103
+took 101 clips, now 9950800406583
+took 35 washers, now 2104401333991
+took 28 clips, now 9950800406555
+added 320 clips, now 9950800406875
+added 403 nuts, now 971
+added 26 Hooks, now 1225
+took 187 rivets, now 1696
+took 150 bolts, now 709
+added 355 pins, now 9246237977458
+added 220 cogs, now 2092
+stock: Hooks 1225, a 917, bolts 709, clips 9950800406875, cogs 2092, gears 550, hinges 2522, nails 4719141458008, nails-long 250, nuts 971, pins 9246237977458, rivets 1696, screws 747, springs 4874462179099, washers 2104401333991, z9 2714
+took 17 nails, now 4719141457991
+added 393 clips, now 9950800407268
+added 1377550095499 cogs, now 1377550097591
+took 147 pins, now 9246237977311
+hinges: 2522
+took 257 washers, now 2104401333734
+took 273 a, now 644
+added 391 clips, now 9950800407659
+took 107 a, now 537
+added 228 z9, now 2942
+took 157 springs, now 4874462178942
+took 290 pins, now 9246237977021
+error: line 292: expected add, take, count, or list
+added 79 Hooks, now 1304
+springs: 4874462178942
+added 354 Hooks, now 1658
+took 1497 z9, now 1445
+took 67 springs, now 4874462178875
+took 33 clips, now 9950800407626
+nails-long: 250
+added 493 nails-long, now 743
+added 348 washers, now 2104401334082
+added 139 rivets, now 1835
+added 51 nails-long, now 794
+took 204 a, now 333
+added 416 pins, now 9246237977437
+stock: Hooks 1658, a 333, bolts 709, clips 9950800407626, cogs 1377550097591, gears 550, hinges 2522, nails 4719141457991, nails-long 794, nuts 971, pins 9246237977437, rivets 1835, screws 747, springs 4874462178875, washers 2104401334082, z9 1445
+took 166 bolts, now 543
+added 261 nuts, now 1232
+added 402 screws, now 1149
+took 292 Hooks, now 1366
+took 299 washers, now 2104401333783
+added 7793872289351 screws, now 7793872290500
+added 357 screws, now 7793872290857
+added 355 rivets, now 2190
+gears: 550
+took 2 a, now 331
+added 251 screws, now 7793872291108
+Hooks: 1366
+took 140 hinges, now 2382
+took 59 nails, now 4719141457932
+added 328 bolts, now 871
+added 17 springs, now 4874462178892
+added 450 gears, now 1000
+stock: Hooks 1366, a 331, bolts 871, clips 9950800407626, cogs 1377550097591, gears 1000, hinges 2382, nails 4719141457932, nails-long 794, nuts 1232, pins 9246237977437, rivets 2190, screws 7793872291108, springs 4874462178892, washers 2104401333783, z9 1445
+took 149 nails, now 4719141457783
+added 311 gears, now 1311
+took 206 nails-long, now 588
+took 154 gears, now 1157
+took 164 nails, now 4719141457619
+error: line 330: only 331 a in stock
+took 82 washers, now 2104401333701
+added 166 Hooks, now 1532
+added 349 a, now 680
+added 364 washers, now 2104401334065
+added 429 nails, now 4719141458048
+added 200 clips, now 9950800407826
+added 390 clips, now 9950800408216
+took 228 nails-long, now 360
+added 136 Hooks, now 1668
+added 13 nails-long, now 373
+took 78 Hooks, now 1590
+stock: Hooks 1590, a 680, bolts 871, clips 9950800408216, cogs 1377550097591, gears 1157, hinges 2382, nails 4719141458048, nails-long 373, nuts 1232, pins 9246237977437, rivets 2190, screws 7793872291108, springs 4874462178892, washers 2104401334065, z9 1445
+took 192 nails-long, now 181
+took 126 springs, now 4874462178766
+added 402 z9, now 1847
+took 94 pins, now 9246237977343
+took 227 nails, now 4719141457821
+added 379 washers, now 2104401334444
+added 200 a, now 880
+added 57 bolts, now 928
+added 126 bolts, now 1054
+took 1062 washers, now 2104401333382
+took 30 nuts, now 1202
+added 6398140640037 pins, now 15644378617380
+added 147 nails-long, now 328
+took 19 clips, now 9950800408197
+added 363 screws, now 7793872291471
+hinges: 2382
+took 6 nails-long, now 322
+took 191 z9, now 1656
+added 136 nuts, now 1338
+added 336 Hooks, now 1926
+took 86 cogs, now 1377550097505
+took 159 gears, now 998
+took 154 bolts, now 900
+added 192 clips, now 9950800408389
+took 177 screws, now 7793872291294
+took 275 washers, now 2104401333107
+added 296 springs, now 4874462179062
+added 290 Hooks, now 2216
+took 28 pins, now 15644378617352
+added 233 a, now 1113
+added 40 springs, now 4874462179102
+gears: 998
+added 141 a, now 1254
+took 38 clips, now 9950800408351
+took 267 hinges, now 2115
+added 58 rivets, now 2248
+took 121 pins, now 15644378617231
+took 122 bolts, now 778
+took 207 springs, now 4874462178895
+added 324 Hooks, now 2540
+error: line 383: expected add, take, count, or list
+stock: Hooks 2540, a 1254, bolts 778, clips 9950800408351, cogs 1377550097505, gears 998, hinges 2115, nails 4719141457821, nails-long 322, nuts 1338, pins 15644378617231, rivets 2248, screws 7793872291294, springs 4874462178895, washers 2104401333107, z9 1656
+added 23 rivets, now 2271
+added 17 pins, now 15644378617248
+stock: Hooks 2540, a 1254, bolts 778, clips 9950800408351, cogs 1377550097505, gears 998, hinges 2115, nails 4719141457821, nails-long 322, nuts 1338, pins 15644378617248, rivets 2271, screws 7793872291294, springs 4874462178895, washers 2104401333107, z9 1656
+took 64 a, now 1190
+added 137 screws, now 7793872291431
+stock: Hooks 2540, a 1190, bolts 778, clips 9950800408351, cogs 1377550097505, gears 998, hinges 2115, nails 4719141457821, nails-long 322, nuts 1338, pins 15644378617248, rivets 2271, screws 7793872291431, springs 4874462178895, washers 2104401333107, z9 1656
+added 232 pins, now 15644378617480
+nuts: 1338
+took 275 z9, now 1381
+took 26 pins, now 15644378617454
+added 193 rivets, now 2464
+nuts: 1338
+added 243 nails-long, now 565
+took 210 gears, now 788
+added 486 nails-long, now 1051
+added 421 clips, now 9950800408772
+stock: Hooks 2540, a 1190, bolts 778, clips 9950800408772, cogs 1377550097505, gears 788, hinges 2115, nails 4719141457821, nails-long 1051, nuts 1338, pins 15644378617454, rivets 2464, screws 7793872291431, springs 4874462178895, washers 2104401333107, z9 1381

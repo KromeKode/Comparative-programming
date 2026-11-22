@@ -1,7 +1,7 @@
 [project]
 name = "stats"
 version = "0.1.0"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = ["textstats"]
 
 # This project is a program, not a package to install, so uv only installs its

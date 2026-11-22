@@ -1,0 +1,4 @@
+core:
+ui: core
+rebuild
+rebuild ui

@@ -1,0 +1,14 @@
+error: line 2: < isn't a comparator
+error: line 3: 1.2.3.4 isn't a comparator
+error: line 4: ^v1 isn't a comparator
+error: line 5: 1.x.3 isn't a comparator
+error: line 6: >= isn't a comparator
+error: line 7: 1.2-beta isn't a comparator
+error: line 8: each side of || needs a comparator
+error: line 9: each side of || needs a comparator
+error: line 10: ~>1.0 isn't a comparator
+^1.0.0 -> 1.0.0
+error: line 12: 01.2.3 isn't a comparator
+error: line 13: 1.0.0- isn't a comparator
+error: line 14: 1.2.x-beta isn't a comparator
+error: line 15: x.x.x-0 isn't a comparator

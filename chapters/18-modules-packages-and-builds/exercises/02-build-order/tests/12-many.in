@@ -1,0 +1,73 @@
+m48: m51 m42
+m35:
+m17: m45
+m03:
+m55: m45 m34
+m52: m28 m24 m32
+m30:
+m33: m24 m53 m17 m42
+m28: m56 m34
+m08: m41 m52
+m00: m39 m17 m02
+m14: m19
+m19: m02 m43 m51
+m53:
+m38: m59 m33
+m32: m45 m41 m56 m24
+m47: m59
+m12: m42 m39
+m13:
+m45: m43 m56
+m40: m42
+m27:
+m56: m41 m42
+m01: m48
+m20:
+m54: m52 m00
+m59:
+m43: m56 m41 m42 m34
+m21: m57
+m49: m13 m15
+m23: m14
+m05: m42 m17
+m02: m43
+m15: m52 m12
+m46:
+m24: m43
+m34: m42
+m06: m34
+m18:
+m37: m56 m53 m34
+m25: m41
+m22: m19 m08 m30
+m50: m58
+m16:
+m31:
+m07: m13 m19
+m58: m39 m56
+m44: m52
+m10:
+m09: m01 m03
+m41:
+m26:
+m57: m34
+m51: m43 m33
+m29: m15
+m39: m53 m41 m56 m43
+m11: m15 m43 m24 m56
+m42:
+m04: m32 m51
+m36: m44
+rebuild m15
+rebuild m35
+rebuild m51
+rebuild m08
+rebuild m37
+rebuild m55
+rebuild m44
+rebuild m13
+rebuild m53
+rebuild m30
+rebuild m49
+rebuild m18
+rebuild m99

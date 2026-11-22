@@ -1,7 +1,7 @@
 [project]
 name = "textstats"
 version = "1.0.0"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 
 # The tool that turns the folder into a package that pip or uv can install.
 [build-system]

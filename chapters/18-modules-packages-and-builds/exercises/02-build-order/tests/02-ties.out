@@ -1,0 +1,6 @@
+build order: apple, mango, banana, zebra, kiwi, cherry
+rebuild zebra: zebra, kiwi, cherry
+rebuild mango: mango, banana, cherry
+rebuild cherry: cherry
+error: line 10: no module called grape
+error: line 11: no module called Apple
