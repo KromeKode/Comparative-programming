@@ -1,0 +1,47 @@
+Putting a key reads the computer's clock instead of the cache's clock.
+
+--- c/cache.c
+-bool cache_put(struct cache *cache, const char *key, const char *value) {
+-    long long now = clock_now(cache);
++bool cache_put(struct cache *cache, const char *key, const char *value) {
++    long long now = cache_system_clock.now(NULL);
+--- cpp/cache.cpp
+-void Cache::put(const std::string& key, const std::string& value) {
+-    const long long now = clock_.now();
++void Cache::put(const std::string& key, const std::string& value) {
++    const long long now = SystemClock().now();
+--- rust/src/lib.rs
+-    pub fn put(&mut self, key: &str, value: &str) {
+-        let now = self.clock.now();
++    pub fn put(&mut self, key: &str, value: &str) {
++        let now = SystemClock.now();
+--- go/cache.go
+-func (c *Cache) Put(key, value string) {
+-	now := c.clock.Now()
++func (c *Cache) Put(key, value string) {
++	now := SystemClock{}.Now()
+--- python/cache.py
+-        """Stores value under key for the next ttl seconds, replacing any value there."""
+-        now = self._clock.now()
++        """Stores value under key for the next ttl seconds, replacing any value there."""
++        now = SystemClock().now()
+--- javascript/cache.js
+-  put(key, value) {
+-    const now = this.#clock.now();
++  put(key, value) {
++    const now = new SystemClock().now();
+--- typescript/cache.ts
+-  put(key: string, value: string): void {
+-    const now = this.#clock.now();
++  put(key: string, value: string): void {
++    const now = new SystemClock().now();
+--- dart/lib/cache.dart
+-  void put(String key, String value) {
+-    final now = _clock.now();
++  void put(String key, String value) {
++    final now = const SystemClock().now();
+--- kotlin/src/main/kotlin/Cache.kt
+-    fun put(key: String, value: String) {
+-        val now = clock.now()
++    fun put(key: String, value: String) {
++        val now = SystemClock.now()

@@ -1,0 +1,107 @@
+Getting an entry starts its ttl again, so an entry that is got often never expires.
+
+--- c/cache.h
+-const char *cache_get(const struct cache *cache, const char *key);
++const char *cache_get(struct cache *cache, const char *key);
+--- c/cache.c
+-const char *cache_get(const struct cache *cache, const char *key) {
+-    const struct entry *entry = find(cache, key);
+-    if (entry == NULL || !is_live(entry, clock_now(cache))) return NULL;
+-    return entry->value;
++const char *cache_get(struct cache *cache, const char *key) {
++    long long now = clock_now(cache);
++    struct entry *entry = find(cache, key);
++    if (entry == NULL || !is_live(entry, now)) return NULL;
++    entry->expires = now + cache->ttl;
++    return entry->value;
+--- cpp/cache.hpp
+-    std::optional<std::string> get(const std::string& key) const;
++    std::optional<std::string> get(const std::string& key);
+--- cpp/cache.cpp
+-std::optional<std::string> Cache::get(const std::string& key) const {
+-    auto found = entries_.find(key);
+-    if (found == entries_.end() || !found->second.is_live(clock_.now())) return std::nullopt;
+-    return found->second.value;
++std::optional<std::string> Cache::get(const std::string& key) {
++    const long long now = clock_.now();
++    auto found = entries_.find(key);
++    if (found == entries_.end() || !found->second.is_live(now)) return std::nullopt;
++    found->second.expires = now + ttl_;
++    return found->second.value;
+--- rust/src/lib.rs
+-    pub fn get(&self, key: &str) -> Option<&str> {
+-        let entry = self.entries.get(key)?;
+-        if !entry.is_live(self.clock.now()) {
+-            return None;
+-        }
+-        Some(&entry.value)
++    pub fn get(&mut self, key: &str) -> Option<&str> {
++        let now = self.clock.now();
++        let entry = self.entries.get_mut(key)?;
++        if !entry.is_live(now) {
++            return None;
++        }
++        entry.expires = now + self.ttl;
++        Some(&entry.value)
+--- go/cache.go
+-	e, ok := c.entries[key]
+-	if !ok || !e.isLive(c.clock.Now()) {
+-		return "", false
+-	}
+-	return e.value, true
++	now := c.clock.Now()
++	e, ok := c.entries[key]
++	if !ok || !e.isLive(now) {
++		return "", false
++	}
++	e.expires = now + c.ttl
++	c.entries[key] = e
++	return e.value, true
+--- python/cache.py
+-        entry = self._entries.get(key)
+-        if entry is None or not entry.is_live(self._clock.now()):
+-            return None
++        now = self._clock.now()
++        entry = self._entries.get(key)
++        if entry is None or not entry.is_live(now):
++            return None
++        entry.expires = now + self._ttl
+--- javascript/cache.js
+-    const entry = this.#entries.get(key);
+-    if (entry === undefined || !isLive(entry, this.#clock.now())) {
+-      return undefined;
+-    }
++    const now = this.#clock.now();
++    const entry = this.#entries.get(key);
++    if (entry === undefined || !isLive(entry, now)) {
++      return undefined;
++    }
++    entry.expires = now + this.#ttl;
+--- typescript/cache.ts
+-    const entry = this.#entries.get(key);
+-    if (entry === undefined || !isLive(entry, this.#clock.now())) {
+-      return undefined;
+-    }
++    const now = this.#clock.now();
++    const entry = this.#entries.get(key);
++    if (entry === undefined || !isLive(entry, now)) {
++      return undefined;
++    }
++    entry.expires = now + this.#ttl;
+--- dart/lib/cache.dart
+-    final entry = _entries[key];
+-    if (entry == null || !entry.isLive(_clock.now())) return null;
+-    return entry.value;
++    final now = _clock.now();
++    final entry = _entries[key];
++    if (entry == null || !entry.isLive(now)) return null;
++    _entries[key] = _Entry(entry.value, now + ttl);
++    return entry.value;
+--- kotlin/src/main/kotlin/Cache.kt
+-        val entry = entries[key] ?: return null
+-        return if (entry.isLive(clock.now())) entry.value else null
++        val now = clock.now()
++        val entry = entries[key] ?: return null
++        if (!entry.isLive(now)) return null
++        entries[key] = Entry(entry.value, now + ttl)
++        return entry.value

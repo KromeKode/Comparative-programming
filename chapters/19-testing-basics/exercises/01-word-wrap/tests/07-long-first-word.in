@@ -1,0 +1,29 @@
+A first word that is longer than the width comes after an empty line.
+
+--- c/wrap.c
+-        if (line_length == 0) {
++        if (line_length == 0 && word <= width) {
+--- cpp/wrap.cpp
+-        if (line.empty()) {
++        if (line.empty() && word.size() <= width) {
+--- rust/src/lib.rs
+-        if line.is_empty() {
++        if line.is_empty() && word.len() <= width {
+--- go/wrap.go
+-		if line == "" {
++		if line == "" && len(word) <= width {
+--- python/wrap.py
+-        if line == "":
++        if line == "" and len(word) <= width:
+--- javascript/wrap.js
+-    if (line === "") {
++    if (line === "" && word.length <= width) {
+--- typescript/wrap.ts
+-    if (line === "") {
++    if (line === "" && word.length <= width) {
+--- dart/lib/wrap.dart
+-    if (line.isEmpty) {
++    if (line.isEmpty && word.length <= width) {
+--- kotlin/src/main/kotlin/Wrap.kt
+-        if (line.isEmpty()) {
++        if (line.isEmpty() && word.length <= width) {

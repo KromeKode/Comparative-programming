@@ -1,0 +1,66 @@
+The size counts entries that have expired, until the next put forgets them.
+
+--- c/cache.c
+-    long long now = clock_now(cache);
+-    size_t live = 0;
+-    for (size_t i = 0; i < cache->count; i++) {
+-        if (is_live(&cache->entries[i], now)) live++;
+-    }
+-    return live;
++    return cache->count;
+--- cpp/cache.cpp
+-    const long long now = clock_.now();
+-    return std::ranges::count_if(entries_,
+-                                 [now](const auto& item) { return item.second.is_live(now); });
++    return entries_.size();
+--- rust/src/lib.rs
+-        let now = self.clock.now();
+-        self.entries
+-            .values()
+-            .filter(|entry| entry.is_live(now))
+-            .count()
++        self.entries.len()
+--- go/cache.go
+-	now := c.clock.Now()
+-	n := 0
+-	for _, e := range c.entries {
+-		if e.isLive(now) {
+-			n++
+-		}
+-	}
+-	return n
++	return len(c.entries)
+--- python/cache.py
+-        now = self._clock.now()
+-        return sum(1 for entry in self._entries.values() if entry.is_live(now))
++        return len(self._entries)
+--- javascript/cache.js
+-    const now = this.#clock.now();
+-    let live = 0;
+-    for (const entry of this.#entries.values()) {
+-      if (isLive(entry, now)) {
+-        live++;
+-      }
+-    }
+-    return live;
++    return this.#entries.size;
+--- typescript/cache.ts
+-    const now = this.#clock.now();
+-    let live = 0;
+-    for (const entry of this.#entries.values()) {
+-      if (isLive(entry, now)) {
+-        live++;
+-      }
+-    }
+-    return live;
++    return this.#entries.size;
+--- dart/lib/cache.dart
+-    final now = _clock.now();
+-    return _entries.values.where((entry) => entry.isLive(now)).length;
++    return _entries.length;
+--- kotlin/src/main/kotlin/Cache.kt
+-        get() {
+-            val now = clock.now()
+-            return entries.values.count { it.isLive(now) }
+-        }
++        get() = entries.size

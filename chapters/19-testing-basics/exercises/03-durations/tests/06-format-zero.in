@@ -1,0 +1,29 @@
+0 seconds formats as empty text, and not as 0s.
+
+--- c/duration.c
+-    if (length == 0) strcpy(text, "0s");
+--- cpp/duration.cpp
+-    if (seconds == 0) return "0s";
+--- rust/src/lib.rs
+-    if seconds == 0 {
+-        return "0s".to_string();
+-    }
+--- go/duration.go
+-	if s == 0 {
+-		return "0s"
+-	}
+--- python/duration.py
+-    if seconds == 0:
+-        return "0s"
+--- javascript/duration.js
+-  if (seconds === 0) {
+-    return "0s";
+-  }
+--- typescript/duration.ts
+-  if (seconds === 0) {
+-    return "0s";
+-  }
+--- dart/lib/duration.dart
+-  if (seconds == 0) return '0s';
+--- kotlin/src/main/kotlin/Duration.kt
+-    if (seconds == 0L) return "0s"

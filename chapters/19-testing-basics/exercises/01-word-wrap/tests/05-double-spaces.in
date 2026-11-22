@@ -1,0 +1,36 @@
+Each space separates two words, so two spaces in a row make an empty word, and the lines keep the extra spaces.
+
+--- c/wrap.c
+-        while (*p == ' ') p++;
++        if (*p == ' ') p++;
+--- cpp/wrap.cpp
+-        start = text.find_first_not_of(' ', start);
+-        if (start == std::string_view::npos) break;
++        if (start < text.size() && text[start] == ' ') start++;
++        if (start >= text.size()) break;
+--- rust/src/lib.rs
+-    for word in text.split(' ').filter(|word| !word.is_empty()) {
++    for word in text.split(' ') {
+--- go/wrap.go
+-		if word == "" {
+-			continue
+-		}
+--- python/wrap.py
+-        if word == "":
+-            continue
+--- javascript/wrap.js
+-    if (word === "") {
+-      continue;
+-    }
+--- typescript/wrap.ts
+-    if (word === "") {
+-      continue;
+-    }
+--- dart/lib/wrap.dart
+-    if (word.isEmpty) {
+-      continue;
+-    }
+--- kotlin/src/main/kotlin/Wrap.kt
+-        if (word.isEmpty()) {
+-            continue
+-        }

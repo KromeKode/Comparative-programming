@@ -1,0 +1,29 @@
+Formatting leaves out the units that are 0 only until one that isn't, so 3600 is 1h0m0s.
+
+--- c/duration.c
+-        if (amount > 0) {
++        if (amount > 0 || length > 0) {
+--- cpp/duration.cpp
+-        if (amount > 0) text += std::to_string(amount) + UNITS[unit];
++        if (amount > 0 || !text.empty()) text += std::to_string(amount) + UNITS[unit];
+--- rust/src/lib.rs
+-        if amount > 0 {
++        if amount > 0 || !text.is_empty() {
+--- go/duration.go
+-		if amount > 0 {
++		if amount > 0 || b.Len() > 0 {
+--- python/duration.py
+-        if amount > 0:
++        if amount > 0 or parts:
+--- javascript/duration.js
+-    if (amount > 0) {
++    if (amount > 0 || text !== "") {
+--- typescript/duration.ts
+-    if (amount > 0) {
++    if (amount > 0 || text !== "") {
+--- dart/lib/duration.dart
+-    if (amount > 0) text.write('$amount${_units[unit]}');
++    if (amount > 0 || text.isNotEmpty) text.write('$amount${_units[unit]}');
+--- kotlin/src/main/kotlin/Duration.kt
+-            if (amount > 0) append("$amount${UNITS[unit]}")
++            if (amount > 0 || isNotEmpty()) append("$amount${UNITS[unit]}")
