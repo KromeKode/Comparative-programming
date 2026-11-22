@@ -1,0 +1,16 @@
+on branch: main
+branches: main
+history of main:
+*   Merge branch 'feature'
+|\  
+| * Add a to-do list
+* | Add a list of jobs
+|/  
+* Start the menu
+uncommitted changes:
+--- menu.txt
+Soup
+Salad
+--- todo.txt
+Buy flour
+Fix the door

@@ -1,0 +1,13 @@
+git init -q
+save() { tick; git add --all; git commit -q -m "$1"; }
+
+printf 'Soup 4\nSalad 5\nBread 2\nPie 3\nTea 1\n' > prices.txt
+save "Add prices"
+
+git switch -q -c feature
+printf 'Soup 4\nSalad 5\nBread 2\nPie 3\nTea 2\n' > prices.txt
+save "Raise the price of tea"
+
+git switch -q main
+printf 'Soup 6\nSalad 5\nBread 2\nPie 3\nTea 1.50\n' > prices.txt
+save "Raise the prices of soup and tea"

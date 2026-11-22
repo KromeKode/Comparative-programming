@@ -1,0 +1,65 @@
+on branch: main
+branches: main
+history of main:
+*   Merge branch 'feature'
+|\  
+| * Add pie
+| * Open on Monday and Friday
+| * Change line 30 on feature
+| * Change line 25 on feature
+| * Change line 20 on feature
+| * Change line 15 on feature
+| * Change line 10 on feature
+| * Change line 5 on feature
+* | Add the staff list
+* | Open on Monday and Wednesday
+* | Change line 2 on main
+* | Change line 30 on main
+* | Change line 20 on main
+* | Change line 10 on main
+|/  
+* Start the shop
+uncommitted changes:
+--- long.txt
+line 1
+line 2 from main
+line 3
+line 4
+line 5 from feature
+line 6
+line 7
+line 8
+line 9
+line 10 from feature
+line 11
+line 12
+line 13
+line 14
+line 15 from feature
+line 16
+line 17
+line 18
+line 19
+line 20 from feature
+line 21
+line 22
+line 23
+line 24
+line 25 from feature
+line 26
+line 27
+line 28
+line 29
+line 30 from feature
+--- menu.txt
+Soup
+Pie
+--- staff.txt
+Ada
+Grace
+--- week.txt
+Monday: 9 to 5
+Tuesday: closed
+Wednesday: 10 to 4
+Thursday: closed
+Friday: 9 to 1

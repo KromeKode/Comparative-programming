@@ -1,0 +1,13 @@
+on branch: main
+branches: main
+history of main:
+* Add the staff list
+* Add pie
+* Start the menu
+uncommitted changes:
+--- menu.txt
+Soup
+Salad
+Pie
+--- staff.txt
+Ada

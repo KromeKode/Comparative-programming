@@ -1,0 +1,13 @@
+on branch: main
+branches: main
+history of main:
+*   Merge branch 'feature'
+|\  
+| * Open longer
+* | Open shorter
+|/  
+* Add opening hours
+uncommitted changes:
+--- hours.txt
+Open 8 to 6
+Closed on Sunday

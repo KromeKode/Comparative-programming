@@ -1,0 +1,79 @@
+$ git init -q shop
+$ cd shop
+$ printf 'Soup 4\n' > menu.txt
+$ git add menu.txt
+$ git commit -q -m "Start the menu"
+$ printf 'Soup 4\nSalad 5\n' > menu.txt
+$ git commit -q -a -m "Add salad"
+$ git checkout HEAD~1
+Note: switching to 'HEAD~1'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at d0b3fc8 Start the menu
+$ printf 'Soup 4\nBread 2\n' > menu.txt
+$ git commit -q -a -m "Add bread"
+$ git log --oneline --graph --all
+* 90fe440 Add bread
+| * eb2a7d9 Add salad
+|/  
+* d0b3fc8 Start the menu
+$ git switch main
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  90fe440 Add bread
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> 90fe440
+
+Switched to branch 'main'
+# ---
+$ git init -q --bare ../shop.git
+$ git remote add origin ../shop.git
+$ git push
+fatal: The current branch main has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin main
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+# ---
+$ printf 'password=hunter2\n' > secrets.env
+$ git add secrets.env
+$ git commit -q -m "Add settings"
+$ echo secrets.env > .gitignore
+$ git status --short
+?? .gitignore
+$ git rm -q --cached secrets.env
+$ git add .gitignore
+$ git commit -q -m "Stop tracking the settings"
+$ git status --short
+$ git log --oneline --all -- secrets.env
+b06d890 Stop tracking the settings
+5a8c14e Add settings
+$ git show HEAD~1:secrets.env
+password=hunter2
+# ---
+$ mkdir photos
+$ git status --short
+$ touch photos/.gitkeep
+$ git status --short
+?? photos/

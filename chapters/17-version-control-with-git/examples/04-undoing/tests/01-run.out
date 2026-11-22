@@ -1,0 +1,79 @@
+$ cd cafe
+$ git log --oneline
+a54f302 Add pie
+004e33b Add the staff list
+d9732ee Start the menu
+$ printf 'Soup 40\nSalad 5\nPie 3\n' > menu.txt
+$ git status --short
+ M menu.txt
+$ git restore menu.txt
+$ git status --short
+$ printf 'Soup 4\nSalad 5\nPie 3\nCake 4\n' > menu.txt
+$ git add menu.txt
+$ git status --short
+M  menu.txt
+$ git restore --staged menu.txt
+$ git status --short
+ M menu.txt
+# ---
+$ git commit -q -a -m "Add cak"
+$ git log --oneline -1
+5e461b1 Add cak
+$ git commit -q --amend -m "Add cake"
+$ git log --oneline
+d85a2e9 Add cake
+a54f302 Add pie
+004e33b Add the staff list
+d9732ee Start the menu
+# ---
+$ git reset --soft HEAD~1
+$ git status --short
+M  menu.txt
+$ git log --oneline -1
+a54f302 Add pie
+$ git reset HEAD~1
+Unstaged changes after reset:
+M	menu.txt
+$ git status --short
+ M menu.txt
+$ git log --oneline -1
+004e33b Add the staff list
+# ---
+$ git reset --hard HEAD~1
+HEAD is now at d9732ee Start the menu
+$ git status --short
+$ cat menu.txt
+Soup 4
+Salad 5
+$ git log --oneline
+d9732ee Start the menu
+$ git reflog
+d9732ee HEAD@{0}: reset: moving to HEAD~1
+004e33b HEAD@{1}: reset: moving to HEAD~1
+a54f302 HEAD@{2}: reset: moving to HEAD~1
+d85a2e9 HEAD@{3}: commit (amend): Add cake
+5e461b1 HEAD@{4}: commit: Add cak
+a54f302 HEAD@{5}: commit: Add pie
+004e33b HEAD@{6}: commit: Add the staff list
+d9732ee HEAD@{7}: commit (initial): Start the menu
+$ git reset --hard HEAD@{3}
+HEAD is now at d85a2e9 Add cake
+$ git log --oneline
+d85a2e9 Add cake
+a54f302 Add pie
+004e33b Add the staff list
+d9732ee Start the menu
+# ---
+$ git revert --no-edit HEAD~2
+[main cef68c4] Revert "Add the staff list"
+ Date: Sun Mar 1 09:34:00 2026 +0000
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 staff.txt
+$ git log --oneline
+cef68c4 Revert "Add the staff list"
+d85a2e9 Add cake
+a54f302 Add pie
+004e33b Add the staff list
+d9732ee Start the menu
+$ ls
+menu.txt

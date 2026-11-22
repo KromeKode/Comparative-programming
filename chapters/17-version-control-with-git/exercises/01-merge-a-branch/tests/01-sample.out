@@ -1,0 +1,24 @@
+on branch: main
+branches: main
+history of main:
+*   Merge branch 'feature'
+|\  
+| * Add prices
+| * Add pie
+* | Write the soup recipe
+|/  
+* Add a recipe file
+* Start the menu
+uncommitted changes:
+--- menu.txt
+Soup
+Salad
+Pie
+--- prices.txt
+Soup 4
+Salad 5
+Pie 3
+--- recipes.md
+# Recipes
+
+Soup: boil water, add vegetables.

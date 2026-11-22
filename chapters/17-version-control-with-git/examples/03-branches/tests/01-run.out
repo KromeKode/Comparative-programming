@@ -1,0 +1,124 @@
+$ git init -q cafe
+$ cd cafe
+$ printf 'Soup 4\nSalad 5\nBread 2\n' > menu.txt
+$ git add menu.txt
+$ git commit -q -m "Start the menu"
+$ git branch pie
+$ git branch
+* main
+  pie
+$ git switch pie
+Switched to branch 'pie'
+$ printf 'Pie 3\n' >> menu.txt
+$ git commit -q -a -m "Add pie"
+$ git log --oneline --graph --all
+* 8ecbc01 Add pie
+* d59cdd3 Start the menu
+# ---
+$ git switch main
+Switched to branch 'main'
+$ git merge pie
+Updating d59cdd3..8ecbc01
+Fast-forward
+ menu.txt | 1 +
+ 1 file changed, 1 insertion(+)
+$ git log --oneline --graph --all
+* 8ecbc01 Add pie
+* d59cdd3 Start the menu
+# ---
+$ git switch -c drinks
+Switched to a new branch 'drinks'
+$ printf 'Tea 1\nCoffee 2\n' > drinks.txt
+$ git add drinks.txt
+$ git commit -q -m "Add a drinks list"
+$ git switch main
+Switched to branch 'main'
+$ printf 'Soup 4\nSalad 5\nBread 3\nPie 3\n' > menu.txt
+$ git commit -q -a -m "Charge more for bread"
+$ git log --oneline --graph --all
+* b8edaee Charge more for bread
+| * 6f35c6e Add a drinks list
+|/  
+* 8ecbc01 Add pie
+* d59cdd3 Start the menu
+$ git merge -m "Merge the drinks list" drinks
+Merge made by the 'ort' strategy.
+ drinks.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 drinks.txt
+$ git log --oneline --graph
+*   a4a53e7 Merge the drinks list
+|\  
+| * 6f35c6e Add a drinks list
+* | b8edaee Charge more for bread
+|/  
+* 8ecbc01 Add pie
+* d59cdd3 Start the menu
+$ git branch -d pie drinks
+Deleted branch pie (was 8ecbc01).
+Deleted branch drinks (was 6f35c6e).
+# ---
+$ git switch -c cheaper
+Switched to a new branch 'cheaper'
+$ printf 'Soup 3\nSalad 5\nBread 3\nPie 3\n' > menu.txt
+$ git commit -q -a -m "Make soup cheaper"
+$ git switch main
+Switched to branch 'main'
+$ printf 'Soup 5\nSalad 5\nBread 3\nPie 3\n' > menu.txt
+$ git commit -q -a -m "Make soup dearer"
+$ git merge cheaper
+Auto-merging menu.txt
+CONFLICT (content): Merge conflict in menu.txt
+Automatic merge failed; fix conflicts and then commit the result.
+$ git status
+On branch main
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   menu.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+$ cat menu.txt
+<<<<<<< HEAD
+Soup 5
+=======
+Soup 3
+>>>>>>> cheaper
+Salad 5
+Bread 3
+Pie 3
+$ git checkout --conflict=zdiff3 menu.txt
+Recreated 1 merge conflict
+$ cat menu.txt
+<<<<<<< ours
+Soup 5
+||||||| base
+Soup 4
+=======
+Soup 3
+>>>>>>> theirs
+Salad 5
+Bread 3
+Pie 3
+# ---
+$ printf 'Soup 4\nSalad 5\nBread 3\nPie 3\n' > menu.txt
+$ git add menu.txt
+$ git status --short
+M  menu.txt
+$ git commit -q --no-edit
+$ git log --oneline --graph
+*   6b33629 Merge branch 'cheaper'
+|\  
+| * 9a05456 Make soup cheaper
+* | 995efce Make soup dearer
+|/  
+*   a4a53e7 Merge the drinks list
+|\  
+| * 6f35c6e Add a drinks list
+* | b8edaee Charge more for bread
+|/  
+* 8ecbc01 Add pie
+* d59cdd3 Start the menu

@@ -1,0 +1,6 @@
+on branch: topic
+branches: main topic
+main is at published
+commits on topic after published, with the files each one changed:
+uncommitted changes:
+stash entries:

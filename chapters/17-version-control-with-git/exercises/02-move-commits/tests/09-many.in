@@ -1,0 +1,26 @@
+git init -q
+save() { tick; git add --all; git commit -q -m "$1"; }
+for i in $(seq 1 10); do
+    echo "dish $i" > "dish$i.txt"
+    save "Add dish $i"
+done
+git tag published
+printf 'an old idea\n' > idea.txt
+git add idea.txt
+git stash push -q -m "an old idea"
+printf 'dish 1, reheated\n' > dish1.txt
+git stash push -q -m "reheat dish 1"
+for i in $(seq 11 40); do
+    echo "dish $i" > "dish$i.txt"
+    save "Add dish $i"
+    if [ $((i % 3)) -eq 0 ]; then
+        echo "dish $((i - 2)), with salt" > "dish$((i - 2)).txt"
+        save "fixup! Add dish $((i - 2))"
+    fi
+done
+echo "dish 13, with salt and pepper" > dish13.txt
+save "fixup! Add dish 13"
+echo "dish 40, cold" > dish40.txt
+git add dish40.txt
+echo "dish 39, hot" > dish39.txt
+echo "a new idea" > idea.txt
