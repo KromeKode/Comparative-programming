@@ -1,0 +1,14 @@
+[project]
+name = "stats"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = ["textstats"]
+
+# This project is a program, not a package to install, so uv only installs its
+# dependencies.
+[tool.uv]
+package = false
+
+# Where uv gets textstats: from the folder, instead of from PyPI.
+[tool.uv.sources]
+textstats = { path = "textstats" }

@@ -1,0 +1,13 @@
+[package]
+name = "stats"
+version = "0.1.0"
+edition = "2024"
+
+# The program's name; it would be "stats", after the package, without this.
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+[dependencies]
+# A path dependency: the crate in the folder textstats, not one from crates.io.
+textstats = { path = "textstats" }

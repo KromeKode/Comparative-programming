@@ -1,0 +1,8 @@
+name: stats
+publish_to: none
+environment:
+  sdk: ^3.9.0
+dependencies:
+  # A path dependency: the package in the folder textstats, not one from pub.dev.
+  textstats:
+    path: textstats

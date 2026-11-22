@@ -1,0 +1,4 @@
+main: start
+settings: loading
+main: the greeting is Hello
+main: the greeting is still Hello
