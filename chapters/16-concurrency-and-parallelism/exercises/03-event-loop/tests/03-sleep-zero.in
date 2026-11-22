@@ -1,0 +1,15 @@
+task a
+  print a1
+  sleep 0
+  print a2
+  sleep 0
+  print a3
+task b
+  print b1
+  sleep 0
+  print b2
+task c
+  sleep 0
+  print c1
+  sleep 3
+  print c2

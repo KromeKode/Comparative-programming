@@ -1,0 +1,17 @@
+task main
+  print start
+  wait worker
+  print the worker is done
+  wait quick
+  print quick finished long ago
+task worker
+  sleep 20
+  print working
+task quick
+  print quick
+task watcher
+  wait worker
+  print saw the worker finish
+task chain
+  wait watcher
+  print saw the watcher finish

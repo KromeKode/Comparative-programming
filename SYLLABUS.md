@@ -32,7 +32,7 @@ Status: ✅ written · ⬜ planned
 | 13 | [Generics and polymorphism](chapters/13-generics-and-polymorphism/) ★ C++, Rust, Go, TypeScript, Kotlin | ✅ |
 | 14 | [Iterators and functional style](chapters/14-iterators-and-functional-style/) | ✅ |
 | 15 | [Macros and metaprogramming](chapters/15-macros-and-metaprogramming/) ★ C, C++, Rust, Python | ✅ |
-| 16 | Concurrency and parallelism | ⬜ |
+| 16 | [Concurrency and parallelism](chapters/16-concurrency-and-parallelism/) | ✅ |
 
 ## Part 3: Tooling and practice
 

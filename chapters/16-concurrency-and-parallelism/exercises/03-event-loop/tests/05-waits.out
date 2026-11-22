@@ -1,0 +1,13 @@
+[0] main: start
+[0] quick: quick
+[0] quick: done
+[20] worker: working
+[20] worker: done
+[20] main: the worker is done
+[20] main: quick finished long ago
+[20] main: done
+[20] watcher: saw the worker finish
+[20] watcher: done
+[20] chain: saw the watcher finish
+[20] chain: done
+[20] all done

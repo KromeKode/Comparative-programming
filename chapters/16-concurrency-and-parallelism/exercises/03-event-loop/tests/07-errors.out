@@ -1,0 +1,13 @@
+error: line 1: a step before any task
+error: line 4: unknown step: jump
+error: line 5: sleep takes a whole number
+error: line 6: sleep takes a whole number
+error: line 7: no task named nobody
+[0] a: hello
+[0] c: c runs
+[0] c: done
+[2] a: bye
+[2] a: done
+[2] b: after a
+[2] b: done
+[2] all done
