@@ -1,0 +1,10 @@
+added 6 tea, now 6
+took 2 tea, now 4
+took 4 tea, now 0
+tea: 0
+error: line 5: only 0 tea in stock
+added 3 tea, now 3
+error: line 7: only 3 tea in stock
+took 3 tea, now 0
+error: line 9: only 0 coffee in stock
+coffee: 0

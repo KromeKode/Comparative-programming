@@ -1,0 +1,11 @@
+zebra:
+mango:
+apple:
+kiwi: zebra apple
+banana: mango
+cherry: kiwi banana
+rebuild zebra
+rebuild mango
+rebuild cherry
+rebuild grape
+rebuild Apple

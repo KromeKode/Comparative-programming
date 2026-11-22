@@ -19,3 +19,7 @@ __pycache__/
 .vscode/
 .idea/
 .DS_Store
+
+# Gradle and Kotlin build state (chapter 18)
+.gradle/
+.kotlin/

@@ -1,0 +1,17 @@
+stock: empty
+added 1 pear, now 1
+added 2 Apple, now 2
+added 3 apple, now 3
+added 4 7up, now 4
+added 1 banana-split, now 1
+added 5 banana, now 5
+stock: 7up 4, Apple 2, apple 3, banana 5, banana-split 1, pear 1
+took 3 apple, now 0
+stock: 7up 4, Apple 2, banana 5, banana-split 1, pear 1
+took 2 Apple, now 0
+took 1 pear, now 0
+took 4 7up, now 0
+took 5 banana, now 0
+took 1 banana-split, now 0
+stock: empty
+apple: 0

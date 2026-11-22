@@ -1,0 +1,17 @@
+list
+add pear 1
+add Apple 2
+add apple 3
+add 7up 4
+add banana-split 1
+add banana 5
+list
+take apple 3
+list
+take Apple 2
+take pear 1
+take 7up 4
+take banana 5
+take banana-split 1
+list
+count apple

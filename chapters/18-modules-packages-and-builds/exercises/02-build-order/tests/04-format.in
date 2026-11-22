@@ -1,0 +1,9 @@
+app/main:   app/ui   lib/core	lib/core lib/core
+
+  app/ui : lib/core lib/str_utils
+lib/core:
+	
+lib/str_utils: lib/core
+v2.0-beta:
+rebuild   lib/core  
+	rebuild v2.0-beta

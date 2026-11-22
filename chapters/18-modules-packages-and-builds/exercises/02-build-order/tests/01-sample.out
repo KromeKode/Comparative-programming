@@ -1,0 +1,4 @@
+build order: core, log, net, ui, app
+rebuild core: core, net, ui, app
+rebuild log: log, net, app
+rebuild app: app

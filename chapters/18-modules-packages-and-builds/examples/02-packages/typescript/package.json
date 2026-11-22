@@ -1,0 +1,8 @@
+{
+  "name": "stats",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "textstats": "file:./textstats"
+  }
+}

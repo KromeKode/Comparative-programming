@@ -1,0 +1,8 @@
+added 5 apples, now 5
+added 2 pears, now 2
+took 3 apples, now 2
+error: line 4: only 2 pears in stock
+apples: 2
+plums: 0
+stock: apples 2, pears 2
+error: line 8: expected add, take, count, or list

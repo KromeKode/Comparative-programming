@@ -1,0 +1,12 @@
+sell x 1
+add x
+add x 1 2
+take
+count
+count a b
+list all
+ADD x 1
+  add   x   2  
+	take	x	1
+add x one
+list

@@ -1,0 +1,5 @@
+app: ui
+ui: widgets theme
+net:
+rebuild app
+data: net disk

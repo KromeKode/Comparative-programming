@@ -1,0 +1,12 @@
+error: line 1: expected add, take, count, or list
+error: line 2: expected add, take, count, or list
+error: line 3: expected add, take, count, or list
+error: line 4: expected add, take, count, or list
+error: line 5: expected add, take, count, or list
+error: line 6: expected add, take, count, or list
+error: line 7: expected add, take, count, or list
+error: line 8: expected add, take, count, or list
+added 2 x, now 2
+took 1 x, now 1
+error: line 11: expected add, take, count, or list
+stock: x 1
