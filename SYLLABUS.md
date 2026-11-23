@@ -41,7 +41,7 @@ Status: ✅ written · ⬜ planned
 | 17 | [Version control with Git](chapters/17-version-control-with-git/) (Git only) | ✅ |
 | 18 | [Modules, packages, builds](chapters/18-modules-packages-and-builds/) | ✅ |
 | 19 | [Testing basics](chapters/19-testing-basics/) | ✅ |
-| 20 | Debugging and profiling | ⬜ |
+| 20 | [Debugging and profiling](chapters/20-debugging-and-profiling/) | ✅ |
 | 21 | Files, JSON, and the CLI | ⬜ |
 | 22 | Text parsing | ⬜ |
 | 23 | FFI and interop | ⬜ |
