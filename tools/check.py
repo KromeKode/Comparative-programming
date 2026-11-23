@@ -77,9 +77,11 @@ class Language:
 
 
 # Commands run in the language folder. {src} = the source file, {srcs} = every
-# source file in the folder and below it (one argument each), {out} = a temporary
-# build folder, {tests} = the folder of test cases, {folder} = examples, exercises,
-# or solutions, {testfiles} = a test suite's test files (one argument each).
+# source file in the folder and below it (one argument each), {dir} = the language
+# folder, {out} = a temporary build folder, {tests} = the folder of test cases,
+# {folder} = examples, exercises, or solutions, {testfiles} = a test suite's test
+# files (one argument each). A program runs in a working folder of its own, so its
+# run command finds it through {src}, {dir}, or {out}.
 CMAKE = Project(
     "CMakeLists.txt", ["cmake"],
     build=[["cmake", "-S", ".", "-B", "{out}", "-DCMAKE_BUILD_TYPE=Release"],
@@ -125,8 +127,9 @@ LANGUAGES: dict[str, Language] = {
         version=["rustc", "--version"],
         projects=[Project(
             "Cargo.toml", ["cargo"],
+            # --locked builds with the versions in Cargo.lock, which it can download.
             build=[["env", "RUSTFLAGS=-D warnings", "cargo", "build", "--release",
-                    "--offline", "--quiet", "--target-dir", "{out}"]],
+                    "--locked", "--quiet", "--target-dir", "{out}"]],
             run=["{out}/release/main"],
         )],
         # A crate whose lib.rs ends with `#[cfg(test)] mod tests;`, for src/tests.rs.
@@ -159,7 +162,7 @@ LANGUAGES: dict[str, Language] = {
             "pyproject.toml", ["uv"],
             build=[["env", "UV_PROJECT_ENVIRONMENT={out}/venv", "uv", "sync", "--locked",
                     "--quiet"]],
-            run=["{out}/venv/bin/python", "main.py"],
+            run=["{out}/venv/bin/python", "{dir}/main.py"],
         )],
         # pytest, which uv installs from uv.lock, as a dev dependency.
         suite=Suite("test_*.py", ["uv"],
@@ -176,7 +179,7 @@ LANGUAGES: dict[str, Language] = {
         projects=[Project(
             "package.json", ["npm", "node"],
             build=[NPM_INSTALL, ["node", "--check", "main.js"]],
-            run=["node", "main.js"],
+            run=["node", "{dir}/main.js"],
         )],
         suite=Suite("*.test.js", ["node"], setup=[], test=[["node", "--test", "{testfiles}"]]),
     ),
@@ -189,7 +192,7 @@ LANGUAGES: dict[str, Language] = {
         projects=[Project(
             "package.json", ["npm", "node"],
             build=[NPM_INSTALL, [a.replace("{src}", "main.ts") for a in TSC_CHECK]],
-            run=["node", "main.ts"],
+            run=["node", "{dir}/main.ts"],
         )],
         suite=Suite("*.test.ts", ["node"],
                     setup=[[a.replace("{src}", "{testfiles}") for a in TSC_CHECK]],
@@ -203,8 +206,10 @@ LANGUAGES: dict[str, Language] = {
         # A package: pub reads pubspec.yaml, and the program is in bin/.
         projects=[Project(
             "pubspec.yaml", ["dart"],
-            build=[["dart", "pub", "get", "--offline"], ["dart", "analyze", "--fatal-infos"]],
-            run=["dart", "run", "bin/main.dart"],
+            # --enforce-lockfile gets the versions in pubspec.lock, which it can download.
+            build=[["dart", "pub", "get", "--enforce-lockfile"],
+                   ["dart", "analyze", "--fatal-infos"]],
+            run=["dart", "run", "{dir}/bin/main.dart"],
         )],
         # package:test, from pubspec.lock; `dart test` runs test/*_test.dart.
         suite=Suite("test/*_test.dart", ["dart"],
@@ -224,7 +229,7 @@ LANGUAGES: dict[str, Language] = {
         projects=[Project(
             "settings.gradle.kts", ["gradle", "java"],
             build=[["gradle", "--quiet", "installDist"]],
-            run=["build/install/main/bin/main"],
+            run=["{dir}/build/install/main/bin/main"],
         )],
         # kotlin.test on JUnit 5, from Gradle; setup downloads them and compiles once.
         suite=Suite("src/test/kotlin/*.kt", ["gradle", "java"],
@@ -282,8 +287,8 @@ def message_lines(text: str) -> list[str]:
 
 def fill(args: list[str], src: Path, out: Path, tests: Path,
          testfiles: list[str] | None = None) -> list[str]:
-    names = {"{src}": str(src), "{out}": str(out), "{tests}": str(tests),
-             "{folder}": src.parent.parent.parent.name}
+    names = {"{src}": str(src), "{dir}": str(src.parent), "{out}": str(out),
+             "{tests}": str(tests), "{folder}": src.parent.parent.parent.name}
     filled = []
     for arg in args:
         if arg == "{srcs}":
@@ -298,8 +303,12 @@ def fill(args: list[str], src: Path, out: Path, tests: Path,
     return filled
 
 
-def normalize(text: str) -> list[str]:
-    """Compare output line by line, ignoring trailing spaces and blank lines at the end."""
+def normalize(text: str | bytes) -> list[str]:
+    """Compare output line by line, ignoring trailing spaces and blank lines at the end.
+    Bytes that aren't UTF-8 stay distinct, as surrogates, so that a program that should
+    copy them can't pass by printing a replacement character instead."""
+    if isinstance(text, bytes):
+        text = text.decode("utf-8", "surrogateescape")
     lines = [line.rstrip() for line in text.replace("\r\n", "\n").split("\n")]
     while lines and lines[-1] == "":
         lines.pop()
@@ -323,6 +332,25 @@ def first_error(lines: list[str]) -> str:
     return lines[0] if lines else "failed"
 
 
+def compare_folders(want: Path, got: Path) -> str | None:
+    """Say how the files in got differ from the ones in want, or return None."""
+    def files(root: Path) -> set[str]:
+        return {str(p.relative_to(root)) for p in root.rglob("*") if p.is_file()}
+    wanted, made = files(want), files(got)
+    for name in sorted(wanted | made):
+        if name not in made:
+            return f"no file {name} after the run"
+        if name not in wanted:
+            return f"an extra file {name} after the run"
+        w, g = (want / name).read_bytes(), (got / name).read_bytes()
+        if w != g:
+            # Exact bytes, so a missing newline at the end counts too.
+            wl, gl = w.decode("utf-8", "surrogateescape").split("\n"), \
+                g.decode("utf-8", "surrogateescape").split("\n")
+            return f"file {name}: {first_difference(gl, wl)}"
+    return None
+
+
 def check_one(key: str, plan: Plan, tests: list[Path]) -> tuple[str, str]:
     """Return (status, detail) for one language's program on all test cases."""
     src = plan.src
@@ -344,20 +372,51 @@ def check_one(key: str, plan: Plan, tests: list[Path]) -> tuple[str, str]:
                 expected = case.with_suffix(".out")
             if not expected.exists():
                 return "FAIL", f"{case.stem}: no {case.stem}.out or {case.stem}.{key}.out file"
-            want = normalize(expected.read_text(encoding="utf-8"))
+            want = normalize(expected.read_bytes())
+            # From chapter 21, a test can also give arguments, one to a line, in
+            # NAME.args; files to start with, in the folder NAME.files; the exit status,
+            # if it isn't 0, in NAME.status; what goes to stderr, in NAME.err (without
+            # it, stderr isn't checked); and the files there should be after the run,
+            # in the folder NAME.after. Each test runs in an empty folder of its own,
+            # with NAME.files copied into it.
+            args = case.with_suffix(".args")
+            extra = args.read_text(encoding="utf-8").splitlines() if args.exists() else []
+            status = case.with_suffix(".status")
+            want_status = int(status.read_text(encoding="utf-8")) if status.exists() else 0
+            work = out / f"work-{case.stem}"
+            start = case.with_suffix(".files")
+            if start.is_dir():
+                shutil.copytree(start, work)
+            else:
+                work.mkdir()
             try:
-                result = subprocess.run(fill(plan.run, src, out, folder),
+                result = subprocess.run(fill(plan.run, src, out, folder) + extra,
                                         input=case.read_bytes(), capture_output=True,
-                                        cwd=src.parent, timeout=TIMEOUT_SECONDS)
+                                        cwd=work, timeout=TIMEOUT_SECONDS)
             except subprocess.TimeoutExpired:
                 return "FAIL", f"{case.stem}: timed out after {TIMEOUT_SECONDS}s"
-            if result.returncode != 0:
-                err = message_lines(result.stderr.decode("utf-8", "replace"))
-                return "FAIL", f"{case.stem}: exit code {result.returncode}" + (
-                    f" ({err[-1]})" if err else "")
-            got = normalize(result.stdout.decode("utf-8", "replace"))
+            err = message_lines(result.stderr.decode("utf-8", "replace"))
+            if result.returncode != want_status:
+                if want_status == 0:
+                    return "FAIL", f"{case.stem}: exit code {result.returncode}" + (
+                        f" ({err[-1]})" if err else "")
+                return "FAIL", (f"{case.stem}: exit code {result.returncode}, expected "
+                                f"{want_status}" + (f" ({err[-1]})" if err else ""))
+            got = normalize(result.stdout)
             if got != want:
                 return "FAIL", f"{case.stem}: {first_difference(got, want)}"
+            expected_err = case.with_suffix(".err")
+            if expected_err.exists():
+                got_err = [line for line in normalize(result.stderr)
+                           if not line.startswith("Picked up ")]
+                want_err = normalize(expected_err.read_bytes())
+                if got_err != want_err:
+                    return "FAIL", f"{case.stem}: stderr {first_difference(got_err, want_err)}"
+            after = case.with_suffix(".after")
+            if after.is_dir():
+                wrong = compare_folders(after, work)
+                if wrong:
+                    return "FAIL", f"{case.stem}: {wrong}"
     return "PASS", f"{len(tests)} test{'s' if len(tests) != 1 else ''}"
 
 
