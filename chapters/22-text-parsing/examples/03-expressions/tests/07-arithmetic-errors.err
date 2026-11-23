@@ -1,0 +1,24 @@
+calc: line 1, column 3: division by zero
+  1 / 0
+    ^
+calc: line 2, column 3: division by zero
+  5 % (2 - 2)
+    ^
+calc: line 3, column 3: negative exponent
+  2 ^ -1
+    ^
+calc: line 4, column 3: overflow
+  2 ^ 63
+    ^
+calc: line 5, column 21: overflow
+  9223372036854775807 + 1
+                      ^
+calc: line 6, column 22: overflow
+  -9223372036854775807 - 2
+                       ^
+calc: line 7, column 12: overflow
+  3037000500 * 3037000500
+             ^
+calc: line 8, column 4: division by zero
+  (1 / 0) + (2 ^ -1)
+     ^

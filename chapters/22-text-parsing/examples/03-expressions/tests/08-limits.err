@@ -1,0 +1,15 @@
+calc: line 6, column 28: overflow
+  (-9223372036854775807 - 1) / -1
+                             ^
+calc: line 7, column 1: overflow
+  -(-9223372036854775807 - 1)
+  ^
+calc: line 8, column 1: number too large for 64 bits
+  9223372036854775808
+  ^
+calc: line 9, column 2: number too large for 64 bits
+  -9223372036854775808
+   ^
+calc: line 14, column 3: overflow
+  2 ^ 9223372036854775807
+    ^

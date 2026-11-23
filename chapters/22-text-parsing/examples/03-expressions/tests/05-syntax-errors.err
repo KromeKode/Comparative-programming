@@ -1,0 +1,24 @@
+calc: line 1, column 5: expected a number, "(", or "-", found "*"
+  2 + * 3
+      ^
+calc: line 2, column 7: expected ")", found the end of the line
+  (1 + 2
+        ^
+calc: line 3, column 3: expected an operator, found "2"
+  1 2
+    ^
+calc: line 4, column 6: expected an operator, found ")"
+  1 + 2)
+       ^
+calc: line 5, column 1: expected a number, "(", or "-", found ")"
+  )
+  ^
+calc: line 6, column 4: expected a number, "(", or "-", found the end of the line
+  3 +
+     ^
+calc: line 7, column 2: expected a number, "(", or "-", found ")"
+  ()
+   ^
+calc: line 8, column 3: expected an operator, found "("
+  2 (3)
+    ^
