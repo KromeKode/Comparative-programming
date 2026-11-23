@@ -1,0 +1,12 @@
++ $.accent: "café café"
++ $.bell: "\u0007"
++ $.controls: "\b\f\r"
++ $.delete: ""
++ $.escape: "\u001b[0m"
++ $.html: "<b>&amp;</b>"
++ $.lines: "one\ntwo"
++ $.path: "C:\\temp"
++ $.quote: "say \"hi\""
++ $.separator: "a b"
++ $.slash: "a/b"
++ $.tab: "a\tb"

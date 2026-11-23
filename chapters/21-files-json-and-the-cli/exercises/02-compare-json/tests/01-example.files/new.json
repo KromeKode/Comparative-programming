@@ -1,0 +1,6 @@
+{
+  "name": "notes",
+  "version": 4,
+  "tags": ["text", "markdown", "sync"],
+  "server": {"host": "localhost", "port": 8443, "tls": true}
+}

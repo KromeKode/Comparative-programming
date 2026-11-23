@@ -2388,12 +2388,12 @@ with an await between reading and writing: 1
 `await`, so the output is the same on every run. `a` prints its first step and pauses,
 which sends it to the back of the line, behind `b` and `c`. Then `b` and `c` take their
 turns, and the three take turns until each one runs out of steps. `c` has one step and
-finishes first, but the results still come back in the order the tasks were given: 2, 3,
-1. In the second part, `add_at_once` has no `await`, so each task reads and writes the
-count without a break, and the total is 4. `add_with_await` pauses between reading and
-writing, so all four tasks read 0 before any of them writes, and the total is 1. That is
-a race condition with no threads at all, and it is why exercise 16.2 needs locks in
-JavaScript and Dart too.
+finishes first, but the results still come back in the order the tasks were given: 2,
+3, 1. In the second part, `add_at_once` has no `await`, so each task reads and writes
+the count without a break, and the total is 4. `add_with_await` pauses between reading
+and writing, so all four tasks read 0 before any of them writes, and the total is 1.
+That is a race condition with no threads at all, and it is why exercise 16.2 needs locks
+in JavaScript and Dart too.
 
 **Python: asyncio.** `async def` makes a **coroutine function**: calling it runs
 nothing, and returns a coroutine object that runs when something awaits it.

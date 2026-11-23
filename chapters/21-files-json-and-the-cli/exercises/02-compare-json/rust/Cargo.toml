@@ -1,0 +1,13 @@
+[package]
+name = "jsondiff"
+version = "0.1.0"
+edition = "2024"
+
+# The checker runs the program as main.
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+[dependencies]
+# serde_json reads JSON into a Value, which can be any JSON value.
+serde_json = "1.0"

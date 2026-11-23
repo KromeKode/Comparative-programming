@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "quote": "say \"hi\"",
+  "path": "C:\\temp",
+  "lines": "one\ntwo",
+  "tab": "a\tb",
+  "controls": "\b\f\r",
+  "bell": "\u0007",
+  "escape": "\u001b[0m",
+  "delete": "\u007f",
+  "html": "<b>&amp;</b>",
+  "accent": "caf\u00e9 café",
+  "separator": "a\u2028b",
+  "slash": "a\/b"
+}

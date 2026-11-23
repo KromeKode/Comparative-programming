@@ -1,0 +1,2 @@
+~ $.orders[0].items[0].qty: 2 -> 3
++ $.orders[1].items[0]: {"qty":1,"sku":"B7"}

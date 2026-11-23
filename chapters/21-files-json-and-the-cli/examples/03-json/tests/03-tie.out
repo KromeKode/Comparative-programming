@@ -1,0 +1,15 @@
+{
+  "count": 3,
+  "oldest": "The Shining, by Stephen King",
+  "tags": {
+    "horror": [
+      "The Shining"
+    ],
+    "sf": [
+      "Kindred"
+    ]
+  },
+  "untagged": [
+    "Song of Solomon"
+  ]
+}

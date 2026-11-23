@@ -1,0 +1,13 @@
+[package]
+name = "temp"
+version = "0.1.0"
+edition = "2024"
+
+# The checker runs the program as main.
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+[dependencies]
+# clap reads the command line; its derive feature builds the parser from a struct.
+clap = { version = "4.6", features = ["derive"] }

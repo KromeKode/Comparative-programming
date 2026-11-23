@@ -42,7 +42,7 @@ Status: ✅ written · ⬜ planned
 | 18 | [Modules, packages, builds](chapters/18-modules-packages-and-builds/) | ✅ |
 | 19 | [Testing basics](chapters/19-testing-basics/) | ✅ |
 | 20 | [Debugging and profiling](chapters/20-debugging-and-profiling/) | ✅ |
-| 21 | Files, JSON, and the CLI | ⬜ |
+| 21 | [Files, JSON, and the CLI](chapters/21-files-json-and-the-cli/) | ✅ |
 | 22 | Text parsing | ⬜ |
 | 23 | FFI and interop | ⬜ |
 
