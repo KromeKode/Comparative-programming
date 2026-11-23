@@ -1916,4 +1916,4 @@ test to write.
 ---
 
 Previous: [Chapter 18: Modules, packages, builds](../18-modules-packages-and-builds/) ·
-Next: Chapter 20: Debugging and profiling (coming soon)
+Next: [Chapter 20: Debugging and profiling](../20-debugging-and-profiling/)

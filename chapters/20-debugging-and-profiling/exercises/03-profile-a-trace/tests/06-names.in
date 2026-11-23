@@ -1,0 +1,8 @@
+0 enter main.main
+2 enter main.(*parser).expr
+3 enter Parser::factor
+9 exit Parser::factor
+10 enter <lambda>
+14 exit <lambda>
+15 exit main.(*parser).expr
+20 exit main.main

@@ -1,0 +1,8 @@
+0 enter main
+5 enter parse
+25 exit parse
+25 enter eval
+30 enter eval
+45 exit eval
+60 exit eval
+70 exit main

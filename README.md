@@ -62,7 +62,9 @@ Chapter 17, on Git, is the exception: its exercises are scripts of Git commands,
 the checker runs in a throwaway repository. Chapter 19, on testing, turns the usual
 arrangement round: the code is given and the exercises are its tests, which the checker
 runs with each language's own test runner, on the code as given and then on copies of it
-with bugs put in.
+with bugs put in. Chapter 20, on debugging and profiling, gives you a wrong program and
+a slow one to fix, and the checker gives each test 20 seconds, which the slow one runs
+out of.
 
 Write your answers in the starter files under `exercises/`. Languages whose toolchain
 is not installed are skipped rather than failed. From chapter 18 on, some examples are
@@ -85,3 +87,4 @@ projects that build with each language's own build tool, such as CMake or Cargo,
 | Git (chapter 17) | 2.43+ | `bash`, in a throwaway repository |
 | Build tools (chapter 18) | CMake 3.20+, Gradle 8.14+, and uv | Cargo, `go`, npm, and `dart pub` come with their languages |
 | Test frameworks (chapter 19) | pytest 9.2, `package:test` 1.33, and `kotlin.test` on JUnit 5 | Rust, Go, and Node have theirs built in, and C and C++ use a header in each folder |
+| Debuggers and profilers (chapter 20) | gdb 15, Valgrind 3.22, and each language's own | Optional: the exercises are checked by what they print, and the text shows each tool's output |
