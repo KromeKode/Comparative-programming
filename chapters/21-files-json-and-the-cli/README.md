@@ -3545,4 +3545,4 @@ make both stop quietly.
 ---
 
 Previous: [Chapter 20: Debugging and profiling](../20-debugging-and-profiling/) ·
-Next: Chapter 22: Text parsing (coming soon)
+Next: [Chapter 22: Text parsing](../22-text-parsing/)
