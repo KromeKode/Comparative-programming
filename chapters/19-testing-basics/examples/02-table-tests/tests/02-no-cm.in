@@ -1,0 +1,20 @@
+The table of numerals leaves out CM, so 1994 comes out as MDCDXCIV.
+
+--- c/roman.c
+-    {900, "CM"},
+--- cpp/roman.cpp
+-    {900, "CM"},
+--- rust/src/lib.rs
+-    (900, "CM"),
+--- go/roman.go
+-	{900, "CM"},
+--- python/roman.py
+-    (900, "CM"),
+--- javascript/roman.js
+-  [900, "CM"],
+--- typescript/roman.ts
+-  [900, "CM"],
+--- dart/lib/roman.dart
+-  (900, 'CM'),
+--- kotlin/src/main/kotlin/Roman.kt
+-        900 to "CM",

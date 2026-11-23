@@ -1,0 +1,29 @@
+The range check lets 4000 through, as MMMM, instead of reporting an error.
+
+--- c/roman.c
+-    if (n < 1 || n > 3999) return false;
++    if (n < 1 || n > 4000) return false;
+--- cpp/roman.cpp
+-    if (n < 1 || n > 3999) {
++    if (n < 1 || n > 4000) {
+--- rust/src/lib.rs
+-    if !(1..=3999).contains(&n) {
++    if !(1..=4000).contains(&n) {
+--- go/roman.go
+-	if n < 1 || n > 3999 {
++	if n < 1 || n > 4000 {
+--- python/roman.py
+-    if n < 1 or n > 3999:
++    if n < 1 or n > 4000:
+--- javascript/roman.js
+-  if (n < 1 || n > 3999) {
++  if (n < 1 || n > 4000) {
+--- typescript/roman.ts
+-  if (n < 1 || n > 3999) {
++  if (n < 1 || n > 4000) {
+--- dart/lib/roman.dart
+-  RangeError.checkValueInInterval(n, 1, 3999, 'n');
++  RangeError.checkValueInInterval(n, 1, 4000, 'n');
+--- kotlin/src/main/kotlin/Roman.kt
+-    require(n in 1..3999) { "$n is out of range" }
++    require(n in 1..4000) { "$n is out of range" }

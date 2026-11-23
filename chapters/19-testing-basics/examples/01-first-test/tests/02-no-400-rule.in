@@ -1,0 +1,29 @@
+The 400 rule is left out, so 2000 isn't a leap year.
+
+--- c/leap.c
+-    return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
++    return year % 4 == 0 && year % 100 != 0;
+--- cpp/leap.cpp
+-    return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
++    return year % 4 == 0 && year % 100 != 0;
+--- rust/src/lib.rs
+-    year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
++    year % 4 == 0 && year % 100 != 0
+--- go/leap.go
+-	return year%4 == 0 && (year%100 != 0 || year%400 == 0)
++	return year%4 == 0 && year%100 != 0
+--- python/leap.py
+-    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
++    return year % 4 == 0 and year % 100 != 0
+--- javascript/leap.js
+-  return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
++  return year % 4 === 0 && year % 100 !== 0;
+--- typescript/leap.ts
+-  return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
++  return year % 4 === 0 && year % 100 !== 0;
+--- dart/lib/leap.dart
+-    year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
++    year % 4 == 0 && year % 100 != 0;
+--- kotlin/src/main/kotlin/Leap.kt
+-fun isLeapYear(year: Int): Boolean = year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
++fun isLeapYear(year: Int): Boolean = year % 4 == 0 && year % 100 != 0

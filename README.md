@@ -59,7 +59,10 @@ python3 tools/check.py all --solutions     # everything, which is what CI runs
 ```
 
 Chapter 17, on Git, is the exception: its exercises are scripts of Git commands, which
-the checker runs in a throwaway repository.
+the checker runs in a throwaway repository. Chapter 19, on testing, turns the usual
+arrangement round: the code is given and the exercises are its tests, which the checker
+runs with each language's own test runner, on the code as given and then on copies of it
+with bugs put in.
 
 Write your answers in the starter files under `exercises/`. Languages whose toolchain
 is not installed are skipped rather than failed. From chapter 18 on, some examples are
@@ -81,3 +84,4 @@ projects that build with each language's own build tool, such as CMake or Cargo,
 | Kotlin | 2.4+ on JDK 21 | `kotlinc -Werror`, then `java -jar` |
 | Git (chapter 17) | 2.43+ | `bash`, in a throwaway repository |
 | Build tools (chapter 18) | CMake 3.20+, Gradle 8.14+, and uv | Cargo, `go`, npm, and `dart pub` come with their languages |
+| Test frameworks (chapter 19) | pytest 9.2, `package:test` 1.33, and `kotlin.test` on JUnit 5 | Rust, Go, and Node have theirs built in, and C and C++ use a header in each folder |

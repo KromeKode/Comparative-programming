@@ -1,0 +1,29 @@
+Empty text is 0 seconds, and not an error.
+
+--- c/duration.c
+-    if (*text == '\0') return false;
+--- cpp/duration.cpp
+-    if (text.empty()) throw not_a_duration(text, "is empty");
+--- rust/src/lib.rs
+-    if text.is_empty() {
+-        return error("is empty");
+-    }
+--- go/duration.go
+-	if text == "" {
+-		return 0, fmt.Errorf("a duration can't be empty")
+-	}
+--- python/duration.py
+-    if text == "":
+-        raise ValueError("a duration can't be empty")
+--- javascript/duration.js
+-  if (text === "") {
+-    throw new SyntaxError("a duration can't be empty");
+-  }
+--- typescript/duration.ts
+-  if (text === "") {
+-    throw new SyntaxError("a duration can't be empty");
+-  }
+--- dart/lib/duration.dart
+-  if (text.isEmpty) throw FormatException("a duration can't be empty", text);
+--- kotlin/src/main/kotlin/Duration.kt
+-    require(text.isNotEmpty()) { "a duration can't be empty" }

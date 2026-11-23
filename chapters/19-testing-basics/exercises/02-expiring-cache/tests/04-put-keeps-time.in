@@ -1,0 +1,74 @@
+Putting a key that is already there changes its value, but not when it expires.
+
+--- c/cache.c
+-    if (entry == NULL) entry = add(cache, key);
+-    if (entry == NULL) {
+-        free(copied);
+-        return false;
+-    }
+-    free(entry->value);
+-    entry->value = copied;
+-    entry->expires = now + cache->ttl;
++    if (entry == NULL) {
++        entry = add(cache, key);
++        if (entry == NULL) {
++            free(copied);
++            return false;
++        }
++        entry->expires = now + cache->ttl;
++    }
++    free(entry->value);
++    entry->value = copied;
+--- cpp/cache.cpp
+-    entries_[key] = Entry{value, now + ttl_};
++    auto [found, added] = entries_.try_emplace(key, Entry{value, now + ttl_});
++    if (!added) found->second.value = value;
+--- rust/src/lib.rs
+-        let entry = Entry {
+-            value: value.to_string(),
+-            expires: now + self.ttl,
+-        };
+-        self.entries.insert(key.to_string(), entry);
++        let entry = self.entries.entry(key.to_string()).or_insert(Entry {
++            value: String::new(),
++            expires: now + self.ttl,
++        });
++        entry.value = value.to_string();
+--- go/cache.go
+-	c.entries[key] = entry{value: value, expires: now + c.ttl}
++	if e, ok := c.entries[key]; ok {
++		e.value = value
++		c.entries[key] = e
++		return
++	}
++	c.entries[key] = entry{value: value, expires: now + c.ttl}
+--- python/cache.py
+-        self._entries[key] = _Entry(value, now + self._ttl)
++        if key in self._entries:
++            self._entries[key].value = value
++        else:
++            self._entries[key] = _Entry(value, now + self._ttl)
+--- javascript/cache.js
+-    this.#entries.set(key, { value, expires: now + this.#ttl });
++    const entry = this.#entries.get(key);
++    if (entry !== undefined) {
++      entry.value = value;
++    } else {
++      this.#entries.set(key, { value, expires: now + this.#ttl });
++    }
+--- typescript/cache.ts
+-    this.#entries.set(key, { value, expires: now + this.#ttl });
++    const entry = this.#entries.get(key);
++    if (entry !== undefined) {
++      entry.value = value;
++    } else {
++      this.#entries.set(key, { value, expires: now + this.#ttl });
++    }
+--- dart/lib/cache.dart
+-    _entries[key] = _Entry(value, now + ttl);
++    final old = _entries[key];
++    _entries[key] = _Entry(value, old?.expires ?? now + ttl);
+--- kotlin/src/main/kotlin/Cache.kt
+-        entries[key] = Entry(value, now + ttl)
++        val old = entries[key]
++        entries[key] = Entry(value, old?.expires ?: now + ttl)

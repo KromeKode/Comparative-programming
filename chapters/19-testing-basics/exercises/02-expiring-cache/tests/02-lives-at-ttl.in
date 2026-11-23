@@ -1,0 +1,29 @@
+An entry can still be got at the time it should expire, ttl seconds after it was put.
+
+--- c/cache.c
+-static bool is_live(const struct entry *entry, long long now) { return now < entry->expires; }
++static bool is_live(const struct entry *entry, long long now) { return now <= entry->expires; }
+--- cpp/cache.hpp
+-        bool is_live(long long now) const { return now < expires; }
++        bool is_live(long long now) const { return now <= expires; }
+--- rust/src/lib.rs
+-        now < self.expires
++        now <= self.expires
+--- go/cache.go
+-func (e entry) isLive(now int64) bool { return now < e.expires }
++func (e entry) isLive(now int64) bool { return now <= e.expires }
+--- python/cache.py
+-        return now < self.expires
++        return now <= self.expires
+--- javascript/cache.js
+-  return now < entry.expires;
++  return now <= entry.expires;
+--- typescript/cache.ts
+-  return now < entry.expires;
++  return now <= entry.expires;
+--- dart/lib/cache.dart
+-  bool isLive(int now) => now < expires;
++  bool isLive(int now) => now <= expires;
+--- kotlin/src/main/kotlin/Cache.kt
+-        fun isLive(now: Long) = now < expires
++        fun isLive(now: Long) = now <= expires

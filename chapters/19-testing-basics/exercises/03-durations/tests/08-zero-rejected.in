@@ -1,0 +1,47 @@
+A part whose number is 0, such as 0s or the 0m of 1h0m, is an error.
+
+--- c/duration.c
+-        const char *found = strchr(UNITS, *p);
++        if (number == 0) return false;  // a part that is 0
++        const char *found = strchr(UNITS, *p);
+--- cpp/duration.cpp
+-        std::size_t unit = UNITS.find(text[i]);
++        if (number == 0) throw not_a_duration(text, "has a part that is 0");
++        std::size_t unit = UNITS.find(text[i]);
+--- rust/src/lib.rs
+-        let letter = rest[digits..].chars().next().unwrap_or_default();
++        if number == 0 {
++            return error("has a part that is 0");
++        }
++        let letter = rest[digits..].chars().next().unwrap_or_default();
+--- go/duration.go
+-		unit := strings.IndexByte(units, text[i])
++		if number == 0 {
++			return 0, fmt.Errorf("%q has a part that is 0", text)
++		}
++		unit := strings.IndexByte(units, text[i])
+--- python/duration.py
+-        unit = UNITS.find(text[i])
++        if number == 0:
++            raise ValueError(f"{text!r} has a part that is 0")
++        unit = UNITS.find(text[i])
+--- javascript/duration.js
+-    const unit = UNITS.indexOf(text[i]);
++    if (!number) {
++      throw new SyntaxError(`"${text}" has a part that is 0`);
++    }
++    const unit = UNITS.indexOf(text[i]);
+--- typescript/duration.ts
+-    const unit = UNITS.indexOf(text[i]);
++    if (!number) {
++      throw new SyntaxError(`"${text}" has a part that is 0`);
++    }
++    const unit = UNITS.indexOf(text[i]);
+--- dart/lib/duration.dart
+-    final unit = _units.indexOf(text[i]);
++    if (number == 0) throw FormatException('a part is 0', text, i);
++    final unit = _units.indexOf(text[i]);
+--- kotlin/src/main/kotlin/Duration.kt
+-        val unit = UNITS.indexOf(text[i])
++        require(number > 0) { "\"$text\" has a part that is 0" }
++        val unit = UNITS.indexOf(text[i])

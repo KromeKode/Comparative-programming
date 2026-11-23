@@ -1,0 +1,42 @@
+Text with no words gives one empty line instead of no lines.
+
+--- c/wrap.c
+-    if (line_length > 0) out[length++] = '\n';
++    out[length++] = '\n';
+--- cpp/wrap.cpp
+-    if (!line.empty()) lines.push_back(line);
++    lines.push_back(line);
+--- rust/src/lib.rs
+-    if !line.is_empty() {
+-        lines.push(line);
+-    }
++    lines.push(line);
+--- go/wrap.go
+-	if line != "" {
+-		lines = append(lines, line)
+-	}
++	lines = append(lines, line)
+--- python/wrap.py
+-    if line != "":
+-        lines.append(line)
++    lines.append(line)
+--- javascript/wrap.js
+-  if (line !== "") {
+-    lines.push(line);
+-  }
++  lines.push(line);
+--- typescript/wrap.ts
+-  if (line !== "") {
+-    lines.push(line);
+-  }
++  lines.push(line);
+--- dart/lib/wrap.dart
+-  if (line.isNotEmpty) {
+-    lines.add(line);
+-  }
++  lines.add(line);
+--- kotlin/src/main/kotlin/Wrap.kt
+-    if (line.isNotEmpty()) {
+-        lines += line
+-    }
++    lines += line

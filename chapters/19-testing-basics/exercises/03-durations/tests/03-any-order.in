@@ -1,0 +1,85 @@
+The units can come in any order, though each only once, so 30m1h is 90 minutes.
+
+--- c/duration.c
+-    size_t next_unit = 0;  // each part's unit comes after the one before it in UNITS
++    bool seen[4] = {false};  // the units so far
+-        if (unit < next_unit) return false;  // out of order, or twice
++        if (seen[unit]) return false;  // twice
+-        next_unit = unit + 1;
++        seen[unit] = true;
+--- cpp/duration.cpp
+-    std::size_t next_unit = 0;  // each part's unit comes after the one before it in UNITS
++    bool seen[4] = {};  // the units so far
+-        if (unit < next_unit) throw not_a_duration(text, "has a unit out of order, or twice");
++        if (seen[unit]) throw not_a_duration(text, "has a unit twice");
+-        next_unit = unit + 1;
++        seen[unit] = true;
+--- rust/src/lib.rs
+-    let mut next_unit = 0; // each part's unit comes after the one before it in UNITS
++    let mut seen = [false; 4]; // the units so far
+-        if unit < next_unit {
+-            return error("has its units out of order, or one twice");
+-        }
++        if seen[unit] {
++            return error("has a unit twice");
++        }
+-        next_unit = unit + 1;
++        seen[unit] = true;
+--- go/duration.go
+-	nextUnit := 0 // each part's unit comes after the one before it in units
++	var seen [4]bool // the units so far
+-		if unit < nextUnit {
+-			return 0, fmt.Errorf("%q has its units out of order, or one twice", text)
+-		}
++		if seen[unit] {
++			return 0, fmt.Errorf("%q has a unit twice", text)
++		}
+-		nextUnit = unit + 1
++		seen[unit] = true
+--- python/duration.py
+-    next_unit = 0  # each part's unit comes after the one before it in UNITS
++    seen: set[int] = set()  # the units so far
+-        if unit < next_unit:
+-            raise ValueError(f"{text!r} has its units out of order, or one twice")
++        if unit in seen:
++            raise ValueError(f"{text!r} has a unit twice")
+-        next_unit = unit + 1
++        seen.add(unit)
+--- javascript/duration.js
+-  let nextUnit = 0; // each part's unit comes after the one before it in UNITS
++  const seen = new Set(); // the units so far
+-    if (unit < nextUnit) {
+-      throw new SyntaxError(`"${text}" has a unit out of order, or twice`);
+-    }
++    if (seen.has(unit)) {
++      throw new SyntaxError(`"${text}" has a unit twice`);
++    }
+-    nextUnit = unit + 1;
++    seen.add(unit);
+--- typescript/duration.ts
+-  let nextUnit = 0; // each part's unit comes after the one before it in UNITS
++  const seen = new Set<number>(); // the units so far
+-    if (unit < nextUnit) {
+-      throw new SyntaxError(`"${text}" has a unit out of order, or twice`);
+-    }
++    if (seen.has(unit)) {
++      throw new SyntaxError(`"${text}" has a unit twice`);
++    }
+-    nextUnit = unit + 1;
++    seen.add(unit);
+--- dart/lib/duration.dart
+-  var nextUnit = 0; // each part's unit comes after the one before it in _units
++  final seen = <int>{}; // the units so far
+-    if (unit < nextUnit) {
+-      throw FormatException('a unit out of order, or twice', text, i);
+-    }
++    if (!seen.add(unit)) {
++      throw FormatException('a unit twice', text, i);
++    }
+-    nextUnit = unit + 1;
+--- kotlin/src/main/kotlin/Duration.kt
+-    var nextUnit = 0 // each part's unit comes after the one before it in UNITS
++    val seen = mutableSetOf<Int>() // the units so far
+-        require(unit >= nextUnit) { "\"$text\" has a unit out of order, or twice" }
++        require(seen.add(unit)) { "\"$text\" has a unit twice" }
+-        nextUnit = unit + 1

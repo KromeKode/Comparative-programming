@@ -1807,4 +1807,4 @@ example 02 does. Then publish nothing, but run the tool's dry run of publishing,
 ---
 
 Previous: [Chapter 17: Version control with Git](../17-version-control-with-git/) ·
-Next: Chapter 19: Testing basics (coming soon)
+Next: [Chapter 19: Testing basics](../19-testing-basics/)

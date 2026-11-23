@@ -1,0 +1,29 @@
+A word that would fill the line exactly goes onto the next line instead.
+
+--- c/wrap.c
+-        } else if (line_length + 1 + word <= width) {
++        } else if (line_length + 1 + word < width) {
+--- cpp/wrap.cpp
+-        } else if (line.size() + 1 + word.size() <= width) {
++        } else if (line.size() + 1 + word.size() < width) {
+--- rust/src/lib.rs
+-        } else if line.len() + 1 + word.len() <= width {
++        } else if line.len() + 1 + word.len() < width {
+--- go/wrap.go
+-		} else if len(line)+1+len(word) <= width {
++		} else if len(line)+1+len(word) < width {
+--- python/wrap.py
+-        elif len(line) + 1 + len(word) <= width:
++        elif len(line) + 1 + len(word) < width:
+--- javascript/wrap.js
+-    } else if (line.length + 1 + word.length <= width) {
++    } else if (line.length + 1 + word.length < width) {
+--- typescript/wrap.ts
+-    } else if (line.length + 1 + word.length <= width) {
++    } else if (line.length + 1 + word.length < width) {
+--- dart/lib/wrap.dart
+-    } else if (line.length + 1 + word.length <= width) {
++    } else if (line.length + 1 + word.length < width) {
+--- kotlin/src/main/kotlin/Wrap.kt
+-        } else if (line.length + 1 + word.length <= width) {
++        } else if (line.length + 1 + word.length < width) {

@@ -1,0 +1,63 @@
+A number with no unit at the end is seconds, so 90 is 90 seconds, and 1h30 is 3630.
+
+--- c/duration.c
+-        if (*p == '\0') return false;  // a number with no unit
++        if (*p == '\0') {  // a number with no unit is seconds
++            *seconds = total + number;
++            return true;
++        }
+--- cpp/duration.cpp
+-        if (i == text.size()) throw not_a_duration(text, "ends with a number with no unit");
++        if (i == text.size()) return total + std::stoll(std::string(text.substr(start)));
+--- rust/src/lib.rs
+-        if digits == rest.len() {
+-            return error("ends with a number that has no unit");
+-        }
++        if digits == rest.len() {
++            // A number with no unit is seconds.
++            let Ok(number) = rest.parse::<u64>() else {
++                return error("has a number too big to count");
++            };
++            return Ok(seconds + number);
++        }
+--- go/duration.go
+-		if i == len(text) {
+-			return 0, fmt.Errorf("%q ends with a number that has no unit", text)
+-		}
++		if i == len(text) { // a number with no unit is seconds
++			number, err := strconv.ParseInt(text[start:], 10, 64)
++			return total + number, err
++		}
+--- python/duration.py
+-        if i == len(text):
+-            raise ValueError(f"{text!r} ends with a number that has no unit")
++        if i == len(text):  # a number with no unit is seconds
++            return seconds + int(text[start:])
+--- javascript/duration.js
+-    if (i === text.length) {
+-      throw new SyntaxError(`"${text}" ends with a number that has no unit`);
+-    }
++    if (i === text.length) {
++      // A number with no unit is seconds.
++      return seconds + Number(text.slice(start));
++    }
+--- typescript/duration.ts
+-    if (i === text.length) {
+-      throw new SyntaxError(`"${text}" ends with a number that has no unit`);
+-    }
++    if (i === text.length) {
++      // A number with no unit is seconds.
++      return seconds + Number(text.slice(start));
++    }
+--- dart/lib/duration.dart
+-    if (i == text.length) {
+-      throw FormatException('a number has no unit', text, i);
+-    }
++    if (i == text.length) {
++      // A number with no unit is seconds.
++      return seconds + int.parse(text.substring(start));
++    }
+--- kotlin/src/main/kotlin/Duration.kt
+-        require(i < text.length) { "\"$text\" ends with a number that has no unit" }
++        // A number with no unit is seconds.
++        if (i == text.length) return seconds + text.substring(start).toLong()

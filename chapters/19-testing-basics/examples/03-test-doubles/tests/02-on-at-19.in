@@ -1,0 +1,29 @@
+The heater goes on at 19, a degree below the target, which is close enough to leave alone.
+
+--- c/thermostat.c
+-    if (celsius < target - 1) {
++    if (celsius <= target - 1) {
+--- cpp/thermostat.cpp
+-    if (celsius < target - 1) {
++    if (celsius <= target - 1) {
+--- rust/src/lib.rs
+-    if celsius < target - 1 {
++    if celsius <= target - 1 {
+--- go/thermostat.go
+-	if celsius < target-1 {
++	if celsius <= target-1 {
+--- python/thermostat.py
+-    if celsius < target - 1:
++    if celsius <= target - 1:
+--- javascript/thermostat.js
+-  if (celsius < target - 1) {
++  if (celsius <= target - 1) {
+--- typescript/thermostat.ts
+-  if (celsius < target - 1) {
++  if (celsius <= target - 1) {
+--- dart/lib/thermostat.dart
+-  if (celsius < target - 1) {
++  if (celsius <= target - 1) {
+--- kotlin/src/main/kotlin/Thermostat.kt
+-    if (celsius < target - 1) {
++    if (celsius <= target - 1) {

@@ -1,0 +1,29 @@
+A copied line: when the room is too hot, the heater is turned on again instead of off.
+
+--- c/thermostat.c
+-        heater.turn_off(heater.context);
++        heater.turn_on(heater.context);
+--- cpp/thermostat.cpp
+-        heater.turn_off();
++        heater.turn_on();
+--- rust/src/lib.rs
+-        heater.turn_off();
++        heater.turn_on();
+--- go/thermostat.go
+-		heater.TurnOff()
++		heater.TurnOn()
+--- python/thermostat.py
+-        heater.turn_off()
++        heater.turn_on()
+--- javascript/thermostat.js
+-    heater.turnOff();
++    heater.turnOn();
+--- typescript/thermostat.ts
+-    heater.turnOff();
++    heater.turnOn();
+--- dart/lib/thermostat.dart
+-    heater.turnOff();
++    heater.turnOn();
+--- kotlin/src/main/kotlin/Thermostat.kt
+-        heater.turnOff()
++        heater.turnOn()

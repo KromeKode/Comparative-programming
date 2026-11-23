@@ -1,0 +1,29 @@
+Putting a key forgets every other entry that is still live, and keeps the ones that have expired.
+
+--- c/cache.c
+-        if (is_live(entry, now)) {
++        if (!is_live(entry, now)) {
+--- cpp/cache.cpp
+-    std::erase_if(entries_, [now](const auto& item) { return !item.second.is_live(now); });
++    std::erase_if(entries_, [now](const auto& item) { return item.second.is_live(now); });
+--- rust/src/lib.rs
+-        self.entries.retain(|_, entry| entry.is_live(now));
++        self.entries.retain(|_, entry| !entry.is_live(now));
+--- go/cache.go
+-		if !e.isLive(now) {
++		if e.isLive(now) {
+--- python/cache.py
+-        self._entries = {k: e for k, e in self._entries.items() if e.is_live(now)}
++        self._entries = {k: e for k, e in self._entries.items() if not e.is_live(now)}
+--- javascript/cache.js
+-      if (!isLive(entry, now)) {
++      if (isLive(entry, now)) {
+--- typescript/cache.ts
+-      if (!isLive(entry, now)) {
++      if (isLive(entry, now)) {
+--- dart/lib/cache.dart
+-    _entries.removeWhere((_, entry) => !entry.isLive(now));
++    _entries.removeWhere((_, entry) => entry.isLive(now));
+--- kotlin/src/main/kotlin/Cache.kt
+-        entries.values.removeAll { !it.isLive(now) }
++        entries.values.removeAll { it.isLive(now) }

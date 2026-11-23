@@ -1,0 +1,29 @@
+A unit can come twice in a row, so 1h1h is two hours.
+
+--- c/duration.c
+-        next_unit = unit + 1;
++        next_unit = unit;
+--- cpp/duration.cpp
+-        next_unit = unit + 1;
++        next_unit = unit;
+--- rust/src/lib.rs
+-        next_unit = unit + 1;
++        next_unit = unit;
+--- go/duration.go
+-		nextUnit = unit + 1
++		nextUnit = unit
+--- python/duration.py
+-        next_unit = unit + 1
++        next_unit = unit
+--- javascript/duration.js
+-    nextUnit = unit + 1;
++    nextUnit = unit;
+--- typescript/duration.ts
+-    nextUnit = unit + 1;
++    nextUnit = unit;
+--- dart/lib/duration.dart
+-    nextUnit = unit + 1;
++    nextUnit = unit;
+--- kotlin/src/main/kotlin/Duration.kt
+-        nextUnit = unit + 1
++        nextUnit = unit
