@@ -1,0 +1,7 @@
+{
+  "name": "notes",
+  "version": 3,
+  "debug": true,
+  "tags": ["text", "markdown"],
+  "server": {"host": "localhost", "port": 8080}
+}

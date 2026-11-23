@@ -1,0 +1,7 @@
+~ $.count: 1 -> "1"
+~ $.done: true -> 1
+~ $.empty: null -> false
+~ $.id: "7" -> 7
+~ $.list: [] -> {}
+~ $.point: {"x":1} -> [1]
+~ $.zero: 0 -> false

@@ -1,0 +1,9 @@
+~ $[""]: "empty" -> "still empty"
+~ $["1a"]: 1 -> 2
+~ $._id: 1 -> 2
+~ $.a1: 1 -> 2
+~ $["café"]: 1 -> 2
++ $.constructor: "new"
+~ $["first name"]: "Ada" -> "Grace"
+~ $["say \"hi\""]: 1 -> 2
+~ $["x-y"]: 1 -> 2

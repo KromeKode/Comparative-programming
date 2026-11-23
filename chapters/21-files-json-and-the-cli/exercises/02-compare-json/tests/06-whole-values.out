@@ -1,0 +1,2 @@
++ $.layout: [[1,2],[3,4]]
+- $.settings: {"font":{"family":"mono","size":12},"plugins":["git","lint"],"theme":"dark"}
