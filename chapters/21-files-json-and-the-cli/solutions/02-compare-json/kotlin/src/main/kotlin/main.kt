@@ -34,7 +34,8 @@ fun isJson(element: JsonElement): Boolean =
         is JsonArray -> element.all(::isJson)
         is JsonNull -> true
         is JsonPrimitive ->
-            element.isString || element.content in setOf("true", "false") ||
+            element.isString ||
+                element.content in setOf("true", "false") ||
                 NUMBER.matches(element.content)
     }
 
@@ -84,27 +85,26 @@ fun main(args: Array<String>) {
         System.err.println(USAGE)
         exitProcess(2)
     }
-    val values =
-        args.map { path ->
-            val text =
-                try {
-                    Files.readAllBytes(Path.of(path)).decodeToString()
-                } catch (error: IOException) {
-                    System.err.println("jsondiff: $path: ${message(error)}")
-                    exitProcess(2)
-                }
-            val value =
-                try {
-                    Json.parseToJsonElement(text)
-                } catch (_: SerializationException) {
-                    null
-                }
-            if (value == null || !isJson(value)) {
-                System.err.println("jsondiff: $path: not valid JSON")
+    val values = args.map { path ->
+        val text =
+            try {
+                Files.readAllBytes(Path.of(path)).decodeToString()
+            } catch (error: IOException) {
+                System.err.println("jsondiff: $path: ${message(error)}")
                 exitProcess(2)
             }
-            value
+        val value =
+            try {
+                Json.parseToJsonElement(text)
+            } catch (_: SerializationException) {
+                null
+            }
+        if (value == null || !isJson(value)) {
+            System.err.println("jsondiff: $path: not valid JSON")
+            exitProcess(2)
         }
+        value
+    }
     val lines = mutableListOf<String>()
     diff("$", values[0], values[1], lines)
     lines.forEach(::println)

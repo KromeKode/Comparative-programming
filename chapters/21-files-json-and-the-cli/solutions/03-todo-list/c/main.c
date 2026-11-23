@@ -235,7 +235,8 @@ int main(int argc, char *argv[]) {
     const char *command = argc > 1 ? argv[1] : "";
     char **args = argv + (argc > 1 ? 2 : 1);
     int count = argc > 1 ? argc - 2 : 0;
-    bool is_id = count == 1 && args[0][0] != '\0' && strspn(args[0], "0123456789") == strlen(args[0]);
+    bool is_id =
+        count == 1 && args[0][0] != '\0' && strspn(args[0], "0123456789") == strlen(args[0]);
     // The command line is checked before todo.json is read.
     bool ok = (strcmp(command, "add") == 0 && count > 0) ||
               (strcmp(command, "list") == 0 && count == 0) ||

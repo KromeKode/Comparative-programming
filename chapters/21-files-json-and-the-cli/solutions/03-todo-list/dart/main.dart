@@ -32,11 +32,9 @@ class Task {
 /// A map pattern matches a map with these keys and maybe others, so the length shows
 /// that there are no others. In Dart, true isn't an int, and 1.0 isn't either.
 Task taskFromJson(Object? value) => switch (value) {
-  Map<String, Object?> task && {
-    'id': int id,
-    'text': String text,
-    'done': bool done,
-  } when task.length == 3 && id >= 1 =>
+  Map<String, Object?> task &&
+          {'id': int id, 'text': String text, 'done': bool done}
+      when task.length == 3 && id >= 1 =>
     Task(id, text, done),
   _ => throw Problem('not a to-do list'),
 };
@@ -63,10 +61,10 @@ List<Task> readTasks() {
   if (value case {'version': num other} when other != version) {
     throw Problem('unknown version $other');
   }
-  if (value case Map<String, Object?> list && {
-    'version': version,
-    'tasks': List<Object?> tasks,
-  } when list.length == 2) {
+  if (value
+      case Map<String, Object?> list &&
+          {'version': version, 'tasks': List<Object?> tasks}
+      when list.length == 2) {
     final result = tasks.map(taskFromJson).toList();
     if (result.map((task) => task.id).toSet().length != result.length) {
       throw Problem('not a to-do list'); // two tasks with one id

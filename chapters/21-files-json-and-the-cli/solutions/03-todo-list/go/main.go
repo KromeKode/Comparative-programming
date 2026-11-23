@@ -115,8 +115,9 @@ func writeTasks(tasks []Task) error {
 	var text bytes.Buffer
 	encoder := json.NewEncoder(&text)
 	encoder.SetIndent("", "  ")
-	encoder.SetEscapeHTML(false) // & as it is, not \u0026
-	if err := encoder.Encode(list{version, tasks}); err != nil { // Encode adds a "\n"
+	encoder.SetEscapeHTML(false) // write & as it is, not as \u0026
+	// Encode adds a "\n" after the JSON.
+	if err := encoder.Encode(list{version, tasks}); err != nil {
 		return err
 	}
 	temporary := file + ".tmp"

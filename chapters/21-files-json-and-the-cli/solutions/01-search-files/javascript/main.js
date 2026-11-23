@@ -6,7 +6,10 @@ const USAGE = "usage: search [-icnv] PATTERN [FILE...]";
 const STDIN_NAME = "(standard input)";
 // Node's errors have the C names of the system's error codes, such as ENOENT, and
 // messages of their own; these are the messages strerror gives for them.
-const MESSAGES = { ENOENT: "No such file or directory", EISDIR: "Is a directory" };
+const MESSAGES = {
+  ENOENT: "No such file or directory",
+  EISDIR: "Is a directory",
+};
 
 function usageError(message) {
   console.error(`search: ${message}\n${USAGE}`);
@@ -15,7 +18,9 @@ function usageError(message) {
 
 // A copy of the bytes with A to Z made a to z, and every other byte as it was.
 function lower(bytes) {
-  return Buffer.from(bytes.map((byte) => (byte >= 0x41 && byte <= 0x5a ? byte + 0x20 : byte)));
+  return Buffer.from(
+    bytes.map((byte) => (byte >= 0x41 && byte <= 0x5a ? byte + 0x20 : byte)),
+  );
 }
 
 // Writes the lines of data that are selected, and returns how many there are.

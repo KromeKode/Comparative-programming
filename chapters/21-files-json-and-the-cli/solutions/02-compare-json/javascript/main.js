@@ -6,7 +6,10 @@ const USAGE = "usage: jsondiff OLD NEW";
 const IDENTIFIER = /^[A-Za-z_][A-Za-z0-9_]*$/;
 // Node's errors have the C names of the system's error codes, such as ENOENT, and
 // messages of their own; these are the messages strerror gives for them.
-const MESSAGES = { ENOENT: "No such file or directory", EISDIR: "Is a directory" };
+const MESSAGES = {
+  ENOENT: "No such file or directory",
+  EISDIR: "Is a directory",
+};
 
 // typeof says "object" for null and for arrays too.
 function isObject(value) {
@@ -24,7 +27,9 @@ function compact(value) {
     return `[${value.map(compact).join(",")}]`;
   }
   if (isObject(value)) {
-    const members = sortedKeys(value).map((key) => `${JSON.stringify(key)}:${compact(value[key])}`);
+    const members = sortedKeys(value).map(
+      (key) => `${JSON.stringify(key)}:${compact(value[key])}`,
+    );
     return `{${members.join(",")}}`;
   }
   return JSON.stringify(value);
@@ -79,7 +84,9 @@ function main() {
     try {
       text = readFileSync(path, "utf8");
     } catch (error) {
-      console.error(`jsondiff: ${path}: ${MESSAGES[error.code] ?? error.message}`);
+      console.error(
+        `jsondiff: ${path}: ${MESSAGES[error.code] ?? error.message}`,
+      );
       return 2;
     }
     try {

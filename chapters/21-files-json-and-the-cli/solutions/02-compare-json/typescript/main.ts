@@ -11,7 +11,10 @@ const USAGE = "usage: jsondiff OLD NEW";
 const IDENTIFIER = /^[A-Za-z_][A-Za-z0-9_]*$/;
 // Node's errors have the C names of the system's error codes, such as ENOENT, and
 // messages of their own; these are the messages strerror gives for them.
-const MESSAGES: Record<string, string> = { ENOENT: "No such file or directory", EISDIR: "Is a directory" };
+const MESSAGES: Record<string, string> = {
+  ENOENT: "No such file or directory",
+  EISDIR: "Is a directory",
+};
 
 // typeof says "object" for null and for arrays too.
 function isObject(value: Json): value is JsonObject {
@@ -29,7 +32,9 @@ function compact(value: Json): string {
     return `[${value.map(compact).join(",")}]`;
   }
   if (isObject(value)) {
-    const members = sortedKeys(value).map((key) => `${JSON.stringify(key)}:${compact(value[key])}`);
+    const members = sortedKeys(value).map(
+      (key) => `${JSON.stringify(key)}:${compact(value[key])}`,
+    );
     return `{${members.join(",")}}`;
   }
   return JSON.stringify(value);

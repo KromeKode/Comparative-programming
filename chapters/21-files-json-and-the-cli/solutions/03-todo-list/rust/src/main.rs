@@ -47,7 +47,10 @@ fn read_list() -> Result<List, String> {
     let data = match fs::read(FILE) {
         Ok(data) => data,
         Err(error) if error.kind() == ErrorKind::NotFound => {
-            return Ok(List { version: VERSION, tasks: Vec::new() });
+            return Ok(List {
+                version: VERSION,
+                tasks: Vec::new(),
+            });
         }
         Err(error) => return Err(message(&error)),
     };
@@ -63,7 +66,11 @@ fn read_list() -> Result<List, String> {
     let list: List = serde_json::from_value(value).map_err(|_| "not a to-do list")?;
     let mut ids = HashSet::new();
     // insert returns false for an id it has already.
-    if list.tasks.iter().any(|task| task.id == 0 || !ids.insert(task.id)) {
+    if list
+        .tasks
+        .iter()
+        .any(|task| task.id == 0 || !ids.insert(task.id))
+    {
         return Err("not a to-do list".to_string());
     }
     Ok(list)
@@ -94,7 +101,11 @@ fn run(command: &str, args: &[String]) -> Result<u8, String> {
         let id = list.tasks.iter().map(|task| task.id).max().unwrap_or(0) + 1;
         let text = args.join(" ");
         let line = format!("added {id}: {text}");
-        list.tasks.push(Task { id, text, done: false });
+        list.tasks.push(Task {
+            id,
+            text,
+            done: false,
+        });
         write_list(&list)?;
         println!("{line}");
         return Ok(0);
@@ -126,7 +137,9 @@ fn run(command: &str, args: &[String]) -> Result<u8, String> {
 
 fn main() -> ExitCode {
     let args: Vec<String> = std::env::args().skip(1).collect();
-    let (command, args) = args.split_first().map_or(("", &[][..]), |(c, a)| (c.as_str(), a));
+    let (command, args) = args
+        .split_first()
+        .map_or(("", &[][..]), |(c, a)| (c.as_str(), a));
     let is_id = |arg: &String| !arg.is_empty() && arg.bytes().all(|b| b.is_ascii_digit());
     // The command line is checked before todo.json is read.
     let ok = match command {

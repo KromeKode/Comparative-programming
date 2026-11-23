@@ -94,7 +94,9 @@ def run(command: str, args: list[str]) -> int:
     """Carries out a command whose arguments have been checked, and returns the status."""
     tasks = read_tasks()
     if command == "add":
-        added = Task(max((task.id for task in tasks), default=0) + 1, " ".join(args), False)
+        added = Task(
+            max((task.id for task in tasks), default=0) + 1, " ".join(args), False
+        )
         tasks.append(added)
         write_tasks(tasks)
         print(f"added {added.id}: {added.text}")
@@ -126,8 +128,11 @@ def main() -> int:
     ok = (
         (command == "add" and len(args) > 0)
         or (command == "list" and len(args) == 0)
-        or (command in ("done", "remove") and len(args) == 1
-            and re.fullmatch("[0-9]+", args[0]) is not None)
+        or (
+            command in ("done", "remove")
+            and len(args) == 1
+            and re.fullmatch("[0-9]+", args[0]) is not None
+        )
     )
     if not ok:
         print(USAGE, file=sys.stderr)

@@ -10,7 +10,10 @@ const USAGE = `usage: todo add TEXT...
        todo remove ID`;
 // Node's errors have the C names of the system's error codes, such as ENOENT, and
 // messages of their own; these are the messages strerror gives for them.
-const MESSAGES: Record<string, string> = { ENOENT: "No such file or directory", EISDIR: "Is a directory" };
+const MESSAGES: Record<string, string> = {
+  ENOENT: "No such file or directory",
+  EISDIR: "Is a directory",
+};
 
 // A problem with todo.json, which stops the program with status 2.
 class Problem extends Error {}
@@ -69,7 +72,11 @@ function readTasks(): Task[] {
   if (typeof value.version === "number" && value.version !== VERSION) {
     throw new Problem(`unknown version ${value.version}`);
   }
-  if (value.version !== VERSION || Object.keys(value).length !== 2 || !Array.isArray(value.tasks)) {
+  if (
+    value.version !== VERSION ||
+    Object.keys(value).length !== 2 ||
+    !Array.isArray(value.tasks)
+  ) {
     throw new Problem("not a to-do list");
   }
   const tasks = value.tasks.map(taskFromJson);
@@ -99,7 +106,11 @@ function writeTasks(tasks: Task[]): void {
 function run(command: string, args: string[]): number {
   const tasks = readTasks();
   if (command === "add") {
-    const added: Task = { id: Math.max(0, ...tasks.map((task) => task.id)) + 1, text: args.join(" "), done: false };
+    const added: Task = {
+      id: Math.max(0, ...tasks.map((task) => task.id)) + 1,
+      text: args.join(" "),
+      done: false,
+    };
     tasks.push(added);
     writeTasks(tasks);
     console.log(`added ${added.id}: ${added.text}`);
@@ -136,7 +147,9 @@ function main(argv: string[]): number {
   const ok =
     (command === "add" && args.length > 0) ||
     (command === "list" && args.length === 0) ||
-    ((command === "done" || command === "remove") && args.length === 1 && /^[0-9]+$/.test(args[0]));
+    ((command === "done" || command === "remove") &&
+      args.length === 1 &&
+      /^[0-9]+$/.test(args[0]));
   if (!ok) {
     console.error(USAGE);
     return 2;

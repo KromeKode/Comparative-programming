@@ -93,7 +93,8 @@ fun isJson(element: JsonElement): Boolean =
         is JsonArray -> element.all(::isJson)
         is JsonNull -> true
         is JsonPrimitive ->
-            element.isString || element.content in setOf("true", "false") ||
+            element.isString ||
+                element.content in setOf("true", "false") ||
                 NUMBER.matches(element.content)
     }
 
@@ -163,7 +164,8 @@ fun run(command: String, args: List<String>): Int {
     val list = readList()
     when (command) {
         "add" -> {
-            val added = Task((list.tasks.maxOfOrNull { it.id } ?: 0) + 1, args.joinToString(" "), false)
+            val added =
+                Task((list.tasks.maxOfOrNull { it.id } ?: 0) + 1, args.joinToString(" "), false)
             writeList(list.copy(tasks = list.tasks + added))
             println("added ${added.id}: ${added.text}")
         }
@@ -179,7 +181,11 @@ fun run(command: String, args: List<String>): Int {
                 return 1
             }
             if (command == "done") {
-                writeList(list.copy(tasks = list.tasks.map { if (it == found) it.copy(done = true) else it }))
+                writeList(
+                    list.copy(
+                        tasks = list.tasks.map { if (it == found) it.copy(done = true) else it }
+                    )
+                )
                 println("done ${found.id}: ${found.text}")
             } else {
                 writeList(list.copy(tasks = list.tasks - found))
@@ -198,7 +204,8 @@ fun main(arguments: Array<String>) {
         when (command) {
             "add" -> args.isNotEmpty()
             "list" -> args.isEmpty()
-            "done", "remove" -> args.size == 1 && DIGITS.matches(args[0])
+            "done",
+            "remove" -> args.size == 1 && DIGITS.matches(args[0])
             else -> false
         }
     if (!ok) {
