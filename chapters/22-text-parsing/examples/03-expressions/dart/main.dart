@@ -216,7 +216,7 @@ Future<void> main() async {
     final line = text.endsWith('\r')
         ? text.substring(0, text.length - 1)
         : text;
-    if (line.replaceAll(RegExp('[ \t]'), '').isEmpty) continue;
+    if (line.replaceAll(RegExp(r'[ \t]'), '').isEmpty) continue;
     try {
       final expr = Parser(line).parse();
       print('${show(expr)} = ${evaluate(expr)}');

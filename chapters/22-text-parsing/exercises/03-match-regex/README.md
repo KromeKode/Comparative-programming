@@ -97,7 +97,7 @@ python3 tools/check.py 22 --lang python
   finds no `b` in 26 a's at once, but takes 10 seconds on test 26's line of 30,000 a's,
   throws `StackOverflowError` on test 27's, and takes 14 seconds on test 28. GCC's
   `std::regex` crashes on tests 26 and 27, and is still at test 28 after a minute. Go's
-  `regexp` and Rust's `regex` crate take under two milliseconds for each, because they
+  `regexp` and Rust's `regex` crate take a few milliseconds at most, because they
   promise time in proportion to the length of the text, as this exercise does, and leave
   out what can't be done that way, such as backreferences.
 - **Loops that read nothing.** In `(a*)*` and `()*`, the inner part can match without
