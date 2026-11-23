@@ -1,0 +1,21 @@
+{
+  "count": 5,
+  "oldest": "Pride & Prejudice, by Jane Austen",
+  "tags": {
+    "classic": [
+      "Pride & Prejudice",
+      "Dune",
+      "Beloved"
+    ],
+    "romance": [
+      "Pride & Prejudice"
+    ],
+    "sf": [
+      "Dune",
+      "Kindred"
+    ]
+  },
+  "untagged": [
+    "Cien años de soledad"
+  ]
+}
