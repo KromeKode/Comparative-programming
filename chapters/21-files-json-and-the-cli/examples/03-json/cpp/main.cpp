@@ -25,7 +25,13 @@ struct Book {
 void from_json(const json& j, Book& book) {
     j.at("title").get_to(book.title);
     j.at("author").get_to(book.author);
-    j.at("year").get_to(book.year);
+    // get_to would turn true into 1, and 1965.5 into 1965, so year is checked first.
+    const json& year = j.at("year");
+    if (!year.is_number_integer()) {
+        throw json::type_error::create(302, "year must be a whole number, not " + year.dump(),
+                                       &year);
+    }
+    year.get_to(book.year);
     book.tags = j.value("tags", std::vector<std::string>{});  // the default if missing
 }
 

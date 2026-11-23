@@ -91,7 +91,7 @@ func main() {
 	}
 	encoder := json.NewEncoder(os.Stdout)
 	encoder.SetIndent("", "  ")
-	// Without this, & < and > are written as & < and >, so that the
+	// Without this, & < and > are written as \u0026 \u003c and \u003e, so that the
 	// JSON is safe to put in a web page.
 	encoder.SetEscapeHTML(false)
 	if err := encoder.Encode(makeReport(books)); err != nil {

@@ -74,7 +74,7 @@ def main() -> int:
     except ValueError as error:
         print(f"books: {path}: {error}", file=sys.stderr)
         return 1
-    # ensure_ascii=False writes "ñ" as it is, instead of as "ñ".
+    # ensure_ascii=False writes "ñ" as it is, instead of as "\u00f1".
     print(json.dumps(report(books), indent=2, ensure_ascii=False))
     return 0
 
