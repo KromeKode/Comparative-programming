@@ -49,16 +49,19 @@ right, and every one after it is wrong, by more each time. So debugging is a sea
 it goes best the way any search does: by narrowing it down.
 
 1. **Reproduce it.** Find an input that fails every time, and make it a test, as in
-chapter 19, so that you can run it after every change. A bug that only happens sometimes
-is a bug that depends on something you haven't found yet, such as the time, the order of
-threads, or an uninitialized variable. 2. **Shrink it.** Cut the input down to the
-smallest one that still fails. Section 20.8 has ways to do it. 3. **Find where it goes
-wrong.** Read the crash report, print values, or stop the program in a debugger, and
-find the first place where a value is wrong. Everything before that point is right, and
-the defect is between the last right value and the first wrong one. 4. **Fix the
-cause.** A fix at the failure, such as a check for zero just before the division, hides
-the bug instead of fixing it. 5. **Keep the test.** The test that reproduced the bug is
-now a regression test, and it stops the bug coming back.
+   chapter 19, so that you can run it after every change. A bug that only happens
+   sometimes is a bug that depends on something you haven't found yet, such as the time,
+   the order of threads, or an uninitialized variable.
+2. **Shrink it.** Cut the input down to the smallest one that still fails. Section 20.8
+   has ways to do it.
+3. **Find where it goes wrong.** Read the crash report, print values, or stop the
+   program in a debugger, and find the first place where a value is wrong. Everything
+   before that point is right, and the defect is between the last right value and the
+   first wrong one.
+4. **Fix the cause.** A fix at the failure, such as a check for zero just before the
+   division, hides the bug instead of fixing it.
+5. **Keep the test.** The test that reproduced the bug is now a regression test, and it
+   stops the bug coming back.
 
 A program can also be right and slow, and finding out why is a search of the same kind,
 with a different tool. A **profiler** runs the program and reports where the time went:
