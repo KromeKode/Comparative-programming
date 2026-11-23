@@ -1,0 +1,14 @@
+[package]
+name = "isodates"
+version = "0.1.0"
+edition = "2024"
+
+# The checker runs the program as main.
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+[dependencies]
+# Rust's standard library has no regular expressions; the regex crate is the Rust
+# project's own.
+regex = "1"

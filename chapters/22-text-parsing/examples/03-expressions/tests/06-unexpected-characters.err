@@ -1,0 +1,21 @@
+calc: line 1, column 5: unexpected "$"
+  1 + $
+      ^
+calc: line 2, column 1: unexpected "٣"
+  ٣ + 1
+  ^
+calc: line 3, column 3: unexpected "×"
+  2 × 3
+    ^
+calc: line 4, column 3: unexpected "🦊"
+  1 🦊 2
+    ^
+calc: line 5, column 6: unexpected "$"
+  	1 +	$
+  	   	^
+calc: line 6, column 4: expected a number, "(", or "-", found "*"
+  2 ** 3
+     ^
+calc: line 7, column 2: unexpected "."
+  1.5 + 1
+   ^

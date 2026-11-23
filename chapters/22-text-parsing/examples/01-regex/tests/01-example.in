@@ -1,0 +1,7 @@
+2026-11-23 14:05:12 GET /books/42 200 12ms
+2026-11-23 14:05:13 GET /books/7 200 812ms
+2026-11-23 14:05:15 POST /books 201 30ms
+2026-11-23 14:05:15 GET /books/42/reviews 200 45ms
+oops, not a log line
+2026-11-23 14:05:16 GET /books/9 404 3ms
+2026-11-23 14:05:20 DELETE /books/7 204 18ms

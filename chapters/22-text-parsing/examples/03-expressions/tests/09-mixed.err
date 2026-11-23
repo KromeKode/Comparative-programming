@@ -1,0 +1,6 @@
+calc: line 2, column 3: unexpected "$"
+  * $
+    ^
+calc: line 4, column 3: division by zero
+  3 / 0
+    ^

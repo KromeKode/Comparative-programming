@@ -43,7 +43,7 @@ Status: ✅ written · ⬜ planned
 | 19 | [Testing basics](chapters/19-testing-basics/) | ✅ |
 | 20 | [Debugging and profiling](chapters/20-debugging-and-profiling/) | ✅ |
 | 21 | [Files, JSON, and the CLI](chapters/21-files-json-and-the-cli/) | ✅ |
-| 22 | Text parsing | ⬜ |
+| 22 | [Text parsing](chapters/22-text-parsing/) | ✅ |
 | 23 | FFI and interop | ⬜ |
 
 ## Part 4: Data structures and algorithms

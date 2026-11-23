@@ -1,0 +1,2 @@
+GET /x/:id: 1 request, 0 failed, slowest 1ms
+POST /x: 1 request, 0 failed, slowest 2ms
