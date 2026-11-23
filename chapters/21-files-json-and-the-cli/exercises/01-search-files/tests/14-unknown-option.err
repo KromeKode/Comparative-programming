@@ -1,0 +1,2 @@
+search: unknown option -x
+usage: search [-icnv] PATTERN [FILE...]
