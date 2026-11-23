@@ -1,0 +1,3 @@
+GET /: 2 requests, 0 failed, slowest 5ms
+GET /health: 1 request, 0 failed, slowest 1ms
+PUT /books/:id: 2 requests, 2 failed, slowest 1200ms

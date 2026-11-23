@@ -1,0 +1,4 @@
+GET /users/:id/orders/:id: 2 requests, 0 failed, slowest 20ms
+GET /v2/items: 1 request, 0 failed, slowest 30ms
+GET /:id/report: 1 request, 0 failed, slowest 40ms
+GET /:id/:id/:id: 1 request, 0 failed, slowest 50ms

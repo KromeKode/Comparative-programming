@@ -1,0 +1,4 @@
+GET /books/:id: 3 requests, 1 failed, slowest 812ms
+POST /books: 1 request, 0 failed, slowest 30ms
+GET /books/:id/reviews: 1 request, 0 failed, slowest 45ms
+DELETE /books/:id: 1 request, 0 failed, slowest 18ms

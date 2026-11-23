@@ -1,0 +1,2 @@
+GET /café/:id: 1 request, 0 failed, slowest 7ms
+GET /naïve/:id: 1 request, 1 failed, slowest 9ms

@@ -1,0 +1,15 @@
+[package]
+name = "logscan"
+version = "0.1.0"
+edition = "2024"
+
+# The checker runs the program as main.
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+[dependencies]
+# Rust's standard library has no regular expressions. The regex crate is the Rust
+# project's own. It leaves out backreferences and lookaround, so that a search takes
+# time in proportion to the length of the text.
+regex = "1"
