@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "tasks": [
+    {
+      "id": 1,
+      "text": "buy milk",
+      "done": false,
+      "due": "2026-12-01"
+    }
+  ]
+}

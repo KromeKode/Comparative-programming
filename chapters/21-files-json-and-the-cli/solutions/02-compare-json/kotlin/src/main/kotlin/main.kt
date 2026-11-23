@@ -107,8 +107,6 @@ fun main(args: Array<String>) {
         }
     val lines = mutableListOf<String>()
     diff("$", values[0], values[1], lines)
-    // UTF-8, whatever the system's locale says println should write.
-    System.out.write(lines.joinToString("") { "$it\n" }.toByteArray())
-    System.out.flush()
+    lines.forEach(::println)
     exitProcess(if (lines.isEmpty()) 0 else 1)
 }
