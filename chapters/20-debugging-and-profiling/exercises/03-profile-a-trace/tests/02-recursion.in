@@ -1,0 +1,12 @@
+100 enter main
+110 enter fib
+120 enter fib
+130 enter fib
+140 exit fib
+150 enter fib
+155 exit fib
+170 exit fib
+180 enter fib
+200 exit fib
+230 exit fib
+240 exit main

@@ -1,0 +1,4 @@
+main.main 1 20 7
+Parser::factor 1 6 6
+<lambda> 1 4 4
+main.(*parser).expr 1 13 3
